@@ -18,10 +18,12 @@ public class SampleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// second param can take specific URL for access from specific sites.
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		out.println("It Worked!");
 	}
 

@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private http:HttpClient){
   }
   ngOnInit(): void {
-    this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
+    this.http.get('http://localhost:3000/flashboard/SampleServlet').subscribe(data => {
       console.log(data);
     });
   }
