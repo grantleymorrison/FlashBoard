@@ -2,8 +2,13 @@ package io.flashboard.beans;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class OneCorrectTestQuestion extends TestQuestion{
 	
+	@Column
 	private String correctAnswer;
 	
 

@@ -3,17 +3,50 @@ package io.flashboard.beans;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+
+@Entity
 public class ComprehensionTest {
 	
+	@Id
+	@Column(name = "TEST_ID")
+	@SequenceGenerator(sequenceName = "TEST_SEQ", name = "TEST_SEQ")	
+	@GeneratedValue(generator = "TEST_SEQ", strategy = GenerationType.SEQUENCE)	
 	private int testId; 
+	
+	@Column
 	private String testTitle;
+	
+	@Column
 	private String subject;
+	
+	@Column
 	private String description;
+	
+	@OneToMany(mappedBy="testId", fetch=FetchType.EAGER)
 	private List<TestQuestion> questions;
+	
+	@Column
 	private String creatorId;
+	
+	@Column
 	private LocalDateTime createdOn;
+	
+	@Column
 	private int maxScore; 
+	
+	@Column
 	private static int totalAttempts;
+	
+	
 	private List<CommentFlag> flags;
 	private List<CommentMessage> comments;
 	
