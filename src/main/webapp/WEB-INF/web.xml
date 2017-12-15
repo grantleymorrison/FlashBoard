@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>LoadTest</display-name>
+    <servlet-name>LoadTest</servlet-name>
+    <servlet-class>io.flashboard.servlets.LoadTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadTest</servlet-name>
+    <url-pattern>/LoadTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SampleServlet</display-name>
+    <servlet-name>SampleServlet</servlet-name>
+    <servlet-class>io.flashboard.servlets.SampleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SampleServlet</servlet-name>
+    <url-pattern>/SampleServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
