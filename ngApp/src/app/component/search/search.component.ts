@@ -5,5 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './search.component.html'
 })
 export class SearchComponent{
-
+    public userString
+    constructor(){
+    }
 }
