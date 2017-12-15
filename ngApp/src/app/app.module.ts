@@ -7,18 +7,14 @@ import { Routes, RouterModule } from '@angular/router';
 // project imports
 import { AppComponent } from './app.component';
 import { AppRoutes } from './router';
-import { HomeComponent } from './component/home/home.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
-import { SearchComponent } from './component/search/search.component';
-import { SignUpComponent } from './component/signup/signup.component';
+import { HomeComponent } from './component/home/home.component'
+import { SideNavComponent } from './component/sidenav/sidenav.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent,
-    SearchComponent,
-    SignUpComponent
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
