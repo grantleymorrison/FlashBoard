@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent{
-    public searchString;
-    constructor(){
-    }
+    title = 'FlashBoard';
 }
