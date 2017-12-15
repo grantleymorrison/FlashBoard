@@ -2,12 +2,44 @@ package io.flashboard.beans;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public abstract class TestQuestion {
 	
+	@Id
+	@Column(name = "QUESTION_ID")
+	@SequenceGenerator(sequenceName = "QUESTION_SEQ", name = "QUESTION_SEQ")	
+	@GeneratedValue(generator = "QUESTION_SEQ", strategy = GenerationType.SEQUENCE)		
 	private int questionId;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="FOR_TEST")
+	private int testId;
+	
+	@Column
 	private String questionText;
+	
+	
+	@Column
 	private List<String> answers;
+	
+	@Column
 	private int pointsPossible; 
+	
+	@Column
+	private String explanation; 
+	
+	
 	private List<CommentFlag> flags;
 	private List<CommentMessage> comments;
 	
