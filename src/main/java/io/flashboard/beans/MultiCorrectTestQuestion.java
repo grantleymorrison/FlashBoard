@@ -41,6 +41,14 @@ public class MultiCorrectTestQuestion extends TestQuestion{
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
+
+	public Set<String> getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(Set<String> correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
 	
 	
 

@@ -41,6 +41,14 @@ public class OneCorrectTestQuestion extends TestQuestion{
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
+
+	public String getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
 	
 	
 

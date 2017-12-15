@@ -27,8 +27,7 @@ public abstract class TestQuestion {
 	private int testId;
 	
 	@Column
-	private String questionText;
-	
+	private String questionText;	
 	
 	@Column
 	private List<String> answers;

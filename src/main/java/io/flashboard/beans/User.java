@@ -1,6 +1,6 @@
 package io.flashboard.beans;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * The basic user. Limited privileges.
  */
 @Entity
-@Table(name="User")
+@Table(name="USER")
 public class User extends AbstractUser {
 	@Id
 	@Column(name="USER_ID")
@@ -27,8 +27,10 @@ public class User extends AbstractUser {
 	private String password;
 	@Column
 	private Integer testsTaken;
+	@Column
 	private Double avgScore;
-	/*private List<CompletedComprehensionTest> takenTests; */
+	@Column
+	private List<CompletedComprehensionTest> takenTests; 
 	private Boolean approved;
 	private Boolean blacklisted;
 	

@@ -64,6 +64,39 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.scorePercentage = scorePercentage;
 		// TODO Auto-generated constructor stub
 	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
+	public List<String> getAnswersSubmitted() {
+		return answersSubmitted;
+	}
+
+	public void setAnswersSubmitted(List<String> answersSubmitted) {
+		this.answersSubmitted = answersSubmitted;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public float getScorePercentage() {
+		return scorePercentage;
+	}
+
+	public void setScorePercentage(float scorePercentage) {
+		this.scorePercentage = scorePercentage;
+	}
+	
 	
 	
 

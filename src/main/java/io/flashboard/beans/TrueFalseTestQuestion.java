@@ -40,6 +40,14 @@ public class TrueFalseTestQuestion extends TestQuestion {
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
+
+	public boolean isCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(boolean correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
 	
 	
 
