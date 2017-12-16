@@ -1,0 +1,28 @@
+legend{
+    font-size:14px;
+}
+input{
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+.confirm{
+    margin-top:50px;
+}
+.signup-box{
+    margin: 60px;
+    padding: 20px;
+    position: absolute;
+    right:5%;
+    width: 450px;
+    text-align: left;
+    border-radius: 2%;
+}
+.btn{
+    float: right;
+}
+.form-control{
+    -webkit-border-radius: 5;
+       -moz-border-radius: 5;
+            border-radius: 5;
+  }
+  
