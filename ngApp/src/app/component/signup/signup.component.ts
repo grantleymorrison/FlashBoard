@@ -20,7 +20,7 @@ export class SignUpComponent {
     constructor(private http: HttpClient) {
     }
     public registerAccount() {
-       this.http.post('http://jsonplaceholder.typicode.com/posts', {
+       this.http.post('http://localhost:3000/FlashBoard/UserRegistration', {
             "fname": this.fname,
             "lname": this.lname,
             "username": this.username,

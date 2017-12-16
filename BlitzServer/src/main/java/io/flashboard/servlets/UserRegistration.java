@@ -22,7 +22,7 @@ public class UserRegistration extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		// second param can take specific URL for access from specific sites.
-		response.addHeader("Access-Control-Allow-Origin", "localhost:4200/*");
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		out.println("It Worked!");
 	}
 
