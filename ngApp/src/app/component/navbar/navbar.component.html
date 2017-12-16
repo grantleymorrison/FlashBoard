@@ -7,14 +7,20 @@
     <li class="nav-item">
       <a routerLink="search">Search</a>
     </li>
+    <li class="nav-item">
+      <a routerLink="search">Create</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="search">Browse</a>
+    </li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <!-- Trigger the modal with a button -->
-    <li data-toggle="modal" data-target="#myModal">
+    <li class="login" data-toggle="modal" data-target="#myModal">
       <a>
         <span class="glyphicon glyphicon-log-in"></span> Login</a>
     </li>
-    <!-- Modal -->
+    <!-- Modal Start-->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-login">
         <!-- Modal content-->
@@ -38,6 +44,8 @@
               <li>
                 <input type="password" name="password">
               </li>
+              <li>Forgot username</li>
+              <li>Forgot password</li>
             </ul>
           </div>
           <div class="modal-footer">
@@ -47,7 +55,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal Ends -->
+    <!-- ./Modal Ends -->
     <li>
       <a routerLink="signup" class="sign-up">
         <span class="glyphicon glyphicon-user"></span> Sign Up</a>

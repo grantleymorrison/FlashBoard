@@ -4,45 +4,45 @@
     <legend>
       <strong>Name</strong>
     </legend>
-    <div id="firstName" class="col-md-6">
-      <input class="form-control" type="text" placeholder="First">
+    <div id="firstName" class="col-xs-6 col-md-6">
+      <input class="form-control" type="text" placeholder="First" [(ngModel)]="fname">
     </div>
-    <div id="lastName" class="col-md-6">
-      <input class="form-control" type="text" placeholder="Last">
+    <div id="lastName" class="col-xs-6 col-md-6">
+      <input class="form-control" type="text" placeholder="Last" [(ngModel)]="lname">
     </div>
     <legend>
       <strong>Username</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="text" name="username">
+      <input class="form-control" type="text" [(ngModel)]="username">
     </div>
     <legend>
       <strong>Password</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="password" name="password">
+      <input class="form-control" type="password" [(ngModel)]="password">
     </div>
     <legend>
       <strong>Re-Enter Password</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="password" name="rePassword">
+      <input class="form-control" type="password" [(ngModel)]="rePassword">
     </div>
     <legend>
       <strong>Email</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="email" name="email">
+      <input class="form-control" type="email" [(ngModel)]="email">
     </div>
     <legend>
       <strong>Favorite Color</strong>
     </legend>
     <div class="col-md-3">
-      <input class="form-control" type="color" name="favColor">
+      <input class="form-control" type="color" [(ngModel)]="favColor">
     </div>
     <div class="confirm col-md-12">
       <div>
-        <input class="btn btn-lg btn-primary" type="submit" value="Create Account">
+        <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="registerAccount()">
       </div>
     </div>
   </div>
