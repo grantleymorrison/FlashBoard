@@ -44,20 +44,20 @@
                 <span>Username</span>
               </li>
               <li>
-                <input type="text" name="username">
+                <input type="text" name="username" [(ngModel)]="username">
               </li>
               <li>
                 <span>Password</span>
               </li>
               <li>
-                <input type="password" name="password">
+                <input type="password" name="password" [(ngModel)]="password">
               </li>
               <li>Forgot username</li>
               <li>Forgot password</li>
             </ul>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Log in</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="loginAccount()">Log in</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
