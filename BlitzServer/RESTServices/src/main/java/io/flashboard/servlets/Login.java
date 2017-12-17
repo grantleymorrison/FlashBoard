@@ -8,8 +8,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
-@Path("/registration")
-public class UserRegistration {
+@Path("/login")
+public class Login {
 	
 	@Context
 	UriInfo uriInfo;
@@ -18,7 +18,7 @@ public class UserRegistration {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void registrationData(String JSON) {
+	public void loginData(String JSON) {
 		System.out.println(JSON);
 	}
 }
