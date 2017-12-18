@@ -1,4 +1,4 @@
-package BlitzServer.RESTServices.src.main.java.io.flashboard.beans;
+package io.flashboard.beans;
 
 import java.time.LocalDateTime;
 import java.util.List;

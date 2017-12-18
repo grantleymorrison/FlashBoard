@@ -1,6 +1,8 @@
 package io.flashboard.beans;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,14 +22,27 @@ public class User extends AbstractUser {
 	@SequenceGenerator(sequenceName="USER_SEQ", name="USER_SEQ") //seqe for incrementing id 
 	@GeneratedValue(generator="USER_SEQ", strategy=GenerationType.SEQUENCE)
 	private Integer userId;
+
+	@Column(name="FIRST_NAME")
+	private String firstName;
+	@Column(name="LAST_NAME")
+	private String lastName;
+	@Column
+	private String email;
+	
+	@Column(name="FAV_COLOR")
+	private String favColor;
+	
 	@Column
 	private String username;
 	@Column
 	private String password;
 	@Column(name="TESTS_TAKEN")
 	private Integer testsTaken;
+	@Column(name="AVG_SCORE")
 	private Double avgScore;
-	/*private List<CompletedComprehensionTest> takenTests; */
+	@Column(name="TAKEN_TESTS")
+	private List<CompletedComprehensionTest> takenTests;
 	@Column
 	private Boolean approved;
 	@Column
@@ -36,7 +51,12 @@ public class User extends AbstractUser {
 	private Boolean writer;
 	
 	public User() {
-		
+		this.testsTaken = 0;
+		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.writer = false;
+		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
 	public User( Integer userId , String username , String password, Integer testsTaken ) {
 		super(userId, username, password);
@@ -45,9 +65,25 @@ public class User extends AbstractUser {
 		this.approved = false;
 		this.blacklisted = false;
 		this.writer = false;
-		
-		/*this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);*/
+		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
+	
+	public User( Integer userId , String username , String password , String firstName ,
+			String lastName , String email , String username2 , String password2 ) {
+		super(userId, username, password);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		username = username2;
+		password = password2;
+		this.testsTaken = 0;
+		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.writer = false;
+		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
+	}
+
 	
 
 
