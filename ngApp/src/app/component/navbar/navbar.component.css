@@ -1,3 +1,6 @@
+.login:hover{
+    cursor: pointer;
+}
 .navbar-light{
     border-bottom: 1px solid rgb(112, 112, 235);
     padding-right: 3%;

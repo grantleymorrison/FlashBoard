@@ -17,7 +17,7 @@ export const AppRoutes: Routes = [
     {
         path: 'signup',
         component: SignUpComponent
-    }
+    },
     {
         path: '',
         redirectTo: '/home',
