@@ -1,7 +1,11 @@
 package io.flashboard.beans;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+import java.util.ArrayList;
+>>>>>>> 561dc94a0a76069e086df8fb37948d67ee223c94
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,21 +29,38 @@ public class User extends AbstractUser {
 	private String username;
 	@Column
 	private String password;
-	@Column
+	@Column(name="TESTS_TAKEN")
 	private Integer testsTaken;
 	@Column
 	private Double avgScore;
+<<<<<<< HEAD
 	@Column
 	private List<CompletedComprehensionTest> takenTests; 
+=======
+	/*private List<CompletedComprehensionTest> takenTests; */
+	@Column
+>>>>>>> 561dc94a0a76069e086df8fb37948d67ee223c94
 	private Boolean approved;
+	@Column
 	private Boolean blacklisted;
+	@Column
+	private Boolean writer;
 	
+	public User() {
+		
+	}
 	public User( Integer userId , String username , String password, Integer testsTaken ) {
 		super(userId, username, password);
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.writer = false;
+		
 		/*this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);*/
 	}
+	
+
 
 	public Integer getUserId() {
 		return userId;
@@ -103,6 +124,14 @@ public class User extends AbstractUser {
 
 	public void setBlacklisted(Boolean blacklisted) {
 		this.blacklisted = blacklisted;
+	}
+
+	public Boolean getWriter() {
+		return writer;
+	}
+
+	public void setWriter(Boolean writer) {
+		this.writer = writer;
 	}
 
 
