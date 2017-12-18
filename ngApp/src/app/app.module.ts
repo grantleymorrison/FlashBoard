@@ -7,6 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 // project imports
 import { AppComponent } from './app.component';
 import { AppRoutes } from './router';
+import { BrowseComponent } from './component/browse/browse.component';
+import { CreateComponent } from './component/create/create.component';
 import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SearchComponent } from './component/search/search.component';
@@ -15,10 +17,12 @@ import { SignUpComponent } from './component/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
+    BrowseComponent,
+    CreateComponent,
     HomeComponent,
     NavbarComponent,
     SearchComponent,
-    SignUpComponent
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

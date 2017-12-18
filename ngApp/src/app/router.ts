@@ -4,7 +4,8 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { SearchComponent } from './component/search/search.component';
 import { SignUpComponent } from './component/signup/signup.component';
-
+import { BrowseComponent } from './component/browse/browse.component';
+import { CreateComponent } from './component/create/create.component';
 export const AppRoutes: Routes = [
     {
         path: 'home',
@@ -17,6 +18,14 @@ export const AppRoutes: Routes = [
     {
         path: 'signup',
         component: SignUpComponent
+    },
+    {
+        path: 'browse',
+        component: BrowseComponent
+    },
+    {
+        path: 'create',
+        component: CreateComponent
     },
     {
         path: '',
