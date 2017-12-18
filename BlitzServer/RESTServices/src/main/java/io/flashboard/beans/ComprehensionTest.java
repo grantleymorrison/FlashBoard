@@ -5,49 +5,39 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "COMPREHENSION_TEST")
 public class ComprehensionTest {
-	
 	@Id
-	@Column(name = "TEST_ID")
-	@SequenceGenerator(sequenceName = "TEST_SEQ", name = "TEST_SEQ")	
-	@GeneratedValue(generator = "TEST_SEQ", strategy = GenerationType.SEQUENCE)	
+	@Column(name="TEST_ID")
+	@SequenceGenerator(sequenceName="TEST_SEQ", name="TEST_SEQ") //seqe for incrementing id 
+	@GeneratedValue(generator="TEST_SEQ", strategy=GenerationType.SEQUENCE)
 	private int testId; 
-	
-	@Column
+	@Column(name="TEST_TITLE")
 	private String testTitle;
-	
-	@Column
+	@Column(name="TEST_SUBJECT")
 	private String subject;
-	
-	@Column
+	@Column(name="TEST_DESC")
 	private String description;
-	
-	@OneToMany(mappedBy="testId", fetch=FetchType.EAGER)
+	@Column(name="TEST_QUESTIONS")
 	private List<TestQuestion> questions;
-	
-	@Column
+	@Column(name="CREATOR_ID")
 	private String creatorId;
-	
-	@Column
+	@Column(name="CREATED_ON")
 	private LocalDateTime createdOn;
-	
-	@Column
+	@Column(name="MAX_SCORE")
 	private int maxScore; 
-	
-	@Column
+	@Column(name="TOTAL_ATTEMPTS")
 	private static int totalAttempts;
-	
-	
+	@Column(name="FLAGS")
 	private List<CommentFlag> flags;
+	@Column(name="COMMENTS")
 	private List<CommentMessage> comments;
 	
 	
