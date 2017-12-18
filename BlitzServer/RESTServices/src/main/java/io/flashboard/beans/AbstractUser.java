@@ -13,6 +13,10 @@ public abstract class AbstractUser {
 		this.username = username;
 		this.password = password;
 	}
+	
+	public AbstractUser() {
+		
+	}
 	public Integer getUserId() {
 		return userId;
 	}

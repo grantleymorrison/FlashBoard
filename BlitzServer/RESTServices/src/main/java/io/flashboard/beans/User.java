@@ -1,7 +1,6 @@
 package io.flashboard.beans;
 
 import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,19 +24,32 @@ public class User extends AbstractUser {
 	private String username;
 	@Column
 	private String password;
-	@Column
+	@Column(name="TESTS_TAKEN")
 	private Integer testsTaken;
 	private Double avgScore;
 	/*private List<CompletedComprehensionTest> takenTests; */
+	@Column
 	private Boolean approved;
+	@Column
 	private Boolean blacklisted;
+	@Column
+	private Boolean writer;
 	
+	public User() {
+		
+	}
 	public User( Integer userId , String username , String password, Integer testsTaken ) {
 		super(userId, username, password);
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.writer = false;
+		
 		/*this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);*/
 	}
+	
+
 
 	public Integer getUserId() {
 		return userId;
@@ -101,6 +113,14 @@ public class User extends AbstractUser {
 
 	public void setBlacklisted(Boolean blacklisted) {
 		this.blacklisted = blacklisted;
+	}
+
+	public Boolean getWriter() {
+		return writer;
+	}
+
+	public void setWriter(Boolean writer) {
+		this.writer = writer;
 	}
 
 
