@@ -6,6 +6,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/login")
@@ -18,7 +19,8 @@ public class Login {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void loginData(String JSON) {
+	public Response loginData(String JSON) {
 		System.out.println(JSON);
+		return Response.status(200).entity("Good").build();
 	}
 }
