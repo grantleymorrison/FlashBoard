@@ -21,22 +21,20 @@ public class TrueFalseTestQuestion extends TestQuestion {
 		this.correctAnswer = correctAnswer;
 	}
 
-	public TrueFalseTestQuestion(int questionId, String questionText, List<String> answers, int pointsPossible,
-			List<CommentFlag> flags, List<CommentMessage> comments, boolean correctAnswer) {
-		super(questionId, questionText, answers, pointsPossible, flags, comments);
+	public TrueFalseTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, 
+			int pointsPossible, List<CommentFlag> flags, List<CommentMessage> comments, boolean correctAnswer) {
+		super(questionId, questionText, questionAnswer, questionOption1, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
-		// TODO Auto-generated constructor stub
 	}
 
-	public TrueFalseTestQuestion(int questionId, String questionText, List<String> answers, int pointsPossible, boolean correctAnswer) {
-		super(questionId, questionText, answers, pointsPossible);
+	public TrueFalseTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible, boolean correctAnswer) {
+		super(questionId, questionText, questionAnswer, questionOption1, pointsPossible);
 		this.correctAnswer = correctAnswer;
-		// TODO Auto-generated constructor stub
 	}
 
-	public TrueFalseTestQuestion(String questionText, List<String> answers, int pointsPossible, List<CommentFlag> flags,
+	public TrueFalseTestQuestion(String questionText, String questionAnswer, String questionOption1, int pointsPossible, List<CommentFlag> flags,
 			List<CommentMessage> comments, boolean correctAnswer) {
-		super(questionText, answers, pointsPossible, flags, comments);
+		super(questionText, questionAnswer, questionOption1, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
