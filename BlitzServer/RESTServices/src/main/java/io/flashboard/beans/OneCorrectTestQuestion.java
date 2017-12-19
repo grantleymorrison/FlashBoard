@@ -22,22 +22,28 @@ public class OneCorrectTestQuestion extends TestQuestion{
 		// TODO Auto-generated constructor stub
 	}
 
-	public OneCorrectTestQuestion(int questionId, String questionText, List<String> answers, int pointsPossible,
+	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, 
+			String questionOption1, String questionOption2, 
+			String questionOption3, int pointsPossible,
 			List<CommentFlag> flags, List<CommentMessage> comments, String correctAnswer) {
-		super(questionId, questionText, answers, pointsPossible, flags, comments);
+		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
+				questionOption3, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
 
-	public OneCorrectTestQuestion(int questionId, String questionText, List<String> answers, int pointsPossible, String correctAnswer) {
-		super(questionId, questionText, answers, pointsPossible);
+	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1,
+			String questionOption2, String questionOption3, int pointsPossible, String correctAnswer) {
+		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
+				questionOption3, pointsPossible);
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
 
-	public OneCorrectTestQuestion(String questionText, List<String> answers, int pointsPossible,
-			List<CommentFlag> flags, List<CommentMessage> comments, String correctAnswer) {
-		super(questionText, answers, pointsPossible, flags, comments);
+	public OneCorrectTestQuestion(String questionText, String questionAnswer, String questionOption1,
+			String questionOption2, String questionOption3, int pointsPossible, String correctAnswer) {
+		super(questionText, questionAnswer, questionOption1, questionOption2, 
+				questionOption3, pointsPossible);
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
 	}
