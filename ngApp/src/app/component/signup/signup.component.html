@@ -1,49 +1,67 @@
 <h2>Create your FlashBoard Account</h2>
-<div class="pageContent">
-  <div class="jumbotron signup-box">
-    <legend>
-      <strong>Name</strong>
-    </legend>
-    <div id="firstName" class="col-xs-6 col-md-6">
-      <input class="form-control" type="text" placeholder="First" [(ngModel)]="fname">
-    </div>
-    <div id="lastName" class="col-xs-6 col-md-6">
-      <input class="form-control" type="text" placeholder="Last" [(ngModel)]="lname">
-    </div>
-    <legend>
-      <strong>Username</strong>
-    </legend>
-    <div class="col-md-12">
-      <input class="form-control" type="text" [(ngModel)]="username">
-    </div>
-    <legend>
-      <strong>Password</strong>
-    </legend>
-    <div class="col-md-12">
-      <input class="form-control" type="password" [(ngModel)]="password">
-    </div>
-    <legend>
-      <strong>Re-Enter Password</strong>
-    </legend>
-    <div class="col-md-12">
-      <input class="form-control" type="password" [(ngModel)]="rePassword">
-    </div>
-    <legend>
-      <strong>Email</strong>
-    </legend>
-    <div class="col-md-12">
-      <input class="form-control" type="email" [(ngModel)]="email">
-    </div>
-    <legend>
-      <strong>Favorite Color</strong>
-    </legend>
-    <div class="col-md-3">
-      <input class="form-control" type="color" [(ngModel)]="favColor">
-    </div>
-    <div class="confirm col-md-12">
-      <div>
+<div class="container" id="signUp">
+  <div class="card" style="width:40rem">
+    <div class="card-block">
+      <h3 class="card-title">Sign Up</h3>
+      <form>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="col-5">
+            <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="fname">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="lastName">Last Name</label>
+          </div>
+          <div class="col-5">
+            <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="lname">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="username">Username</label>
+          </div>
+          <div class="col-5">
+            <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="pwd">Password</label>
+          </div>
+          <div class="col-5">
+            <input type="text" class="form-control" placeholder="Password" [(ngModel)]="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="re-pwd">Re-Enter Password</label>
+          </div>
+          <div class="col-5">
+            <input type="text" class="form-control" placeholder="Re-type Password" [(ngModel)]="rePassword">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="email">Email</label>
+          </div>
+          <div class="col-5">
+            <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-text">
+            <label for="color">Favorite Color</label>
+          </div>
+          <div class="col-5">
+            <input type="color" class="form-control" placeholder="E-mail" [(ngModel)]="favColor">
+          </div>
+        </div>
         <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="registerAccount()">
-      </div>
+      </form>
     </div>
   </div>
 </div>
