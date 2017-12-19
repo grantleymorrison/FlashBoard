@@ -62,16 +62,6 @@ public class Admin {
 				+ (username != null ? "username=" + username + ", " : "")
 				+ (password != null ? "password=" + password : "") + "]";
 	}
-	public void promoteUserToWriter(User user) {
-		user.setWriter(true);
-	}
-	public void approveUserAccount(User user) {
-		user.setApproved(true);
-	}
-	
-	public void denyUserAccount(User user) {
-		user.setApproved(false);
-	}
 	/*
 	public void deleteComprehensionTestComment() {
 		

@@ -58,8 +58,8 @@ public class User extends AbstractUser {
 		this.writer = false;
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
-	public User( Integer userId , String username , String password, Integer testsTaken ) {
-		super(userId, username, password);
+	public User(String username , String password) {
+		super(username, password);
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
 		this.approved = false;
@@ -127,13 +127,13 @@ public class User extends AbstractUser {
 		this.avgScore = avgScore;
 	}
 
-/*	public List<CompletedComprehensionTest> getTakenTests() {
+	public List<CompletedComprehensionTest> getTakenTests() {
 		return takenTests;
 	}
 
 	public void addTakenTests(CompletedComprehensionTest takenTest) {
 		this.takenTests.add(takenTest);
-	}*/
+	}
 
 	public Boolean getApproved() {
 		return approved;
