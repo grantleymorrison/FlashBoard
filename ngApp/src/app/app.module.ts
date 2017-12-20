@@ -13,6 +13,7 @@ import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SearchComponent } from './component/search/search.component';
 import { SignUpComponent } from './component/signup/signup.component';
+import { ProfileComponent } from './component/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SignUpComponent } from './component/signup/signup.component';
     CreateComponent,
     HomeComponent,
     NavbarComponent,
+    ProfileComponent,
     SearchComponent,
     SignUpComponent,
   ],

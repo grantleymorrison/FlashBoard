@@ -1,0 +1,8 @@
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+.card{
+    margin: 10px;
+    height: 150px;
+}
