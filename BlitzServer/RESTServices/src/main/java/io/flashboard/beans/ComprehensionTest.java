@@ -38,7 +38,7 @@ public class ComprehensionTest {
 	@Column(name="FLAGS")
 	private List<CommentFlag> flags;
 	@Column(name="COMMENTS")
-	private List<CommentMessage> comments;
+	private List<Message> comments;
 	
 	
 	
@@ -53,29 +53,28 @@ public class ComprehensionTest {
 	
 	
 	
-	public ComprehensionTest(int testId, String testTitle, String subject, String description,
-			LocalDateTime createdOn) {
+	public ComprehensionTest(int testId, String testTitle, String subject, String description) {
 		super();
 		this.testId = testId;
 		this.testTitle = testTitle;
 		this.subject = subject;
 		this.description = description;
-		this.createdOn = createdOn;
+		this.createdOn = LocalDateTime.now();
 	}
 
 
 
 
 	public ComprehensionTest(String testTitle, String subject, String description, List<TestQuestion> questions,
-			String creatorId, LocalDateTime createdOn, int maxScore, List<CommentFlag> flags,
-			List<CommentMessage> comments) {
+			String creatorId, int maxScore, List<CommentFlag> flags,
+			List<Message> comments) {
 		super();
 		this.testTitle = testTitle;
 		this.subject = subject;
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
-		this.createdOn = createdOn;
+		this.createdOn = LocalDateTime.now();
 		this.maxScore = maxScore;
 		this.flags = flags;
 		this.comments = comments;
@@ -85,8 +84,8 @@ public class ComprehensionTest {
 
 
 	public ComprehensionTest(int testId, String testTitle, String subject, String description,
-			List<TestQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
-			List<CommentFlag> flags, List<CommentMessage> comments) {
+			List<TestQuestion> questions, String creatorId, int maxScore,
+			List<CommentFlag> flags, List<Message> comments) {
 		super();
 		this.testId = testId;
 		this.testTitle = testTitle;
@@ -94,7 +93,7 @@ public class ComprehensionTest {
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
-		this.createdOn = createdOn;
+		this.createdOn = LocalDateTime.now();;
 		this.maxScore = maxScore;
 		this.flags = flags;
 		this.comments = comments;
@@ -159,10 +158,10 @@ public class ComprehensionTest {
 	public void setFlags(List<CommentFlag> flags) {
 		this.flags = flags;
 	}
-	public List<CommentMessage> getComments() {
+	public List<Message> getComments() {
 		return comments;
 	}
-	public void setComments(List<CommentMessage> comments) {
+	public void setComments(List<Message> comments) {
 		this.comments = comments;
 	}
 	
