@@ -21,7 +21,7 @@ export class SignUpComponent {
     }
     
     public registerAccount() {
-       this.http.post('http://localhost:3000/flashboard/rest/registration', {
+       this.http.post('http://localhost:3000/flashboard/registration', {
             "fname": this.fname,
             "lname": this.lname,
             "username": this.username,

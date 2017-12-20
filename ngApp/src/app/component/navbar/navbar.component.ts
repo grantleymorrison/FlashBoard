@@ -20,7 +20,7 @@ export class NavbarComponent{
 
     public loginAccount() {
       let body = {"username":this.username, "password":this.password}
-       this.http.post('http://localhost:3000/flashboard/rest/login', body)
+       this.http.post('http://localhost:3000/flashboard/login', body)
        .subscribe(
             pass => {
                 console.log("Success");
