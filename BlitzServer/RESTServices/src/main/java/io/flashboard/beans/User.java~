@@ -59,9 +59,14 @@ public class User extends AbstractUser {
 		this.writer = false;
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
+<<<<<<< HEAD
 
+	public User(Integer userId, String username, String password, Integer testsTaken) {
+		super(userId, username, password);
+=======
 	public User(String username , String password) {
 		super(username, password);
+>>>>>>> 98072f03130f1eefdf50f95c2e14fbc63687db5a
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
 		this.approved = false;
@@ -126,6 +131,15 @@ public class User extends AbstractUser {
 		this.avgScore = avgScore;
 	}
 
+<<<<<<< HEAD
+	/*
+	 * public List<CompletedComprehensionTest> getTakenTests() { return takenTests;
+	 * }
+	 * 
+	 * public void addTakenTests(CompletedComprehensionTest takenTest) {
+	 * this.takenTests.add(takenTest); }
+	 */
+=======
 	public List<CompletedComprehensionTest> getTakenTests() {
 		return takenTests;
 	}
@@ -133,6 +147,7 @@ public class User extends AbstractUser {
 	public void addTakenTests(CompletedComprehensionTest takenTest) {
 		this.takenTests.add(takenTest);
 	}
+>>>>>>> 98072f03130f1eefdf50f95c2e14fbc63687db5a
 
 	public Boolean getApproved() {
 		return approved;

@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import io.flashboard.beans.Message;
 import io.flashboard.util.HibernateUtil;
 
-public class MessageDriver {
+public class Driver {
 	public static void main(String[] args) {
 		/*
 		 * The below is to be abstracted into the Dao as createMessage(int userId, int messageId, String message)
