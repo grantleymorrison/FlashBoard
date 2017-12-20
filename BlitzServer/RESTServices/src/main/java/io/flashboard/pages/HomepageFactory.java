@@ -4,16 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomepageFactory {
 	@FindBy(xpath = "//li[@class='login']")
-	WebElement pollLoginNav;
+	WebElement loginNav;
 
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement loginUsernameTxt; 
 
 	@FindBy(xpath = "//input[@name='password']")
 	WebElement loginPasswordTxt; 
+	
 	@FindBy(xpath = "")
 	WebElement logMeInBtn;
 	
@@ -23,8 +26,11 @@ public class HomepageFactory {
 	@FindBy(xpath = "//button[@class='close']")
 	WebElement closeLoginModalX;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//button[text()='Close']")
 	WebElement closeLoginModalBtn;
+	
+	@FindBy(xpath = "//a[@class='sign-up']")
+	WebElement signUpNav;
 	
 	@FindBy(xpath = "")
 	WebElement firstName;
@@ -50,40 +56,76 @@ public class HomepageFactory {
 	@FindBy(xpath = "")
 	WebElement createAccountButton;
 	
+	@FindBy(xpath = "//a[text()='Browse']")
+	WebElement browseNav;
+	
+	@FindBy(xpath = "//a[text()='Search']")
+	WebElement searchNav;
+	
+	@FindBy(xpath = "//a[text()='Home']")
+	WebElement homeNav;
+	
+	@FindBy(xpath="//a[@class='navbar-brand']")
+	WebElement logoNav; 
+	
+	@FindBy(xpath="//div[@class='modal-content']")
+	WebElement loginModal;
+	
+	@FindBy(xpath="//div[@class='modal-fade']")
+	WebElement modalFade; 
+	
 	//still requires: navbar elements, all from those elements' links
 	
+	WebDriverWait wait; 
 	
 	public HomepageFactory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
+		wait = new WebDriverWait(driver, 1); 
+		
 	}
 	
-	public void clickPollLogin() {
-		pollLoginNav.click(); 
+	public void clickLoginNav() {
+
+		wait.until(ExpectedConditions.elementToBeClickable(loginNav));
+		loginNav.click(); 
 	}
 	public void enterLoginUsername(String username) {
+		wait.until(ExpectedConditions.visibilityOf(this.loginUsernameTxt));
 		loginUsernameTxt.sendKeys(username);
 	}	
 	public void enterLoginPassword(String password) {
+		wait.until(ExpectedConditions.visibilityOf(this.loginPasswordTxt));
 		loginPasswordTxt.sendKeys(password);
 	}
 	public void clickLogMeIn() {
-		
-	}
-	public void clickSignIn() {
-		
+		wait.until(ExpectedConditions.visibilityOf(this.logMeInBtn));
+		logMeInBtn.click(); 
 	}
 	public void clickCloseLoginModalX() {
+		wait.until(ExpectedConditions.visibilityOf(this.closeLoginModalX));
 		closeLoginModalX.click(); 
 	}
 	public void clickCloseLoginModalBtn() {
+		wait.until(ExpectedConditions.visibilityOf(this.closeLoginModalBtn));
 		closeLoginModalBtn.click(); 
 	}
 	
-	public void clickCreateAccount() {
-		
+	public void clickSignUpNav() {
+		signUpNav.click();
 	}
-	public void clickBrowse() {
-		
+	public void clickBrowseNav() {
+		browseNav.click();
 	}
+	public void clickSearchNav() {
+		searchNav.click(); 
+	}
+	public void clickHomeNav() {
+		homeNav.click(); 
+	}
+	public void clickLogoNav() {
+		logoNav.click(); 
+	}
+	
+	
 
 }

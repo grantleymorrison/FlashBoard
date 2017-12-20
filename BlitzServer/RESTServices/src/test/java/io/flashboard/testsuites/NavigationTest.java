@@ -1,8 +1,6 @@
 package io.flashboard.testsuites;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,35 +16,33 @@ import org.testng.annotations.Test;
 
 import io.flashboard.pages.HomepageFactory;
 
-public class LoginPageTest {
-	
+public class NavigationTest {
 	WebDriver driver;
 	String url = "http://localhost:4200";
 	
 	
-  @Test(groups = {"smoke","login"},
+  @Test(groups = {"smoke"},
 		  enabled = true, priority = 1)
-  public void loginModalSmoke() {
+  public void navbarTest() {
 	  HomepageFactory hpf = new HomepageFactory(driver); 
-	  WebDriverWait wait = new WebDriverWait(driver, 1); 
+	  hpf.clickBrowseNav();
+	  hpf.clickHomeNav();
+	  hpf.clickSearchNav();
+	  hpf.clickHomeNav();
+	  hpf.clickLogoNav();
+	  hpf.clickSignUpNav();
+	  hpf.clickHomeNav(); 
+  }
+  
+  @Test(groups = {"smoke","login"},
+		  enabled = true, priority = 2)
+  public void loginModalOpenAndCloseTest() {
+	  HomepageFactory hpf = new HomepageFactory(driver); 
 	  hpf.clickLoginNav();
-	  hpf.clickCloseLoginModalBtn();
-	  hpf.clickLoginNav();
-	  hpf.enterLoginUsername("username");
-	  hpf.enterLoginPassword("password");
+	  WebDriverWait wait = new WebDriverWait(driver,1);
 	  hpf.clickCloseLoginModalBtn();
   }
   
-  @Test(groups = {"login", "happy"}, dependsOnMethods = "loginModalSmoke",
-		  enabled = true, priority = 2)
-  public void loginValidTest(){
-	  HomepageFactory hpf = new HomepageFactory(driver); 
-	  WebDriverWait wait = new WebDriverWait(driver, 1); 
-	  hpf.clickLoginNav();
-	  hpf.enterLoginUsername("username");
-	  hpf.enterLoginPassword("password");
-	  hpf.clickLogMeIn();
-  }
   
   
   @BeforeMethod
@@ -85,5 +81,4 @@ public class LoginPageTest {
   @AfterSuite
   public void afterSuite() {
   }
-
 }

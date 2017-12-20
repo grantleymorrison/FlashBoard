@@ -3,19 +3,19 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="io.flashboard.testsuites.LoginPageTest">
+      <class name="io.flashboard.testsuites.NavigationTest">
         <methods>
-          <include name="runningTest"/>
           <include name="beforeClass"/>
-          <include name="afterTest"/>
-          <include name="beforeMethod"/>
-          <include name="beforeSuite"/>
-          <include name="afterClass"/>
-          <include name="afterSuite"/>
           <include name="beforeTest"/>
           <include name="afterMethod"/>
+          <include name="loginModalOpenAndCloseTest"/>
+          <include name="afterClass"/>
+          <include name="beforeSuite"/>
+          <include name="afterTest"/>
+          <include name="afterSuite"/>
+          <include name="beforeMethod"/>
         </methods>
-      </class> <!-- io.flashboard.testsuites.LoginPageTest -->
+      </class> <!-- io.flashboard.testsuites.NavigationTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
