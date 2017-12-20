@@ -22,7 +22,7 @@ public class TrueFalseTestQuestion extends TestQuestion {
 	}
 
 	public TrueFalseTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, 
-			int pointsPossible, List<CommentFlag> flags, List<CommentMessage> comments, boolean correctAnswer) {
+			int pointsPossible, List<CommentFlag> flags, List<Message> comments, boolean correctAnswer) {
 		super(questionId, questionText, questionAnswer, questionOption1, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
 	}
@@ -33,7 +33,7 @@ public class TrueFalseTestQuestion extends TestQuestion {
 	}
 
 	public TrueFalseTestQuestion(String questionText, String questionAnswer, String questionOption1, int pointsPossible, List<CommentFlag> flags,
-			List<CommentMessage> comments, boolean correctAnswer) {
+			List<Message> comments, boolean correctAnswer) {
 		super(questionText, questionAnswer, questionOption1, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
 		// TODO Auto-generated constructor stub
