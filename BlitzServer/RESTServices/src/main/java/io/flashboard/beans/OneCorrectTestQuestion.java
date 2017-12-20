@@ -25,7 +25,7 @@ public class OneCorrectTestQuestion extends TestQuestion{
 	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, 
 			String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible,
-			List<CommentFlag> flags, List<CommentMessage> comments, String correctAnswer) {
+			List<CommentFlag> flags, List<Message> comments, String correctAnswer) {
 		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
