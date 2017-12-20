@@ -55,7 +55,7 @@ public abstract class TestQuestion {
 	@Column
 	private List<CommentFlag> flags;
 	@Column
-	private List<CommentMessage> comments;
+	private List<Message> comments;
 	
 	
 	
@@ -94,11 +94,11 @@ public abstract class TestQuestion {
 		this.questionOption3 = questionOption3;
 		this.pointsPossible = pointsPossible;
 		this.flags = new ArrayList<CommentFlag>();
-		this.comments = new ArrayList<CommentMessage>();
+		this.comments = new ArrayList<Message>();
 	}
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible,
-			List<CommentFlag> flags, List<CommentMessage> comments) {
+			List<CommentFlag> flags, List<Message> comments) {
 		super();
 		this.questionId = questionId;
 		this.questionText = questionText;
@@ -111,7 +111,7 @@ public abstract class TestQuestion {
 		this.comments = comments;
 	}
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible,
-			List<CommentFlag> flags, List<CommentMessage> comments) {
+			List<CommentFlag> flags, List<Message> comments) {
 		super();
 		this.questionId = questionId;
 		this.questionText = questionText;
@@ -132,7 +132,7 @@ public abstract class TestQuestion {
 	}
 	
 	public TestQuestion(String questionText, String questionAnswer, String questionOption1, int pointsPossible, 
-			List<CommentFlag> flags, List<CommentMessage> comments) {
+			List<CommentFlag> flags, List<Message> comments) {
 		super();
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
@@ -167,10 +167,10 @@ public abstract class TestQuestion {
 	public void setFlags(List<CommentFlag> flags) {
 		this.flags = flags;
 	}
-	public List<CommentMessage> getComments() {
+	public List<Message> getComments() {
 		return comments;
 	}
-	public void setComments(List<CommentMessage> comments) {
+	public void setComments(List<Message> comments) {
 		this.comments = comments;
 	}
 	public String getQuestionAnswer() {
