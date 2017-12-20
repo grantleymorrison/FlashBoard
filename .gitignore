@@ -4,6 +4,12 @@ Servers/
 #Generated Pom.Properties
 pom.properties
 
+#META-INF
+MANIFEST.MANIFEST
+
+#Eclipse Stuff
+org.eclipse.wst.common.component
+
 # Compiled class file
 *.class
 
