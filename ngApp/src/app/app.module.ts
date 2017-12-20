@@ -14,11 +14,14 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SearchComponent } from './component/search/search.component';
 import { SignUpComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
+import { TopicService } from './services/topic/topic.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BrowseComponent,
+    BrowseTopicComponent,
     CreateComponent,
     HomeComponent,
     NavbarComponent,
@@ -32,7 +35,7 @@ import { ProfileComponent } from './component/profile/profile.component';
     HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

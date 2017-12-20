@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomeComponent } from '../home/home.component'
+import { Topic } from '../../model/topic';
+import { TopicService } from '../../services/topic/topic.service';
+
 @Component({
     selector: 'app-browse',
     templateUrl: './browse.component.html',
@@ -7,39 +10,16 @@ import { HomeComponent } from '../home/home.component'
         './browse.component.css'
     ]
 })
-export class BrowseComponent {
-    topics: Object[];
-    constructor() {
-        this.topics =
-            [
-                {
-                    subject: "Java" ,
-                    description: "Study for Java and OOP Topics"
-                },
-                {
-                    subject: "SQL",
-                    description: "Fun with SQL"
-                },
-                {
-                    subject: "Angular 4",
-                    description: "Test your knowledge in Angular 4"
-                },
-                {
-                    subject: "Testing Tools",
-                    description: "Testing is what we live for"
-                },
-                {
-                    subject: "Database",
-                    description: "More than just querying"
-                },
-                {
-                    subject: "Web Services",
-                    description: "Ipsum ... you know fillers"
-                },
-                {
-                    subject: "JavaScript",
-                    description: "Best Language right here"
-                }
-            ]
+export class BrowseComponent implements OnInit {
+    topics: Topic[];
+    constructor(private topicService: TopicService){
+
+    }
+    ngOnInit(){
+        this.getTopics();
+    }
+    getTopics(): void {
+        this.topicService.getTopics()
+        .subscribe(topics => this.topics = topics);
     }
 }

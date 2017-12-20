@@ -7,10 +7,21 @@ import { SignUpComponent } from './component/signup/signup.component';
 import { BrowseComponent } from './component/browse/browse.component';
 import { CreateComponent } from './component/create/create.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
+
 export const AppRoutes: Routes = [
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
     {
         path: 'browse',
         component: BrowseComponent
+    },
+    { 
+        path: 'browse/:id', 
+        component: BrowseTopicComponent 
     },
     {
         path: 'create',
@@ -31,10 +42,5 @@ export const AppRoutes: Routes = [
     {
         path: 'signup',
         component: SignUpComponent
-    },
-    {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
     }
 ]
