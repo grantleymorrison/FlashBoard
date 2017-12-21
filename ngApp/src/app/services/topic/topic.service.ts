@@ -12,4 +12,7 @@ export class TopicService {
     getTopics(): Observable<Topic[]> {
         return of(TOPICS);
     }
+    getTopicByPathName(pathName: string): Observable<Topic> {
+        return of(TOPICS.find(topic => topic.pathName === pathName))
+    }
 }

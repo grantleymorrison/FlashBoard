@@ -1,9 +1,12 @@
-<h1>Browse component</h1>
 <div class="container">
-  <div class="card col-sm-2 col-md-2" *ngFor="let topic of topics">
-    <a routerLink="/subject/{{topic.subject}}">
-      <h3 class="card-title">{{ topic.subject }}</h3>
-      <h5 class="card-text">{{ topic.description }}</h5>
-    </a>
-  </div>
+  <h1>Select topic from the selection</h1>
+  <ul class="topics">
+    <li *ngFor="let topic of topics">
+      <a routerLink="/browse/{{topic.pathName}}">
+        <div class= "topic">
+        <span class="badge">{{topic.id}}</span> {{topic.name}}
+      </div>
+      </a>
+    </li>
+  </ul>
 </div>

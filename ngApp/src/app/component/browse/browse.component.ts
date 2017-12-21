@@ -12,14 +12,16 @@ import { TopicService } from '../../services/topic/topic.service';
 })
 export class BrowseComponent implements OnInit {
     topics: Topic[];
-    constructor(private topicService: TopicService){
 
-    }
-    ngOnInit(){
+    constructor(private topicService: TopicService) { }
+
+    ngOnInit() {
         this.getTopics();
     }
+
+    // Gets the list of available topics
     getTopics(): void {
         this.topicService.getTopics()
-        .subscribe(topics => this.topics = topics);
+            .subscribe(topics => this.topics = topics);
     }
 }

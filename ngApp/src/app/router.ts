@@ -20,7 +20,7 @@ export const AppRoutes: Routes = [
         component: BrowseComponent
     },
     { 
-        path: 'browse/:id', 
+        path: 'browse/:pathName', 
         component: BrowseTopicComponent 
     },
     {
