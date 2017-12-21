@@ -1,20 +1,20 @@
-.login:hover{
-    cursor: pointer;
-}
-.navbar-light{
-    border-bottom: 1px solid rgb(112, 112, 235);
+.navbar-light {
+    border-bottom: 1px solid rgb(100, 100, 255);
     padding-right: 3%;
     border-radius: 0;
-}
-.sign-up:hover{
+  }
+
+  .sign-up:hover {
     background-color: yellow;
     color: red;
-}
-.modal-login{
+  }
+
+  .modal-login {
     width: 350px;
     margin-left: 37.5%;
     margin-top: 10%;
-}
-ul{
+  }
+
+  ul {
     list-style-type: none;
-}
+  }
