@@ -3,9 +3,12 @@ package io.flashboard.beans;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,6 +22,9 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 	private int score;
 	@Column
 	private float scorePercentage;
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER, targetEntity=User.class)
+	@JoinColumn(name="USER_ID")
+	private Integer testTakerId; 
 	
 	
 	
@@ -42,7 +48,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.score = score;
 		this.scorePercentage = scorePercentage;
 		// TODO Auto-generated constructor stub
-	}
+	}	
 
 	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
 			LocalDateTime createdOn, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
