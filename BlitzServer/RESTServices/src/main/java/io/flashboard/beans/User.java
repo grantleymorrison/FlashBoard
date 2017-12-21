@@ -17,33 +17,34 @@ import javax.persistence.Table;
  * The basic user. Limited privileges.
  */
 @Entity
-@Table(name="User")
+@Table(name = "User")
 public class User extends AbstractUser {
 	@Id
-	@Column(name="USER_ID")
-	@SequenceGenerator(sequenceName="USER_SEQ", name="USER_SEQ") //seqe for incrementing id 
-	@GeneratedValue(generator="USER_SEQ", strategy=GenerationType.SEQUENCE)
+	@Column(name = "USER_ID")
+	@SequenceGenerator(sequenceName = "USER_SEQ", name = "USER_SEQ") // seqe for incrementing id
+	@GeneratedValue(generator = "USER_SEQ", strategy = GenerationType.SEQUENCE)
 	private Integer userId;
 
-	@Column(name="FIRST_NAME")
+	@Column(name = "FIRST_NAME")
 	private String firstName;
-	@Column(name="LAST_NAME")
+	@Column(name = "LAST_NAME")
 	private String lastName;
 	@Column
 	private String email;
-	
-	@Column(name="FAV_COLOR")
+
+	// TODO Implement by v 1.1
+	@Column(name = "FAV_COLOR")
 	private String favColor;
-	
+
 	@Column
 	private String username;
 	@Column
 	private String password;
-	@Column(name="TESTS_TAKEN")
+	@Column(name = "TESTS_TAKEN")
 	private Integer testsTaken;
-	@Column(name="AVG_SCORE")
+	@Column(name = "AVG_SCORE")
 	private Double avgScore;
-	
+  
 	//TODO map user to completed test
 	@OneToMany(mappedBy="tester", fetch=FetchType.EAGER)
 	@Column(name="TAKEN_TESTS")
@@ -54,7 +55,7 @@ public class User extends AbstractUser {
 	private Boolean blacklisted;
 	@Column
 	private Boolean writer;
-	
+
 	public User() {
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
@@ -63,6 +64,7 @@ public class User extends AbstractUser {
 		this.writer = false;
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
+
 	public User(String username , String password) {
 		super(username, password);
 		this.testsTaken = 0;
@@ -72,9 +74,9 @@ public class User extends AbstractUser {
 		this.writer = false;
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
-	
-	public User( Integer userId , String username , String password , String firstName ,
-			String lastName , String email , String username2 , String password2 ) {
+
+	public User(Integer userId, String username, String password, String firstName, String lastName, String email,
+			String username2, String password2) {
 		super(userId, username, password);
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -88,9 +90,6 @@ public class User extends AbstractUser {
 		this.writer = false;
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
-
-	
-
 
 	public Integer getUserId() {
 		return userId;
@@ -163,6 +162,5 @@ public class User extends AbstractUser {
 	public void setWriter(Boolean writer) {
 		this.writer = writer;
 	}
-
 
 }

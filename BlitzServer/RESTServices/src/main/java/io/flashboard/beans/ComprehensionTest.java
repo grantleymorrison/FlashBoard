@@ -51,12 +51,7 @@ public class ComprehensionTest {
 	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
 	@Column(name="COMMENTS")
 	private List<Message> comments;
-	
-	
-	
-	
-	
-	
+		
 	public ComprehensionTest() {
 		super();
 		
