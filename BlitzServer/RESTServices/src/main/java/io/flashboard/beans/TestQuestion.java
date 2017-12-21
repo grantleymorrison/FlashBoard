@@ -29,6 +29,8 @@ public abstract class TestQuestion {
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name="FOR_TEST")
+	private ComprehensionTest ctt;
+	
 	private int testId;
 	
 	@Column(name = "QUESTION_TEXT")
@@ -54,6 +56,7 @@ public abstract class TestQuestion {
 	
 	@Column
 	private List<CommentFlag> flags;
+	
 	@Column
 	private List<Message> comments;
 	

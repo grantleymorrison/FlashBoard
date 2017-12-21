@@ -3,17 +3,19 @@ package io.flashboard.beans;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CompletedComprehensionTest extends ComprehensionTest {
 	
 	@Column
 	private boolean completed;
-	@OneToMany(mappedBy = "testId", fetch = FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	private User tester;
 	private List<String> answersSubmitted;
 	@Column
 	private int score;
