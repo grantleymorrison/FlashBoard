@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class NavbarComponent{
-
+    // Setting state to true or false will generate the appropriate selections
+    public loggedIn = true;
     public username;
     public password;
 
@@ -22,11 +23,12 @@ export class NavbarComponent{
       let body = {"username":this.username, "password":this.password}
        this.http.post('http://localhost:3000/flashboard/rest/login', body)
        .subscribe(
-            pass => {
-                console.log("Success");
+            res => {
+                console.log(res);
+                //change loggedIn = true;
             },
-            fail => {
-                console.log("Error occured");
+            err => {
+                console.log(err + " Error occured");
             });
     }
 }

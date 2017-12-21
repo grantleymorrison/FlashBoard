@@ -1,0 +1,9 @@
+.quizs{
+    list-style-type: none;
+}
+.quiz{
+    margin: 2em 2em;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+}

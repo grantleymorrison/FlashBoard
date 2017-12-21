@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Select topic from the selection</h1>
+  <ul class="topics">
+    <li *ngFor="let topic of topics">
+      <a routerLink="/browse/{{topic.pathName}}">
+        <div class= "topic">
+        <span class="badge">{{topic.id}}</span> {{topic.name}}
+      </div>
+      </a>
+    </li>
+  </ul>
+</div>
