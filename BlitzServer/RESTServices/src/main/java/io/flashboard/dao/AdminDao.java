@@ -1,11 +1,11 @@
 package io.flashboard.dao;
 
-import io.flashboard.beans.Admin;
+import io.flashboard.beans.User;
 
 public interface AdminDao {
 	//Admin
 	public void createNewAdmin(String username, String password);
-	public Admin selectAdminById(int adminId);
+	public User selectAdminById(int adminId);
 	
 	//User
 	public void approveUser(String username);

@@ -27,15 +27,19 @@ public class Message {
 	@Column(name="CONTENT")
 	private String content;
 	
-	//TODO map this to ComprehensionTest
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	private ComprehensionTest ct;
 	
 	public Message( int userId , int messageId , String message ) {
 		this.userId = userId;
 		this.messageId = messageId;
 		this.content = message;
 	}
+	
+
+	public Message(int userId, String content) {
+		this.userId = userId;
+		this.content = content;
+	}
+
 
 	public Message(){
 		

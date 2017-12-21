@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class CompletedComprehensionTest extends ComprehensionTest {
@@ -17,19 +16,24 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 	//TODO map this to User
 	@Column
 	private boolean completed;
+	
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private User tester;
 	//TODO Maybe need mapping
 	private List<String> answersSubmitted;
+	
 	@Column
 	private int score;
+	
 	@Column
 	private float scorePercentage;
+	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER, targetEntity=User.class)
 	@JoinColumn(name="USER_ID")
 	private Integer testTakerId; 
 	
-	
+	@Column 
+	private LocalDateTime completedOn; 
 	
 
 	public CompletedComprehensionTest(boolean completed, List<String> answersSubmitted, int score,

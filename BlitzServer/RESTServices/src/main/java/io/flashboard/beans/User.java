@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "User")
-public class User extends AbstractUser {
+public class User {
 	@Id
 	@Column(name = "USER_ID")
 	@SequenceGenerator(sequenceName = "USER_SEQ", name = "USER_SEQ") // seqe for incrementing id
@@ -54,37 +54,35 @@ public class User extends AbstractUser {
 	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;
 	
-	@Column
+	@Column(name = "ACCOUNT_IS_APPROVED")
 	private Boolean approved;
 	
-	@Column
+	@Column(name = "IS_BLACKLISTED")
 	private Boolean blacklisted;
 	
-	@Column
-	private Boolean writer;
+	@Column	//0: base user; 1: writer; 2: admin
+	private Integer roleFlag; 
 
 	public User() {
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
 		this.approved = false;
 		this.blacklisted = false;
-		this.writer = false;
+		this.roleFlag = 0; 
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
 
 	public User(String username , String password) {
-		super(username, password);
 		this.testsTaken = 0;
 		this.avgScore = 0.0;
 		this.approved = false;
 		this.blacklisted = false;
-		this.writer = false;
+		this.roleFlag = 0; 
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
 
 	public User(Integer userId, String username, String password, String firstName, String lastName, String email,
 			String username2, String password2) {
-		super(userId, username, password);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -94,7 +92,7 @@ public class User extends AbstractUser {
 		this.avgScore = 0.0;
 		this.approved = false;
 		this.blacklisted = false;
-		this.writer = false;
+		this.roleFlag = 0; 
 		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
 	}
 
@@ -162,12 +160,12 @@ public class User extends AbstractUser {
 		this.blacklisted = blacklisted;
 	}
 
-	public Boolean getWriter() {
-		return writer;
+	public Integer getWriter() {
+		return roleFlag; 
 	}
 
-	public void setWriter(Boolean writer) {
-		this.writer = writer;
+	public void setWriter(Integer roleFlag) {
+		this.roleFlag = roleFlag;
 	}
 
 }
