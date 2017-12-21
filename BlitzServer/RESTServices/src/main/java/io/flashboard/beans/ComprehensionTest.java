@@ -39,12 +39,7 @@ public class ComprehensionTest {
 	private List<CommentFlag> flags;
 	@Column(name="COMMENTS")
 	private List<Message> comments;
-	
-	
-	
-	
-	
-	
+		
 	public ComprehensionTest() {
 		super();
 		// TODO Auto-generated constructor stub

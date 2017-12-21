@@ -16,6 +16,7 @@ import { SignUpComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
 import { TopicService } from './services/topic/topic.service';
+import { TestService } from './services/test/test.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { TopicService } from './services/topic/topic.service';
     HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [TopicService],
+  providers: [TopicService, TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

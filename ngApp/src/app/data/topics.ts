@@ -11,4 +11,7 @@ export const TOPICS: Topic[] = [
     {id:8, name: 'JavaScript', pathName:'js'},
     {id:9, name: 'Servlet', pathName:'servlet'},
     {id:10, name: 'Spring MVC', pathName:'springmvc'},
+    {id:11, name: 'C ++', pathName:'cpp'},
+    {id:12, name: 'JWT', pathName: 'jwt'},
+    {id:13, name: 'Fashion', pathName: 'fashion'}
 ]
