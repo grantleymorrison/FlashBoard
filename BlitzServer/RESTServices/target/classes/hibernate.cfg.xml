@@ -40,5 +40,8 @@ jdbc:driver://hostname:port/dbName?user=userName&password=password
 		<!-- MAPPINGS -->
 		<!--<mapping resource = "Employee.hbm.xml"></mapping> -->
 		<mapping class="io.flashboard.beans.Message"/>
+		<mapping class="io.flashboard.beans.User"/>
+		<mapping class="io.flashboard.beans.CompletedComprehensionTest"/>
+		<mapping class="io.flashboard.beans.ComprehensionTest"/>
 		</session-factory>
 </hibernate-configuration>
