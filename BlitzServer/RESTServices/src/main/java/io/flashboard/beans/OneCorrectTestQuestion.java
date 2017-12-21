@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 @Entity
 public class OneCorrectTestQuestion extends TestQuestion{
 	
+	
+	//TODO Redundant? Have TestQuestion
 	@Column
 	private String correctAnswer;
 	
@@ -19,7 +21,7 @@ public class OneCorrectTestQuestion extends TestQuestion{
 
 	public OneCorrectTestQuestion() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, 
@@ -29,7 +31,7 @@ public class OneCorrectTestQuestion extends TestQuestion{
 		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1,
@@ -37,7 +39,7 @@ public class OneCorrectTestQuestion extends TestQuestion{
 		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, pointsPossible);
 		this.correctAnswer = correctAnswer;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public OneCorrectTestQuestion(String questionText, String questionAnswer, String questionOption1,
@@ -45,7 +47,7 @@ public class OneCorrectTestQuestion extends TestQuestion{
 		super(questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, pointsPossible);
 		this.correctAnswer = correctAnswer;
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 	

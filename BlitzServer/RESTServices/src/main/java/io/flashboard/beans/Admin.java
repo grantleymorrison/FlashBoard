@@ -11,6 +11,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Admin")
 public class Admin {
+	
+	//TODO Redundant? Have user with different roleId
+	
 	@Id
 	@Column(name="ADMIN_ID")
 	@SequenceGenerator(sequenceName="ADMIN_SEQ", name="ADMIN_SEQ") //seqe for incrementing id 
