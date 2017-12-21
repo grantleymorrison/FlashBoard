@@ -24,5 +24,11 @@ input{
     -webkit-border-radius: 5;
        -moz-border-radius: 5;
             border-radius: 5;
-  }
+}
+.limit {
+    text-align:left;
+    font-size: 14px;
+    width: 200px;
+    font-family: 'Lobster';
+}
   

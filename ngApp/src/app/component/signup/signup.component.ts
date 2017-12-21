@@ -14,8 +14,19 @@ export class SignUpComponent {
     public lname;
     public username;
     public password;
+    public rePassword;
     public email;
     public favColor;
+    public feedbackMsg = "";
+    public msgStyle;
+    
+    private successStyle = {
+        color:'green'
+    } 
+
+    private errorStyle = {
+        color:'red'
+    }
 
     constructor(private http: HttpClient) {
     }
@@ -26,13 +37,33 @@ export class SignUpComponent {
             "lname": this.lname,
             "username": this.username,
             "password": this.password,
-            "email": this.email
+            "rePassword": this.rePassword,
+            "email": this.email,
+            "favColor":this.favColor
         }).subscribe(
-            res => {
-                console.log(res);
+            pass => {
+                this.msgStyle = this.successStyle;
+                this.feedbackMsg = "Success";
             },
-            err => {
-                console.log("Error occured");
+            fail => {
+                this.msgStyle = this.errorStyle;
+                this.feedbackMsg = "Server Error";
             });
+    }
+
+    public validateRegistration():boolean{
+        var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(this.password != this.rePassword){
+            this.msgStyle = this.errorStyle;
+            this.feedbackMsg = "Password Does Not Match";
+            return false;
+        }
+        if(emailPattern.test(this.email) === false){
+            this.msgStyle = this.errorStyle;
+            this.feedbackMsg = "Invalid E-mail";
+            return false;
+        }
+        this.registerAccount();
+        return true;
     }
 }
