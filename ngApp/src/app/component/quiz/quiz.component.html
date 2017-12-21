@@ -1,1 +1,19 @@
-<h2>This is a test</h2>
+<h2>{{quiz.name}}</h2>
+<button class="btn btn-default" (click)="goBack()">Go Back</button>
+<div class="comments-section">
+  <label id="comments-label">Comments</label>
+
+  <ul id="comments" class="comments">
+    <li class="comment" *ngFor="let comment of quiz.comments">
+      <div>
+        Comment ID: {{comment.id}}
+      </div>
+      <div>
+        Commenter ID: {{comment.commenterId }} Username: {{comment.commenter}}
+      </div>
+      <div>
+        Comment: {{comment.message}}
+      </div>
+    </li>
+  </ul>
+</div>

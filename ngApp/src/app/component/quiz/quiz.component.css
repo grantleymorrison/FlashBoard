@@ -1,0 +1,15 @@
+.comments-section{
+    text-align: left;
+}
+#comments-label{
+    margin-left: 50px;
+}
+.comments{
+    list-style-type: none;
+}
+.comment{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid blueviolet;
+    width: 50%;
+}
