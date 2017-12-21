@@ -3,17 +3,21 @@ package io.flashboard.beans;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CompletedComprehensionTest extends ComprehensionTest {
 	
+	//TODO map this to User
 	@Column
 	private boolean completed;
-	@OneToMany(mappedBy = "testId", fetch = FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	private User tester;
+	//TODO Maybe need mapping
 	private List<String> answersSubmitted;
 	@Column
 	private int score;
@@ -30,7 +34,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 
 	public CompletedComprehensionTest() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
@@ -41,7 +45,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
 		this.scorePercentage = scorePercentage;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
@@ -51,7 +55,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
 		this.scorePercentage = scorePercentage;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CompletedComprehensionTest(String testTitle, String subject, String description,
@@ -62,7 +66,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
 		this.scorePercentage = scorePercentage;
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	
