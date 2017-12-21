@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.jsonbeans;
 
 public class RegistrationData {
 	private String fname;

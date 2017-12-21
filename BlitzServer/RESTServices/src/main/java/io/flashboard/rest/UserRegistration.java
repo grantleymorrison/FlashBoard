@@ -9,8 +9,8 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import io.flashboard.beans.RegistrationData;
 import io.flashboard.dao.UserDaoImpl;
+import io.flashboard.jsonbeans.RegistrationData;
 
 @Path("/registration")
 public class UserRegistration {
