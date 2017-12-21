@@ -14,9 +14,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class CompletedComprehensionTest extends ComprehensionTest {
 	
+	//TODO map this to User
 	@Column
 	private boolean completed;
-	@OneToMany(mappedBy = "testId", fetch = FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	private User tester;
+	//TODO Maybe need mapping
 	private List<String> answersSubmitted;
 	@Column
 	private int score;
@@ -36,7 +39,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 
 	public CompletedComprehensionTest() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
@@ -47,8 +50,8 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
 		this.scorePercentage = scorePercentage;
-		// TODO Auto-generated constructor stub
-	}	
+		
+	}
 
 	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
 			LocalDateTime createdOn, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
@@ -57,7 +60,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
 		this.scorePercentage = scorePercentage;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CompletedComprehensionTest(String testTitle, String subject, String description,
@@ -68,7 +71,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
 		this.scorePercentage = scorePercentage;
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

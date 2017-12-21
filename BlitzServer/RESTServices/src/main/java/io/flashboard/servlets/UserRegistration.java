@@ -8,6 +8,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+import com.google.gson.Gson;
+
+import io.flashboard.beans.RegistrationData;
+import io.flashboard.dao.UserDaoImpl;
+
 @Path("/registration")
 public class UserRegistration {
 	
@@ -19,6 +24,9 @@ public class UserRegistration {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void registrationData(String JSON) {
-		System.out.println(JSON);
+		UserDaoImpl udao = new UserDaoImpl();
+		Gson gson = new Gson();
+		RegistrationData rd = gson.fromJson(JSON, RegistrationData.class);
+		udao.createNewUser(rd.getUsername(), rd.getPassword());
 	}
 }

@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -46,7 +48,10 @@ public class User extends AbstractUser {
 	private Integer testsTaken;
 	@Column(name = "AVG_SCORE")
 	private Double avgScore;
-	@Column(name = "TAKEN_TESTS")
+  
+	//TODO map user to completed test
+	@OneToMany(mappedBy="tester", fetch=FetchType.EAGER)
+	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;
 	
 	@Column
