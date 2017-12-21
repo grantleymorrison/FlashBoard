@@ -27,6 +27,7 @@ public abstract class TestQuestion {
 	@GeneratedValue(generator = "QUESTION_SEQ", strategy = GenerationType.SEQUENCE)		
 	private int questionId;
 	
+	//TODO Map ComprehensionTest to this
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name="FOR_TEST")
 	private ComprehensionTest ctt;
@@ -54,9 +55,11 @@ public abstract class TestQuestion {
 	@Column
 	private String explanation; 
 	
+	//TODO map this to comment flag
 	@Column
 	private List<CommentFlag> flags;
 	
+	//TODO map this to message
 	@Column
 	private List<Message> comments;
 	
@@ -65,7 +68,7 @@ public abstract class TestQuestion {
 	
 	public TestQuestion() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public TestQuestion( int testId , String questionText , String questionAnswer ,
 			String questionOption1 , int pointsPossible , String explanation ) {

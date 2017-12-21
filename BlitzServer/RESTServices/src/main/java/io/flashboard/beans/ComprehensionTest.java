@@ -27,9 +27,12 @@ public class ComprehensionTest {
 	private String subject;
 	@Column(name="TEST_DESC")
 	private String description;
+	
+	//TODO map this to TestQuestion
 	@OneToMany(mappedBy="ctt", fetch=FetchType.EAGER)
 	@Column(name="TEST_QUESTIONS")
 	private List<TestQuestion> questions;
+	
 	@Column(name="CREATOR_ID")
 	private String creatorId;
 	@Column(name="CREATED_ON")
@@ -39,10 +42,12 @@ public class ComprehensionTest {
 	@Column(name="TOTAL_ATTEMPTS")
 	private static int totalAttempts;
 	
+	//TODO map this to commentflag
 	@OneToMany(mappedBy="ct2", fetch=FetchType.EAGER)
 	@Column(name="FLAGS")
 	private List<CommentFlag> flags;
 	
+	//TODO map this to message
 	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
 	@Column(name="COMMENTS")
 	private List<Message> comments;
@@ -54,7 +59,7 @@ public class ComprehensionTest {
 	
 	public ComprehensionTest() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

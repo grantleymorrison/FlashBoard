@@ -17,6 +17,7 @@ public class CommentFlag {
 	@GeneratedValue(generator="CF_SEQ", strategy=GenerationType.SEQUENCE)
 	private int commentId;
 	
+	//TODO map this to ComprehensionTest
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private ComprehensionTest ct2;
 

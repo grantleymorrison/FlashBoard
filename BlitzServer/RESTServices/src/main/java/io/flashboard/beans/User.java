@@ -44,6 +44,7 @@ public class User extends AbstractUser {
 	@Column(name="AVG_SCORE")
 	private Double avgScore;
 	
+	//TODO map user to completed test
 	@OneToMany(mappedBy="tester", fetch=FetchType.EAGER)
 	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;

@@ -8,12 +8,13 @@ import javax.persistence.Entity;
 @Entity
 public class TrueFalseTestQuestion extends TestQuestion {
 	
+	//TODO Redundant? Have TestQuestion
 	@Column
 	private boolean correctAnswer;
 
 	public TrueFalseTestQuestion() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public TrueFalseTestQuestion(boolean correctAnswer) {
@@ -36,7 +37,7 @@ public class TrueFalseTestQuestion extends TestQuestion {
 			List<Message> comments, boolean correctAnswer) {
 		super(questionText, questionAnswer, questionOption1, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

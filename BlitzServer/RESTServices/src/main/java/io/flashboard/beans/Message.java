@@ -27,6 +27,7 @@ public class Message {
 	@Column(name="CONTENT")
 	private String content;
 	
+	//TODO map this to ComprehensionTest
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private ComprehensionTest ct;
 	
