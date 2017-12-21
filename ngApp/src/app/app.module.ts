@@ -7,16 +7,29 @@ import { Routes, RouterModule } from '@angular/router';
 // project imports
 import { AppComponent } from './app.component';
 import { AppRoutes } from './router';
+import { BrowseComponent } from './component/browse/browse.component';
+import { CreateComponent } from './component/create/create.component';
 import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SearchComponent } from './component/search/search.component';
 import { SignUpComponent } from './component/signup/signup.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
+import { QuizComponent } from './component/quiz/quiz.component';
+// import Services
+import { TopicService } from './services/topic/topic.service';
+import { QuizService } from './services/quiz/quiz.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BrowseComponent,
+    BrowseTopicComponent,
+    CreateComponent,
     HomeComponent,
     NavbarComponent,
+    ProfileComponent,
+    QuizComponent,
     SearchComponent,
     SignUpComponent
   ],
@@ -26,7 +39,7 @@ import { SignUpComponent } from './component/signup/signup.component';
     HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [TopicService, QuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

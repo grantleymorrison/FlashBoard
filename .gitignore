@@ -5,7 +5,7 @@ Servers/
 pom.properties
 
 #META-INF
-MANIFEST.MANIFEST
+MANIFEST.MF
 
 #Eclipse Stuff
 org.eclipse.wst.common.component
