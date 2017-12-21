@@ -7,7 +7,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CompletedComprehensionTest extends ComprehensionTest {
@@ -23,6 +25,9 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 	private int score;
 	@Column
 	private float scorePercentage;
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER, targetEntity=User.class)
+	@JoinColumn(name="USER_ID")
+	private Integer testTakerId; 
 	
 	
 	
