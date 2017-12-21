@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class NavbarComponent{
     // Setting state to true or false will generate the appropriate selections
-    public loggedIn = false;
+    public loggedIn = true;
     public username;
     public password;
 

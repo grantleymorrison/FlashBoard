@@ -1,9 +1,9 @@
 import { Comment } from './comment';
 
-export class Test {
+export class Quiz {
     id: number;
-    name: string; // Test Name
-    subject: string;
+    name: string; // Quiz Name
+    topic: string;
     description: string;
     creatorId: number;
     totalAttempts: number;

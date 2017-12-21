@@ -1,11 +1,11 @@
-import { Test } from '../../model/test';
+import { Quiz } from '../../model/quiz';
 import { Comment } from '../../model/comment';
 
-export const MOCK_TESTS: Test[] = [
+export const MOCK_QUIZS: Quiz[] = [
     {
         id: 5,
         name: 'Java Scopes',
-        subject: 'Java',
+        topic: 'Java',
         description: 'How much do you know about scopes in Java?',
         creatorId: 1011,
         totalAttempts: 5,
@@ -27,7 +27,7 @@ export const MOCK_TESTS: Test[] = [
     {
         id: 6,
         name: 'Lambdas',
-        subject: 'Java',
+        topic: 'Java',
         description: 'Lambdas are cool',
         creatorId: 1011,
         totalAttempts: 2,

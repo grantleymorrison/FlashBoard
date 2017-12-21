@@ -15,8 +15,10 @@ import { SearchComponent } from './component/search/search.component';
 import { SignUpComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
+import { QuizComponent } from './component/quiz/quiz.component';
+// import Services
 import { TopicService } from './services/topic/topic.service';
-import { TestService } from './services/test/test.service';
+import { QuizService } from './services/quiz/quiz.service';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,9 @@ import { TestService } from './services/test/test.service';
     HomeComponent,
     NavbarComponent,
     ProfileComponent,
+    QuizComponent,
     SearchComponent,
-    SignUpComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { TestService } from './services/test/test.service';
     HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [TopicService, TestService],
+  providers: [TopicService, QuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

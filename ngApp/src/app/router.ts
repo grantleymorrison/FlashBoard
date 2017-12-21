@@ -8,6 +8,7 @@ import { BrowseComponent } from './component/browse/browse.component';
 import { CreateComponent } from './component/create/create.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
+import { QuizComponent } from './component/quiz/quiz.component';
 
 export const AppRoutes: Routes = [
     {
@@ -22,6 +23,10 @@ export const AppRoutes: Routes = [
     { 
         path: 'browse/:pathName', 
         component: BrowseTopicComponent 
+    },
+    {
+        path: 'quiz/:id',
+        component: QuizComponent
     },
     {
         path: 'create',

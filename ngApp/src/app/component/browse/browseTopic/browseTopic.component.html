@@ -1,4 +1,22 @@
 <h3>{{topic.name}}</h3>
-<button class="btn btn-default" (click)="goBack()">Go Back</button>
-<div>
+<div class="container">
+  <button class="btn btn-default" (click)="goBack()">Go Back</button>
+  <ul class="quizs">
+    <li *ngFor="let quiz of quizs">
+      <div class="quiz">
+        <div class="quiz-name">
+          {{quiz.name}}
+        </div>
+        <div class="creator">
+          Creator ID: {{quiz.creatorId}}
+        </div>
+        <div class="total-attempt">
+          Total Attempts: {{quiz.totalAttempts}}
+        </div>
+        <div class="description">
+          {{quiz.description}}
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
