@@ -6,27 +6,26 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
 
 import io.flashboard.beans.RegistrationData;
 import io.flashboard.dao.UserDaoImpl;
+import io.flashboard.service.RegistrationService;
 
 @Path("/registration")
 public class UserRegistration {
 	
-	@Context
-	UriInfo uriInfo;
-	@Context
-	Request request;
-	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void registrationData(String JSON) {
-		UserDaoImpl udao = new UserDaoImpl();
-		Gson gson = new Gson();
-		RegistrationData rd = gson.fromJson(JSON, RegistrationData.class);
-		udao.createNewUser(rd.getFname(), rd.getLname(), rd.getUsername(), rd.getEmail(), rd.getPassword());
+	public Response registrationData(RegistrationData rd) {
+		
+		if(RegistrationService.validate(rd)) {
+			return Response.status(200).build();
+		}
+		
+		return Response.status(400).build();
 	}
 }

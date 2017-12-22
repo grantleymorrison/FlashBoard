@@ -6,8 +6,8 @@ public class RegistrationData {
 	private String username;
 	private String password;
 	private String rePassword;
-	private String color;
 	private String email;
+	private String favColor;
 	
 	public RegistrationData() {
 		super();
@@ -52,11 +52,13 @@ public class RegistrationData {
 		this.rePassword = rePassword;
 	}
 
-	public String getColor() {
-		return color;
+	public String getFavColor() {
+		return favColor;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setFavColor(String favColor) {
+		this.favColor = favColor;
 	}
+
+	
 }

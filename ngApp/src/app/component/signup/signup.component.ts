@@ -47,6 +47,7 @@ export class SignUpComponent {
             },
             fail => {
                 this.msgStyle = this.errorStyle;
+                console.log(fail);
                 this.feedbackMsg = "Server Error";
             });
     }

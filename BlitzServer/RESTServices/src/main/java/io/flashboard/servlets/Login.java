@@ -16,10 +16,10 @@ public class Login {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response loginData(LoginData ld) {
 		
-		if(LoginService.validate(ld.getUsername(), ld.getPassword)) {
-			
+		if(LoginService.validate(ld.getUsername(), ld.getPassword())) {
+			return Response.status(200).build();
 		}
 		
-		return null;
+		return Response.status(400).build();
 	}
 }
