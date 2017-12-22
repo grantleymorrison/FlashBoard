@@ -6,17 +6,18 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-//TODO: Refactor Other Test Questions around this one
 
 @Entity
-@Table(name="TestQuestion")
-public abstract class TestQuestion {
+@Inheritance(strategy = InheritanceType.JOINED)
+public  class TestQuestion {
 	
 	@Id
 	@Column(name = "QUESTION_ID")
@@ -45,12 +46,12 @@ public abstract class TestQuestion {
 	@Column
 	private String explanation; 
 	
-	//TODO map this to comment flag
-	@Column
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	@Column(name = "FLAGS")
 	private List<CommentFlag> flags;
 	
-	//TODO map this to message
-	@Column
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	@Column(name = "COMMENTS")
 	private List<Message> comments;
 	
 	@Column 
@@ -83,7 +84,7 @@ public abstract class TestQuestion {
 		
 	}
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
-			String questionOption3, int pointsPossible) {
+			String questionOption3, String explanation, int pointsPossible) {
 		this.questionId = questionId;
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
@@ -91,6 +92,7 @@ public abstract class TestQuestion {
 		this.questionOption2 = questionOption2;
 		this.questionOption3 = questionOption3;
 		this.pointsPossible = pointsPossible;
+		this.explanation = explanation;
 		
 
 		this.comments = new ArrayList<Message>(); 
@@ -99,19 +101,38 @@ public abstract class TestQuestion {
 		this.createdOn = LocalDateTime.now();
 	}
 	public TestQuestion(String questionText, String questionAnswer, String questionOption1, String questionOption2, 
-			String questionOption3, int pointsPossible) {
+			String questionOption3, String explanation, int pointsPossible) {
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.questionOption2 = questionOption2;
 		this.questionOption3 = questionOption3;
 		this.pointsPossible = pointsPossible;
+		this.explanation = explanation;
 		
 		this.flags = new ArrayList<CommentFlag>();
 		this.comments = new ArrayList<Message>();
 		this.createdBy = "N/A"; 
 		this.createdOn = LocalDateTime.now();
 	}
+	
+	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible) {
+		super();
+		this.questionId = questionId;
+		this.questionText = questionText;
+		this.questionAnswer = questionAnswer;
+		this.questionOption1 = questionOption1;
+		this.pointsPossible = pointsPossible;
+
+		this.questionOption2 = ""; 
+		this.questionOption3 = ""; 
+		this.explanation = ""; 
+		this.flags = new ArrayList<CommentFlag>();
+		this.comments = new ArrayList<Message>();
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+	}
+	
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible,
 			List<CommentFlag> flags, List<Message> comments) {
@@ -129,14 +150,14 @@ public abstract class TestQuestion {
 		this.createdBy = "N/A"; 
 		this.createdOn = LocalDateTime.now();
 	}
-	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible,
+	public TestQuestion(String questionText, String questionAnswer, String questionOption1, String explanation, int pointsPossible,
 			List<CommentFlag> flags, List<Message> comments) {
 		super();
-		this.questionId = questionId;
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.pointsPossible = pointsPossible;
+		this.explanation = explanation;
 		this.flags = flags;
 		this.comments = comments;
 		
@@ -148,36 +169,8 @@ public abstract class TestQuestion {
 		this.questionOption3 = ""; 
 	}
 	
-	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible) {
-		super();
-		this.questionId = questionId;
-		this.questionText = questionText;
-		this.questionAnswer = questionAnswer;
-		this.questionOption1 = questionOption1;
-		this.pointsPossible = pointsPossible;
 
-		this.flags = new ArrayList<CommentFlag>();
-		this.comments = new ArrayList<Message>();
-		this.createdBy = "N/A"; 
-		this.createdOn = LocalDateTime.now();
-		this.questionOption2 = ""; 
-		this.questionOption3 = ""; 
-	}
 	
-	public TestQuestion(String questionText, String questionAnswer, String questionOption1, int pointsPossible, 
-			List<CommentFlag> flags, List<Message> comments) {
-		this.questionText = questionText;
-		this.questionAnswer = questionAnswer;
-		this.questionOption1 = questionOption1;
-		this.pointsPossible = pointsPossible;
-		this.flags = flags;
-		this.comments = comments;
-
-		this.createdBy = "N/A"; 
-		this.createdOn = LocalDateTime.now();
-		this.questionOption2 = ""; 
-		this.questionOption3 = ""; 
-	}
 	
 	public int getQuestionId() {
 		return questionId;
@@ -239,6 +232,14 @@ public abstract class TestQuestion {
 	}
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
+	}
+	@Override
+	public String toString() {
+		return "TestQuestion [questionId=" + questionId + ", questionText=" + questionText + ", questionAnswer="
+				+ questionAnswer + ", questionOption1=" + questionOption1 + ", questionOption2=" + questionOption2
+				+ ", questionOption3=" + questionOption3 + ", pointsPossible=" + pointsPossible + ", explanation="
+				+ explanation + ", flags=" + flags + ", comments=" + comments + ", createdBy=" + createdBy
+				+ ", createdOn=" + createdOn + "]";
 	}
 	
 	

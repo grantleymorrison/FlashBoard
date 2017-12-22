@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * The basic user. Limited privileges.
  */
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class User {
 	@Id
 	@Column(name = "USER_ID")
@@ -43,14 +43,11 @@ public class User {
 	@Column
 	private String password;
 	
-
-	@Column(name = "TESTS_TAKEN")
-	private Integer testsTaken;
 	@Column(name = "AVG_SCORE")
 	private Double avgScore;
   
 	//TODO map user to completed test
-	@OneToMany(mappedBy="tester", fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
 	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;
 	
@@ -64,37 +61,63 @@ public class User {
 	private Integer roleFlag; 
 
 	public User() {
-		this.testsTaken = 0;
+		this.firstName = "N/A";
+		this.lastName = "N/A";
+		this.email = "N/A";
+		this.username = "N/A";
+		this.password = "N/A";
 		this.avgScore = 0.0;
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
+		this.takenTests = new ArrayList<CompletedComprehensionTest>();
 	}
 
-	public User(String username , String password) {
-		this.testsTaken = 0;
-		this.avgScore = 0.0;
-		this.approved = false;
-		this.blacklisted = false;
-		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
-	}
 
-	public User(Integer userId, String username, String password, String firstName, String lastName, String email,
-			String username2, String password2) {
+	public User(String firstName, String lastName, String username, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		username = username2;
-		password = password2;
-		this.testsTaken = 0;
+		this.username = username;
+		this.password = password;
 		this.avgScore = 0.0;
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>(testsTaken);
+		this.takenTests = new ArrayList<CompletedComprehensionTest>();
 	}
+	
+	public User(String username, String password, String firstName, String lastName, String email, ArrayList<CompletedComprehensionTest> takenTests) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.roleFlag = 0; 
+		this.takenTests = takenTests;
+	}
+	
+	public User(Integer userId, String firstName, String lastName, String email, String favColor, String username,
+			String password, Double avgScore, List<CompletedComprehensionTest> takenTests, Boolean approved,
+			Boolean blacklisted, Integer roleFlag) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.favColor = favColor;
+		this.username = username;
+		this.password = password;
+		this.avgScore = avgScore;
+		this.takenTests = takenTests;
+		this.approved = approved;
+		this.blacklisted = blacklisted;
+		this.roleFlag = roleFlag;
+	}
+	
 
 	public Integer getUserId() {
 		return userId;
@@ -118,14 +141,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Integer getTestsTaken() {
-		return testsTaken;
-	}
-
-	public void setTestsTaken(Integer testsTaken) {
-		this.testsTaken = testsTaken;
 	}
 
 	public Double getAvgScore() {

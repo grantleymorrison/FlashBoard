@@ -9,12 +9,12 @@ import io.flashboard.util.HibernateUtil;
 
 public class UserDaoImpl {
 	
-	public void createNewUser(String username, String password) {
+	public void createNewUser(String firstName, String lastName, String username, String email, String password) {
 		Session session = null;
 		Transaction tx = null;
 		int userId = 0;
 		
-		User newUser = new User(username, password);
+		User newUser = new User(firstName, lastName, username, email, password);
 		
 		try {
 			session = HibernateUtil.getSession();
