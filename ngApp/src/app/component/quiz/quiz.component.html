@@ -1,1 +1,38 @@
-<h2>This is a test</h2>
+<h2>{{quiz.name}}</h2>
+<button class="btn btn-default" (click)="goBack()">Go Back</button>
+<div class="quiz-section">
+  <form>
+    <ul id="questions" class="questions">
+      <li class="question" *ngFor="let question of quiz.questions; let i = index">
+        <div id="question-header">
+          {{i+1}}. {{ question.question }}
+        </div>
+        <div class="options" *ngFor="let option of question.options; let j = index">
+          <input type="radio" name="option{{i}}" value="answer{{j}}"> {{ option }}
+          <br>
+        </div>
+      </li>
+    </ul>
+    <div class="submit-quiz">
+      <input class="btn btn-default" type="submit" value="Submit Quiz" style="float:right">
+    </div>
+  </form>
+</div>
+
+<div class="comments-section">
+  <label id="comments-label">Comments</label>
+
+  <ul id="comments" class="comments">
+    <li class="comment" *ngFor="let comment of quiz.comments">
+      <div>
+        Comment ID: {{comment.id}}
+      </div>
+      <div>
+        Commenter ID: {{comment.commenterId }} Username: {{comment.commenter}}
+      </div>
+      <div>
+        Comment: {{comment.message}}
+      </div>
+    </li>
+  </ul>
+</div>
