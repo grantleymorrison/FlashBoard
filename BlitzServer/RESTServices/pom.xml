@@ -69,10 +69,7 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
-=======
 
->>>>>>> 3f6aa6f2a080b669189555b4671752df06f6f5da
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>

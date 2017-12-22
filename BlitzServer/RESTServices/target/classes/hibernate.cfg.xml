@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration> <!-- ROOT TAG -->
+	<session-factory> <!--  CONFIG FOR SESSION FACTORY -->
+		<!-- CONFIG FOR THE DATABASE -->
+		<!-- Equivalent to jdbc class.forName(...) -->
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.OracleDriver
+		</property>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+		<property name = "hibernate.connection.url">
+			jdbc:oracle:thin:@flashboard.cspyk2wcsof5.us-east-2.rds.amazonaws.com:1521/orcl
+		</property>
+		<property name = "hibernate.connection.username">
+			grantleymorrison
+		</property>
+		<property name = "hibernate.connection.password">
+			Fla$hB0ard
+		</property>
+		<property name = "hibernate.connection.pool_size">10</property>
+		<property name = "show_sql">true</property>
+		<property name = "hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- L2 Caching Config -->
+		<!-- <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
+		<property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property> -->
+		<!-- MAPPINGS -->
+		<mapping class="io.flashboard.beans.Message"/>
+		<mapping class="io.flashboard.beans.User"/>
+		<mapping class="io.flashboard.beans.CompletedComprehensionTest"/>
+		<mapping class="io.flashboard.beans.ComprehensionTest"/>
+		<mapping class="io.flashboard.beans.CommentFlag"/>
+		<mapping class="io.flashboard.beans.TestQuestion"/>
+		</session-factory>
+</hibernate-configuration>

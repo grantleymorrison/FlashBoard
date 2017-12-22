@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- The hbm (Hibernate Map File) file name must match the persistent class it represents in both name and casing. -->
+	
+	<!-- Tell hibernate which class will be used to map to the table -->
+	<class name = "com.revature.beans.Employee" table = "EMPLOYEE">
+		<meta attribute="class-descript">
+			This table consists of all Employees and their respective data
+		</meta>
+		<!-- match name to the same name as the instance variable. match type to the java datatype. 
+		column should be the name of the column in the database -->
+		<id name="id" type="int" column="e_id">
+			<generator class = "native"></generator>
+		</id>
+		<property name ="firstName" type ="string" column = "f_name"></property>
+		<property name ="lastName" type ="string" column = "l_name"></property>
+		<property name ="email" type ="string" column = "email"></property>
+		<property name ="salary" type ="int" column = "salary"></property>
+	</class>
+</hibernate-mapping>
