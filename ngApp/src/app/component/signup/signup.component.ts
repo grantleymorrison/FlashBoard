@@ -19,10 +19,10 @@ export class SignUpComponent {
     public favColor;
     public feedbackMsg = "";
     public msgStyle;
-    
+
     private successStyle = {
         color:'green'
-    } 
+    }
 
     private errorStyle = {
         color:'red'
@@ -30,7 +30,7 @@ export class SignUpComponent {
 
     constructor(private http: HttpClient) {
     }
-    
+
     public registerAccount() {
        this.http.post('http://localhost:3000/flashboard/registration', {
             "fname": this.fname,
@@ -53,6 +53,19 @@ export class SignUpComponent {
 
     public validateRegistration():boolean{
         var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(this.password === undefined || this.username === undefined){
+          this.msgStyle = this.errorStyle;
+          this.feedbackMsg = "Empty Inputs";
+          return false;
+        }
+
+        if(this.password.length < 8){
+          this.msgStyle = this.errorStyle;
+          this.feedbackMsg = "Password needs at least 8 characters";
+          return false;
+        }
+
         if(this.password != this.rePassword){
             this.msgStyle = this.errorStyle;
             this.feedbackMsg = "Password Does Not Match";
