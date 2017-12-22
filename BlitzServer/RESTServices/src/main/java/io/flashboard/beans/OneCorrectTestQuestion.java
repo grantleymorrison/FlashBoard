@@ -24,27 +24,27 @@ public class OneCorrectTestQuestion extends TestQuestion{
 		
 	}
 
-	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, 
+	public OneCorrectTestQuestion(int questionId, String topic, String questionText, String questionAnswer, 
 			String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible,
 			List<CommentFlag> flags, List<Message> comments, String correctAnswer) {
-		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
+		super(questionId, topic, questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
 		
 	}
 
-	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1,
+	public OneCorrectTestQuestion(int questionId, String topic, String questionText, String questionAnswer, String questionOption1,
 			String questionOption2, String questionOption3, String explanation, int pointsPossible, String correctAnswer) {
-		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
+		super(questionId, topic,  questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, explanation,  pointsPossible);
 		this.correctAnswer = correctAnswer;
 		
 	}
 
-	public OneCorrectTestQuestion(String questionText, String questionAnswer, String questionOption1,
+	public OneCorrectTestQuestion(String topic, String questionText, String questionAnswer, String questionOption1,
 			String questionOption2, String questionOption3, String explanation, int pointsPossible, String correctAnswer) {
-		super(questionText, questionAnswer, questionOption1, questionOption2, 
+		super(topic, questionText, questionAnswer, questionOption1, questionOption2, 
 				questionOption3, explanation, pointsPossible);
 		this.correctAnswer = correctAnswer;
 	

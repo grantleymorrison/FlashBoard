@@ -16,18 +16,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "COMPREHENSION_TEST")
+@Table(name = "QUIZ")
 public class ComprehensionTest {
 	@Id
-	@Column(name="TEST_ID")
-	@SequenceGenerator(sequenceName="TEST_SEQ", name="TEST_SEQ") //seqe for incrementing id 
-	@GeneratedValue(generator="TEST_SEQ", strategy=GenerationType.SEQUENCE)
+	@Column(name="QUIZ_ID")
+	@SequenceGenerator(sequenceName="QUIZ_SEQ", name="QUIZ_SEQ") //seqe for incrementing id 
+	@GeneratedValue(generator="QUIZ_SEQ", strategy=GenerationType.SEQUENCE)
 	private int testId; 
-	@Column(name="TEST_TITLE")
+	@Column(name="QUIZ_TITLE")
 	private String testTitle;
-	@Column(name="TEST_SUBJECT")
+	@Column(name="QUIZ_SUBJECT")
 	private String topic;
-	@Column(name="TEST_DESC")
+	@Column(name="QUIZ_DESC")
 	private String description;
 	
 	//TODO map this to TestQuestion
@@ -54,21 +54,30 @@ public class ComprehensionTest {
 	private List<Message> comments;
 		
 	public ComprehensionTest() {
-		
+
+		this.testTitle = "TITLE";
+		this.topic = "TOPIC";
+		this.description = "DESCRIPTION"; 
+
+		this.maxScore = 0; 
+		this.creatorId = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		this.comments = new ArrayList<Message>();
+		this.flags = new ArrayList<CommentFlag>(); 
+		this.questions = new ArrayList<TestQuestion>();
 	}
 		
-	public ComprehensionTest(int testId, String testTitle, String subject, String description) {
-		this.testId = testId;
+	public ComprehensionTest(String testTitle, String subject, String description) {
 		this.testTitle = testTitle;
 		this.topic = subject;
 		this.description = description;
 		this.createdOn = LocalDateTime.now();
-		
-		this.comments = new ArrayList<Message>();
-		this.creatorId = "N/A"; 
-		this.flags = new ArrayList<CommentFlag>(); 
-		this.maxScore = 0; 
+
 		this.questions = new ArrayList<TestQuestion>();
+		this.maxScore = 0; 
+		this.creatorId = "N/A"; 
+		this.comments = new ArrayList<Message>();
+		this.flags = new ArrayList<CommentFlag>(); 
 	}
 
 
@@ -172,6 +181,20 @@ public class ComprehensionTest {
 	}
 	
 	
+	public void addQuestion(TestQuestion question) {
+		this.questions.add(question); 
+	}
+
+	@Override
+	public String toString() {
+		String str = "ComprehensionTest [testId=" + testId + ", testTitle=" + testTitle + ", topic=" + topic
+				+ ", description=" + description + ", questions=\n";
+		for(TestQuestion tq : questions) str += "\t" + tq + "\n";
+		str += "creatorId=" + creatorId
+				+ ", createdOn=" + createdOn + ", maxScore=" + maxScore + ", flags=" + flags + ", comments=" + comments
+				+ "]";
+		return str; 
+	}
 	
 
 }
