@@ -27,19 +27,23 @@ public class User extends AbstractUser {
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
+	
 	@Column(name = "LAST_NAME")
 	private String lastName;
+	
 	@Column
 	private String email;
 
-	// TODO Implement by v 1.1
 	@Column(name = "FAV_COLOR")
 	private String favColor;
 
 	@Column
 	private String username;
+	
 	@Column
 	private String password;
+	
+
 	@Column(name = "TESTS_TAKEN")
 	private Integer testsTaken;
 	@Column(name = "AVG_SCORE")
@@ -49,10 +53,13 @@ public class User extends AbstractUser {
 	@OneToMany(mappedBy="tester", fetch=FetchType.EAGER)
 	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;
+	
 	@Column
 	private Boolean approved;
+	
 	@Column
 	private Boolean blacklisted;
+	
 	@Column
 	private Boolean writer;
 
