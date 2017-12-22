@@ -42,10 +42,12 @@
     </div>
     <div class="confirm col-md-12">
       <div>
-        <div class="limit" [ngStyle]=msgStyle>
-          {{feedbackMsg}}
+        <div class="row">
+          <div class="limit" [ngStyle]=msgStyle>
+            {{feedbackMsg}}
+          </div>
+          <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="validateRegistration()">
         </div>
-        <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="validateRegistration()">
       </div>
     </div>
   </div>
