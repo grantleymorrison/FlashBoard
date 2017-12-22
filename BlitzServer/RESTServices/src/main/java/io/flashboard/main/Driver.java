@@ -2,19 +2,16 @@ package io.flashboard.main;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import io.flashboard.beans.ComprehensionTest;
 import io.flashboard.beans.Message;
 import io.flashboard.beans.TestQuestion;
 import io.flashboard.beans.User;
 import io.flashboard.util.HibernateUtil;
+import io.flashboard.dao.UserDaoImpl;
 
 public class Driver {
 	public static void main(String[] args) {
-		/*
-		 * The below is to be abstracted into the Dao as createMessage(int userId, int messageId, String message)
-		 * Optional: Keep track of users who've made a message
-		 */
+		
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		try {
@@ -62,5 +59,8 @@ public class Driver {
 		finally {
 			session.close();
 		}
+		
+		UserDaoImpl udi = new UserDaoImpl();
+		udi.createNewUser("James", "Jones", "jamesjones", "james.jones@mail.com", "thequickbrownfox");
 	}
 }
