@@ -8,6 +8,7 @@ import io.flashboard.beans.TestQuestion;
 import io.flashboard.beans.User;
 import io.flashboard.util.HibernateUtil;
 
+import io.flashboard.dao.UserDaoImpl;
 public class Driver {
 	public static void main(String[] args) {
 		/*
@@ -23,6 +24,7 @@ public class Driver {
 			session.save(testUser); 	
 			tx.commit(); 
 			tx = session.beginTransaction();
+
 			Message testMessage = new Message(testUser.getUserId(), "This is a comment message");
 			session.save(testMessage);
 			tx.commit(); 
@@ -43,5 +45,7 @@ public class Driver {
 		finally {
 			session.close();
 		}
+		UserDaoImpl udi = new UserDaoImpl();
+		udi.createNewUser("James", "Jones", "jamesjones", "james.jones@mail.com", "thequickbrownfox");
 	}
 }

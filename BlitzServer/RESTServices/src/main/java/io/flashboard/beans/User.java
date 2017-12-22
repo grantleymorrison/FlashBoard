@@ -117,7 +117,6 @@ public class User {
 		this.blacklisted = blacklisted;
 		this.roleFlag = roleFlag;
 	}
-	
 
 	public Integer getUserId() {
 		return userId;
@@ -181,6 +180,61 @@ public class User {
 
 	public void setWriter(Integer roleFlag) {
 		this.roleFlag = roleFlag;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getFavColor() {
+		return favColor;
+	}
+
+
+	public void setFavColor(String favColor) {
+		this.favColor = favColor;
+	}
+
+
+	public Integer getRoleFlag() {
+		return roleFlag;
+	}
+
+
+	public void setRoleFlag(Integer roleFlag) {
+		this.roleFlag = roleFlag;
+	}
+
+
+	public void setTakenTests(List<CompletedComprehensionTest> takenTests) {
+		this.takenTests = takenTests;
 	}
 
 }
