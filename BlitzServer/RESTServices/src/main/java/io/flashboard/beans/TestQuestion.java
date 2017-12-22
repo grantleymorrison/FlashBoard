@@ -14,9 +14,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "QUESTIONS")
 public  class TestQuestion {
 	
 	@Id
@@ -27,6 +29,9 @@ public  class TestQuestion {
 	
 	@Column(name = "QUESTION_TEXT")
 	private String questionText;
+	
+	@Column(name = "TOPIC")
+	private String topic; 
 	
 	@Column(name = "QUESTION_ANSWER")
 	private String questionAnswer;
@@ -67,13 +72,15 @@ public  class TestQuestion {
 		super();
 		
 	}
-	public TestQuestion(String questionText , String questionAnswer ,
+	public TestQuestion(String topic, String questionText, String questionAnswer ,
 			String questionOption1 , int pointsPossible , String explanation ) {
+		this.topic = topic; 
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.pointsPossible = pointsPossible;
 		this.explanation = explanation;
+		
 		
 		this.comments = new ArrayList<Message>(); 
 		this.flags = new ArrayList<CommentFlag>(); 
@@ -83,8 +90,9 @@ public  class TestQuestion {
 		this.createdOn = LocalDateTime.now();
 		
 	}
-	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
+	public TestQuestion(int questionId, String topic, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, String explanation, int pointsPossible) {
+		this.topic = topic; 
 		this.questionId = questionId;
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
@@ -100,8 +108,9 @@ public  class TestQuestion {
 		this.createdBy = "N/A"; 
 		this.createdOn = LocalDateTime.now();
 	}
-	public TestQuestion(String questionText, String questionAnswer, String questionOption1, String questionOption2, 
+	public TestQuestion(String topic, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, String explanation, int pointsPossible) {
+		this.topic = topic; 
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
@@ -116,9 +125,10 @@ public  class TestQuestion {
 		this.createdOn = LocalDateTime.now();
 	}
 	
-	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible) {
+	public TestQuestion(int questionId, String topic, String questionText, String questionAnswer, String questionOption1, int pointsPossible) {
 		super();
 		this.questionId = questionId;
+		this.topic = topic; 
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
@@ -133,11 +143,12 @@ public  class TestQuestion {
 		this.createdOn = LocalDateTime.now();
 	}
 	
-	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
+	public TestQuestion(int questionId, String topic, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible,
 			List<CommentFlag> flags, List<Message> comments) {
 		super();
 		this.questionId = questionId;
+		this.topic = topic; 
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
@@ -150,9 +161,10 @@ public  class TestQuestion {
 		this.createdBy = "N/A"; 
 		this.createdOn = LocalDateTime.now();
 	}
-	public TestQuestion(String questionText, String questionAnswer, String questionOption1, String explanation, int pointsPossible,
+	public TestQuestion(String topic, String questionText, String questionAnswer, String questionOption1, String explanation, int pointsPossible,
 			List<CommentFlag> flags, List<Message> comments) {
 		super();
+		this.topic = topic; 
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
@@ -233,6 +245,8 @@ public  class TestQuestion {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "TestQuestion [questionId=" + questionId + ", questionText=" + questionText + ", questionAnswer="
