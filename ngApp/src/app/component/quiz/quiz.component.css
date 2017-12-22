@@ -1,0 +1,31 @@
+.comments-section, .quiz-section{
+    text-align: left;
+}
+#comments-label{
+    margin-left: 50px;
+}
+
+.comments, .questions {
+    list-style-type: none;
+}
+.comment{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid blueviolet;
+    width: 50%;
+}
+#question-header {
+    margin-bottom: 1em;
+    font-size: 40px;
+}
+.options{
+    margin-left: 15px;
+    padding: 5px;
+}
+.question {
+    margin: 40px;
+    padding: 20px;
+    border-style: solid;
+    border-color: rgba(80, 249, 255, 0.1);
+    box-shadow: 3px 4px 3px 0 rgba(80, 80, 255, 0.5);
+}
