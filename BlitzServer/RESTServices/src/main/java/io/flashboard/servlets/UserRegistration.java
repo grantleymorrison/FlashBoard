@@ -27,6 +27,6 @@ public class UserRegistration {
 		UserDaoImpl udao = new UserDaoImpl();
 		Gson gson = new Gson();
 		RegistrationData rd = gson.fromJson(JSON, RegistrationData.class);
-		udao.createNewUser(rd.getUsername(), rd.getPassword());
+		udao.createNewUser(rd.getFname(), rd.getLname(), rd.getUsername(), rd.getEmail(), rd.getPassword());
 	}
 }
