@@ -1,17 +1,14 @@
 package io.flashboard.beans;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,13 +23,6 @@ public abstract class TestQuestion {
 	@SequenceGenerator(sequenceName = "QUESTION_SEQ", name = "QUESTION_SEQ")	
 	@GeneratedValue(generator = "QUESTION_SEQ", strategy = GenerationType.SEQUENCE)		
 	private int questionId;
-	
-	//TODO Map ComprehensionTest to this
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name="FOR_TEST")
-	private ComprehensionTest ctt;
-	
-	private int testId;
 	
 	@Column(name = "QUESTION_TEXT")
 	private String questionText;
@@ -63,6 +53,12 @@ public abstract class TestQuestion {
 	@Column
 	private List<Message> comments;
 	
+	@Column 
+	private String createdBy; 
+	
+	@Column 
+	private LocalDateTime createdOn; 
+	
 	
 	
 	
@@ -70,18 +66,24 @@ public abstract class TestQuestion {
 		super();
 		
 	}
-	public TestQuestion( int testId , String questionText , String questionAnswer ,
+	public TestQuestion(String questionText , String questionAnswer ,
 			String questionOption1 , int pointsPossible , String explanation ) {
-		this.testId = testId;
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.pointsPossible = pointsPossible;
 		this.explanation = explanation;
+		
+		this.comments = new ArrayList<Message>(); 
+		this.flags = new ArrayList<CommentFlag>(); 
+		this.questionOption2 = ""; 
+		this.questionOption3 = ""; 
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		
 	}
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible) {
-		super();
 		this.questionId = questionId;
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
@@ -89,18 +91,26 @@ public abstract class TestQuestion {
 		this.questionOption2 = questionOption2;
 		this.questionOption3 = questionOption3;
 		this.pointsPossible = pointsPossible;
+		
+
+		this.comments = new ArrayList<Message>(); 
+		this.flags = new ArrayList<CommentFlag>(); 
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
 	}
 	public TestQuestion(String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible) {
-		super();
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.questionOption2 = questionOption2;
 		this.questionOption3 = questionOption3;
 		this.pointsPossible = pointsPossible;
+		
 		this.flags = new ArrayList<CommentFlag>();
 		this.comments = new ArrayList<Message>();
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
 	}
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, String questionOption2, 
 			String questionOption3, int pointsPossible,
@@ -113,8 +123,11 @@ public abstract class TestQuestion {
 		this.questionOption2 = questionOption2;
 		this.questionOption3 = questionOption3;
 		this.pointsPossible = pointsPossible;
+		
 		this.flags = flags;
 		this.comments = comments;
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
 	}
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible,
 			List<CommentFlag> flags, List<Message> comments) {
@@ -126,6 +139,13 @@ public abstract class TestQuestion {
 		this.pointsPossible = pointsPossible;
 		this.flags = flags;
 		this.comments = comments;
+		
+		this.flags = new ArrayList<CommentFlag>();
+		this.comments = new ArrayList<Message>();
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		this.questionOption2 = ""; 
+		this.questionOption3 = ""; 
 	}
 	
 	public TestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible) {
@@ -135,17 +155,28 @@ public abstract class TestQuestion {
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.pointsPossible = pointsPossible;
+
+		this.flags = new ArrayList<CommentFlag>();
+		this.comments = new ArrayList<Message>();
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		this.questionOption2 = ""; 
+		this.questionOption3 = ""; 
 	}
 	
 	public TestQuestion(String questionText, String questionAnswer, String questionOption1, int pointsPossible, 
 			List<CommentFlag> flags, List<Message> comments) {
-		super();
 		this.questionText = questionText;
 		this.questionAnswer = questionAnswer;
 		this.questionOption1 = questionOption1;
 		this.pointsPossible = pointsPossible;
 		this.flags = flags;
 		this.comments = comments;
+
+		this.createdBy = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		this.questionOption2 = ""; 
+		this.questionOption3 = ""; 
 	}
 	
 	public int getQuestionId() {
@@ -208,9 +239,6 @@ public abstract class TestQuestion {
 	}
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
-	}
-	public int getTestId() {
-		return testId;
 	}
 	
 	
