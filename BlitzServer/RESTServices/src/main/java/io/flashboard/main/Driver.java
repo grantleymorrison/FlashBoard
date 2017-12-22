@@ -41,6 +41,7 @@ public class Driver {
 			ct.addQuestion(tq);
 			ct.setCreatorId("wilford");
 			System.out.println("BEFORE INSERT");
+			System.out.println();
 			session.save(ct);
 			tx.commit(); 
 			
@@ -49,6 +50,9 @@ public class Driver {
 			System.out.println("AFTER RETRIEVAL");
 			System.out.println(ct2);
 			tx.commit();
+			
+			tx = session.beginTransaction();
+			
 			
 		}
 		catch (Exception e) {

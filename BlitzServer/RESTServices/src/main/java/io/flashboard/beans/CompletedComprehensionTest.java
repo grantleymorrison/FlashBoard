@@ -10,8 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "FINISHED_QUIZ")
 public class CompletedComprehensionTest extends ComprehensionTest {
 	
 	//TODO map this to User

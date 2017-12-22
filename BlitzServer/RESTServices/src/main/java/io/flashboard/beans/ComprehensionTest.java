@@ -16,18 +16,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "COMPREHENSION_TEST")
+@Table(name = "QUIZ")
 public class ComprehensionTest {
 	@Id
-	@Column(name="TEST_ID")
-	@SequenceGenerator(sequenceName="TEST_SEQ", name="TEST_SEQ") //seqe for incrementing id 
-	@GeneratedValue(generator="TEST_SEQ", strategy=GenerationType.SEQUENCE)
+	@Column(name="QUIZ_ID")
+	@SequenceGenerator(sequenceName="QUIZ_SEQ", name="QUIZ_SEQ") //seqe for incrementing id 
+	@GeneratedValue(generator="QUIZ_SEQ", strategy=GenerationType.SEQUENCE)
 	private int testId; 
-	@Column(name="TEST_TITLE")
+	@Column(name="QUIZ_TITLE")
 	private String testTitle;
-	@Column(name="TEST_SUBJECT")
+	@Column(name="QUIZ_SUBJECT")
 	private String topic;
-	@Column(name="TEST_DESC")
+	@Column(name="QUIZ_DESC")
 	private String description;
 	
 	//TODO map this to TestQuestion
