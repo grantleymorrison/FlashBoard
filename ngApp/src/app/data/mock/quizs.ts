@@ -43,7 +43,7 @@ export const MOCK_QUIZS: Quiz[] = [
             },
             {
                 id: 1,
-                question: "Which of the following is NOT an important features of Java 8 release?",
+                question: "Which of the following is NOT one of important features of Java 8 release?",
                 options: [
                     "Functional interfaces and Lambda Expressions",
                     "Interface changes with default and static methods",

@@ -3,7 +3,7 @@
   <button class="btn btn-default" (click)="goBack()">Go Back</button>
   <ul class="quizs">
     <li id="quizs" *ngFor="let quiz of quizs">
-        <a routerLink="/quiz/{{quiz.id}}">
+       
       <div id="quiz" class="quiz">
         <div class="quiz-name">
           {{quiz.name}}
@@ -17,8 +17,9 @@
         <div class="description">
           {{quiz.description}}
         </div>
+        <a routerLink="/quiz/{{quiz.id}}"><button class="btn btn-primary">Take Test</button></a> 
+        <a routerLink="/quiz/{{quiz.id}}"><button class="btn btn-info">Study Questions</button></a> 
       </div>
-      </a>
     </li>
   </ul>
 </div>
