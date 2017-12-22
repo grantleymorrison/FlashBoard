@@ -30,7 +30,7 @@ public class UserDaoImpl {
 			he.printStackTrace();
 		}
 		finally {
-			//session.close();
+			session.close();
 		}
 		
 	}
