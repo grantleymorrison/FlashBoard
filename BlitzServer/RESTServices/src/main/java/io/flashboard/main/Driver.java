@@ -3,6 +3,7 @@ package io.flashboard.main;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import io.flashboard.beans.ComprehensionTest;
 import io.flashboard.beans.Message;
 import io.flashboard.beans.TestQuestion;
 import io.flashboard.beans.User;
@@ -17,24 +18,38 @@ public class Driver {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		try {
-			tx = session.beginTransaction();
-			
+			tx = session.beginTransaction();			
 			User testUser = new User("Wilford", "Wilson","wilford", "wilfordson@gmail.com", "passwordw"); 
 			session.save(testUser); 	
 			tx.commit(); 
+			
 			tx = session.beginTransaction();
 			Message testMessage = new Message(testUser.getUserId(), "This is a comment message");
 			session.save(testMessage);
 			tx.commit(); 
+			
 			tx = session.beginTransaction();
-			TestQuestion tq = new TestQuestion("Pick the number with the largest prime integer factor:", "15",
+			TestQuestion tq = new TestQuestion("Math", "Pick the number with the largest prime integer factor:", "15",
 					"4", "9", "12", "15's factors are 3 and 5, both of which are primes. 12 has 6 as a factor, but 6 is not prime.", 5); 
 			session.save(tq); 
 			TestQuestion tqt = (TestQuestion)session.get(TestQuestion.class, tq.getQuestionId()); 
 			System.out.println(tqt.toString());
+			tx.commit(); 
 			
+			tx = session.beginTransaction();
+			ComprehensionTest ct = new ComprehensionTest("Sample Test", "Math", "An example of a simple test"); 
+			ct.addQuestion(tq);
+			ct.setCreatorId("wilford");
+			System.out.println("BEFORE INSERT");
+			session.save(ct);
+			tx.commit(); 
 			
+			tx = session.beginTransaction();
+			ComprehensionTest ct2 = (ComprehensionTest)session.get(ComprehensionTest.class, ct.getTestId());
+			System.out.println("AFTER RETRIEVAL");
+			System.out.println(ct2);
 			tx.commit();
+			
 		}
 		catch (Exception e) {
 			tx.rollback();

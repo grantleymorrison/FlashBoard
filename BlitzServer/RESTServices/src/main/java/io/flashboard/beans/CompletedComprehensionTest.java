@@ -46,10 +46,10 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		
 	}
 
-	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
+	public CompletedComprehensionTest(int testId, String testTitle, String topic, String description,
 			List<TestQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
 			List<CommentFlag> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
-		super(testId, testTitle, subject, description, questions, creatorId, maxScore, flags, comments);
+		super(testId, testTitle, topic, description, questions, creatorId, maxScore, flags, comments);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
@@ -57,9 +57,9 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		
 	}
 
-	public CompletedComprehensionTest(int testId, String testTitle, String subject, String description,
+	public CompletedComprehensionTest(int testId, String testTitle, String topic, String description,
 			LocalDateTime createdOn, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
-		super(testId, testTitle, subject, description);
+		super(testTitle, topic, description);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;
@@ -67,10 +67,10 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		
 	}
 
-	public CompletedComprehensionTest(String testTitle, String subject, String description,
+	public CompletedComprehensionTest(String testTitle, String topic, String description,
 			List<TestQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
 			List<CommentFlag> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
-		super(testTitle, subject, description, questions, creatorId, maxScore, flags, comments);
+		super(testTitle, topic, description, questions, creatorId, maxScore, flags, comments);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;
 		this.score = score;

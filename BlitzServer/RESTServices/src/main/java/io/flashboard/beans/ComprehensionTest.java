@@ -54,21 +54,30 @@ public class ComprehensionTest {
 	private List<Message> comments;
 		
 	public ComprehensionTest() {
-		
+
+		this.testTitle = "TITLE";
+		this.topic = "TOPIC";
+		this.description = "DESCRIPTION"; 
+
+		this.maxScore = 0; 
+		this.creatorId = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		this.comments = new ArrayList<Message>();
+		this.flags = new ArrayList<CommentFlag>(); 
+		this.questions = new ArrayList<TestQuestion>();
 	}
 		
-	public ComprehensionTest(int testId, String testTitle, String subject, String description) {
-		this.testId = testId;
+	public ComprehensionTest(String testTitle, String subject, String description) {
 		this.testTitle = testTitle;
 		this.topic = subject;
 		this.description = description;
 		this.createdOn = LocalDateTime.now();
-		
-		this.comments = new ArrayList<Message>();
-		this.creatorId = "N/A"; 
-		this.flags = new ArrayList<CommentFlag>(); 
-		this.maxScore = 0; 
+
 		this.questions = new ArrayList<TestQuestion>();
+		this.maxScore = 0; 
+		this.creatorId = "N/A"; 
+		this.comments = new ArrayList<Message>();
+		this.flags = new ArrayList<CommentFlag>(); 
 	}
 
 
@@ -172,6 +181,20 @@ public class ComprehensionTest {
 	}
 	
 	
+	public void addQuestion(TestQuestion question) {
+		this.questions.add(question); 
+	}
+
+	@Override
+	public String toString() {
+		String str = "ComprehensionTest [testId=" + testId + ", testTitle=" + testTitle + ", topic=" + topic
+				+ ", description=" + description + ", questions=\n";
+		for(TestQuestion tq : questions) str += "\t" + tq + "\n";
+		str += "creatorId=" + creatorId
+				+ ", createdOn=" + createdOn + ", maxScore=" + maxScore + ", flags=" + flags + ", comments=" + comments
+				+ "]";
+		return str; 
+	}
 	
 
 }
