@@ -12,7 +12,7 @@ export const MOCK_QUIZS: Quiz[] = [
         questions: [
             {
                 id: 1,
-                question: "What are four pillars of Oject Oriented Programming?",
+                question: "What are four pillars of Object Oriented Programming?",
                 options:
                     [
                         "Contraction, Staticism, Capsulation, Specification",
@@ -24,8 +24,6 @@ export const MOCK_QUIZS: Quiz[] = [
                 points: 5,
                 rating:
                     {
-                        good: 5,
-                        bad: 0,
                         hard: 3,
                         easy: 3,
                         like: 5,
@@ -53,8 +51,6 @@ export const MOCK_QUIZS: Quiz[] = [
                 answer: "Inferred primitive datatype definition",
                 points: 5,
                 rating: {
-                    good: 5,
-                    bad: 0,
                     hard: 10,
                     easy: 4,
                     like: 5,

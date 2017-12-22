@@ -11,6 +11,11 @@
           <input type="radio" name="option{{i}}" value="answer{{j}}"> {{ option }}
           <br>
         </div>
+        <div class="rating">ratings</div>
+        <i class="em em-birthday"></i> Easy: {{question.rating.hard}}
+        <i class="em em-smiling_imp"></i> Hard: {{question.rating.easy}}
+        <i class="em em---1"></i> Like {{question.rating.like}}
+        <i class="em em--1"></i> Dislike {{question.rating.dislike}}
       </li>
     </ul>
     <div class="submit-quiz">
@@ -28,7 +33,7 @@
         Comment ID: {{comment.id}}
       </div>
       <div>
-        Commenter ID: {{comment.commenterId }} Username: {{comment.commenter}}
+        Commenter ID: {{comment.userId }}  Username: {{comment.username}}
       </div>
       <div>
         Comment: {{comment.message}}
