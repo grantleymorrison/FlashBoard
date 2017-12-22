@@ -1,8 +1,10 @@
 package io.flashboard.beans;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,13 +26,13 @@ public class ComprehensionTest {
 	@Column(name="TEST_TITLE")
 	private String testTitle;
 	@Column(name="TEST_SUBJECT")
-	private String subject;
+	private String topic;
 	@Column(name="TEST_DESC")
 	private String description;
 	
 	//TODO map this to TestQuestion
-	@OneToMany(mappedBy="ctt", fetch=FetchType.EAGER)
-	@Column(name="TEST_QUESTIONS")
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = false)
+	@Column(name = "QUESTIONS")
 	private List<TestQuestion> questions;
 	
 	@Column(name="CREATOR_ID")
@@ -43,41 +45,39 @@ public class ComprehensionTest {
 	private static int totalAttempts;
 	
 	//TODO map this to commentflag
-	@OneToMany(mappedBy="ct2", fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name="FLAGS")
 	private List<CommentFlag> flags;
 	
-	//TODO map this to message
-	@OneToMany(mappedBy="ct", fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name="COMMENTS")
 	private List<Message> comments;
 		
 	public ComprehensionTest() {
-		super();
 		
 	}
-	
-	
-	
-	
+		
 	public ComprehensionTest(int testId, String testTitle, String subject, String description) {
-		super();
 		this.testId = testId;
 		this.testTitle = testTitle;
-		this.subject = subject;
+		this.topic = subject;
 		this.description = description;
 		this.createdOn = LocalDateTime.now();
+		
+		this.comments = new ArrayList<Message>();
+		this.creatorId = "N/A"; 
+		this.flags = new ArrayList<CommentFlag>(); 
+		this.maxScore = 0; 
+		this.questions = new ArrayList<TestQuestion>();
 	}
 
 
 
 
 	public ComprehensionTest(String testTitle, String subject, String description, List<TestQuestion> questions,
-			String creatorId, int maxScore, List<CommentFlag> flags,
-			List<Message> comments) {
-		super();
+			String creatorId, int maxScore, List<CommentFlag> flags, List<Message> comments) {
 		this.testTitle = testTitle;
-		this.subject = subject;
+		this.topic = subject;
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
@@ -93,10 +93,9 @@ public class ComprehensionTest {
 	public ComprehensionTest(int testId, String testTitle, String subject, String description,
 			List<TestQuestion> questions, String creatorId, int maxScore,
 			List<CommentFlag> flags, List<Message> comments) {
-		super();
 		this.testId = testId;
 		this.testTitle = testTitle;
-		this.subject = subject;
+		this.topic = subject;
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
@@ -118,10 +117,10 @@ public class ComprehensionTest {
 		this.testTitle = testTitle;
 	}
 	public String getSubject() {
-		return subject;
+		return topic;
 	}
 	public void setSubject(String subject) {
-		this.subject = subject;
+		this.topic = subject;
 	}
 	public String getDescription() {
 		return description;

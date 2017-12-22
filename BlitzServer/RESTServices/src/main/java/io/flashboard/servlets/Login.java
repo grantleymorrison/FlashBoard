@@ -1,4 +1,4 @@
-package io.flashboard.rest;
+package io.flashboard.servlets;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

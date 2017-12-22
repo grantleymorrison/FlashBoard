@@ -35,17 +35,17 @@ public class OneCorrectTestQuestion extends TestQuestion{
 	}
 
 	public OneCorrectTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1,
-			String questionOption2, String questionOption3, int pointsPossible, String correctAnswer) {
+			String questionOption2, String questionOption3, String explanation, int pointsPossible, String correctAnswer) {
 		super(questionId, questionText, questionAnswer, questionOption1, questionOption2, 
-				questionOption3, pointsPossible);
+				questionOption3, explanation,  pointsPossible);
 		this.correctAnswer = correctAnswer;
 		
 	}
 
 	public OneCorrectTestQuestion(String questionText, String questionAnswer, String questionOption1,
-			String questionOption2, String questionOption3, int pointsPossible, String correctAnswer) {
+			String questionOption2, String questionOption3, String explanation, int pointsPossible, String correctAnswer) {
 		super(questionText, questionAnswer, questionOption1, questionOption2, 
-				questionOption3, pointsPossible);
+				questionOption3, explanation, pointsPossible);
 		this.correctAnswer = correctAnswer;
 	
 	}
