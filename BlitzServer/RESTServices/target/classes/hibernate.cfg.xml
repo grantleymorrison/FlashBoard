@@ -7,9 +7,6 @@
 		<property name="hibernate.connection.driver_class">
 			oracle.jdbc.OracleDriver
 		</property>
-		<!-- Config which DB engine to use. This is what you change to change languages
-jdbc:driver://hostname:port/dbName?user=userName&password=password
--->
 		<property name="hibernate.dialect">
 			org.hibernate.dialect.Oracle10gDialect
 		</property>
@@ -20,25 +17,18 @@ jdbc:driver://hostname:port/dbName?user=userName&password=password
 			grantleymorrison
 		</property>
 		<property name = "hibernate.connection.password">
-			Fla$hB0ard 
+			Fla$hB0ard
 		</property>
 		<property name = "hibernate.connection.pool_size">10</property>
 		<property name = "show_sql">true</property>
-		<property name = "hibernate.hbm2ddl.auto">create</property>
-		<!-- hbm2ddl is a key property of hibernate. There are
-		4 different states you can place it as:
-			update: perform hibernate actions on an existing db
-			create: wipe any existing tables and create from scratch
-			validate: creates the schema, destroying old data
-			create-drop: db is cleared and emptied on server shutdown -->
-			
+		<property name = "hibernate.hbm2ddl.auto">update</property>
+		
 		<!-- L2 Caching Config -->
 		<!-- <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
 		<property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</property>
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.use_query_cache">true</property> -->
 		<!-- MAPPINGS -->
-		<!--<mapping resource = "Employee.hbm.xml"></mapping> -->
 		<mapping class="io.flashboard.beans.Message"/>
 		<mapping class="io.flashboard.beans.User"/>
 		<mapping class="io.flashboard.beans.CompletedComprehensionTest"/>
