@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -11,11 +12,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class NavbarComponent{
     // Setting state to true or false will generate the appropriate selections
-    public loggedIn = true;
+    public loggedIn = false;
     public username;
     public password;
 
-    constructor(private http: HttpClient){
+    constructor(private http: HttpClient, private router: Router){
 
     }
 
@@ -25,10 +26,17 @@ export class NavbarComponent{
        .subscribe(
             res => {
                 console.log(res);
+                this.router.navigate(['profile']);
+                this.loggedIn = true;
                 //change loggedIn = true;
             },
             err => {
                 console.log(err + " Error occured");
             });
+    }
+
+    public logOutAccount(){
+      this.loggedIn = false;
+      this.router.navigate(['home']);
     }
 }
