@@ -48,14 +48,23 @@ export class SignUpComponent {
             fail => {
                 this.msgStyle = this.errorStyle;
                 console.log(fail);
-                this.feedbackMsg = "Server Error";
+                if(fail.status === 500){
+                  this.feedbackMsg = "Server Error";
+                }
+                else{
+                  this.feedbackMsg = "Invalid Username";
+                }
             });
     }
 
     public validateRegistration():boolean{
         var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.password = this.password.trim();
+        this.username = this.username.trim();
 
-        if(this.password === undefined || this.username === undefined){
+        if(this.password === undefined || this.username === undefined ||
+          this.password.length === 0 || this.username.length === 0){
+
           this.msgStyle = this.errorStyle;
           this.feedbackMsg = "Empty Inputs";
           return false;
@@ -72,6 +81,7 @@ export class SignUpComponent {
             this.feedbackMsg = "Password Does Not Match";
             return false;
         }
+
         if(emailPattern.test(this.email) === false){
             this.msgStyle = this.errorStyle;
             this.feedbackMsg = "Invalid E-mail";

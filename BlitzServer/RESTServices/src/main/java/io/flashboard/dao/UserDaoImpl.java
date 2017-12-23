@@ -2,10 +2,12 @@ package io.flashboard.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import io.flashboard.beans.CompletedComprehensionTest;
 import io.flashboard.beans.User;
@@ -55,6 +57,31 @@ public class UserDaoImpl implements UserDao{
 			session.close();
 		}
 		return newUser;
+	}
+	
+	/**
+	 * Gets a unique user from the database, if he/she exists
+	 * Utilizes Criterias
+	 * 
+	 * @param username username to be searched for
+	 * @return the user if he/she exists, otherwise null
+	 */
+	public User getUserByUsername(String username) {
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		User user = null;
+		
+		try {
+			criteria = session.createCriteria(User.class);
+			//Adds like restriction to search for a particular username
+			user = (User)criteria.add(Restrictions.like("username", username)).uniqueResult();
+		}
+		catch(HibernateException he) {
+			he.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return user;
 	}
 
 	@Override
