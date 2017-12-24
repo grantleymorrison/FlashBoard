@@ -4,6 +4,7 @@ public class LoginData {
 	private String username;
 	private String password;
 	
+	//No args constructor needed for JSON to object translation
 	public LoginData() {
 		super();
 	}

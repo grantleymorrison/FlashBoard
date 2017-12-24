@@ -15,6 +15,7 @@ export class NavbarComponent{
     public loggedIn = false;
     public username;
     public password;
+    public profileUrl = "profile/*";
 
     constructor(private http: HttpClient, private router: Router){
 
@@ -26,8 +27,9 @@ export class NavbarComponent{
        .subscribe(
             res => {
                 console.log(res);
-                this.router.navigate(['profile']);
+                this.router.navigate(['profile', this.username]);
                 this.loggedIn = true;
+                this.profileUrl = "profile/" + this.username;
                 //change loggedIn = true;
             },
             err => {
@@ -37,6 +39,7 @@ export class NavbarComponent{
 
     public logOutAccount(){
       this.loggedIn = false;
+      this.profileUrl = "profile/*";
       this.router.navigate(['home']);
     }
 }

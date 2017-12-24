@@ -79,7 +79,7 @@
             <span class="glyphicon glyphicon-user"></span> Sign Up</a>
         </li>
         <li *ngIf="loggedIn">
-          <a routerLink="profile" class="profile">
+          <a [routerLink]="profileUrl" class="profile">
             <span class="glyphicon glyphicon-user"></span> Profile</a>
         </li>
       </ul>
