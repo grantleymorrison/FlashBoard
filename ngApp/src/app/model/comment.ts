@@ -1,6 +1,6 @@
 export class Comment{
-    id: number;
-    userId: number;
+    commentId: number;
     username: string;
-    message: string;
+    createdDate: Date;
+    content: string;
 }

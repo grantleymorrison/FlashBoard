@@ -30,13 +30,13 @@
   <ul id="comments" class="comments">
     <li class="comment" *ngFor="let comment of quiz.comments">
       <div>
-        Comment ID: {{comment.id}}
+        Comment ID: {{comment.commentId}}
       </div>
       <div>
-        Commenter ID: {{comment.userId }}  Username: {{comment.username}}
-      </div>
+       Username: {{comment.username}} Date: {{comment.createdDate}}
+            </div>
       <div>
-        Comment: {{comment.message}}
+        Comment: {{comment.content}}
       </div>
     </li>
   </ul>
