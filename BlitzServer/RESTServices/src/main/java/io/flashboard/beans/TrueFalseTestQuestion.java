@@ -22,14 +22,14 @@ public class TrueFalseTestQuestion extends TestQuestion {
 		this.correctAnswer = correctAnswer;
 	}
 
-	public TrueFalseTestQuestion(int questionId, String questionText, String questionAnswer, String questionOption1, int pointsPossible, boolean correctAnswer) {
-		super(questionId, questionText, questionAnswer, questionOption1, pointsPossible);
+	public TrueFalseTestQuestion(int questionId, String topic, String questionText, String questionAnswer, String questionOption1, int pointsPossible, boolean correctAnswer) {
+		super(questionId, topic, questionText, questionAnswer, questionOption1, pointsPossible);
 		this.correctAnswer = correctAnswer;
 	}
 
-	public TrueFalseTestQuestion(String questionText, String questionAnswer, String questionOption1, String explanation, int pointsPossible, List<CommentFlag> flags,
+	public TrueFalseTestQuestion(String topic, String questionText, String questionAnswer, String questionOption1, String explanation, int pointsPossible, List<CommentFlag> flags,
 			List<Message> comments, boolean correctAnswer) {
-		super(questionText, questionAnswer, questionOption1, explanation, pointsPossible, flags, comments);
+		super(topic, questionText, questionAnswer, questionOption1, explanation, pointsPossible, flags, comments);
 		this.correctAnswer = correctAnswer;
 		
 	}
