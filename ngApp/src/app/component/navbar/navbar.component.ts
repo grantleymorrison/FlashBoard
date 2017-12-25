@@ -27,7 +27,7 @@ export class NavbarComponent{
        .subscribe(
             res => {
                 console.log(res);
-                this.router.navigate(['profile', this.username]);
+                //this.router.navigate(['profile', this.username]);
                 this.loggedIn = true;
                 this.profileUrl = "profile/" + this.username;
                 //change loggedIn = true;

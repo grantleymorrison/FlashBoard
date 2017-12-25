@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit{
         this.profile.avgScore = data["avgScore"];
       },
       err => {
-
+        console.log(err);
       }
     )
   }
