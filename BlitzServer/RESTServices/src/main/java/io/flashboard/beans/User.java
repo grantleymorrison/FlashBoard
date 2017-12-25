@@ -5,13 +5,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /*
  * The basic user. Limited privileges.
@@ -37,7 +39,7 @@ public class User {
 	@Column(name = "FAV_COLOR")
 	private String favColor;
 
-	@Column
+	@Column(unique = true)
 	private String username;
 	
 	@Column
@@ -46,8 +48,9 @@ public class User {
 	@Column(name = "AVG_SCORE")
 	private Double avgScore;
   
-	//TODO map user to completed test
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	//TODO map user to completed test New Stuff!!!!!!!!!!
+	@OneToMany(orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;
 	
@@ -117,7 +120,6 @@ public class User {
 		this.blacklisted = blacklisted;
 		this.roleFlag = roleFlag;
 	}
-	
 
 	public Integer getUserId() {
 		return userId;

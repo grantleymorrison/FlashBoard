@@ -20,9 +20,9 @@ export const AppRoutes: Routes = [
         path: 'browse',
         component: BrowseComponent
     },
-    { 
-        path: 'browse/:pathName', 
-        component: BrowseTopicComponent 
+    {
+        path: 'browse/:pathName',
+        component: BrowseTopicComponent
     },
     {
         path: 'quiz/:id',
@@ -37,7 +37,7 @@ export const AppRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'profile',
+        path: 'profile/:username',
         component: ProfileComponent
     },
     {
