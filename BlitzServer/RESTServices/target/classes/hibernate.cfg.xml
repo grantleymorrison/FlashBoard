@@ -35,5 +35,11 @@
 		<mapping class="io.flashboard.beans.ComprehensionTest"/>
 		<mapping class="io.flashboard.beans.CommentFlag"/>
 		<mapping class="io.flashboard.beans.TestQuestion"/>
+		<!-- Quizes and related table :Han -->
+		<mapping class="io.flashboard.beans.quiz.Comment"/>
+		<mapping class="io.flashboard.beans.quiz.Question"/>
+		<mapping class="io.flashboard.beans.quiz.Quiz"/>
+		<mapping class="io.flashboard.beans.quiz.Rating"/>
+		
 		</session-factory>
 </hibernate-configuration>
