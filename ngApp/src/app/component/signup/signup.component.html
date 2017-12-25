@@ -14,25 +14,25 @@
       <strong>Username</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="text" [(ngModel)]="username">
+      <input class="form-control" type="text" [(ngModel)]="username" required>
     </div>
     <legend>
       <strong>Password</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="password" [(ngModel)]="password">
+      <input class="form-control" type="password" [(ngModel)]="password" required>
     </div>
     <legend>
       <strong>Re-Enter Password</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="password" [(ngModel)]="rePassword">
+      <input class="form-control" type="password" [(ngModel)]="rePassword" required>
     </div>
     <legend>
       <strong>Email</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="email" [(ngModel)]="email">
+      <input class="form-control" type="email" [(ngModel)]="email" required>
     </div>
     <legend>
       <strong>Favorite Color</strong>
@@ -42,7 +42,12 @@
     </div>
     <div class="confirm col-md-12">
       <div>
-        <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="registerAccount()">
+        <div class="row">
+          <div class="limit" [ngStyle]=msgStyle>
+            {{feedbackMsg}}
+          </div>
+          <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="validateRegistration()">
+        </div>
       </div>
     </div>
   </div>

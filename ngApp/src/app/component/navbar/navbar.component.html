@@ -28,12 +28,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!-- Trigger the modal with a button -->
-        <li *ngIf="loggedIn" class="login" data-toggle="modal" data-target="#myModal">
-          <a>
+        <li *ngIf="!loggedIn" class="login" data-toggle="modal" data-target="#myModal">
+          <!-- pointer class is for styling the link, so the cursor will be a pointer, not a hightlight-->
+          <a class="pointer">
             <span class="glyphicon glyphicon-log-in"></span> Log in</a>
         </li>
-        <li *ngIf="!loggedIn" class="login">
-          <a>
+        <li *ngIf="loggedIn" class="login" (click)=logOutAccount()>
+          <a class="pointer">
             <span class="glyphicon glyphicon-log-in"></span> Log out</a>
         </li>
 
@@ -73,12 +74,12 @@
           </div>
         </div>
         <!-- ./Modal Ends -->
-        <li *ngIf="loggedIn">
+        <li *ngIf="!loggedIn">
           <a routerLink="signup" class="sign-up">
             <span class="glyphicon glyphicon-user"></span> Sign Up</a>
         </li>
-        <li *ngIf="!loggedIn">
-          <a routerLink="profile">
+        <li *ngIf="loggedIn">
+          <a [routerLink]="profileUrl" class="profile">
             <span class="glyphicon glyphicon-user"></span> Profile</a>
         </li>
       </ul>

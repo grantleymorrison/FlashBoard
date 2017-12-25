@@ -11,13 +11,13 @@
 			org.hibernate.dialect.Oracle10gDialect
 		</property>
 		<property name = "hibernate.connection.url">
-			jdbc:oracle:thin:@flashboard.cspyk2wcsof5.us-east-2.rds.amazonaws.com:1521/orcl
+			jdbc:oracle:thin:@flashboarddb.cs1fwucjswce.us-east-2.rds.amazonaws.com:1521/orcl
 		</property>
 		<property name = "hibernate.connection.username">
-			grantleymorrison
+			minion
 		</property>
 		<property name = "hibernate.connection.password">
-			Fla$hB0ard
+			passwd
 		</property>
 		<property name = "hibernate.connection.pool_size">10</property>
 		<property name = "show_sql">true</property>

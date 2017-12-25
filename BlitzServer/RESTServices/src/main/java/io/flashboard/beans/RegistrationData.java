@@ -5,7 +5,14 @@ public class RegistrationData {
 	private String lname;
 	private String username;
 	private String password;
+	private String rePassword;
 	private String email;
+	private String favColor;
+	
+	public RegistrationData() {
+		super();
+	}
+	
 	public String getFname() {
 		return fname;
 	}
@@ -36,19 +43,22 @@ public class RegistrationData {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Override
-	public String toString() {
-		return "RegistrationData [fname=" + fname + ", lname=" + lname + ", username=" + username + ", password="
-				+ password + ", email=" + email + "]";
+
+	public String getRePassword() {
+		return rePassword;
 	}
-	public RegistrationData(String fname, String lname, String username, String password, String email) {
-		super();
-		this.fname = fname;
-		this.lname = lname;
-		this.username = username;
-		this.password = password;
-		this.email = email;
+
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
 	}
-	
+
+	public String getFavColor() {
+		return favColor;
+	}
+
+	public void setFavColor(String favColor) {
+		this.favColor = favColor;
+	}
+
 	
 }

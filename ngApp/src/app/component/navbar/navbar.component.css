@@ -5,14 +5,23 @@
   }
 
   .sign-up:hover {
-    background-color: yellow;
-    color: red;
+    background-color: rgb(100, 100, 255);
+    color: #e6e6ff;
+  }
+
+  .profile:hover {
+    background-color: #ff6666;
+    color: #ffe6e6;
   }
 
   .modal-login {
     width: 350px;
     margin-left: 37.5%;
     margin-top: 10%;
+  }
+
+  .pointer{
+    cursor:pointer;
   }
 
   ul {
