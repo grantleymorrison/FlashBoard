@@ -43,7 +43,7 @@
 
         <!-- Modal Start-->
         <div class="modal fade" id="myModal" role="dialog">
-         <app-login (thingy)="thingChange($event)"></app-login>
+         <app-login (login)="loginChange($event)"></app-login>
         </div>
         <!-- ./Modal Ends -->
         <li *ngIf="!loggedIn">

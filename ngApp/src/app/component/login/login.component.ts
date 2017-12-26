@@ -10,11 +10,8 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 })
 export class LoginComponent implements OnInit {
 
-    @Output()
+    @Output('login')
     public login: EventEmitter<loginData> = new EventEmitter<loginData>();
-    @Output('thingy')
-    thingy: EventEmitter<string>  = new EventEmitter<string>();
-    thing = "Piece of ";
     public username;
     public password;
     public profileUrl = "profile/*";

@@ -11,12 +11,8 @@ export class NavbarComponent{
     // Setting state to true or false will generate the appropriate selections
     public loginData; 
 
-    thingChange(event){
-        console.log(event);
-    }
-
     public loginChange(event){
-        console.log("hdflkasj;");
+        console.log("helo");
         this.loginData = event;
     }
 
