@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
     selector: 'app-navbar',
@@ -9,11 +11,19 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent{
     // Setting state to true or false will generate the appropriate selections
-    public loginData; 
+    public loginData = {
+        loggedIn: false,
+        profileUrl: "profile/*",
+        userRole: 0
+    };
+
+    constructor(private authService: AuthenticationService, private router: Router){
+
+    }
 
     public loginChange(event){
-        console.log("helo");
         this.loginData = event;
+        console.log(this.loginData);
     }
 
     public logOutAccount(){
@@ -21,10 +31,7 @@ export class NavbarComponent{
         this.loginData.loggedIn = false;
         this.loginData.profileUrl = "profile/*";
         this.loginData.userRole = 0;
-        this.login.emit(this.loginData);
 
-        this.authData.userRole = 0;
-        this.authData.token = "";
         this.router.navigate(['home']);
     }
 

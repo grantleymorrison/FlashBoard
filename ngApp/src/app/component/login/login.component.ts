@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { loginData } from '../../model/loginData';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
     public login: EventEmitter<loginData> = new EventEmitter<loginData>();
     public username;
     public password;
-    public profileUrl = "profile/*";
     public url = 'http://localhost:3000/flashboard/login';
+    
     public authData = {
       token: "",
       userRole: 0
@@ -27,17 +27,11 @@ export class LoginComponent implements OnInit {
         userRole: 0
     }
 
-    constructor(private http: HttpClient, private router: Router, 
-        private authService: AuthenticationService){
+    constructor(private http: HttpClient, private authService: AuthenticationService){
 
     }
 
     ngOnInit() {
-    }
-
-    getThingy(){
-        console.log("here");
-        this.thingy.emit(this.thing);
     }
 
     public loginAccount() {
