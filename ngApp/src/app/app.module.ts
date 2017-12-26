@@ -20,6 +20,8 @@ import { QuizComponent } from './component/quiz/quiz.component';
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
+import { StudyComponent } from './component/study/study.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { QuizService } from './services/quiz/quiz.service';
     ProfileComponent,
     QuizComponent,
     SearchComponent,
-    SignUpComponent
+    SignUpComponent,
+    StudyComponent
   ],
   imports: [
     BrowserModule,
