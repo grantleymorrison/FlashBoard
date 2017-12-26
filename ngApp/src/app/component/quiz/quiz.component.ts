@@ -12,27 +12,29 @@ import { ActivatedRoute } from "@angular/router";
         'quiz.component.css'
     ]
 })
-export class QuizComponent implements OnInit{
-    
+export class QuizComponent implements OnInit {
+
     quiz: Quiz;
 
     constructor(
         private route: ActivatedRoute,
         private quizService: QuizService,
         private location: Location
-    ){
+    ) {
 
     }
-    ngOnInit(){
+    ngOnInit() {
         this.getQuiz();
     }
     getQuiz(): void {
         let id = +this.route.snapshot.paramMap.get('id');
         console.log(id);
         this.quizService.getQuiz(id)
-              .subscribe(quiz => this.quiz = quiz);
+            .subscribe(quiz => this.quiz = quiz);
     }
-
+    submitComment(): void {
+        
+    }
     goBack(): void {
         this.location.back();
     }

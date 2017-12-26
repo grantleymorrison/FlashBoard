@@ -1,3 +1,40 @@
-<p>
-  study works!
-</p>
+<h2>{{quiz.quizTitle}}</h2>
+<h4>By: {{quiz.username}}</h4>
+<button class="btn btn-default" (click)="goBack()">Go Back</button>
+<div class="quiz-section">
+  <ul id="questions" class="questions">
+    <li class="question" *ngFor="let question of quiz.questions; let i = index">
+      <div id="question-header">
+        {{i+1}}. {{ question.question }}
+      </div>
+      <div class="answer">
+        {{ question.answer }}
+      </div>
+      <div class="rating">ratings</div>
+      <i class="em em-birthday"></i> Easy: {{question.rating.hard}}
+      <i class="em em-smiling_imp"></i> Hard: {{question.rating.easy}}
+      <i class="em em---1"></i> Like {{question.rating.like}}
+      <i class="em em--1"></i> Dislike {{question.rating.dislike}}
+    </li>
+  </ul>
+</div>
+
+<div class="comments-section">
+  <label id="comments-label">Comments</label>
+
+  <ul id="comments" class="comments">
+    <li class="comment" *ngFor="let comment of quiz.comments">
+      <div>
+        Comment ID: {{comment.commentId}}
+      </div>
+      <div>
+        Username: {{comment.username}} Date: {{comment.createdDate}}
+      </div>
+      <div>
+        Comment: {{comment.content}}
+      </div>
+    </li>
+  </ul>
+  <input type="textbox">
+  <button (click)="submitComment()">Submit Comment</button>
+</div>
