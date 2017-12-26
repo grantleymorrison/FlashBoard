@@ -34,7 +34,7 @@ public class TokenService {
 		
 	}
 	
-	public static boolean verify(String token) {
+	public static boolean verify(String token, String username) {
 		Claims claims = null;
 		UserDaoImpl ud = new UserDaoImpl();
 		User user = null;
@@ -42,23 +42,27 @@ public class TokenService {
 		String claimsId = null;
 		boolean verified = false;
 		
+		if(token == null) {
+			return false;
+		}
+		
 		try {
 			claims = Jwts.parser()
-					.setSigningKey(DatatypeConverter.parseBase64Binary(secretKey))
+					.setSigningKey(getSecret())
 					.parseClaimsJws(token).getBody();
 			
 			user = ud.getUserByUsername(claims.getSubject());
 			id = Integer.toString(user.getUserId());
 			claimsId = claims.getId();
 			
-			if(user == null || claimsId == null || !claims.equals(id)) {
+			if(user == null || claimsId == null || !claimsId.equals(id) || !username.equals(claims.getSubject())) {
 				return false;
 			}
 			
 			verified = true;
 			
 		}catch(SignatureException se) {
-			
+			se.printStackTrace();
 		}
 		
 		return verified;

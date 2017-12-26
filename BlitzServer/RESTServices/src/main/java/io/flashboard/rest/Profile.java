@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import io.flashboard.jsonbeans.ProfileData;
 import io.flashboard.service.ProfileService;
+import io.flashboard.service.TokenService;
 
 @Path("/profile")
 public class Profile {
@@ -20,11 +21,10 @@ public class Profile {
 	@Path("/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ProfileData profile(@PathParam("username") String username, @Context HttpServletRequest request) {
-		Enumeration headers = request.getHeaderNames();
-		String head;
-		while(headers.hasMoreElements()) {
-			head = (String)headers.nextElement();
-			System.out.println(head + " " + request.getHeader(head));
+		String token = request.getHeader("authorization");
+
+		if(!TokenService.verify(token, username)) {
+			return new ProfileData("Unauthorized");
 		}
 	
 		ProfileData pd = ProfileService.getProfile(username);
