@@ -38,8 +38,7 @@ public class TokenService {
 		Claims claims = null;
 		UserDaoImpl ud = new UserDaoImpl();
 		User user = null;
-		String id = null;
-		String claimsId = null;
+		String cUsername = null;
 		boolean verified = false;
 		
 		if(token == null) {
@@ -51,18 +50,17 @@ public class TokenService {
 					.setSigningKey(getSecret())
 					.parseClaimsJws(token).getBody();
 			
-			user = ud.getUserByUsername(claims.getSubject());
-			id = Integer.toString(user.getUserId());
-			claimsId = claims.getId();
+			cUsername = claims.getSubject();
+			user = ud.getUserByUsername(cUsername);
 			
-			if(user == null || claimsId == null || !claimsId.equals(id) || !username.equals(claims.getSubject())) {
+			if(cUsername == null || user == null || !cUsername.equals(username)) {
 				return false;
 			}
 			
 			verified = true;
 			
 		}catch(SignatureException se) {
-			se.printStackTrace();
+			
 		}
 		
 		return verified;
