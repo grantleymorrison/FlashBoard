@@ -1,4 +1,5 @@
-<h2>{{quiz.name}}</h2>
+<h2>{{quiz.quizTitle}}</h2>
+<h4>By: {{quiz.username}}</h4>
 <button class="btn btn-default" (click)="goBack()">Go Back</button>
 <div class="quiz-section">
   <form>
@@ -11,6 +12,11 @@
           <input type="radio" name="option{{i}}" value="answer{{j}}"> {{ option }}
           <br>
         </div>
+        <div class="rating">ratings</div>
+        <i class="em em-birthday"></i> Easy: {{question.rating.hard}}
+        <i class="em em-smiling_imp"></i> Hard: {{question.rating.easy}}
+        <i class="em em---1"></i> Like {{question.rating.like}}
+        <i class="em em--1"></i> Dislike {{question.rating.dislike}}
       </li>
     </ul>
     <div class="submit-quiz">
@@ -25,13 +31,13 @@
   <ul id="comments" class="comments">
     <li class="comment" *ngFor="let comment of quiz.comments">
       <div>
-        Comment ID: {{comment.id}}
+        Comment ID: {{comment.commentId}}
       </div>
       <div>
-        Commenter ID: {{comment.commenterId }} Username: {{comment.commenter}}
-      </div>
+       Username: {{comment.username}} Date: {{comment.createdDate}}
+            </div>
       <div>
-        Comment: {{comment.message}}
+        Comment: {{comment.content}}
       </div>
     </li>
   </ul>

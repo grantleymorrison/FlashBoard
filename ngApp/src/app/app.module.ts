@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+
 // project imports
 import { AppComponent } from './app.component';
 import { AppRoutes } from './router';
@@ -17,9 +18,15 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
 import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
+import { StudyComponent } from './component/study/study.component';
+import { AlertComponent } from './component/alert/alert.component';
+
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
+import { AlertService } from './services/alert/alert.service';
+import { AuthenticationService } from './services/authentication/authentication.service';
+
 
 @NgModule({
   declarations: [
@@ -33,15 +40,21 @@ import { QuizService } from './services/quiz/quiz.service';
     QuizComponent,
     SearchComponent,
     SignUpComponent,
-    AdminComponent
+    StudyComponent,
+    AdminComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
   ],
-  providers: [TopicService, QuizService],
+  providers: [
+    TopicService,
+    QuizService,
+    AlertService,
+    AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
