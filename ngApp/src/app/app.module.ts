@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+
 // project imports
 import { AppComponent } from './app.component';
 import { AppRoutes } from './router';
@@ -19,7 +20,6 @@ import { QuizComponent } from './component/quiz/quiz.component';
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +37,7 @@ import { QuizService } from './services/quiz/quiz.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
   ],
   providers: [TopicService, QuizService],
   bootstrap: [AppComponent]

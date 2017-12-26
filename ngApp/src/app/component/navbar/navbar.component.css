@@ -7,14 +7,9 @@
   border: solid .5px rgb(115, 115, 250);
 }
 
-.sign-up:hover {
-  background-color: rgb(100, 100, 255);
-  color: #e6e6ff;
-}
-
-.profile:hover {
-  background-color: #ff6666;
-  color: #ffe6e6;
+.navbar{
+  border-bottom: 1px solid rgb(115, 115, 250);
+  border-radius: 0
 }
 
 .modal-login {

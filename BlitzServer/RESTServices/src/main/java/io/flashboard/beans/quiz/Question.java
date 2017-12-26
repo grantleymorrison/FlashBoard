@@ -30,12 +30,12 @@ public class Question {
 	@Column(name = "QUESTION")
 	private String question;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity=Quiz.class)
 	@JoinColumn(name = "QUIZ_REFERENCE")
-	private int quizId;
+	private Integer quizId;
 
 	@Column(name = "OPTIONS")
-	private List<String> options;
+	private String[] options;
 
 	@Column(name = "ANSWER")
 	private String answer;
@@ -56,7 +56,7 @@ public class Question {
 	}
 
 	// Constructor using no questionId
-	public Question(String question, int quizId, List<String> options, String answer, int points, Rating ratings,
+	public Question(String question, int quizId, String[] options, String answer, int points, Rating ratings,
 			List<Comment> comments) {
 		super();
 		this.question = question;
@@ -69,7 +69,7 @@ public class Question {
 	}
 
 	// Constructor using all fields
-	public Question(int questionId, String question, int quizId, List<String> options, String answer, int points,
+	public Question(int questionId, String question, int quizId, String[] options, String answer, int points,
 			Rating ratings, List<Comment> comments) {
 		super();
 		this.questionId = questionId;
@@ -107,11 +107,11 @@ public class Question {
 		this.question = question;
 	}
 
-	public List<String> getOptions() {
+	public String[] getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<String> options) {
+	public void setOptions(String[] options) {
 		this.options = options;
 	}
 

@@ -1,24 +1,33 @@
 package io.flashboard.beans.quiz;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-public class Comment {
+@Entity
+@Table(name="COMMENT")
+public class Comment implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2060364884767994321L;
+
 	// Properties
 	@Id
-	@Column(name="COMMENT_ID")
 	@SequenceGenerator(sequenceName="COMMENT_SEQ", name="COMMENT_SEQ")
 	@GeneratedValue(generator="COMMENT_SEQ", strategy=GenerationType.SEQUENCE)
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=Quiz.class)
 	private int commentId;
 	
 	// TODO After creating User object connect via ManyToOne

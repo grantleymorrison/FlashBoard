@@ -7,6 +7,7 @@ import java.util.List;
 import io.flashboard.beans.quiz.Comment;
 import io.flashboard.beans.quiz.Question;
 import io.flashboard.beans.quiz.Quiz;
+import io.flashboard.beans.quiz.Rating;
 import io.flashboard.dao.QuizDao;
 import io.flashboard.dao.QuizDaoImpl;
 
@@ -61,6 +62,9 @@ public class Driver {
 		QuizDao qd = new QuizDaoImpl();
 		List<Question> questions = new ArrayList<>();
 		List<Comment> comments = new ArrayList<>();
+		String[] awsq1 = {"Amazon Web Service", "Amazing Web Service", "Alluring Web Service", "Apple Web Service"};
+		questions.add(new Question("What Does AWS stand for?", 51, awsq1, "Amazon Web Service", 50, new Rating(), comments));
+	
 		Quiz quiz1 = new Quiz("quiz 1 title", "AWS", "On RDS", "quizMaster", LocalDate.now(), 10, 0, questions,
 				comments);
 		Quiz quiz2 = new Quiz("quiz 2 title", "AWS", "On VPC", "quizMaster", LocalDate.now(), 10, 0, questions,
