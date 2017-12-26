@@ -53,7 +53,7 @@ public class TakenQuiz extends Quiz {
 
 	public TakenQuiz(int testId, String testTitle, String topic, String description,
 			List<QuizQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
-			List<CommentFlag_dh> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
+			List<Rating> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
 		super(testId, testTitle, topic, description, questions, creatorId, maxScore, flags, comments);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;
@@ -74,7 +74,7 @@ public class TakenQuiz extends Quiz {
 
 	public TakenQuiz(String testTitle, String topic, String description,
 			List<QuizQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
-			List<CommentFlag_dh> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
+			List<Rating> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
 		super(testTitle, topic, description, questions, creatorId, maxScore, flags, comments);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;

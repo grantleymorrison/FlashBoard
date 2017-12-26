@@ -69,29 +69,6 @@ public class Driver {
 		finally {
 			session.close();
 		}
-		
-//		UserDaoImpl udi = new UserDaoImpl();
-//		udi.createNewUser("James", "Jones", "jamesjones", "james.jones@mail.com", "thequickbrownfox");
-//		
-//		User testUser = udi.selectUserByUsername("jamesjones");
-//		
-//		MessageDaoImpl mdi = new MessageDaoImpl();
-//		mdi.createMessage(testUser.getUserId(), "This is a comment message");
-		/*
-		QuizDao qd = new QuizDaoImpl();
-		List<Question> questions = new ArrayList<>();
-		List<Comment> comments = new ArrayList<>();
-		String[] awsq1 = {"Amazon Web Service", "Amazing Web Service", "Alluring Web Service", "Apple Web Service"};
-		questions.add(new Question("What Does AWS stand for?", 51, awsq1, "Amazon Web Service", 50, new Rating(), comments));
-	
-		Quiz_dh quiz1 = new Quiz_dh("quiz 1 title", "AWS", "On RDS", "quizMaster", LocalDate.now(), 10, 0, questions,
-				comments);
-		Quiz_dh quiz2 = new Quiz_dh("quiz 2 title", "AWS", "On VPC", "quizMaster", LocalDate.now(), 10, 0, questions,
-				comments);
-		
-		// Insertions
-		System.out.println("Quiz 1 inserted with quiz id: " + qd.insertQuiz(quiz1));
-		System.out.println("Quiz 2 inserted with quiz id: " + qd.insertQuiz(quiz2));
-		*/
+
 	}
 }
