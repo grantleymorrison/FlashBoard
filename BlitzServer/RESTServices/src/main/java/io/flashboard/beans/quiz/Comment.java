@@ -27,7 +27,7 @@ public class Comment implements Serializable {
 	@Id
 	@SequenceGenerator(sequenceName="COMMENT_SEQ", name="COMMENT_SEQ")
 	@GeneratedValue(generator="COMMENT_SEQ", strategy=GenerationType.SEQUENCE)
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=Quiz.class)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=Quiz_dh.class)
 	private int commentId;
 	
 	// TODO After creating User object connect via ManyToOne

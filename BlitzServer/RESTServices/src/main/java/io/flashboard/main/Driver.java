@@ -1,16 +1,23 @@
 package io.flashboard.main;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import io.flashboard.beans.ComprehensionTest;
-import io.flashboard.beans.Message;
-import io.flashboard.beans.TestQuestion;
-import io.flashboard.beans.User;
-import io.flashboard.util.HibernateUtil;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import io.flashboard.beans.quiz.Comment;
+import io.flashboard.beans.quiz.Quiz;
+import io.flashboard.beans.quiz.QuizQuestion;
+import io.flashboard.beans.quiz.Rating;
+import io.flashboard.beans.users.Message;
+import io.flashboard.beans.users.User;
+import io.flashboard.beans.users.quiz.Question;
+import io.flashboard.beans.users.quiz.Quiz_dh;
+import io.flashboard.dao.QuizDao;
+import io.flashboard.dao.QuizDaoImpl;
+import io.flashboard.util.HibernateUtil;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -31,16 +38,16 @@ public class Driver {
 			session.save(testMessage);
 			tx.commit(); 
 			tx = session.beginTransaction();
-			TestQuestion tq = new TestQuestion();
+			QuizQuestion tq = new QuizQuestion();
 //					"Math", "Pick the number with the largest prime integer factor:", "15",
 //					"4", "9", "12", "15's factors are 3 and 5, both of which are primes. 12 has 6 as a factor, but 6 is not prime.", 5); 
 			session.save(tq); 
-			TestQuestion tqt = (TestQuestion)session.get(TestQuestion.class, tq.getQuestionId()); 
+			QuizQuestion tqt = (QuizQuestion)session.get(QuizQuestion.class, tq.getQuestionId()); 
 			System.out.println(tqt.toString());
 			tx.commit(); 
 			
 			tx = session.beginTransaction();
-			ComprehensionTest ct = new ComprehensionTest("Sample Test", "Math", "An example of a simple test"); 
+			Quiz ct = new Quiz("Sample Test", "Math", "An example of a simple test"); 
 			ct.addQuestion(tq);
 			ct.setCreatorId("wilford");
 			System.out.println("BEFORE INSERT");
@@ -49,7 +56,7 @@ public class Driver {
 			tx.commit(); 
 			
 			tx = session.beginTransaction();
-			ComprehensionTest ct2 = (ComprehensionTest)session.get(ComprehensionTest.class, ct.getTestId());
+			Quiz ct2 = (Quiz)session.get(Quiz.class, ct.getTestId());
 			System.out.println("AFTER RETRIEVAL");
 			System.out.println(ct2);
 			tx.commit();
@@ -78,9 +85,9 @@ public class Driver {
 		String[] awsq1 = {"Amazon Web Service", "Amazing Web Service", "Alluring Web Service", "Apple Web Service"};
 		questions.add(new Question("What Does AWS stand for?", 51, awsq1, "Amazon Web Service", 50, new Rating(), comments));
 	
-		Quiz quiz1 = new Quiz("quiz 1 title", "AWS", "On RDS", "quizMaster", LocalDate.now(), 10, 0, questions,
+		Quiz_dh quiz1 = new Quiz_dh("quiz 1 title", "AWS", "On RDS", "quizMaster", LocalDate.now(), 10, 0, questions,
 				comments);
-		Quiz quiz2 = new Quiz("quiz 2 title", "AWS", "On VPC", "quizMaster", LocalDate.now(), 10, 0, questions,
+		Quiz_dh quiz2 = new Quiz_dh("quiz 2 title", "AWS", "On VPC", "quizMaster", LocalDate.now(), 10, 0, questions,
 				comments);
 		
 		// Insertions

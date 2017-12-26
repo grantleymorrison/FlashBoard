@@ -1,6 +1,6 @@
 package io.flashboard.dao;
 
-import io.flashboard.beans.User;
+import io.flashboard.beans.users.User;
 
 public interface AdminDao {
 	//Admin

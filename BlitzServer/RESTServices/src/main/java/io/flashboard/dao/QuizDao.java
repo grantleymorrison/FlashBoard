@@ -1,9 +1,9 @@
 package io.flashboard.dao;
 
-import io.flashboard.beans.quiz.Quiz;
+import io.flashboard.beans.users.quiz.Quiz_dh;
 
 public interface QuizDao {
-	public int insertQuiz(Quiz quiz);
+	public int insertQuiz(Quiz_dh quiz);
 //
 //	// TestQuestions
 //	public boolean createTestQuestion();

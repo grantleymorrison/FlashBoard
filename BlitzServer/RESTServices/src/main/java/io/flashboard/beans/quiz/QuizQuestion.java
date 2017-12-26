@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.quiz;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,10 +17,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import io.flashboard.beans.users.CommentFlag_dh;
+import io.flashboard.beans.users.Message;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "QUESTIONS")
-public  class TestQuestion {
+public  class QuizQuestion {
 	
 
 
@@ -37,7 +40,7 @@ public  class TestQuestion {
 	@Column(name = "TOPIC")
 	private String topic; 
 
-	@ElementCollection
+
 	@Column(name = "OPTIONS")
 	private ArrayList<String> options; 
 	
@@ -52,7 +55,7 @@ public  class TestQuestion {
 	
 	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
 	@Column(name = "FLAGS")
-	private List<CommentFlag> flags;
+	private List<CommentFlag_dh> flags;
 	
 	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
 	@Column(name = "COMMENTS")
@@ -67,14 +70,14 @@ public  class TestQuestion {
 	
 	
 	
-	public TestQuestion() {
+	public QuizQuestion() {
 		this.questionText = ""; 
 		this.topic = "UNSORTED"; 
 		this.options = new ArrayList<String>(); 
 		this.answer = ""; 
 		this.pointsPossible = 0; 
 		this.explanation = ""; 
-		this.flags = new ArrayList<CommentFlag>(); 
+		this.flags = new ArrayList<CommentFlag_dh>(); 
 		this.comments = new ArrayList<Message>(); 
 		this.createdBy = "N/A"; 
 		this.createdOn = LocalDateTime.now(); 
@@ -82,8 +85,8 @@ public  class TestQuestion {
 	
 	
 	
-	public TestQuestion(int questionId, String questionText, String topic, ArrayList<String> options, String answer,
-			int pointsPossible, String explanation, List<CommentFlag> flags, List<Message> comments, String createdBy,
+	public QuizQuestion(int questionId, String questionText, String topic, ArrayList<String> options, String answer,
+			int pointsPossible, String explanation, List<CommentFlag_dh> flags, List<Message> comments, String createdBy,
 			LocalDateTime createdOn) {
 		this.questionId = questionId;
 		this.questionText = questionText;
@@ -117,10 +120,10 @@ public  class TestQuestion {
 	public void setPointsPossible(int pointsPossible) {
 		this.pointsPossible = pointsPossible;
 	}
-	public List<CommentFlag> getFlags() {
+	public List<CommentFlag_dh> getFlags() {
 		return flags;
 	}
-	public void setFlags(List<CommentFlag> flags) {
+	public void setFlags(List<CommentFlag_dh> flags) {
 		this.flags = flags;
 	}
 	public List<Message> getComments() {

@@ -2,7 +2,7 @@ package io.flashboard.factories;
 
 import java.util.ArrayList;
 
-import io.flashboard.beans.TestQuestion;
+import io.flashboard.beans.quiz.QuizQuestion;
 
 public class QuestionFactory {
 	
@@ -18,17 +18,18 @@ public class QuestionFactory {
 		
 	}
 	
-	public TestQuestion generateTrueFalseQuestion(String questionText, boolean answer) {
-		TestQuestion tq = new TestQuestion(); 
-		tq.setQuestionText(questionText);
-		tq.setAnswer(answer ? "True" : "False");
+	public QuizQuestion generateTrueFalseQuestion(String questionText, boolean answer) {
+		QuizQuestion ques = new QuizQuestion(); 
+		
+		ques.setQuestionText(questionText);
+		ques.setAnswer(answer ? "True" : "False");
 		String[] options = {"True","False"};
-		tq.setOptions(options);
-		ArrayList<String> str = new ArrayList<>(); 
-		
-		
-		return null; 
+		ques.setOptions(options);
+
+		return ques; 
 	}
+	
+	
 	
 	
 

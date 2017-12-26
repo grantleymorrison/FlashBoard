@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.quiz;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,9 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import io.flashboard.beans.users.CommentFlag_dh;
+import io.flashboard.beans.users.Message;
+import io.flashboard.beans.users.User;
+
 @Entity
 @Table(name = "FINISHED_QUIZ")
-public class CompletedComprehensionTest extends ComprehensionTest {
+public class TakenQuiz extends Quiz {
 	
 	//TODO map this to User
 	@Column
@@ -38,19 +42,19 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 	private LocalDateTime completedOn; 
 	
 
-	public CompletedComprehensionTest(boolean completed, List<String> answersSubmitted, int score,
+	public TakenQuiz(boolean completed, List<String> answersSubmitted, int score,
 			float scorePercentage) {
 		super();
 	}
 
-	public CompletedComprehensionTest() {
+	public TakenQuiz() {
 		super();
 		
 	}
 
-	public CompletedComprehensionTest(int testId, String testTitle, String topic, String description,
-			List<TestQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
-			List<CommentFlag> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
+	public TakenQuiz(int testId, String testTitle, String topic, String description,
+			List<QuizQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
+			List<CommentFlag_dh> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
 		super(testId, testTitle, topic, description, questions, creatorId, maxScore, flags, comments);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;
@@ -59,7 +63,7 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		
 	}
 
-	public CompletedComprehensionTest(int testId, String testTitle, String topic, String description,
+	public TakenQuiz(int testId, String testTitle, String topic, String description,
 			LocalDateTime createdOn, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
 		super(testTitle, topic, description);
 		this.completed = completed;
@@ -69,9 +73,9 @@ public class CompletedComprehensionTest extends ComprehensionTest {
 		
 	}
 
-	public CompletedComprehensionTest(String testTitle, String topic, String description,
-			List<TestQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
-			List<CommentFlag> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
+	public TakenQuiz(String testTitle, String topic, String description,
+			List<QuizQuestion> questions, String creatorId, LocalDateTime createdOn, int maxScore,
+			List<CommentFlag_dh> flags, List<Message> comments, boolean completed, List<String> answersSubmitted, int score, float scorePercentage) {
 		super(testTitle, topic, description, questions, creatorId, maxScore, flags, comments);
 		this.completed = completed;
 		this.answersSubmitted = answersSubmitted;
