@@ -19,10 +19,14 @@ import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic
 import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
+import { AlertComponent } from './component/alert/alert.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
+import { AlertService } from './services/alert/alert.service';
+import { AuthenticationService } from './services/authentication/authentication.service';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { QuizService } from './services/quiz/quiz.service';
     SearchComponent,
     SignUpComponent,
     StudyComponent,
-    AdminComponent
+    AdminComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,11 @@ import { QuizService } from './services/quiz/quiz.service';
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),
   ],
-  providers: [TopicService, QuizService],
+  providers: [
+    TopicService,
+    QuizService,
+    AlertService,
+    AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
