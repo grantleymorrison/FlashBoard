@@ -16,6 +16,13 @@ import io.jsonwebtoken.SignatureException;
 public class TokenService {
 	private static String secretKey = "HanisCool";
 	
+	/**
+	 * Method creates the JWT to be sent to the client
+	 * Sends the username and userId
+	 * 
+	 * @param user object holding user information
+	 * @return JavaScript Web Token
+	 */
 	public static String create(User user) {
 		
 		if(user == null) {
@@ -34,6 +41,14 @@ public class TokenService {
 		
 	}
 	
+	/**
+	 * Verifies a web token given a username and token
+	 * Checks the given username with the token username to verify usage
+	 * 
+	 * @param token JavaScript Web Token
+	 * @param username the given username
+	 * @return true if token is fine, otherwise false
+	 */
 	public static boolean verify(String token, String username) {
 		Claims claims = null;
 		UserDaoImpl ud = new UserDaoImpl();
@@ -66,6 +81,11 @@ public class TokenService {
 		return verified;
 	}
 	
+	/**
+	 * Creates the secret key from a static string
+	 * 
+	 * @return byte[] conversion of secretKey
+	 */
 	private static byte[] getSecret() {
 		String base64Key = DatatypeConverter.printBase64Binary(secretKey.getBytes());
 		
