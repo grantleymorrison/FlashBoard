@@ -4,11 +4,11 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import io.flashboard.beans.users.quiz.Quiz_dh;
+import io.flashboard.beans.quiz.Quiz;
 import io.flashboard.util.HibernateUtil;
 
 public class QuizDaoImpl implements QuizDao {
-	public int insertQuiz(Quiz_dh quiz) {
+	public int insertQuiz(Quiz quiz) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Integer quizId = null;

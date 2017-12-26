@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import io.flashboard.beans.users.CommentFlag_dh;
 import io.flashboard.beans.users.Message;
 import io.flashboard.beans.users.User;
 

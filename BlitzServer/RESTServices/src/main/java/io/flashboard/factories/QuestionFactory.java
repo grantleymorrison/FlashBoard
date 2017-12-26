@@ -28,6 +28,22 @@ public class QuestionFactory {
 
 		return ques; 
 	}
+	public QuizQuestion generateTrueFalseQuestion(String questionText, boolean answer, String explanation) {
+		QuizQuestion ques = generateTrueFalseQuestion(questionText,answer);
+		ques.setExplanation(explanation);
+
+		return ques; 
+	}
+	
+	public QuizQuestion generateMultipleChoiceQuestion(String questionText, String answer, String[] options) {
+		QuizQuestion ques = new QuizQuestion();
+		
+		
+		
+		
+		return ques; 
+	}
+	
 	
 	
 	

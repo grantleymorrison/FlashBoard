@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import io.flashboard.beans.users.CommentFlag_dh;
 import io.flashboard.beans.users.Message;
 
 @Entity
@@ -54,8 +52,8 @@ public  class QuizQuestion {
 	private String explanation; 
 	
 	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
-	@Column(name = "FLAGS")
-	private List<CommentFlag_dh> flags;
+	@Column(name = "RATINGS")
+	private List<Rating> ratings;
 	
 	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
 	@Column(name = "COMMENTS")
@@ -77,7 +75,7 @@ public  class QuizQuestion {
 		this.answer = ""; 
 		this.pointsPossible = 0; 
 		this.explanation = ""; 
-		this.flags = new ArrayList<CommentFlag_dh>(); 
+		this.ratings = new ArrayList<Rating>(); 
 		this.comments = new ArrayList<Message>(); 
 		this.createdBy = "N/A"; 
 		this.createdOn = LocalDateTime.now(); 
@@ -86,7 +84,7 @@ public  class QuizQuestion {
 	
 	
 	public QuizQuestion(int questionId, String questionText, String topic, ArrayList<String> options, String answer,
-			int pointsPossible, String explanation, List<CommentFlag_dh> flags, List<Message> comments, String createdBy,
+			int pointsPossible, String explanation, List<Rating> ratings, List<Message> comments, String createdBy,
 			LocalDateTime createdOn) {
 		this.questionId = questionId;
 		this.questionText = questionText;
@@ -95,7 +93,7 @@ public  class QuizQuestion {
 		this.answer = answer;
 		this.pointsPossible = pointsPossible;
 		this.explanation = explanation;
-		this.flags = flags;
+		this.ratings = ratings;
 		this.comments = comments;
 		this.createdBy = createdBy;
 		this.createdOn = createdOn;
@@ -120,11 +118,11 @@ public  class QuizQuestion {
 	public void setPointsPossible(int pointsPossible) {
 		this.pointsPossible = pointsPossible;
 	}
-	public List<CommentFlag_dh> getFlags() {
-		return flags;
+	public List<Rating> getRatings() {
+		return ratings;
 	}
-	public void setFlags(List<CommentFlag_dh> flags) {
-		this.flags = flags;
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 	public List<Message> getComments() {
 		return comments;
@@ -172,7 +170,7 @@ public  class QuizQuestion {
 	public String toString() {
 		return "TestQuestion [questionId=" + questionId + ", questionText=" + questionText + ", topic=" + topic
 				+ ", options=" + options + ", answer=" + answer + ", pointsPossible=" + pointsPossible
-				+ ", explanation=" + explanation + ", flags=" + flags + ", comments=" + comments + ", createdBy="
+				+ ", explanation=" + explanation + ", ratings=" + ratings + ", comments=" + comments + ", createdBy="
 				+ createdBy + ", createdOn=" + createdOn + "]";
 	}
 

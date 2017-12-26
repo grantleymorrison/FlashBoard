@@ -13,8 +13,7 @@ import io.flashboard.beans.quiz.QuizQuestion;
 import io.flashboard.beans.quiz.Rating;
 import io.flashboard.beans.users.Message;
 import io.flashboard.beans.users.User;
-import io.flashboard.beans.users.quiz.Question;
-import io.flashboard.beans.users.quiz.Quiz_dh;
+
 import io.flashboard.dao.QuizDao;
 import io.flashboard.dao.QuizDaoImpl;
 import io.flashboard.util.HibernateUtil;
