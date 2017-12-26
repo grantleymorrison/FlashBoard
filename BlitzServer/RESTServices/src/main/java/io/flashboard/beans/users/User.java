@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.users;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
+import io.flashboard.beans.quiz.TakenQuiz;
 
 /*
  * The basic user. Limited privileges.
@@ -52,7 +54,7 @@ public class User {
 	@OneToMany(orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="TAKEN_TESTS")
-	private List<CompletedComprehensionTest> takenTests;
+	private List<TakenQuiz> takenTests;
 	
 	@Column(name = "ACCOUNT_IS_APPROVED")
 	private Boolean approved;
@@ -73,7 +75,7 @@ public class User {
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>();
+		this.takenTests = new ArrayList<TakenQuiz>();
 	}
 
 
@@ -87,10 +89,10 @@ public class User {
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>();
+		this.takenTests = new ArrayList<TakenQuiz>();
 	}
 	
-	public User(String username, String password, String firstName, String lastName, String email, ArrayList<CompletedComprehensionTest> takenTests) {
+	public User(String username, String password, String firstName, String lastName, String email, ArrayList<TakenQuiz> takenTests) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -104,7 +106,7 @@ public class User {
 	}
 	
 	public User(Integer userId, String firstName, String lastName, String email, String favColor, String username,
-			String password, Double avgScore, List<CompletedComprehensionTest> takenTests, Boolean approved,
+			String password, Double avgScore, List<TakenQuiz> takenTests, Boolean approved,
 			Boolean blacklisted, Integer roleFlag) {
 		super();
 		this.userId = userId;
@@ -132,7 +134,7 @@ public class User {
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = roleFlag; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>();
+		this.takenTests = new ArrayList<TakenQuiz>();
 	}
 
 
@@ -168,11 +170,11 @@ public class User {
 		this.avgScore = avgScore;
 	}
 
-	public List<CompletedComprehensionTest> getTakenTests() {
+	public List<TakenQuiz> getTakenTests() {
 		return takenTests;
 	}
 
-	public void addTakenTests(CompletedComprehensionTest takenTest) {
+	public void addTakenTests(TakenQuiz takenTest) {
 		this.takenTests.add(takenTest);
 	}
 
@@ -251,7 +253,7 @@ public class User {
 	}
 
 
-	public void setTakenTests(List<CompletedComprehensionTest> takenTests) {
+	public void setTakenTests(List<TakenQuiz> takenTests) {
 		this.takenTests = takenTests;
 	}
 

@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.users;
 
 public class RegistrationData {
 	private String fname;

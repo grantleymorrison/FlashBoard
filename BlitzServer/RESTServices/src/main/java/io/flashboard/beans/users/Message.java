@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.users;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

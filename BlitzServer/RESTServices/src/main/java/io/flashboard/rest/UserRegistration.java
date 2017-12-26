@@ -11,7 +11,7 @@ import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
 
-import io.flashboard.beans.RegistrationData;
+import io.flashboard.beans.users.RegistrationData;
 import io.flashboard.dao.UserDaoImpl;
 import io.flashboard.service.RegistrationService;
 
