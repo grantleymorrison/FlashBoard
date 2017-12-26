@@ -2,6 +2,7 @@ package io.flashboard.service;
 
 import io.flashboard.beans.User;
 import io.flashboard.dao.UserDaoImpl;
+import io.flashboard.jsonbeans.AuthData;
 
 public class LoginService {
 
@@ -28,5 +29,21 @@ public class LoginService {
 		}
 		
 		return true;
+	}
+	
+	public static AuthData authentication(String username, String password) {
+		UserDaoImpl ud = new UserDaoImpl();
+		User user = ud.getUserByUsername(username);
+		
+		if(user == null) {
+			return null;
+		}
+		
+		if(!user.getPassword().equals(password)) {
+			return null;
+		}
+		
+		return new AuthData(user.getRoleFlag());
+		
 	}
 }

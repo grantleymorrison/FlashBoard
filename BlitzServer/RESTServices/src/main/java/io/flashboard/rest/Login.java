@@ -22,9 +22,12 @@ public class Login {
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(LoginData ld) {
+		String username = ld.getUsername();
+		String password = ld.getPassword();
 		
-		if(LoginService.validate(ld.getUsername(), ld.getPassword())) {
+		if(LoginService.validate(username, password)) {
 			return Response.status(200).build();
 		}
 		

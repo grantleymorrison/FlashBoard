@@ -121,6 +121,15 @@ public class User {
 		this.roleFlag = roleFlag;
 	}
 
+	//For creating a user with just a password, username, and role
+	public User(String username, String password, Integer roleFlag) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.roleFlag = roleFlag;
+	}
+
+
 	public Integer getUserId() {
 		return userId;
 	}
