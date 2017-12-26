@@ -9,8 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import io.flashboard.beans.CompletedComprehensionTest;
-import io.flashboard.beans.User;
+import io.flashboard.beans.quiz.TakenQuiz;
+import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
 
 public class UserDaoImpl implements UserDao{
@@ -101,11 +101,11 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public boolean addTakenTest(String username, CompletedComprehensionTest test) {
+	public boolean addTakenTest(String username, TakenQuiz test) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		User currUser = selectUserByUsername(username);
-		List<CompletedComprehensionTest> newList;
+		List<TakenQuiz> newList;
 		newList = currUser.getTakenTests();
 		newList.add(test);
 		currUser.setTakenTests(newList);

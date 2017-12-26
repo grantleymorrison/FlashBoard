@@ -5,7 +5,7 @@ import java.security.Key;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import io.flashboard.beans.User;
+import io.flashboard.beans.users.User;
 import io.flashboard.dao.UserDaoImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

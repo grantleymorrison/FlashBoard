@@ -1,6 +1,6 @@
 package io.flashboard.jsonbeans;
 
-import io.flashboard.beans.User;
+import io.flashboard.beans.users.User;
 import io.flashboard.service.TokenService;
 
 public class AuthData {
