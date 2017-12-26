@@ -30,7 +30,6 @@ public class ComprehensionTest {
 	@Column(name="QUIZ_DESC")
 	private String description;
 	
-	//TODO map this to TestQuestion
 	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = false)
 	@Column(name = "QUESTIONS")
 	private List<TestQuestion> questions;

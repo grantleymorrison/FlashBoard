@@ -1,5 +1,5 @@
 package io.flashboard.dao;
 
 public interface MessageDao {
-	public void createMessage(int userId, int messageId, String content);
+	public boolean createMessage(int userId, String content);
 }
