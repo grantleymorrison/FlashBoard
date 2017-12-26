@@ -20,6 +20,7 @@ import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
+import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
@@ -34,6 +35,7 @@ import { AuthenticationService } from './services/authentication/authentication.
     BrowseComponent,
     BrowseTopicComponent,
     CreateComponent,
+    NewQuestionComponent,
     HomeComponent,
     NavbarComponent,
     ProfileComponent,

@@ -1,1 +1,7 @@
 <h3>Create Component</h3>
+<div>
+    <ul style = "list-style-type: none">
+        <li *ngFor = "let q of questions"><new-question id = {{q}}></new-question></li>
+    </ul>
+</div>
+<button (click)="addQuestion()" value="New Question" id="newQuestion">Add Question</button>
