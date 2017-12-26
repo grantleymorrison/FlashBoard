@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
     selector: 'app-navbar',
@@ -16,19 +17,19 @@ export class NavbarComponent{
     public username;
     public password;
     public profileUrl = "profile/*";
+    public url = 'http://localhost:3000/flashboard/login';
     public authData = {
       token: "",
       userRole: 0
     };
 
-    constructor(private http: HttpClient, private router: Router){
+    constructor(private http: HttpClient, private router: Router, 
+        private authService: AuthenticationService){
 
     }
 
     public loginAccount() {
-      let body = {"username":this.username, "password":this.password}
-       this.http.post('http://localhost:3000/flashboard/login', body)
-       .subscribe(
+        this.authService.login(this.username, this.password, this.url).subscribe(
             res => {
                 console.log(res);
                 this.authData.token = res["token"];
@@ -37,15 +38,17 @@ export class NavbarComponent{
                 this.profileUrl = "profile/" + this.username;
             },
             err => {
-                console.log(err + " Error occured");
-            });
+                console.log(err + "Error ocurred");
+            }
+        );
     }
 
     public logOutAccount(){
-      this.loggedIn = false;
-      this.profileUrl = "profile/*";
-      this.authData.userRole = 0;
-      this.authData.token = "";
-      this.router.navigate(['home']);
+        this.authService.logout();
+        this.loggedIn = false;
+        this.profileUrl = "profile/*";
+        this.authData.userRole = 0;
+        this.authData.token = "";
+        this.router.navigate(['home']);
     }
 }

@@ -40,6 +40,7 @@ public class TokenService {
 		User user = null;
 		String id = null;
 		String claimsId = null;
+		boolean verified = false;
 		
 		try {
 			claims = Jwts.parser()
@@ -54,12 +55,13 @@ public class TokenService {
 				return false;
 			}
 			
+			verified = true;
 			
 		}catch(SignatureException se) {
 			
 		}
 		
-		return true;
+		return verified;
 	}
 	
 	private static byte[] getSecret() {
