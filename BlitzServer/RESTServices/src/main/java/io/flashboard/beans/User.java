@@ -120,13 +120,19 @@ public class User {
 		this.blacklisted = blacklisted;
 		this.roleFlag = roleFlag;
 	}
-
-	//For creating a user with just a password, username, and role
-	public User(String username, String password, Integer roleFlag) {
-		super();
+	
+	//Constructor for explicitly giving user roles
+	public User(String firstName, String lastName, String username, String email, String password, int roleFlag) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.roleFlag = roleFlag;
+		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.roleFlag = roleFlag; 
+		this.takenTests = new ArrayList<CompletedComprehensionTest>();
 	}
 
 

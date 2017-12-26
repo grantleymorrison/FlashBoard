@@ -31,6 +31,15 @@ public class LoginService {
 		return true;
 	}
 	
+	/**
+	 * Takes a username and password to check against a database entry.
+	 * Validates a user when logging in, 
+	 * and provides authorization token and userRole to be returned client-side
+	 * 
+	 * @param username
+	 * @param password
+	 * @return AuthData for correct credentials, null for incorrect credentials
+	 */
 	public static AuthData authentication(String username, String password) {
 		UserDaoImpl ud = new UserDaoImpl();
 		User user = ud.getUserByUsername(username);

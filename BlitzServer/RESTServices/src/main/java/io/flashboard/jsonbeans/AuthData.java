@@ -4,12 +4,14 @@ public class AuthData {
 	private String token;
 	private int userRole;
 	
+	//One arg
 	public AuthData(int userRole) {
 		super();
 		this.token = "Some Token";
 		this.userRole = userRole;
 	}
 
+	//No args
 	public AuthData() {
 		super();
 	}

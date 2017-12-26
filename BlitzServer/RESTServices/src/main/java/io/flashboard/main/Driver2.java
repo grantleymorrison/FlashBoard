@@ -17,7 +17,7 @@ public class Driver2 {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
-		User newUser = new User("admin", "password", 2);
+		User newUser = new User("John", "Doe", "admin", "jDoe@flashboard.io", "password", 2);
 		
 		try {
 			tx = session.beginTransaction();

@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit{
     email: "",
     favColor: "",
     avgScore: ""
-  }
+  };
 
   public url;
 
