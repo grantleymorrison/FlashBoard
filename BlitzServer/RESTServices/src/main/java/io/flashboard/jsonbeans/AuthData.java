@@ -1,5 +1,8 @@
 package io.flashboard.jsonbeans;
 
+import io.flashboard.beans.User;
+import io.flashboard.service.TokenService;
+
 public class AuthData {
 	private String token;
 	private int userRole;
@@ -10,7 +13,14 @@ public class AuthData {
 		this.token = "Some Token";
 		this.userRole = userRole;
 	}
-
+	
+	//Constructor for passing in the User
+	public AuthData(User user) {
+		super();
+		this.token = TokenService.create(user);
+		this.userRole = user.getRoleFlag();
+	}
+	
 	//No args
 	public AuthData() {
 		super();
