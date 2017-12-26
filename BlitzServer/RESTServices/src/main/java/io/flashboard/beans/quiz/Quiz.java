@@ -215,6 +215,15 @@ public class Quiz {
 	public void addQuestion(QuizQuestion question) {
 		this.questions.add(question); 
 	}
+	public boolean removeQuestion(String questionText) {
+		boolean removed = false; 
+		for(QuizQuestion q : this.questions) {
+			if(q.getQuestionText().equals(questionText))
+				removed = questions.remove(q); 
+		}
+		
+		return removed; 
+	}
 
 	@Override
 	public String toString() {
