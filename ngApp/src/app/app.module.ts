@@ -17,10 +17,12 @@ import { SignUpComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
 import { QuizComponent } from './component/quiz/quiz.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { StudyComponent } from './component/study/study.component';
+
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
-import { StudyComponent } from './component/study/study.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { StudyComponent } from './component/study/study.component';
     QuizComponent,
     SearchComponent,
     SignUpComponent,
-    StudyComponent
+    StudyComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

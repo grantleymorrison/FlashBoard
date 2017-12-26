@@ -16,6 +16,10 @@ export class NavbarComponent{
     public username;
     public password;
     public profileUrl = "profile/*";
+    public authData = {
+      token: "",
+      userRole: 0
+    };
 
     constructor(private http: HttpClient, private router: Router){
 
@@ -27,10 +31,10 @@ export class NavbarComponent{
        .subscribe(
             res => {
                 console.log(res);
-                this.router.navigate(['profile', this.username]);
+                this.authData.token = res["token"];
+                this.authData.userRole = res["userRole"];
                 this.loggedIn = true;
                 this.profileUrl = "profile/" + this.username;
-                //change loggedIn = true;
             },
             err => {
                 console.log(err + " Error occured");
@@ -40,6 +44,8 @@ export class NavbarComponent{
     public logOutAccount(){
       this.loggedIn = false;
       this.profileUrl = "profile/*";
+      this.authData.userRole = 0;
+      this.authData.token = "";
       this.router.navigate(['home']);
     }
 }
