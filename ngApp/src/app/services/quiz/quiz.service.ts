@@ -9,8 +9,8 @@ export class QuizService {
 
   constructor() { }
 
-  getQuiz(id: number): Observable<Quiz> {
-    return of(MOCK_QUIZS.find(quiz => quiz.id === id))
+  getQuiz(quizId: number): Observable<Quiz> {
+    return of(MOCK_QUIZS.find(quiz => quiz.quizId === quizId))
   }
 
   getQuizs(): Observable<Quiz[]> {

@@ -5,13 +5,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /*
  * The basic user. Limited privileges.
@@ -37,7 +39,7 @@ public class User {
 	@Column(name = "FAV_COLOR")
 	private String favColor;
 
-	@Column
+	@Column(unique = true)
 	private String username;
 	
 	@Column
@@ -46,8 +48,9 @@ public class User {
 	@Column(name = "AVG_SCORE")
 	private Double avgScore;
   
-	//TODO map user to completed test
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	//TODO map user to completed test New Stuff!!!!!!!!!!
+	@OneToMany(orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="TAKEN_TESTS")
 	private List<CompletedComprehensionTest> takenTests;
 	
@@ -118,6 +121,20 @@ public class User {
 		this.roleFlag = roleFlag;
 	}
 	
+	//Constructor for explicitly giving user roles
+	public User(String firstName, String lastName, String username, String email, String password, int roleFlag) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.roleFlag = roleFlag; 
+		this.takenTests = new ArrayList<CompletedComprehensionTest>();
+	}
+
 
 	public Integer getUserId() {
 		return userId;

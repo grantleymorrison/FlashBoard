@@ -8,8 +8,10 @@ import io.flashboard.beans.Message;
 import io.flashboard.beans.TestQuestion;
 import io.flashboard.beans.User;
 import io.flashboard.util.HibernateUtil;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import io.flashboard.dao.UserDaoImpl;
 public class Driver {
 	public static void main(String[] args) {
 		/*
@@ -28,7 +30,6 @@ public class Driver {
 			Message testMessage = new Message(testUser.getUserId(), "This is a comment message");
 			session.save(testMessage);
 			tx.commit(); 
-			
 			tx = session.beginTransaction();
 			TestQuestion tq = new TestQuestion();
 //					"Math", "Pick the number with the largest prime integer factor:", "15",
@@ -53,9 +54,7 @@ public class Driver {
 			System.out.println(ct2);
 			tx.commit();
 			
-			tx = session.beginTransaction();
-			
-			
+			tx = session.beginTransaction();			
 		}
 		catch (Exception e) {
 			tx.rollback();
@@ -64,7 +63,29 @@ public class Driver {
 		finally {
 			session.close();
 		}
-		UserDaoImpl udi = new UserDaoImpl();
-		udi.createNewUser("James", "Jones", "jamesjones", "james.jones@mail.com", "thequickbrownfox");
+		
+//		UserDaoImpl udi = new UserDaoImpl();
+//		udi.createNewUser("James", "Jones", "jamesjones", "james.jones@mail.com", "thequickbrownfox");
+//		
+//		User testUser = udi.selectUserByUsername("jamesjones");
+//		
+//		MessageDaoImpl mdi = new MessageDaoImpl();
+//		mdi.createMessage(testUser.getUserId(), "This is a comment message");
+		/*
+		QuizDao qd = new QuizDaoImpl();
+		List<Question> questions = new ArrayList<>();
+		List<Comment> comments = new ArrayList<>();
+		String[] awsq1 = {"Amazon Web Service", "Amazing Web Service", "Alluring Web Service", "Apple Web Service"};
+		questions.add(new Question("What Does AWS stand for?", 51, awsq1, "Amazon Web Service", 50, new Rating(), comments));
+	
+		Quiz quiz1 = new Quiz("quiz 1 title", "AWS", "On RDS", "quizMaster", LocalDate.now(), 10, 0, questions,
+				comments);
+		Quiz quiz2 = new Quiz("quiz 2 title", "AWS", "On VPC", "quizMaster", LocalDate.now(), 10, 0, questions,
+				comments);
+		
+		// Insertions
+		System.out.println("Quiz 1 inserted with quiz id: " + qd.insertQuiz(quiz1));
+		System.out.println("Quiz 2 inserted with quiz id: " + qd.insertQuiz(quiz2));
+		*/
 	}
 }

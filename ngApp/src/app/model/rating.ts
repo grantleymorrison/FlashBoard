@@ -1,9 +1,8 @@
 export class Rating {
     // questionId: number;
-    good: number;
-    bad: number;
-    hard: number;
+    ratingId: number;
     easy: number;
+    hard: number;
     like: number;
     dislike: number;
 }

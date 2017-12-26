@@ -2,11 +2,13 @@ import { Comment } from './comment';
 import { Question } from './question';
 
 export class Quiz {
-    id: number;
-    name: string; // Quiz Name
+    quizId: number;
+    quizTitle: string; // Quiz Name
     topic: string;
     description: string;
-    creatorId: number;
+    username:string;
+    createdDate: Date;
+    maxScore: number;
     totalAttempts: number;
     questions : Question[];
     comments: Comment[];

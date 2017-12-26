@@ -8,12 +8,7 @@
 .comments, .questions {
     list-style-type: none;
 }
-.comment{
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid blueviolet;
-    width: 50%;
-}
+
 #question-header {
     margin-bottom: 1em;
     font-size: 40px;
@@ -22,7 +17,7 @@
     margin-left: 15px;
     padding: 5px;
 }
-.question {
+.question, .comment {
     margin: 40px;
     padding: 20px;
     border-style: solid;

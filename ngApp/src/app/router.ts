@@ -9,6 +9,7 @@ import { CreateComponent } from './component/create/create.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic.component';
 import { QuizComponent } from './component/quiz/quiz.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 export const AppRoutes: Routes = [
     {
@@ -20,9 +21,9 @@ export const AppRoutes: Routes = [
         path: 'browse',
         component: BrowseComponent
     },
-    { 
-        path: 'browse/:pathName', 
-        component: BrowseTopicComponent 
+    {
+        path: 'browse/:pathName',
+        component: BrowseTopicComponent
     },
     {
         path: 'quiz/:id',
@@ -37,7 +38,7 @@ export const AppRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'profile',
+        path: 'profile/:username',
         component: ProfileComponent
     },
     {
@@ -47,5 +48,9 @@ export const AppRoutes: Routes = [
     {
         path: 'signup',
         component: SignUpComponent
+    },
+    {
+      path: 'admin',
+      component: AdminComponent
     }
 ]
