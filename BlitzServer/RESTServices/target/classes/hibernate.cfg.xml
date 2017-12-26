@@ -29,13 +29,17 @@
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.use_query_cache">true</property> -->
 		<!-- MAPPINGS -->
-		<mapping class="io.flashboard.beans.users.Message"/>
-		<mapping class="io.flashboard.beans.users.User"/>
+		<mapping class="io.flashboard.beans.Message"/>
+		<mapping class="io.flashboard.beans.User"/>
+		<mapping class="io.flashboard.beans.CompletedComprehensionTest"/>
+		<mapping class="io.flashboard.beans.ComprehensionTest"/>
+		<mapping class="io.flashboard.beans.CommentFlag"/>
+		<mapping class="io.flashboard.beans.TestQuestion"/>
+		<!-- Quizes and related table :Han -->
 		<mapping class="io.flashboard.beans.quiz.Comment"/>
+		<mapping class="io.flashboard.beans.quiz.Question"/>
 		<mapping class="io.flashboard.beans.quiz.Quiz"/>
-		<mapping class="io.flashboard.beans.quiz.QuizQuestion"/>
 		<mapping class="io.flashboard.beans.quiz.Rating"/>
-		<mapping class="io.flashboard.beans.quiz.TakenQuiz"/>
 		
 		</session-factory>
 </hibernate-configuration>
