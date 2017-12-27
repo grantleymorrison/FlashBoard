@@ -24,61 +24,34 @@
           <a routerLink="browse">
             <span class="glyphicon glyphicon-cutlery"></span> Browse</a>
         </li>
+        <li class="nav-item" *ngIf="loginData.userRole == 2">
+          <a routerLink="admin"><span class="	glyphicon glyphicon-wrench"></span> Administrative Tools </a>
+        </li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!-- Trigger the modal with a button -->
-        <li *ngIf="loggedIn" class="login" data-toggle="modal" data-target="#myModal">
-          <a>
+        <li *ngIf="!loginData.loggedIn" class="login" data-toggle="modal" data-target="#myModal">
+          <!-- pointer class is for styling the link, so the cursor will be a pointer, not a hightlight-->
+          <a class="pointer">
             <span class="glyphicon glyphicon-log-in"></span> Log in</a>
         </li>
-        <li *ngIf="!loggedIn" class="login">
-          <a>
+        <li *ngIf="loginData.loggedIn" class="login" (click)=logOutAccount()>
+          <a class="pointer">
             <span class="glyphicon glyphicon-log-in"></span> Log out</a>
         </li>
 
         <!-- Modal Start-->
         <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-login">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Sign in to your account</h4>
-              </div>
-              <!-- Modal Body here -->
-              <div class="modal-body">
-                <ul>
-                  <li>
-                    <span>Username</span>
-                  </li>
-                  <li>
-                    <input type="text" name="username" [(ngModel)]="username">
-                  </li>
-                  <li>
-                    <span>Password</span>
-                  </li>
-                  <li>
-                    <input type="password" name="password" [(ngModel)]="password">
-                  </li>
-                  <li>Forgot username</li>
-                  <li>Forgot password</li>
-                </ul>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="loginAccount()">Log in</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
+         <app-login (login)="loginChange($event)"></app-login>
         </div>
         <!-- ./Modal Ends -->
-        <li *ngIf="loggedIn">
+        <li *ngIf="!loginData.loggedIn">
           <a routerLink="signup" class="sign-up">
             <span class="glyphicon glyphicon-user"></span> Sign Up</a>
         </li>
-        <li *ngIf="!loggedIn">
-          <a routerLink="profile">
+        <li *ngIf="loginData.loggedIn">
+          <a [routerLink]="loginData.profileUrl" class="profile">
             <span class="glyphicon glyphicon-user"></span> Profile</a>
         </li>
       </ul>

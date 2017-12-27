@@ -1,17 +1,21 @@
-package io.flashboard.beans;
+package io.flashboard.beans.users;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import io.flashboard.beans.quiz.TakenQuiz;
 
 /*
  * The basic user. Limited privileges.
@@ -37,7 +41,7 @@ public class User {
 	@Column(name = "FAV_COLOR")
 	private String favColor;
 
-	@Column
+	@Column(unique = true)
 	private String username;
 	
 	@Column
@@ -46,10 +50,11 @@ public class User {
 	@Column(name = "AVG_SCORE")
 	private Double avgScore;
   
-	//TODO map user to completed test
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	//TODO map user to completed test New Stuff!!!!!!!!!!
+	@OneToMany(orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="TAKEN_TESTS")
-	private List<CompletedComprehensionTest> takenTests;
+	private List<TakenQuiz> takenTests;
 	
 	@Column(name = "ACCOUNT_IS_APPROVED")
 	private Boolean approved;
@@ -70,7 +75,7 @@ public class User {
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>();
+		this.takenTests = new ArrayList<TakenQuiz>();
 	}
 
 
@@ -84,10 +89,10 @@ public class User {
 		this.approved = false;
 		this.blacklisted = false;
 		this.roleFlag = 0; 
-		this.takenTests = new ArrayList<CompletedComprehensionTest>();
+		this.takenTests = new ArrayList<TakenQuiz>();
 	}
 	
-	public User(String username, String password, String firstName, String lastName, String email, ArrayList<CompletedComprehensionTest> takenTests) {
+	public User(String username, String password, String firstName, String lastName, String email, ArrayList<TakenQuiz> takenTests) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -101,7 +106,7 @@ public class User {
 	}
 	
 	public User(Integer userId, String firstName, String lastName, String email, String favColor, String username,
-			String password, Double avgScore, List<CompletedComprehensionTest> takenTests, Boolean approved,
+			String password, Double avgScore, List<TakenQuiz> takenTests, Boolean approved,
 			Boolean blacklisted, Integer roleFlag) {
 		super();
 		this.userId = userId;
@@ -118,6 +123,20 @@ public class User {
 		this.roleFlag = roleFlag;
 	}
 	
+	//Constructor for explicitly giving user roles
+	public User(String firstName, String lastName, String username, String email, String password, int roleFlag) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.avgScore = 0.0;
+		this.approved = false;
+		this.blacklisted = false;
+		this.roleFlag = roleFlag; 
+		this.takenTests = new ArrayList<TakenQuiz>();
+	}
+
 
 	public Integer getUserId() {
 		return userId;
@@ -151,11 +170,11 @@ public class User {
 		this.avgScore = avgScore;
 	}
 
-	public List<CompletedComprehensionTest> getTakenTests() {
+	public List<TakenQuiz> getTakenTests() {
 		return takenTests;
 	}
 
-	public void addTakenTests(CompletedComprehensionTest takenTest) {
+	public void addTakenTests(TakenQuiz takenTest) {
 		this.takenTests.add(takenTest);
 	}
 
@@ -234,7 +253,7 @@ public class User {
 	}
 
 
-	public void setTakenTests(List<CompletedComprehensionTest> takenTests) {
+	public void setTakenTests(List<TakenQuiz> takenTests) {
 		this.takenTests = takenTests;
 	}
 

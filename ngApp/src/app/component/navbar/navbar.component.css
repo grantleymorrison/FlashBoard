@@ -1,20 +1,21 @@
-.navbar-light {
-    border-bottom: 1px solid rgb(100, 100, 255);
-    padding-right: 3%;
-    border-radius: 0;
-  }
+.icon-bar {
+  color: rgb(90, 90, 200);
+  background-color: rgb(115, 115, 250);
+}
 
-  .sign-up:hover {
-    background-color: yellow;
-    color: red;
-  }
+.navbar-toggle {
+  border: solid .5px rgb(115, 115, 250);
+}
 
-  .modal-login {
-    width: 350px;
-    margin-left: 37.5%;
-    margin-top: 10%;
-  }
+.navbar{
+  border-bottom: 1px solid rgb(144, 144, 255);
+  border-radius: 0
+}
 
-  ul {
-    list-style-type: none;
-  }
+.pointer {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}

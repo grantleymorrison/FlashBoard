@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.quiz;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,25 +15,26 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import io.flashboard.beans.users.Message;
+
 @Entity
 @Table(name = "QUIZ")
-public class ComprehensionTest {
+public class Quiz {
 	@Id
 	@Column(name="QUIZ_ID")
 	@SequenceGenerator(sequenceName="QUIZ_SEQ", name="QUIZ_SEQ") //seqe for incrementing id 
 	@GeneratedValue(generator="QUIZ_SEQ", strategy=GenerationType.SEQUENCE)
-	private int testId; 
+	private int quizId; 
 	@Column(name="QUIZ_TITLE")
-	private String testTitle;
+	private String quizTitle;
 	@Column(name="QUIZ_SUBJECT")
 	private String topic;
 	@Column(name="QUIZ_DESC")
 	private String description;
 	
-	//TODO map this to TestQuestion
 	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = false)
 	@Column(name = "QUESTIONS")
-	private List<TestQuestion> questions;
+	private List<QuizQuestion> questions;
 	
 	@Column(name="CREATOR_ID")
 	private String creatorId;
@@ -44,18 +45,20 @@ public class ComprehensionTest {
 	@Column(name="TOTAL_ATTEMPTS")
 	private static int totalAttempts;
 	
-	//TODO map this to commentflag
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(name="FLAGS")
-	private List<CommentFlag> flags;
+	@Column(name="RATINGS")
+	private List<Rating> ratings;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name="COMMENTS")
 	private List<Message> comments;
 		
-	public ComprehensionTest() {
+	/**
+	 * No-args constructor
+	 */
+	public Quiz() {
 
-		this.testTitle = "TITLE";
+		this.quizTitle = "TITLE";
 		this.topic = "TOPIC";
 		this.description = "DESCRIPTION"; 
 
@@ -63,73 +66,101 @@ public class ComprehensionTest {
 		this.creatorId = "N/A"; 
 		this.createdOn = LocalDateTime.now();
 		this.comments = new ArrayList<Message>();
-		this.flags = new ArrayList<CommentFlag>(); 
-		this.questions = new ArrayList<TestQuestion>();
+		this.ratings = new ArrayList<Rating>(); 
+		this.questions = new ArrayList<QuizQuestion>();
 	}
 		
-	public ComprehensionTest(String testTitle, String subject, String description) {
-		this.testTitle = testTitle;
-		this.topic = subject;
+	/**
+	 * Constructor using only text-oriented fields.
+	 * @param quizTitle
+	 * @param topic
+	 * @param description
+	 */
+	public Quiz(String quizTitle, String topic, String description) {
+		this.quizTitle = quizTitle;
+		this.topic = topic;
 		this.description = description;
 		this.createdOn = LocalDateTime.now();
 
-		this.questions = new ArrayList<TestQuestion>();
+		this.questions = new ArrayList<QuizQuestion>();
 		this.maxScore = 0; 
 		this.creatorId = "N/A"; 
 		this.comments = new ArrayList<Message>();
-		this.flags = new ArrayList<CommentFlag>(); 
+		this.ratings = new ArrayList<Rating>(); 
 	}
 
 
 
-
-	public ComprehensionTest(String testTitle, String subject, String description, List<TestQuestion> questions,
-			String creatorId, int maxScore, List<CommentFlag> flags, List<Message> comments) {
-		this.testTitle = testTitle;
-		this.topic = subject;
+	/**
+	 * Constructor with params for all member fields but quizId
+	 * @param quizTitle
+	 * @param topic
+	 * @param description
+	 * @param questions
+	 * @param creatorId
+	 * @param maxScore
+	 * @param ratings
+	 * @param comments
+	 */
+	public Quiz(String quizTitle, String topic, String description, List<QuizQuestion> questions,
+			String creatorId, int maxScore, List<Rating> ratings, List<Message> comments) {
+		this.quizTitle = quizTitle;
+		this.topic = topic;
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
 		this.createdOn = LocalDateTime.now();
 		this.maxScore = maxScore;
-		this.flags = flags;
+		this.ratings = ratings;
 		this.comments = comments;
 	}
 	
 	
 
-
-	public ComprehensionTest(int testId, String testTitle, String subject, String description,
-			List<TestQuestion> questions, String creatorId, int maxScore,
-			List<CommentFlag> flags, List<Message> comments) {
-		this.testId = testId;
-		this.testTitle = testTitle;
-		this.topic = subject;
+	/**
+	 * Constructor using all fields
+	 * @param quizId
+	 * @param quizTitle
+	 * @param topic
+	 * @param description
+	 * @param questions
+	 * @param creatorId
+	 * @param maxScore
+	 * @param ratings
+	 * @param comments
+	 */
+	public Quiz(int quizId, String quizTitle, String topic, String description,
+			List<QuizQuestion> questions, String creatorId, int maxScore,
+			List<Rating> ratings, List<Message> comments) {
+		this.quizId = quizId;
+		this.quizTitle = quizTitle;
+		this.topic = topic;
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
 		this.createdOn = LocalDateTime.now();;
 		this.maxScore = maxScore;
-		this.flags = flags;
+		this.ratings = ratings;
 		this.comments = comments;
 	}
+	
 	public int getTestId() {
-		return testId;
+		return quizId;
 	}
-	public void setTestId(int testId) {
-		this.testId = testId;
+	public void setTestId(int quizId) {
+		this.quizId = quizId;
 	}
 	public String getTestTitle() {
-		return testTitle;
+		return quizTitle;
 	}
-	public void setTestTitle(String testTitle) {
-		this.testTitle = testTitle;
+	public void setTestTitle(String quizTitle) {
+		this.quizTitle = quizTitle;
 	}
-	public String getSubject() {
+	public String getTopic() {
 		return topic;
 	}
-	public void setSubject(String subject) {
-		this.topic = subject;
+	public void setTopic(String topic) {
+		this.topic = topic;
 	}
 	public String getDescription() {
 		return description;
@@ -137,10 +168,10 @@ public class ComprehensionTest {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<TestQuestion> getQuestions() {
+	public List<QuizQuestion> getQuestions() {
 		return questions;
 	}
-	public void setQuestions(List<TestQuestion> questions) {
+	public void setQuestions(List<QuizQuestion> questions) {
 		this.questions = questions;
 	}
 	public String getCreatorId() {
@@ -165,13 +196,13 @@ public class ComprehensionTest {
 		return totalAttempts;
 	}
 	public static void setTotalAttempts(int totalAttempts) {
-		ComprehensionTest.totalAttempts = totalAttempts;
+		Quiz.totalAttempts = totalAttempts;
 	}
-	public List<CommentFlag> getFlags() {
-		return flags;
+	public List<Rating> getFlags() {
+		return ratings;
 	}
-	public void setFlags(List<CommentFlag> flags) {
-		this.flags = flags;
+	public void setFlags(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 	public List<Message> getComments() {
 		return comments;
@@ -181,17 +212,26 @@ public class ComprehensionTest {
 	}
 	
 	
-	public void addQuestion(TestQuestion question) {
+	public void addQuestion(QuizQuestion question) {
 		this.questions.add(question); 
+	}
+	public boolean removeQuestion(String questionText) {
+		boolean removed = false; 
+		for(QuizQuestion q : this.questions) {
+			if(q.getQuestionText().equals(questionText))
+				removed = questions.remove(q); 
+		}
+		
+		return removed; 
 	}
 
 	@Override
 	public String toString() {
-		String str = "ComprehensionTest [testId=" + testId + ", testTitle=" + testTitle + ", topic=" + topic
+		String str = "ComprehensionTest [quizId=" + quizId + ", quizTitle=" + quizTitle + ", topic=" + topic
 				+ ", description=" + description + ", questions=\n";
-		for(TestQuestion tq : questions) str += "\t" + tq + "\n";
+		for(QuizQuestion tq : questions) str += "\t" + tq + "\n";
 		str += "creatorId=" + creatorId
-				+ ", createdOn=" + createdOn + ", maxScore=" + maxScore + ", flags=" + flags + ", comments=" + comments
+				+ ", createdOn=" + createdOn + ", maxScore=" + maxScore + ", ratings=" + ratings + ", comments=" + comments
 				+ "]";
 		return str; 
 	}

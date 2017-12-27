@@ -2,20 +2,23 @@ package io.flashboard.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
-import io.flashboard.beans.CompletedComprehensionTest;
-import io.flashboard.beans.User;
+import io.flashboard.beans.quiz.TakenQuiz;
+import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
 
 public class UserDaoImpl implements UserDao{
 	
+
 	@Override
 	public boolean createNewUser(String firstName, String lastName, String username,
-			String email, String password) {
+		String email, String password) {
 		Boolean bool = false;
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -55,6 +58,31 @@ public class UserDaoImpl implements UserDao{
 		}
 		return newUser;
 	}
+	
+	/**
+	 * Gets a unique user from the database, if he/she exists
+	 * Utilizes Criterias
+	 * 
+	 * @param username username to be searched for
+	 * @return the user if he/she exists, otherwise null
+	 */
+	public User getUserByUsername(String username) {
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		User user = null;
+		
+		try {
+			criteria = session.createCriteria(User.class);
+			//Adds like restriction to search for a particular username
+			user = (User)criteria.add(Restrictions.like("username", username)).uniqueResult();
+		}
+		catch(HibernateException he) {
+			he.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return user;
+	}
 
 	@Override
 	public User selectUserById(int userId) {
@@ -73,11 +101,11 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public boolean addTakenTest(String username, CompletedComprehensionTest test) {
+	public boolean addTakenTest(String username, TakenQuiz test) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		User currUser = selectUserByUsername(username);
-		List<CompletedComprehensionTest> newList;
+		List<TakenQuiz> newList;
 		newList = currUser.getTakenTests();
 		newList.add(test);
 		currUser.setTakenTests(newList);

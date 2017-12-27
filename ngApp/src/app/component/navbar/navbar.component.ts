@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
     selector: 'app-navbar',
@@ -8,27 +9,30 @@ import { HttpClient } from '@angular/common/http';
         './navbar.component.css'
     ]
 })
-
 export class NavbarComponent{
     // Setting state to true or false will generate the appropriate selections
-    public loggedIn = true;
-    public username;
-    public password;
+    public loginData = {
+        loggedIn: false,
+        profileUrl: "profile/*",
+        userRole: 0
+    };
 
-    constructor(private http: HttpClient){
+    constructor(private authService: AuthenticationService, private router: Router){
 
     }
 
-    public loginAccount() {
-      let body = {"username":this.username, "password":this.password}
-       this.http.post('http://localhost:3000/flashboard/login', body)
-       .subscribe(
-            res => {
-                console.log(res);
-                //change loggedIn = true;
-            },
-            err => {
-                console.log(err + " Error occured");
-            });
+    public loginChange(event){
+        this.loginData = event;
+        console.log(this.loginData);
     }
+
+    public logOutAccount(){
+        this.authService.logout();
+        this.loginData.loggedIn = false;
+        this.loginData.profileUrl = "profile/*";
+        this.loginData.userRole = 0;
+
+        this.router.navigate(['home']);
+    }
+
 }

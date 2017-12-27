@@ -2,8 +2,9 @@ import { Rating } from "./rating";
 import { Comment } from "./comment";
 
 export class Question {
-    id: number;
+    questionId: number;
     question: string;
+    quizId: number;
     options: string[];
     answer: string;
     points : number;

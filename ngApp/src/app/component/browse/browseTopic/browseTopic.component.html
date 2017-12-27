@@ -6,10 +6,10 @@
        
       <div id="quiz" class="quiz">
         <div class="quiz-name">
-          {{quiz.name}}
+          {{quiz.quizTitle}}
         </div>
         <div class="creator">
-          Creator ID: {{quiz.creatorId}}
+          Creator ID: {{quiz.username}}
         </div>
         <div class="total-attempt">
           Total Attempts: {{quiz.totalAttempts}}
@@ -17,8 +17,8 @@
         <div class="description">
           {{quiz.description}}
         </div>
-        <a routerLink="/quiz/{{quiz.id}}"><button class="btn btn-primary">Take Test</button></a> 
-        <a routerLink="/quiz/{{quiz.id}}"><button class="btn btn-info">Study Questions</button></a> 
+        <a routerLink="/quiz/{{quiz.quizId}}"><button class="btn btn-primary">Take Test</button></a> 
+        <a routerLink="/quiz/{{quiz.quizId}}"><button class="btn btn-info">Study Questions</button></a> 
       </div>
     </li>
   </ul>
