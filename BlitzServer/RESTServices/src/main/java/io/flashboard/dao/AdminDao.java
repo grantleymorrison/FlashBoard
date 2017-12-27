@@ -1,25 +1,21 @@
 package io.flashboard.dao;
 
-import io.flashboard.beans.users.User;
-
 public interface AdminDao {
-	//Admin
-	public void createNewAdmin(String username, String password);
-	public User selectAdminById(int adminId);
 	
 	//User
-	public void approveUser(String username);
-	public void promoteUserToWriter(int userId); 	//{user.setWriter(true);}
-	public void approveUserAccount(int userId); 	//{user.setApproved(true);}
-	public void blacklistUserAccount(int userId);	//{user.setBlacklist(true);}
-	public void denyUserAccount(int userId); 		//{user.setApproved(false);}
-	public void deleteUserAccount(int userId);
+	public boolean approveUser(String username);
+	public boolean promoteUserToWriter(String username); 	//{user.setWriter(true);}
+	public boolean blacklistUserAccount(String username);	//{user.setBlacklist(true);}
+	public boolean denyUserAccount(String username); 		//{user.setApproved(false);}
+	public boolean deleteUserAccount(String username);
+	public boolean restoreUserAccount(String username);
 	
 	//Test
-	public void removeTestById(int testId);
+	
+	public boolean removeTestById(int testId);
 	
 	
 	//Comment
-	public void addCommentByTestId(int userId, int testId, String comment);
-	public void removeCommentById(int commentId);
+	public boolean addCommentByTestId(String username, int testId, String comment);
+	public boolean removeCommentById(int commentId);
 }

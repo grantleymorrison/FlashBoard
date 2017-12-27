@@ -44,21 +44,6 @@ public class UserDaoImpl implements UserDao{
 		return bool;
 	}
 	
-	public User selectUserByUsername(String username) {
-		Session session = HibernateUtil.getSession();
-		String hql = "FROM USERS U WHERE U.USERNAME = " + username;
-		User newUser = null;
-		try {
-			Query query = session.createQuery(hql);
-			newUser = (User)query.uniqueResult();
-		} catch (HibernateException he) {
-			he.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return newUser;
-	}
-	
 	/**
 	 * Gets a unique user from the database, if he/she exists
 	 * Utilizes Criterias
@@ -66,6 +51,7 @@ public class UserDaoImpl implements UserDao{
 	 * @param username username to be searched for
 	 * @return the user if he/she exists, otherwise null
 	 */
+	@Override
 	public User getUserByUsername(String username) {
 		Session session = HibernateUtil.getSession();
 		Criteria criteria;
@@ -83,7 +69,7 @@ public class UserDaoImpl implements UserDao{
 		}
 		return user;
 	}
-
+	
 	@Override
 	public User selectUserById(int userId) {
 		Session session = HibernateUtil.getSession();
@@ -104,7 +90,7 @@ public class UserDaoImpl implements UserDao{
 	public boolean addTakenTest(String username, TakenQuiz test) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
-		User currUser = selectUserByUsername(username);
+		User currUser = getUserByUsername(username);
 		List<TakenQuiz> newList;
 		newList = currUser.getTakenTests();
 		newList.add(test);

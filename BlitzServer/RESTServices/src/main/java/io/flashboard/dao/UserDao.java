@@ -14,6 +14,6 @@ public interface UserDao {
 	public boolean createNewUser(String firstName, String lastName, String username,
 			String email, String password);
 	public User selectUserById(int userId);
-	public User selectUserByUsername(String username);
+	public User getUserByUsername(String username);
 	public boolean addTakenTest(String username, TakenQuiz test);	
 }
