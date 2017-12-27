@@ -1,4 +1,4 @@
-package io.flashboard.beans;
+package io.flashboard.beans.users;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,20 +22,20 @@ public class Message {
 	private int messageId;
 	
 	@Column(name="USER_ID")
-	private int userId;
+	private String userId;
 	
 	@Column(name="CONTENT")
 	private String content;
 	
 	
-	public Message( int userId , int messageId , String message ) {
+	public Message( String userId , int messageId , String message ) {
 		this.userId = userId;
 		this.messageId = messageId;
 		this.content = message;
 	}
 	
 
-	public Message(int userId, String content) {
+	public Message(String userId, String content) {
 		this.userId = userId;
 		this.content = content;
 	}
@@ -45,11 +45,11 @@ public class Message {
 		
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

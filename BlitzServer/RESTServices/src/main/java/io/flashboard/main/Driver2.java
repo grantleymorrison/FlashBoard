@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import io.flashboard.beans.User;
+import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
 
 public class Driver2 {

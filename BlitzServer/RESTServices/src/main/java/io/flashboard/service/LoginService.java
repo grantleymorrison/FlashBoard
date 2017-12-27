@@ -1,6 +1,6 @@
 package io.flashboard.service;
 
-import io.flashboard.beans.User;
+import io.flashboard.beans.users.User;
 import io.flashboard.dao.UserDaoImpl;
 import io.flashboard.jsonbeans.AuthData;
 
@@ -52,7 +52,7 @@ public class LoginService {
 			return null;
 		}
 		
-		return new AuthData(user.getRoleFlag());
+		return new AuthData(user);
 		
 	}
 }

@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import io.flashboard.beans.Message;
+import io.flashboard.beans.users.Message;
 import io.flashboard.util.HibernateUtil;
 
 public class MessageDaoImpl implements MessageDao {

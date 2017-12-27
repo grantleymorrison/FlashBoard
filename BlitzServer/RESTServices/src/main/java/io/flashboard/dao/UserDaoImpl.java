@@ -9,8 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import io.flashboard.beans.CompletedComprehensionTest;
-import io.flashboard.beans.User;
+import io.flashboard.beans.quiz.TakenQuiz;
+import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
 
 public class UserDaoImpl implements UserDao{
@@ -43,24 +43,10 @@ public class UserDaoImpl implements UserDao{
 		}
 		return bool;
 	}
-	
-	public User selectUserByUsername(String username) {
-		Session session = HibernateUtil.getSession();
-		String hql = "FROM USERS U WHERE U.USERNAME = " + username;
-		User newUser = null;
-		try {
-			Query query = session.createQuery(hql);
-			newUser = (User)query.uniqueResult();
-		} catch (HibernateException he) {
-			he.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return newUser;
-	}
+
 	
 	/**
-	 * Gets a unique user from the database, if he/she exists
+	 * Gets a unique user from the database, if they exist
 	 * Utilizes Criterias
 	 * 
 	 * @param username username to be searched for
@@ -85,7 +71,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User selectUserById(int userId) {
+	public User getUserById(int userId) {
 		Session session = HibernateUtil.getSession();
 		String hql = "FROM USERS U WHERE U.USER_ID = " + userId;
 		User newUser = null;
@@ -101,11 +87,11 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public boolean addTakenTest(String username, CompletedComprehensionTest test) {
+	public boolean addTakenTest(String username, TakenQuiz test) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
-		User currUser = selectUserByUsername(username);
-		List<CompletedComprehensionTest> newList;
+		User currUser = getUserByUsername(username);
+		List<TakenQuiz> newList;
 		newList = currUser.getTakenTests();
 		newList.add(test);
 		currUser.setTakenTests(newList);

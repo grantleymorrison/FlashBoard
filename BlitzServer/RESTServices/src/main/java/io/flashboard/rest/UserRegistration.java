@@ -3,16 +3,10 @@ package io.flashboard.rest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
-import com.google.gson.Gson;
-
-import io.flashboard.beans.RegistrationData;
-import io.flashboard.dao.UserDaoImpl;
+import io.flashboard.jsonbeans.RegistrationData;
 import io.flashboard.service.RegistrationService;
 
 @Path("/registration")

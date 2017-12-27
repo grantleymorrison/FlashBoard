@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 // project imports
@@ -20,6 +20,8 @@ import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
+import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
+import { LoginComponent } from './component/login/login.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
@@ -28,6 +30,7 @@ import { AlertService } from './services/alert/alert.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { FooterComponent } from './component/footer/footer.component';
 
+import { JwtInterceptor } from './_helper/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { FooterComponent } from './component/footer/footer.component';
     BrowseComponent,
     BrowseTopicComponent,
     CreateComponent,
+    NewQuestionComponent,
     HomeComponent,
     NavbarComponent,
     ProfileComponent,
@@ -44,7 +48,8 @@ import { FooterComponent } from './component/footer/footer.component';
     StudyComponent,
     AdminComponent,
     AlertComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,11 @@ import { FooterComponent } from './component/footer/footer.component';
     TopicService,
     QuizService,
     AlertService,
-    AuthenticationService],
+    AuthenticationService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

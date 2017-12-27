@@ -1,9 +1,10 @@
 package io.flashboard.beans.quiz;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,102 +15,145 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import io.flashboard.beans.users.Message;
 
 @Entity
-@Table(name="QUIZ")
+@Table(name = "QUIZ")
 public class Quiz {
-	
-	// Properties
 	@Id
 	@Column(name="QUIZ_ID")
-	@SequenceGenerator(sequenceName="QUIZ_SEQ", name="QUIZ_SEQ")
+	@SequenceGenerator(sequenceName="QUIZ_SEQ", name="QUIZ_SEQ") //seqe for incrementing id 
 	@GeneratedValue(generator="QUIZ_SEQ", strategy=GenerationType.SEQUENCE)
-	private int quizId;
-	
+	private int quizId; 
 	@Column(name="QUIZ_TITLE")
 	private String quizTitle;
-	
-	@Column(name="TOPIC")
+	@Column(name="QUIZ_SUBJECT")
 	private String topic;
-	
-	@Column(name="DESCRIPTION")
+	@Column(name="QUIZ_DESC")
 	private String description;
 	
-	@Column(name="USERNAME")
-	private String username;
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = false)
+	@Column(name = "QUESTIONS")
+	private List<QuizQuestion> questions;
 	
-	@Column(name="CREATED_DATE")
-	private LocalDate createdDate;
-	
+	@Column(name="CREATOR_ID")
+	private String creatorId;
+	@Column(name="CREATED_ON")
+	private LocalDateTime createdOn;
 	@Column(name="MAX_SCORE")
-	private int maxScore;
+	private int maxScore; 
+	@Column(name="TOTAL_ATTEMPTS")
+	private static int totalAttempts;
 	
-	@Column(name="TOTAL_ATTEMPT")
-	private int totalAttempts;
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@Column(name="RATINGS")
+	private List<Rating> ratings;
 	
-	@OneToMany(mappedBy="quizId", fetch=FetchType.EAGER)
-	private List<Question> questions = new ArrayList<>();
-	
-	@OneToMany(mappedBy="commentId", fetch=FetchType.EAGER)
-	private List<Comment> comments;
-	
-	// Constructors
-	// Contructor using no arg
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@Column(name="COMMENTS")
+	private List<Message> comments;
+		
+	/**
+	 * No-args constructor
+	 */
 	public Quiz() {
-		super();
+
+		this.quizTitle = "TITLE";
+		this.topic = "TOPIC";
+		this.description = "DESCRIPTION"; 
+
+		this.maxScore = 0; 
+		this.creatorId = "N/A"; 
+		this.createdOn = LocalDateTime.now();
+		this.comments = new ArrayList<Message>();
+		this.ratings = new ArrayList<Rating>(); 
+		this.questions = new ArrayList<QuizQuestion>();
 	}
-	
-	// Constructor using no quizId
-	public Quiz(String quizTitle, String topic, String description, String username, LocalDate createdDate,
-			int maxScore, int totalAttempts, List<Question> questions, List<Comment> comments) {
-		super();
+		
+	/**
+	 * Constructor using only text-oriented fields.
+	 * @param quizTitle
+	 * @param topic
+	 * @param description
+	 */
+	public Quiz(String quizTitle, String topic, String description) {
 		this.quizTitle = quizTitle;
 		this.topic = topic;
 		this.description = description;
-		this.username = username;
-		this.createdDate = createdDate;
-		this.maxScore = maxScore;
-		this.totalAttempts = totalAttempts;
-		this.questions = questions;
-		this.comments = comments;
+		this.createdOn = LocalDateTime.now();
+
+		this.questions = new ArrayList<QuizQuestion>();
+		this.maxScore = 0; 
+		this.creatorId = "N/A"; 
+		this.comments = new ArrayList<Message>();
+		this.ratings = new ArrayList<Rating>(); 
 	}
 
-	// Constructor using all fields
-	public Quiz(int quizId, String quizTitle, String topic, String description, String username, LocalDate createdDate,
-			int maxScore, int totalAttempts, List<Question> questions, List<Comment> comments) {
-		super();
+
+
+	/**
+	 * Constructor with params for all member fields but quizId
+	 * @param quizTitle
+	 * @param topic
+	 * @param description
+	 * @param questions
+	 * @param creatorId
+	 * @param maxScore
+	 * @param ratings
+	 * @param comments
+	 */
+	public Quiz(String quizTitle, String topic, String description, List<QuizQuestion> questions,
+			String creatorId, int maxScore, List<Rating> ratings, List<Message> comments) {
+		this.quizTitle = quizTitle;
+		this.topic = topic;
+		this.description = description;
+		this.questions = questions;
+		this.creatorId = creatorId;
+		this.createdOn = LocalDateTime.now();
+		this.maxScore = maxScore;
+		this.ratings = ratings;
+		this.comments = comments;
+	}
+	
+	
+
+	/**
+	 * Constructor using all fields
+	 * @param quizId
+	 * @param quizTitle
+	 * @param topic
+	 * @param description
+	 * @param questions
+	 * @param creatorId
+	 * @param maxScore
+	 * @param ratings
+	 * @param comments
+	 */
+	public Quiz(int quizId, String quizTitle, String topic, String description,
+			List<QuizQuestion> questions, String creatorId, int maxScore,
+			List<Rating> ratings, List<Message> comments) {
 		this.quizId = quizId;
 		this.quizTitle = quizTitle;
 		this.topic = topic;
 		this.description = description;
-		this.username = username;
-		this.createdDate = createdDate;
-		this.maxScore = maxScore;
-		this.totalAttempts = totalAttempts;
 		this.questions = questions;
+		this.creatorId = creatorId;
+		this.createdOn = LocalDateTime.now();;
+		this.maxScore = maxScore;
+		this.ratings = ratings;
 		this.comments = comments;
 	}
-
-	// Override methods
-	@Override
-	public String toString() {
-		return "Quiz [quizId=" + quizId + ", quizTitle=" + quizTitle + ", topic=" + topic + ", description="
-				+ description + ", username=" + username + ", createdDate=" + createdDate + ", maxScore=" + maxScore
-				+ ", totalAttempts=" + totalAttempts + ", questions=" + questions + ", comments=" + comments + "]";
-	}
 	
-
-	// Getters and Setters
-	public int getQuizId() {
+	public int getTestId() {
 		return quizId;
 	}
-	public void setQuizId(int quizId) {
+	public void setTestId(int quizId) {
 		this.quizId = quizId;
 	}
-	public String getQuizTitle() {
+	public String getTestTitle() {
 		return quizTitle;
 	}
-	public void setQuizTitle(String quizTitle) {
+	public void setTestTitle(String quizTitle) {
 		this.quizTitle = quizTitle;
 	}
 	public String getTopic() {
@@ -124,17 +168,23 @@ public class Quiz {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getUsername() {
-		return username;
+	public List<QuizQuestion> getQuestions() {
+		return questions;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setQuestions(List<QuizQuestion> questions) {
+		this.questions = questions;
 	}
-	public LocalDate getCreatedDate() {
-		return createdDate;
+	public String getCreatorId() {
+		return creatorId;
 	}
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatorId(String creatorId) {
+		this.creatorId = creatorId;
+	}
+	public LocalDateTime getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(LocalDateTime createdOn) {
+		this.createdOn = createdOn;
 	}
 	public int getMaxScore() {
 		return maxScore;
@@ -142,24 +192,49 @@ public class Quiz {
 	public void setMaxScore(int maxScore) {
 		this.maxScore = maxScore;
 	}
-	public int getTotalAttempts() {
+	public static int getTotalAttempts() {
 		return totalAttempts;
 	}
-	public void setTotalAttempts(int totalAttempts) {
-		this.totalAttempts = totalAttempts;
+	public static void setTotalAttempts(int totalAttempts) {
+		Quiz.totalAttempts = totalAttempts;
 	}
-	public List<Question> getQuestions() {
-		return questions;
+	public List<Rating> getFlags() {
+		return ratings;
 	}
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
+	public void setFlags(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
-	public List<Comment> getComments() {
+	public List<Message> getComments() {
 		return comments;
 	}
-	public void setComments(List<Comment> comments) {
+	public void setComments(List<Message> comments) {
 		this.comments = comments;
 	}
 	
 	
+	public void addQuestion(QuizQuestion question) {
+		this.questions.add(question); 
+	}
+	public boolean removeQuestion(String questionText) {
+		boolean removed = false; 
+		for(QuizQuestion q : this.questions) {
+			if(q.getQuestionText().equals(questionText))
+				removed = questions.remove(q); 
+		}
+		
+		return removed; 
+	}
+
+	@Override
+	public String toString() {
+		String str = "ComprehensionTest [quizId=" + quizId + ", quizTitle=" + quizTitle + ", topic=" + topic
+				+ ", description=" + description + ", questions=\n";
+		for(QuizQuestion tq : questions) str += "\t" + tq + "\n";
+		str += "creatorId=" + creatorId
+				+ ", createdOn=" + createdOn + ", maxScore=" + maxScore + ", ratings=" + ratings + ", comments=" + comments
+				+ "]";
+		return str; 
+	}
+	
+
 }
