@@ -1,7 +1,7 @@
 package io.flashboard.service;
 
-import io.flashboard.beans.users.RegistrationData;
 import io.flashboard.dao.UserDaoImpl;
+import io.flashboard.jsonbeans.RegistrationData;
 
 public class RegistrationService {
 

@@ -24,7 +24,11 @@ public class ProfileData {
 		this.avgScore = avgScore;
 	}
 
-
+	//Wrong token constructor
+	public ProfileData(String username) {
+		super();
+		this.username = username;
+	}
 
 	public String getUsername() {
 		return username;

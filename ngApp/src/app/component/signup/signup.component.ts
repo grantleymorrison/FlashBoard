@@ -19,6 +19,7 @@ export class SignUpComponent {
     public favColor;
     public feedbackMsg = "";
     public msgStyle;
+    public url = 'http://localhost:3000/flashboard/registration';
 
     private successStyle = {
         color:'green'
@@ -32,7 +33,7 @@ export class SignUpComponent {
     }
 
     public registerAccount() {
-       this.http.post('http://localhost:3000/flashboard/registration', {
+       this.http.post(this.url, {
             "fname": this.fname,
             "lname": this.lname,
             "username": this.username,
