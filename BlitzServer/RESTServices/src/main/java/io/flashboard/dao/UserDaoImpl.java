@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -12,6 +11,11 @@ import org.hibernate.criterion.Restrictions;
 import io.flashboard.beans.quiz.TakenQuiz;
 import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
+
+//TODO: Implement
+	/* verifyCredentials
+	 * userExists
+	 */
 
 public class UserDaoImpl implements UserDao{
 	
@@ -43,15 +47,15 @@ public class UserDaoImpl implements UserDao{
 		}
 		return bool;
 	}
-
 	
 	/**
-	 * Gets a unique user from the database, if they exist
+	 * Gets a unique user from the database, if he/she exists
 	 * Utilizes Criterias
 	 * 
 	 * @param username username to be searched for
 	 * @return the user if he/she exists, otherwise null
 	 */
+	@Override
 	public User getUserByUsername(String username) {
 		Session session = HibernateUtil.getSession();
 		Criteria criteria;
@@ -69,22 +73,7 @@ public class UserDaoImpl implements UserDao{
 		}
 		return user;
 	}
-
-	@Override
-	public User getUserById(int userId) {
-		Session session = HibernateUtil.getSession();
-		String hql = "FROM USERS U WHERE U.USER_ID = " + userId;
-		User newUser = null;
-		try {
-			Query query = session.createQuery(hql);
-			newUser = (User)query.uniqueResult();
-		} catch (HibernateException he) {
-			he.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return newUser;
-	}
+	
 	
 	@Override
 	public boolean addTakenTest(String username, TakenQuiz test) {
@@ -98,5 +87,17 @@ public class UserDaoImpl implements UserDao{
 		session.save(currUser);
 		tx.commit();
 		return true;
+	}
+
+	@Override
+	public int verifyCredentals(String username, String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean userExists(String username) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

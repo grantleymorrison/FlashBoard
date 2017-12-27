@@ -10,11 +10,11 @@ import io.flashboard.util.HibernateUtil;
 public class MessageDaoImpl implements MessageDao {
 	
 	@Override
-	public boolean createMessage(int userId, String content) {
+	public boolean createMessage(String username, String content) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Boolean bool = false;
-		Message message = new Message(userId, content);
+		Message message = new Message(username, content);
 		
 		try {
 			tx = session.beginTransaction();
