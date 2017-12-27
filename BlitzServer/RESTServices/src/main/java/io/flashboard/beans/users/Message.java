@@ -21,22 +21,22 @@ public class Message {
 	@GeneratedValue(generator="MESSAGE_SEQ", strategy=GenerationType.SEQUENCE)
 	private int messageId;
 	
-	@Column(name="USER_ID")
-	private String userId;
+	@Column(name="USERNAME")
+	private String username;
 	
 	@Column(name="CONTENT")
 	private String content;
 	
 	
-	public Message( String userId , int messageId , String message ) {
-		this.userId = userId;
+	public Message( String username , int messageId , String message ) {
+		this.username = username;
 		this.messageId = messageId;
 		this.content = message;
 	}
 	
 
-	public Message(String userId, String content) {
-		this.userId = userId;
+	public Message(String username, String content) {
+		this.username = username;
 		this.content = content;
 	}
 
@@ -45,12 +45,12 @@ public class Message {
 		
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getusername() {
+		return username;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setusername(String username) {
+		this.username = username;
 	}
 
 	public int getMessageId() {

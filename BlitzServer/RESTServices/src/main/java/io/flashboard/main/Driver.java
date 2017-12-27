@@ -33,7 +33,7 @@ public class Driver {
 			tx.commit(); 
 			
 			tx = session.beginTransaction();
-			Message testMessage = new Message(testUser.getUserId(), "This is a comment message");
+			Message testMessage = new Message(testUser.getUsername(), "This is a comment message");
 			session.save(testMessage);
 			tx.commit(); 
 			tx = session.beginTransaction();
