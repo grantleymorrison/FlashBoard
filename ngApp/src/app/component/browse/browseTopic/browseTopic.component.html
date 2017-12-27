@@ -3,22 +3,25 @@
   <button class="btn btn-default" (click)="goBack()">Go Back</button>
   <ul class="quizs">
     <li id="quizs" *ngFor="let quiz of quizs">
-       
+
       <div id="quiz" class="quiz">
         <div class="quiz-name">
-          {{quiz.quizTitle}}
+          <h4>{{quiz.quizTitle}}</h4>
         </div>
         <div class="creator">
           Creator ID: {{quiz.username}}
         </div>
-        <div class="total-attempt">
-          Total Attempts: {{quiz.totalAttempts}}
-        </div>
         <div class="description">
           {{quiz.description}}
         </div>
-        <a routerLink="/quiz/{{quiz.quizId}}"><button class="btn btn-primary">Take Test</button></a> 
-        <a routerLink="/study/{{quiz.quizId}}"><button class="btn btn-info">Study Questions</button></a> 
+        <div class="choices">
+          <a routerLink="/quiz/{{quiz.quizId}}">
+            <button class="btn btn-primary">Take Test</button>
+          </a>
+          <a routerLink="/study/{{quiz.quizId}}">
+            <button class="btn btn-info">Study Questions</button>
+          </a>
+        </div>
       </div>
     </li>
   </ul>

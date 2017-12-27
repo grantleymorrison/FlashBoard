@@ -1,46 +1,62 @@
 <h2>{{quiz.quizTitle}}</h2>
 <h4>By: {{quiz.username}}</h4>
-<button class="btn btn-default" (click)="goBack()">Go Back</button>
-<div class="quiz-section">
-  <form>
-    <ul id="questions" class="questions">
-      <li class="question" *ngFor="let question of quiz.questions; let i = index">
-        <div id="question-header">
-          {{i+1}}. {{ question.question }}
+<div class="container">
+  <button class="btn btn-default" (click)="goBack()">Go Back</button>
+
+
+  <div class="quiz-section">
+    <form>
+      <ul id="questions" class="questions">
+
+
+        <li class="question" *ngFor="let question of quiz.questions; let i = index">
+          <div id="question-header">
+            {{i+1}}. {{ question.question }}
+          </div>
+          <div class="options" *ngFor="let option of question.options; let j = index">
+            <input type="radio" (change)= "onSelection(option, i)" name="option{{i}}" [value]="option" > {{ option }}
+            <br>
+          </div>
+
+
+
+          <hr>
+          <div class="rating">
+            <i class="em em-birthday"></i> Easy: {{question.rating.hard}}
+            <i class="em em-smiling_imp"></i> Hard: {{question.rating.easy}}
+            <i class="em em---1"></i> Like {{question.rating.like}}
+            <i class="em em--1"></i> Dislike {{question.rating.dislike}}
+          </div>
+        </li>
+      </ul>
+      <div class="submit-quiz">
+        <button id="submit-quiz-btn" class="btn btn-success btn-lg" (click)="submitQuiz()">Submit Quiz</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="comments-section">
+    <label id="comments-label">Comments</label>
+
+    <ul id="comments" class="comments">
+      <li class="comment" *ngFor="let comment of quiz.comments">
+        <div>
+          <strong>Comment ID:</strong> {{comment.commentId}}
         </div>
-        <div class="options" *ngFor="let option of question.options; let j = index">
-          <input type="radio" name="option{{i}}" value="answer{{j}}"> {{ option }}
-          <br>
+        <div>
+          <strong>Username:</strong> {{comment.username}}
         </div>
-        <div class="rating">ratings</div>
-        <i class="em em-birthday"></i> Easy: {{question.rating.hard}}
-        <i class="em em-smiling_imp"></i> Hard: {{question.rating.easy}}
-        <i class="em em---1"></i> Like {{question.rating.like}}
-        <i class="em em--1"></i> Dislike {{question.rating.dislike}}
+        <div>
+          <strong>Date:</strong> {{comment.createdDate}}
+        </div>
+        <strong> Comment: </strong>
+        <div class="comment-content">
+          {{comment.content}}
+        </div>
       </li>
     </ul>
-    <div class="submit-quiz">
-      <input class="btn btn-default" type="submit" value="Submit Quiz" style="float:right">
-    </div>
-  </form>
-</div>
-
-<div class="comments-section">
-  <label id="comments-label">Comments</label>
-
-  <ul id="comments" class="comments">
-    <li class="comment" *ngFor="let comment of quiz.comments">
-      <div>
-        Comment ID: {{comment.commentId}}
-      </div>
-      <div>
-       Username: {{comment.username}} Date: {{comment.createdDate}}
-            </div>
-      <div>
-        Comment: {{comment.content}}
-      </div>
-    </li>
-  </ul>
-  <input type="textbox">
-  <button (click)="submitComment()">Submit Comment</button>
+    <textarea class="add-comment" name="addComment" form="commentForm"></textarea>
+    <button class="btn btn-primary" (click)="submitComment()">Submit Comment</button>
+  </div>
 </div>

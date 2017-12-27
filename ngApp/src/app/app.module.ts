@@ -26,6 +26,7 @@ import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
 import { AlertService } from './services/alert/alert.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
+import { FooterComponent } from './component/footer/footer.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AuthenticationService } from './services/authentication/authentication.
     SignUpComponent,
     StudyComponent,
     AdminComponent,
-    AlertComponent
+    AlertComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
