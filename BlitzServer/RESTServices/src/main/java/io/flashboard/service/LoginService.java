@@ -52,7 +52,7 @@ public class LoginService {
 			return null;
 		}
 		
-		return new AuthData(user.getRoleFlag());
+		return new AuthData(user);
 		
 	}
 }

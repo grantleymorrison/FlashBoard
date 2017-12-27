@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
     selector: 'app-navbar',
@@ -9,43 +9,30 @@ import { Router } from '@angular/router';
         './navbar.component.css'
     ]
 })
-
 export class NavbarComponent{
     // Setting state to true or false will generate the appropriate selections
-    public loggedIn = false;
-    public username;
-    public password;
-    public profileUrl = "profile/*";
-    public authData = {
-      token: "",
-      userRole: 0
+    public loginData = {
+        loggedIn: false,
+        profileUrl: "profile/*",
+        userRole: 0
     };
 
-    constructor(private http: HttpClient, private router: Router){
+    constructor(private authService: AuthenticationService, private router: Router){
 
     }
 
-    public loginAccount() {
-      let body = {"username":this.username, "password":this.password}
-       this.http.post('http://localhost:3000/flashboard/login', body)
-       .subscribe(
-            res => {
-                console.log(res);
-                this.authData.token = res["token"];
-                this.authData.userRole = res["userRole"];
-                this.loggedIn = true;
-                this.profileUrl = "profile/" + this.username;
-            },
-            err => {
-                console.log(err + " Error occured");
-            });
+    public loginChange(event){
+        this.loginData = event;
+        console.log(this.loginData);
     }
 
     public logOutAccount(){
-      this.loggedIn = false;
-      this.profileUrl = "profile/*";
-      this.authData.userRole = 0;
-      this.authData.token = "";
-      this.router.navigate(['home']);
+        this.authService.logout();
+        this.loginData.loggedIn = false;
+        this.loginData.profileUrl = "profile/*";
+        this.loginData.userRole = 0;
+
+        this.router.navigate(['home']);
     }
+
 }
