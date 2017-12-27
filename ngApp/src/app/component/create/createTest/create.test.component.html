@@ -1,0 +1,14 @@
+<h2>Creating a New Test</h2>
+<div>
+    <input type = "text" name = "testTitle" placeholder = "Enter Test Title..." class = "title">
+    <input type = "text" name = "testTopic" placeholder = "Enter Topic..." class = "topic">
+    <br>
+    <input type = "text" name = "testDescription" placeholder = "Enter a Description..." class = "description">
+        
+</div>
+<div>
+    <ul style = "list-style-type: none">
+        <li *ngFor = "let q of questions"><new-question id = {{q}}></new-question></li>
+    </ul>
+</div>
+<button (click)="addQuestion()" value="New Question" id="newQuestion">Add Question</button>

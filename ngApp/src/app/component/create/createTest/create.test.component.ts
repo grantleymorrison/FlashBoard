@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 
 
 @Component({
-    selector: 'app-create',
-    templateUrl: './create.component.html'
-
+    selector: 'app-create-test',
+    templateUrl: './create.test.component.html',
+    styleUrls: ['./create.test.component.css']
 })
-export class CreateComponent{
+export class CreateTestComponent{
     questionId = 0
     questions = [
         0
