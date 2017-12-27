@@ -13,6 +13,12 @@ import io.flashboard.beans.quiz.TakenQuiz;
 import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
 
+//TODO: Implement
+	/*
+	 * verifyCredentials
+	 * userExists
+	 */
+
 public class UserDaoImpl implements UserDao{
 	
 
@@ -70,21 +76,6 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
-	@Override
-	public User selectUserById(int userId) {
-		Session session = HibernateUtil.getSession();
-		String hql = "FROM USERS U WHERE U.USER_ID = " + userId;
-		User newUser = null;
-		try {
-			Query query = session.createQuery(hql);
-			newUser = (User)query.uniqueResult();
-		} catch (HibernateException he) {
-			he.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return newUser;
-	}
 	
 	@Override
 	public boolean addTakenTest(String username, TakenQuiz test) {
@@ -98,5 +89,17 @@ public class UserDaoImpl implements UserDao{
 		session.save(currUser);
 		tx.commit();
 		return true;
+	}
+
+	@Override
+	public int verifyCredentals(String username, String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean userExists(String username) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -20,6 +20,7 @@ import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
+import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
 import { LoginComponent } from './component/login/login.component';
 
 // import Services
@@ -35,6 +36,7 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     BrowseComponent,
     BrowseTopicComponent,
     CreateComponent,
+    NewQuestionComponent,
     HomeComponent,
     NavbarComponent,
     ProfileComponent,
