@@ -2,6 +2,7 @@ package io.flashboard.beans.quiz;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ public class Comment implements Serializable {
 	private String username;
 	
 	@Column(name="CREATED_DATE")
-	private LocalDate createdDate;
+	private LocalDateTime createdDate;
 	
 	@Column(name="CONTENT")
 	private String content;
@@ -47,20 +48,20 @@ public class Comment implements Serializable {
 	}
 	
 	// Constrctor using no commentId
-	public Comment(String username, LocalDate createdDate, String content) {
+	public Comment(String username, String content) {
 		super();
 		this.username = username;
-		this.createdDate = createdDate;
+		this.createdDate = LocalDateTime.now();
 		this.content = content;
 	}
 
 	
 	// Constructor using all fields
-	public Comment(int commentId, String username, LocalDate createdDate, String content) {
+	public Comment(int commentId, String username, String content) {
 		super();
 		this.commentId = commentId;
 		this.username = username;
-		this.createdDate = createdDate;
+		this.createdDate = LocalDateTime.now();
 		this.content = content;
 	}
 	
@@ -84,10 +85,10 @@ public class Comment implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public LocalDate getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(LocalDate createdDate) {
+	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 	public String getContent() {
