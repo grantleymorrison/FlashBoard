@@ -24,7 +24,7 @@ import { WriterMenuComponent } from './component/create/writer.menu.component';
 import { CreateStudyComponent } from './component/create/createStudy/create.study.component'; 
 import { CreateTestComponent } from './component/create/createTest/create.test.component';
 import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
-import { PromoteeComponent } from './component/promotee/promotee.component';
+import { NewUserComponent } from './component/newuser/newuser.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
@@ -53,7 +53,7 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     CreateStudyComponent,
     CreateTestComponent,
     NewQuestionComponent,
-    PromoteeComponent
+    NewUserComponent
 
   ],
   imports: [
