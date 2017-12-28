@@ -7,8 +7,6 @@
   <div class="quiz-section">
     <form>
       <ul id="questions" class="questions">
-
-
         <li class="question" *ngFor="let question of quiz.questions; let i = index">
           <div id="question-header">
             {{i+1}}. {{ question.question }}
@@ -17,9 +15,6 @@
             <input type="radio" (change)= "onSelection(option, i)" name="option{{i}}" [value]="option" > {{ option }}
             <br>
           </div>
-
-
-
           <hr>
           <div class="rating">
             <i class="em em-birthday"></i> Easy: {{question.rating.hard}}

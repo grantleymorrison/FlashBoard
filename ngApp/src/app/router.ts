@@ -11,6 +11,7 @@ import { BrowseTopicComponent } from './component/browse/browseTopic/browseTopic
 import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
+import { StudyGuideComponent } from './component/studyguide/studyguide.component';
 
 export const AppRoutes: Routes = [
     {
@@ -26,13 +27,18 @@ export const AppRoutes: Routes = [
         path: 'browse/:pathName',
         component: BrowseTopicComponent
     },
+
     {
         path: 'quiz/:id',
         component: QuizComponent
     },
     {
-        path: 'study/:id',
+        path: 'study',
         component: StudyComponent
+    },
+    {
+        path: 'study/:id',
+        component: StudyGuideComponent
     },
     {
         path: 'create',

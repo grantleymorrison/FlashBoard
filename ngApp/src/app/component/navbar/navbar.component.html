@@ -14,7 +14,9 @@
       <ul class="nav navbar-nav">
         <li class="nav-item">
           <a routerLink="search">
-            <span class="glyphicon glyphicon-search"></span> Search<span class="sr-only"></span></a>
+            <span class="glyphicon glyphicon-search"></span> Search
+            <span class="sr-only"></span>
+          </a>
         </li>
         <li class="nav-item">
           <a routerLink="create">
@@ -22,10 +24,17 @@
         </li>
         <li class="nav-item">
           <a routerLink="browse">
-            <span class="glyphicon glyphicon-cutlery"></span> Browse</a>
+            <span class="glyphicon glyphicon glyphicon-education
+            "></span> Quiz</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="study">
+            <span class="glyphicon glyphicon-book"> Study</span>
+          </a>
         </li>
         <li class="nav-item" *ngIf="loginData.userRole == 2">
-          <a routerLink="admin"><span class="	glyphicon glyphicon-wrench"></span> Administrative Tools </a>
+          <a routerLink="admin">
+            <span class="	glyphicon glyphicon-wrench"></span> Administrative Tools </a>
         </li>
 
       </ul>
@@ -43,7 +52,7 @@
 
         <!-- Modal Start-->
         <div class="modal fade" id="myModal" role="dialog">
-         <app-login (login)="loginChange($event)"></app-login>
+          <app-login (login)="loginChange($event)"></app-login>
         </div>
         <!-- ./Modal Ends -->
         <li *ngIf="!loginData.loggedIn">

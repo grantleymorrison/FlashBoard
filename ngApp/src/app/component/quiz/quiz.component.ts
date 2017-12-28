@@ -58,7 +58,7 @@ export class QuizComponent implements OnInit {
         else {
             let count = 0;
             for (let question of this.quiz.questions) {
-                if(this.selectedEntries[count] == undefined){
+                if(this.selectedEntries == undefined || this.selectedEntries[count] == undefined){
                     alert("Not all answers are answered")
                     break;
                 }

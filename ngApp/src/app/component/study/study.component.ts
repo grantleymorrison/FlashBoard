@@ -12,27 +12,14 @@ import { of } from 'rxjs/observable/of';
   styleUrls: ['./study.component.css']
 })
 export class StudyComponent implements OnInit {
-  quiz: Quiz;
+
 
   constructor(
-    private route: ActivatedRoute,
-    private quizService: QuizService,
-    private location: Location
+
   ) { }
 
   ngOnInit() {
-    this.getQuiz();
-  }
-  getQuiz(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    this.quizService.getQuiz(id)
-      .subscribe(quiz => this.quiz = quiz);
-  }
 
-  goBack(): void {
-    this.location.back();
   }
-
 
 }

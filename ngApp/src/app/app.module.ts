@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
 // project imports
@@ -22,6 +23,7 @@ import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
 import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
 import { LoginComponent } from './component/login/login.component';
+import { StudyGuideComponent } from './component/studyguide/studyguide.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
@@ -31,6 +33,8 @@ import { AuthenticationService } from './services/authentication/authentication.
 import { FooterComponent } from './component/footer/footer.component';
 
 import { JwtInterceptor } from './_helper/jwt.interceptor';
+import { TutorialService } from './services/tutorial/tutorial.service';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +53,8 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     AdminComponent,
     AlertComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    StudyGuideComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,7 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     TopicService,
     QuizService,
     AlertService,
+    TutorialService,
     AuthenticationService, {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
