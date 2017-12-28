@@ -10,6 +10,11 @@
 
 <div id="promoteuser" class="container col-sm-4">
     <div>
-
+        <ul>
+            <li *ngFor="let user of newUsers">
+                <app-promotee [promotee]="user"></app-promotee>
+            </li>
+        </ul>
+        
     </div>
 </div>
