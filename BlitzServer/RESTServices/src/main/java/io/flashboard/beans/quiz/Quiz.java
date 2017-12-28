@@ -15,8 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import io.flashboard.beans.users.Message;
-
 @Entity
 @Table(name = "QUIZ")
 public class Quiz {
@@ -51,7 +49,7 @@ public class Quiz {
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name="COMMENTS")
-	private List<Message> comments;
+	private List<Comment> comments;
 		
 	/**
 	 * No-args constructor
@@ -65,7 +63,7 @@ public class Quiz {
 		this.maxScore = 0; 
 		this.creatorId = "N/A"; 
 		this.createdOn = LocalDateTime.now();
-		this.comments = new ArrayList<Message>();
+		this.comments = new ArrayList<Comment>();
 		this.ratings = new ArrayList<Rating>(); 
 		this.questions = new ArrayList<QuizQuestion>();
 	}
@@ -85,7 +83,7 @@ public class Quiz {
 		this.questions = new ArrayList<QuizQuestion>();
 		this.maxScore = 0; 
 		this.creatorId = "N/A"; 
-		this.comments = new ArrayList<Message>();
+		this.comments = new ArrayList<Comment>();
 		this.ratings = new ArrayList<Rating>(); 
 	}
 
@@ -103,7 +101,7 @@ public class Quiz {
 	 * @param comments
 	 */
 	public Quiz(String quizTitle, String topic, String description, List<QuizQuestion> questions,
-			String creatorId, int maxScore, List<Rating> ratings, List<Message> comments) {
+			String creatorId, int maxScore, List<Rating> ratings, List<Comment> comments) {
 		this.quizTitle = quizTitle;
 		this.topic = topic;
 		this.description = description;
@@ -131,7 +129,7 @@ public class Quiz {
 	 */
 	public Quiz(int quizId, String quizTitle, String topic, String description,
 			List<QuizQuestion> questions, String creatorId, int maxScore,
-			List<Rating> ratings, List<Message> comments) {
+			List<Rating> ratings, List<Comment> comments) {
 		this.quizId = quizId;
 		this.quizTitle = quizTitle;
 		this.topic = topic;
@@ -204,11 +202,15 @@ public class Quiz {
 	public void setFlags(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
-	public List<Message> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
-	public void setComments(List<Message> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+	
+	public void addComment(Comment comment) {
+		this.comments.add(comment);
 	}
 	
 	
