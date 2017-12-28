@@ -1,5 +1,6 @@
 import {Component, Input } from '@angular/core';
 import { User } from '../../model/user';
+import { Topic } from '../../model/topic';
 
 @Component({
     selector: 'app-newuser',
@@ -7,5 +8,9 @@ import { User } from '../../model/user';
 })
 export class NewUserComponent{
     @Input()
-    newUser: User;
+    newUser: Topic;
+
+    sayHello(){
+        console.log(this.newUser);
+    }
 }
