@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component ({
@@ -8,6 +8,14 @@ import { Component } from '@angular/core';
 })
 
 export class NewQuestionComponent {
+    @Input() index: number; 
+    @Input() topic: string;
+    @Input() isFromTest: boolean = false; 
 
-
+    option1:string;
+    option2:string;
+    option3:string;
+    option4:string;
+    
+    
 }
