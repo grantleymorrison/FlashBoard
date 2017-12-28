@@ -9,7 +9,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './router';
 import { BrowseComponent } from './component/browse/browse.component';
-import { CreateComponent } from './component/create/create.component';
 import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SearchComponent } from './component/search/search.component';
@@ -20,8 +19,11 @@ import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
-import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
 import { LoginComponent } from './component/login/login.component';
+import { WriterMenuComponent } from './component/create/writer.menu.component'; 
+import { CreateStudyComponent } from './component/create/createStudy/create.study.component'; 
+import { CreateTestComponent } from './component/create/createTest/create.test.component';
+import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
@@ -35,8 +37,6 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     AppComponent,
     BrowseComponent,
     BrowseTopicComponent,
-    CreateComponent,
-    NewQuestionComponent,
     HomeComponent,
     NavbarComponent,
     ProfileComponent,
@@ -46,7 +46,12 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     StudyComponent,
     AdminComponent,
     AlertComponent,
-    LoginComponent
+    LoginComponent,
+    WriterMenuComponent,
+    CreateStudyComponent,
+    CreateTestComponent,
+    NewQuestionComponent
+
   ],
   imports: [
     BrowserModule,
