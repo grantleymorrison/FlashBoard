@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
 // project imports
@@ -20,6 +21,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
 import { LoginComponent } from './component/login/login.component';
+import { StudyGuideComponent } from './component/studyguide/studyguide.component';
 import { WriterMenuComponent } from './component/create/writer.menu.component'; 
 import { CreateStudyComponent } from './component/create/createStudy/create.study.component'; 
 import { CreateTestComponent } from './component/create/createTest/create.test.component';
@@ -32,7 +34,13 @@ import { QuizService } from './services/quiz/quiz.service';
 import { AlertService } from './services/alert/alert.service';
 import { AdminService } from './services/admin/admin.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
+import { FooterComponent } from './component/footer/footer.component';
+import { StudyGuideService } from './services/studyGuide/study-guide.service';
+
 import { JwtInterceptor } from './_helper/jwt.interceptor';
+import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
+
+
 
 @NgModule({
   declarations: [
@@ -48,11 +56,15 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     StudyComponent,
     AdminComponent,
     AlertComponent,
+    FooterComponent,
+    LoginComponent,
+    StudyGuideComponent,
     LoginComponent,
     WriterMenuComponent,
     CreateStudyComponent,
     CreateTestComponent,
     NewQuestionComponent,
+    PostGuideComponent,
     NewUserComponent
 
   ],
@@ -66,6 +78,7 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     TopicService,
     QuizService,
     AlertService,
+    StudyGuideService,
     AdminService,
     AuthenticationService, {
       provide: HTTP_INTERCEPTORS,

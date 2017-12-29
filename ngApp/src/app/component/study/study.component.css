@@ -1,0 +1,14 @@
+#create-post{
+    float: right;
+    border-radius: 0;
+}
+
+.container{
+    margin-top: 100px;
+}
+
+li{
+    margin: 10px;
+    list-style: none;
+    border: 1px solid aquamarine;  
+}

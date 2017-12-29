@@ -1,0 +1,9 @@
+<h2>{{guide.title}}</h2>
+<img src="{{guide.image}}"/>
+<cite>by {{guide.author}} on {{guide.createdDate | date }} </cite>
+<div class="guide-body">
+    <p *ngFor="let paragraph of guide.body">
+        {{ paragraph }}
+    </p>
+comments here
+</div>

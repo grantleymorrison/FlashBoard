@@ -32,3 +32,9 @@ input{
     width: 150px;
     font-family: 'Lobster';
 }
+.description{
+    padding-top: 80px;
+    padding-left: 150px;
+    width: 50%;
+    height: 650px;
+}
