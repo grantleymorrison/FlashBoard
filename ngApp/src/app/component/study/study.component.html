@@ -1,0 +1,17 @@
+<h1>Find your study guide here</h1>
+<button routerLink="/createStudy" id="create-post" class="btn btn-default btn-lg">Post Study Guides</button>
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <ul>
+        <li *ngFor="let guide of guides" class="col-s-4">
+            <a routerLink="/study/{{guide.studyGuideId}}">
+          <h3>{{guide.title}}</h3>
+          <p>{{guide.body[0] | slice:0:60 }} ...</p>
+        </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

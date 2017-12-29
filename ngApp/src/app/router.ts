@@ -12,6 +12,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { StudyGuideComponent } from './component/studyguide/studyguide.component';
 import { WriterMenuComponent } from './component/create/writer.menu.component'; 
+import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
 
 export const AppRoutes: Routes = [
     {
@@ -39,6 +40,10 @@ export const AppRoutes: Routes = [
     {
         path: 'study/:id',
         component: StudyGuideComponent
+    },
+    {
+        path: 'createStudy',
+        component: PostGuideComponent
     },
     {
         path: 'create',

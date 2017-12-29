@@ -33,9 +33,11 @@ import { QuizService } from './services/quiz/quiz.service';
 import { AlertService } from './services/alert/alert.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { FooterComponent } from './component/footer/footer.component';
+import { StudyGuideService } from './services/studyGuide/study-guide.service';
 
 import { JwtInterceptor } from './_helper/jwt.interceptor';
-import { TutorialService } from './services/tutorial/tutorial.service';
+import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
+
 
 
 @NgModule({
@@ -59,7 +61,8 @@ import { TutorialService } from './services/tutorial/tutorial.service';
     WriterMenuComponent,
     CreateStudyComponent,
     CreateTestComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    PostGuideComponent
 
   ],
   imports: [
@@ -72,7 +75,7 @@ import { TutorialService } from './services/tutorial/tutorial.service';
     TopicService,
     QuizService,
     AlertService,
-    TutorialService,
+    StudyGuideService,
     AuthenticationService, {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
