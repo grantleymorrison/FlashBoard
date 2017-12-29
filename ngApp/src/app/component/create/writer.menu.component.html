@@ -1,14 +1,17 @@
 <h3>Writer Menu</h3>
 <div *ngIf="showCreateContentButtons">
-    <button name="showtestmenubtn" (click)="showTestMenu()">Create a New Test</button>
-    <button name="showstudymenubtn" (click)="showStudyMenu()">Create New Study Material</button>
+    <button name="showTestMenuBtn" (click)="showTestMenu()">Create a New Test</button>
+    <button name="showAddQuestionBtn" (click)="showAddQuestion()">Add a Question to the FlashBoard</button>
 </div>
 <div *ngIf="showBackButton">
     <button name="hidecreatingcontentbtn" (click)="backToWriterMenuMain()">Back</button>
+    <br><br>
 </div>
 <div *ngIf="displayCreateTestMenu">
     <app-create-test></app-create-test>
 </div>
-<div *ngIf="displayCreateStudyMenu">
-    <app-create-study></app-create-study>
+<div *ngIf="displayWriteNewQues">
+    <input type = "text" name = "questionTopic" placeholder = "Topic..." [(ngModel)] = "questionTopic"><br>
+    <new-question [index] = "questionCount" [topic] = "questionTopic"></new-question>
 </div>
+<br>
