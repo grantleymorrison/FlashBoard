@@ -1,11 +1,13 @@
 package io.flashboard.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import io.flashboard.beans.quiz.TakenQuiz;
@@ -74,6 +76,28 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
+	public List<String> getAllUsers(){
+		Session session = HibernateUtil.getSession();
+		List<String> newUsers = new ArrayList<>();
+		
+		Criteria criteria;
+		
+		try {
+			criteria = session.createCriteria(User.class);
+			newUsers = criteria.add(Restrictions.like("approved", false)).setProjection(Projections.property("username")).list();
+		}
+		catch(HibernateException he) {
+			he.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		if(newUsers.isEmpty()) {
+			newUsers = null; 
+		}
+		
+		return newUsers;
+	}
 	
 	@Override
 	public boolean addTakenTest(String username, TakenQuiz test) {

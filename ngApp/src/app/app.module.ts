@@ -26,11 +26,13 @@ import { WriterMenuComponent } from './component/create/writer.menu.component';
 import { CreateStudyComponent } from './component/create/createStudy/create.study.component'; 
 import { CreateTestComponent } from './component/create/createTest/create.test.component';
 import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
+import { NewUserComponent } from './component/newuser/newuser.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
 import { AlertService } from './services/alert/alert.service';
+import { AdminService } from './services/admin/admin.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { FooterComponent } from './component/footer/footer.component';
 import { StudyGuideService } from './services/studyGuide/study-guide.service';
@@ -62,7 +64,8 @@ import { PostGuideComponent } from './component/study/post-guide/post-guide.comp
     CreateStudyComponent,
     CreateTestComponent,
     NewQuestionComponent,
-    PostGuideComponent
+    PostGuideComponent,
+    NewUserComponent
 
   ],
   imports: [
@@ -76,6 +79,7 @@ import { PostGuideComponent } from './component/study/post-guide/post-guide.comp
     QuizService,
     AlertService,
     StudyGuideService,
+    AdminService,
     AuthenticationService, {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
