@@ -6,6 +6,9 @@ import io.flashboard.beans.quiz.QuizQuestion;
 public interface QuizDao {
 	
 	public int insertQuiz(Quiz quiz);
+	
+	public boolean addCommentByQuizId(int quizId, String username, String content);
+	
 	public int removeQuizByQuizId(int quizId); 
 	public int removeQuizByTitle(String quizTitle); 
 	public int addQuestionToQuizByQuizId(int quizId, QuizQuestion question);
