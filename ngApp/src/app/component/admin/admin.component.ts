@@ -9,7 +9,7 @@ import { User } from '../../model/user';
 })
 export class AdminComponent implements OnInit {
 
-  newUsers: User[];
+  newUsers: Array<string>;
 
   constructor(private adminService: AdminService) { }
 

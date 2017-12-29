@@ -16,9 +16,9 @@ public class Admin {
 	@GET
 	@Path("/newusers")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> getNewUsers(){
+	public List<String> getNewUsers(){
 		UserDaoImpl ud = new UserDaoImpl();
-		List<User> newUsers = ud.getAllUsers();
+		List<String> newUsers = ud.getAllUsers();
 		
 		return newUsers;
 	}

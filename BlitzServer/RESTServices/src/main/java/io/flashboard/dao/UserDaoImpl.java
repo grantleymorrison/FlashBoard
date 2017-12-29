@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import io.flashboard.beans.quiz.TakenQuiz;
@@ -75,15 +76,15 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
-	public List<User> getAllUsers(){
+	public List<String> getAllUsers(){
 		Session session = HibernateUtil.getSession();
-		List<User> newUsers = new ArrayList<>();
+		List<String> newUsers = new ArrayList<>();
 		
 		Criteria criteria;
 		
 		try {
 			criteria = session.createCriteria(User.class);
-			newUsers = criteria.add(Restrictions.like("approved", false)).list();
+			newUsers = criteria.add(Restrictions.like("approved", false)).setProjection(Projections.property("username")).list();
 		}
 		catch(HibernateException he) {
 			he.printStackTrace();
