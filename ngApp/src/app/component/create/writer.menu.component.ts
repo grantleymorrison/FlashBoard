@@ -7,26 +7,30 @@ import { Component } from '@angular/core';
 })
 
 export class WriterMenuComponent {
+
+    questionCount = 0; 
+    questionTopic = ""; 
+
     displayCreateTestMenu = false;
-    displayCreateStudyMenu = false; 
+    displayWriteNewQues = false; 
     showCreateContentButtons = true; 
     showBackButton = false; 
 
     showTestMenu():void {
         this.displayCreateTestMenu = true;
-        this.displayCreateStudyMenu = false; 
+        this.displayWriteNewQues = false; 
         this.showCreateContentButtons = false; 
         this.showBackButton = true; 
     }
-    showStudyMenu():void {
+    showAddQuestion():void {
         this.displayCreateTestMenu = false;
-        this.displayCreateStudyMenu = true; 
+        this.displayWriteNewQues = true; 
         this.showCreateContentButtons = false; 
         this.showBackButton = true; 
     }
     backToWriterMenuMain() {
         this.displayCreateTestMenu = false;
-        this.displayCreateStudyMenu = false; 
+        this.displayWriteNewQues = false; 
         this.showCreateContentButtons = true; 
         this.showBackButton = false; 
     }

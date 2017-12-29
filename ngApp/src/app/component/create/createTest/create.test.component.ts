@@ -12,6 +12,7 @@ export class CreateTestComponent{
     questions = [
         0
     ]
+    testTopic = ""; 
 
     addQuestion(): void {
         this.questions.push(++this.questionId);
