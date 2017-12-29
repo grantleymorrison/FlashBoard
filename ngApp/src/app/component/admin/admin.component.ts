@@ -11,6 +11,9 @@ export class AdminComponent implements OnInit {
 
   newUsers: Array<string>;
 
+  public banUser;
+  public suspendUser;
+
   constructor(private adminService: AdminService) { }
 
   ngOnInit() {

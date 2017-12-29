@@ -29,7 +29,7 @@ public class Profile {
 	}
 	
 	@POST
-	@Path("/{username}/update")
+	@Path("/update/{username}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ProfileData updateProfile(@PathParam("username") String username, @Context HttpServletRequest request) {
 		String token = request.getHeader("authorization");

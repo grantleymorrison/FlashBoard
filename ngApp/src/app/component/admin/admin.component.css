@@ -1,5 +1,23 @@
 #banuser {
     border-radius: 20px;
     border: 2px solid #73AD21;
-    padding: 20px;    
+    padding: 20px;
+}
+
+#approveuser{
+  border-radius: 20px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  text-align: left;
+  float: right;
+}
+
+#suspenduser {
+    border-radius: 20px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+}
+
+ul {
+  list-style: none;
 }
