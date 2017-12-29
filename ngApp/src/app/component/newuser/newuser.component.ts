@@ -10,6 +10,8 @@ export class NewUserComponent{
     @Input()
     newUser: string;
 
+    private visible = true;
+
     private url = 'http://localhost:3000/flashboard/admin';
 
     constructor(private http: HttpClient){
@@ -20,6 +22,7 @@ export class NewUserComponent{
       this.http.delete(this.url + "/newusers/deny/" + this.newUser).subscribe(
         pass => {
           console.log("deny");
+          this.visible = false;
         },
         err => {
 
@@ -31,6 +34,7 @@ export class NewUserComponent{
       this.http.put(this.url + "/newusers/approve", this.newUser).subscribe(
         pass => {
           console.log("approve");
+          this.visible = false;
         },
         err => {
 

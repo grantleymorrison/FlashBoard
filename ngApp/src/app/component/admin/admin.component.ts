@@ -31,4 +31,8 @@ export class AdminComponent implements OnInit {
     this.adminService.blacklistUser(this.suspendUser);
   }
 
+  public deleteUser(){
+    this.adminService.deleteUser(this.banUser);
+  }
+
 }

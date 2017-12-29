@@ -34,6 +34,19 @@ public class Admin {
 	public Response denyNewUser(@PathParam("username") String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
 		
+		if(ad.denyUserAccount(username)) {
+			return Response.status(200).build();
+		}
+		
+		return Response.status(400).build();
+	}
+	
+	@DELETE
+	@Path("/user/delete/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteUser(@PathParam("username") String username) {
+		AdminDaoImpl ad = new AdminDaoImpl();
+		
 		if(ad.deleteUserAccount(username)) {
 			return Response.status(200).build();
 		}
@@ -62,10 +75,9 @@ public class Admin {
 	public Response blacklistUser(String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
 		
-		/*if(ad.blacklistUserAccount(username)) {
+		if(ad.blacklistUserAccount(username)) {
 			return Response.status(200).build();
-		} */
-		System.out.println(username);
+		} 
 		return Response.status(200).build();
 	}
 }

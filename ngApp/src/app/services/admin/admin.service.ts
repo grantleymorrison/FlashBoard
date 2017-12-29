@@ -29,4 +29,15 @@ export class AdminService{
         }
       )
     }
+
+    public deleteUser(username: string){
+      this.http.delete(this.userUrl + "/delete/" + username).subscribe(
+        pass => {
+          console.log("delete");
+        },
+        err => {
+          
+        }
+      )
+    }
 }
