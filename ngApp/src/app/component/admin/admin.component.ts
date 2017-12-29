@@ -9,7 +9,10 @@ import { User } from '../../model/user';
 })
 export class AdminComponent implements OnInit {
 
-  newUsers: User[];
+  newUsers: Array<string>;
+
+  public banUser;
+  public suspendUser;
 
   constructor(private adminService: AdminService) { }
 
@@ -22,6 +25,10 @@ export class AdminComponent implements OnInit {
       data => this.newUsers = data,
       err => console.log(err)
     );
+  }
+
+  public blacklistUser(){
+    this.adminService.blacklistUser(this.suspendUser);
   }
 
 }

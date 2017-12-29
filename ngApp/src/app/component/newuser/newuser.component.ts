@@ -1,6 +1,6 @@
 import {Component, Input } from '@angular/core';
 import { User } from '../../model/user';
-import { Topic } from '../../model/topic';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-newuser',
@@ -8,9 +8,33 @@ import { Topic } from '../../model/topic';
 })
 export class NewUserComponent{
     @Input()
-    newUser: Topic;
+    newUser: string;
 
-    sayHello(){
-        console.log(this.newUser);
+    private url = 'http://localhost:3000/flashboard/admin';
+
+    constructor(private http: HttpClient){
+
+    }
+
+    public denyUser(){
+      this.http.delete(this.url + "/newusers/deny/" + this.newUser).subscribe(
+        pass => {
+          console.log("deny");
+        },
+        err => {
+
+        }
+      )
+    }
+
+    public approveUser(){
+      this.http.put(this.url + "/newusers/approve/" + this.newUser).subscribe(
+        pass => {
+          console.log("approve");
+        },
+        err => {
+
+        }
+      )
     }
 }

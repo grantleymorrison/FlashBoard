@@ -7,22 +7,26 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AdminService{
-    public url = 'http://localhost:3000/flashboard/admin/newusers';
+    public newUserUrl = 'http://localhost:3000/flashboard/admin/newusers';
+    private userUrl = 'http://localhost:3000/flashboard/admin/user';
 
     constructor(private http: HttpClient){
 
     }
 
-    getNewUsers(): Observable<User[]>{
+    getNewUsers(): Observable<string[]>{
 
-        return this.http.get<User[]>(this.url);
+        return this.http.get<string[]>(this.newUserUrl);
     }
-    private handleError(error:any) {
-        // In a real world app, we might use a remote logging infrastructure
-        // We'd also dig deeper into the error to get a better message
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
-        return Observable.throw(errMsg);
+
+    public blacklistUser(username: string){
+      this.http.put(this.userUrl + "/blacklist", username).subscribe(
+        pass => {
+          console.log("blacklist");
+        },
+        err => {
+
+        }
+      )
     }
 }

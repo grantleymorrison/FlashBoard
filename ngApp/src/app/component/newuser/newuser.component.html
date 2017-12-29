@@ -1,4 +1,7 @@
-<div class="newuser">
-    <p>{{newUser.username}}</p>
-    <button type="button" class="btn btn-info" (click)="sayHello()">Button</button>
+<div id="newuser" class="container">
+      <p>{{newUser}}</p>
+      <div class="right">
+        <button type="button" class="btn btn-success" (click)="approveUser()">Button</button>
+        <button type="button" class="btn btn-danger" (click)="denyUser()">Button</button>
+      </div>
 </div>
