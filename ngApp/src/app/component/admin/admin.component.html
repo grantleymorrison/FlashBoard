@@ -1,5 +1,32 @@
 <h2>Manage Users</h2>
 
-<div>
+<div id="banuser" class="container col-sm-4">
+    <div class="row">
+        <div class="col-sm-8">
+          <input type=text class="form-control" [(ngModel)]="banUser" placeholder="Username"/>
+        </div>
+            <button type="button" class="btn-lg btn-danger" (click)="deleteUser()">Ban user</button>
+    </div>
+   <div>{{Error}}</div>
+</div>
 
+<div id="suspenduser" class="container col-sm-4">
+    <div class="row">
+        <div class="col-sm-8">
+          <input type=text class="form-control" [(ngModel)]="suspendUser" placeholder="Username"/>
+        </div>
+            <button type="button" class="btn-lg btn-warning" (click)="blacklistUser()">Suspend</button>
+    </div>
+   <div>{{Error}}</div>
+</div>
+
+<div id="approveuser" class="container col-sm-3">
+    <div>
+        <ul>
+            <li *ngFor="let user of newUsers">
+                <app-newuser [newUser]="user"></app-newuser>
+            </li>
+        </ul>
+
+    </div>
 </div>

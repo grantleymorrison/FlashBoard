@@ -18,7 +18,7 @@ import io.flashboard.util.HibernateUtil;
 
 public class AdminDaoImpl implements AdminDao {
 	
-	public static UserDaoImpl udi;
+	public static UserDaoImpl udi = new UserDaoImpl();
 	
 	@Override
 	public boolean approveUser(String username) {
@@ -29,7 +29,7 @@ public class AdminDaoImpl implements AdminDao {
 		try {
 			tx = session.beginTransaction();
 			myUser.setApproved(true);
-			session.save(myUser);
+			session.update(myUser);
 			tx.commit();
 			bool = true;
 			System.out.println("User: '" + username + "' successfully approved.");
@@ -91,14 +91,48 @@ public class AdminDaoImpl implements AdminDao {
 	
 	@Override
 	public boolean denyUserAccount(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		Boolean bool = false;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		User myUser = udi.getUserByUsername(username);
+		try {
+			tx = session.beginTransaction();
+			myUser.setBlacklisted(true);
+			session.delete(myUser);
+			tx.commit();
+			bool = true;
+			System.out.println("User: '" + username + "' successfully denied.");
+		} catch (HibernateException he) {
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return bool;
 	}
 	
 	@Override
 	public boolean deleteUserAccount(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		Boolean bool = false;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		User myUser = udi.getUserByUsername(username);
+		try {
+			tx = session.beginTransaction();
+			myUser.setBlacklisted(true);
+			session.delete(myUser);
+			tx.commit();
+			bool = true;
+			System.out.println("User: '" + username + "' successfully deleted.");
+		} catch (HibernateException he) {
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return bool;
 	}
 	
 	@Override
