@@ -24,11 +24,13 @@ import { WriterMenuComponent } from './component/create/writer.menu.component';
 import { CreateStudyComponent } from './component/create/createStudy/create.study.component'; 
 import { CreateTestComponent } from './component/create/createTest/create.test.component';
 import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
+import { NewUserComponent } from './component/newuser/newuser.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
 import { AlertService } from './services/alert/alert.service';
+import { AdminService } from './services/admin/admin.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { JwtInterceptor } from './_helper/jwt.interceptor';
 
@@ -50,7 +52,8 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     WriterMenuComponent,
     CreateStudyComponent,
     CreateTestComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    NewUserComponent
 
   ],
   imports: [
@@ -63,6 +66,7 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     TopicService,
     QuizService,
     AlertService,
+    AdminService,
     AuthenticationService, {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
