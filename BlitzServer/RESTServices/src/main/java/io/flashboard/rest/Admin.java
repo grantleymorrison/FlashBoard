@@ -42,9 +42,10 @@ public class Admin {
 	}
 	
 	@PUT
-	@Path("/newusers/approve/{username}")
+	@Path("/newusers/approve")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response approveNewUser(@PathParam("username") String username) {
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Response approveNewUser(String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
 		
 		if(ad.approveUser(username)) {
