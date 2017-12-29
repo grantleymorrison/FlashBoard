@@ -17,10 +17,10 @@
           </div>
           <hr>
           <div class="rating">
-            <i class="em em-birthday"></i> Easy: {{question.rating.hard}}
-            <i class="em em-smiling_imp"></i> Hard: {{question.rating.easy}}
-            <i class="em em---1"></i> Like {{question.rating.like}}
-            <i class="em em--1"></i> Dislike {{question.rating.dislike}}
+            <span class="rating-select"><i (click)="upEasy(i)" class="em em-birthday"></i></span> Easy: {{question.rating.easy}}
+            <span class="rating-select"><i (click)="upHard(i)" class="em em-smiling_imp"></i></span> Hard: {{question.rating.hard}}
+              <span class="rating-select"><i (click)="upLike(i)" class="em em---1"></i></span> Like {{question.rating.like}}
+                <span class="rating-select"> <i (click)="upDislike(i)" class="em em--1"></i></span> Dislike {{question.rating.dislike}}
           </div>
         </li>
       </ul>
@@ -43,7 +43,7 @@
           <strong>Username:</strong> {{comment.username}}
         </div>
         <div>
-          <strong>Date:</strong> {{comment.createdDate}}
+          <strong>Date:</strong> {{comment.createdDate | date}}
         </div>
         <strong> Comment: </strong>
         <div class="comment-content">
@@ -52,6 +52,7 @@
       </li>
     </ul>
     <textarea class="add-comment" name="addComment" form="commentForm"></textarea>
-    <button class="btn btn-primary" (click)="submitComment()">Submit Comment</button>
+    <br>
+    <button class="btn btn-primary" style="float:right" (click)="submitComment()">Submit Comment</button>
   </div>
 </div>

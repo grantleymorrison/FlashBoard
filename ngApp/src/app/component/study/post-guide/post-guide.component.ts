@@ -19,7 +19,7 @@ export class PostGuideComponent implements OnInit {
     console.log(this.textareaParsed);
   }
   submitGuide() {
-
+    // post method here
   }
   back() {
 

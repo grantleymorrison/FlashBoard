@@ -17,6 +17,10 @@ export class QuizComponent implements OnInit {
     quiz: Quiz;
     public userAnswers: string[];
     selectedEntries: { [key: string]: any };
+    public easied: boolean = false;
+    public harded: boolean = false;
+    public liked: boolean = false;
+    public disliked: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -58,17 +62,16 @@ export class QuizComponent implements OnInit {
         else {
             let count = 0;
             for (let question of this.quiz.questions) {
-                if(this.selectedEntries == undefined || this.selectedEntries[count] == undefined){
+                if (this.selectedEntries == undefined || this.selectedEntries[count] == undefined) {
                     alert("Not all answers are answered")
                     break;
                 }
 
-
-                if (question.answer == this.selectedEntries[count]){
-                    console.log("Question " + (count +1) + " Correct")
+                if (question.answer == this.selectedEntries[count]) {
+                    console.log("Question " + (count + 1) + " Correct")
                 }
-                else{
-                    console.log("Question " + (count +1) + " Incorrect")
+                else {
+                    console.log("Question " + (count + 1) + " Incorrect")
                 }
                 count++;
             }
@@ -79,7 +82,46 @@ export class QuizComponent implements OnInit {
     goBack(): void {
         this.location.back();
     }
-
+    upEasy(qNum: number) {
+        if (this.easied == false) {
+            this.easied = true;
+            this.quiz.questions[qNum].rating.easy++;
+        }
+        else{
+            this.easied = false;
+            this.quiz.questions[qNum].rating.easy--;
+        }
+    }
+    upHard(qNum: number) {
+        if (this.harded == false) {
+            this.harded = true;
+            this.quiz.questions[qNum].rating.hard++;
+        }
+        else {
+            this.harded = false;
+            this.quiz.questions[qNum].rating.hard--;
+        }
+    }
+    upLike(qNum: number) {
+        if (this.liked == false) {
+            this.liked = true;
+            this.quiz.questions[qNum].rating.like++;
+        }
+        else {
+            this.liked = false;
+            this.quiz.questions[qNum].rating.like--;
+        }
+    }
+    upDislike(qNum: number) {
+        if (this.disliked == false) {
+            this.disliked = true;
+            this.quiz.questions[qNum].rating.dislike++;
+        }
+        else {
+            this.disliked = false;
+            this.quiz.questions[qNum].rating.dislike--;
+        }
+    }
     onSelection(entry, questionNum) {
         let obj = {};
         obj[questionNum] = entry;
