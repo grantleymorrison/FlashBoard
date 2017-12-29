@@ -2,6 +2,7 @@ package io.flashboard.rest;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -28,7 +29,7 @@ public class Admin {
 	}
 	
 	@DELETE
-	@Path("newusers/deny/{username}")
+	@Path("/newusers/deny/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response denyNewUser(@PathParam("username") String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
@@ -41,7 +42,7 @@ public class Admin {
 	}
 	
 	@PUT
-	@Path("newusers/approve/{username}")
+	@Path("/newusers/approve/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response approveNewUser(@PathParam("username") String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
@@ -54,15 +55,16 @@ public class Admin {
 	}
 	
 	@PUT
-	@Path("user/blacklist/{username}")
+	@Path("/user/blacklist")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response blacklistUser(@PathParam("username") String username) {
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Response blacklistUser(String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
 		
-		if(ad.blacklistUserAccount(username)) {
+		/*if(ad.blacklistUserAccount(username)) {
 			return Response.status(200).build();
-		}
-		
-		return Response.status(400).build();
+		} */
+		System.out.println(username);
+		return Response.status(200).build();
 	}
 }

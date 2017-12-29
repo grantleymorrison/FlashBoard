@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AdminService{
-    public url = 'http://localhost:3000/flashboard/admin/newusers';
+    public newUserUrl = 'http://localhost:3000/flashboard/admin/newusers';
+    private userUrl = 'http://localhost:3000/flashboard/admin/user';
 
     constructor(private http: HttpClient){
 
@@ -15,6 +16,17 @@ export class AdminService{
 
     getNewUsers(): Observable<string[]>{
 
-        return this.http.get<string[]>(this.url);
+        return this.http.get<string[]>(this.newUserUrl);
+    }
+
+    public blacklistUser(username: string){
+      this.http.put(this.userUrl + "/blacklist", username).subscribe(
+        pass => {
+          console.log("blacklist");
+        },
+        err => {
+
+        }
+      )
     }
 }

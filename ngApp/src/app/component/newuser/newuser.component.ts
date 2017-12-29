@@ -1,6 +1,6 @@
 import {Component, Input } from '@angular/core';
 import { User } from '../../model/user';
-import { HttpClient } '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-newuser',
@@ -10,18 +10,14 @@ export class NewUserComponent{
     @Input()
     newUser: string;
 
-    private url = 'http://localhost:3000/flashboard/admin/newusers/';
+    private url = 'http://localhost:3000/flashboard/admin';
 
     constructor(private http: HttpClient){
 
     }
 
-    sayHello(){
-        console.log(this.newUser);
-    }
-
     public denyUser(){
-      this.http.delete(this.url + "deny/" + this.newUser).subscribe(
+      this.http.delete(this.url + "/newusers/deny/" + this.newUser).subscribe(
         pass => {
           console.log("deny");
         },
@@ -32,12 +28,12 @@ export class NewUserComponent{
     }
 
     public approveUser(){
-      this.http.put(this.url + "approve/" + this.newUser).subscribe(
+      this.http.put(this.url + "/newusers/approve/" + this.newUser).subscribe(
         pass => {
           console.log("approve");
         },
         err => {
-          
+
         }
       )
     }
