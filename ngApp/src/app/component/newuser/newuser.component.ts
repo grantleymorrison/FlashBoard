@@ -28,7 +28,7 @@ export class NewUserComponent{
     }
 
     public approveUser(){
-      this.http.put(this.url + "/newusers/approve/" + this.newUser).subscribe(
+      this.http.put(this.url + "/newusers/approve", this.newUser).subscribe(
         pass => {
           console.log("approve");
         },
