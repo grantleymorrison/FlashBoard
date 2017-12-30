@@ -21,9 +21,11 @@ export class PostGuideComponent implements OnInit {
 
   ngOnInit() {
   }
+
   parseTextArea() {
     this.textareaParsed = this.guideBody.split("\n");
   }
+
   submitGuide() {
     this.getAuthor();
     this.http.post(this.url, {
@@ -33,22 +35,27 @@ export class PostGuideComponent implements OnInit {
       "author": this.author
     }).subscribe(
       res => {
+        alert("success");
         this.location.back();
       },
       err => {
+        alert("not so success");
+        this.location.back();
         console.log("error has occured")
       }
 
     );
   }
+
   getAuthor(){
     let currentUser = JSON.parse(localStorage.getItem("currentUser"))
     this.author = this.parseJwt(currentUser.token.toString()).sub;
   }
-  back() {
 
+  back() {
     this.location.back();
   }
+
   parseJwt(token){
     let base64Url = token.split('.')[1];
     let base64 =  base64Url.replace('-', '+').replace('_', '/');

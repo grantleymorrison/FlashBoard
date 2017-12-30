@@ -14,12 +14,19 @@ import { StudyGuide } from '../../model/studyguides';
 })
 export class StudyComponent implements OnInit {
   guides: StudyGuide[];
+  public signedIn: boolean;
 
   constructor(
 
   ) { }
 
   ngOnInit() {
+    if(localStorage.getItem("currentUser")){
+      this.signedIn = true;
+    }
+    else{
+      this.signedIn = false;
+    }
     // load data here
     this.guides = [
       {

@@ -1,5 +1,5 @@
 <h1>Find your study guide here</h1>
-<button routerLink="/createStudy" id="create-post" class="btn btn-default btn-lg">Post Study Guides</button>
+<button *ngIf="signedIn" routerLink="/createStudy" id="create-post" class="btn btn-default btn-lg">Post Study Guides</button>
 
 <div class="content">
   <div class="container">
