@@ -17,12 +17,12 @@ export class ProfileComponent implements OnInit{
     lname: "",
     email: "",
     favColor: "",
-    avgScore: ""
+    avgScore: "",
+    role: ""
   };
 
   public url;
-  public role: number = 0;
-  public roleName: string = "user";
+  public roleName: string = "User";
 
   constructor(private http: HttpClient, private route: ActivatedRoute){
     this.url = 'http://localhost:3000/flashboard/profile/' + route.snapshot.url[1].path;
@@ -33,6 +33,10 @@ export class ProfileComponent implements OnInit{
   }
 
   public styleObject = {
+    "background-color": 'black'
+  }
+
+  public roleObject = {
     "background-color": 'black'
   }
 
@@ -47,6 +51,7 @@ export class ProfileComponent implements OnInit{
         this.profile.email = data["email"];
         this.profile.favColor = data["favColor"];
         this.profile.avgScore = data["avgScore"];
+        this.profile.role = data["role"];
 
         this.populateBages();
       },
@@ -58,15 +63,13 @@ export class ProfileComponent implements OnInit{
 
   private populateBages(){
 
-    if(localStorage.getItem("currentUser")){
-      this.role = localStorage.getItem("currentUser").userRole;
+    if(this.profile.role === 2){
+      this.roleObject["background-color"] = 'blue';
+      this.roleName = "Admin";
     }
-
-    if(this.role === 2){
-      this.styleObject["background-color"] = 'blue';
-    }
-    else if(this.role === 1){
-      this.styleObject["background-color"] = 'red';
+    else if(this.profile.role === 1){
+      this.roleObject["background-color"] = 'red';
+      this.roleName = "Writer";
     }
 
     if(this.profile.avgScore >= 70){
