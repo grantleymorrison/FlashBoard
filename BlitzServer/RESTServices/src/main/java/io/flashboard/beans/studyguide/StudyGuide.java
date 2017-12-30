@@ -1,17 +1,20 @@
 package io.flashboard.beans.studyguide;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,9 +33,8 @@ public class StudyGuide {
 	@Column(name="GUIDE_TITLE")
 	private String title;
 	
-	@ElementCollection
-	@Column(name = "GUIDE_BODY")
-	private String[] body;
+	@OrderColumn(name="GUIDE_BODY")
+	private ArrayList<String> body;
 	
 	@Column(name="GUIDE_IMG")
 	private String imgUrl;
@@ -40,13 +42,12 @@ public class StudyGuide {
 	@Column(name="AUTHOR")
 	private String author;
 	
+	@OrderColumn(name="COMMENTS")
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(name="COMMENTS")
-	private Comment[] comments;
+	private List<Comment>comments;
 	
-	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(name="RATINGS")
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="RATING_ID")
 	private Rating ratings;
 	
 	@Column(name="CREATED_ON")
@@ -58,7 +59,7 @@ public class StudyGuide {
 	}
 	
 	// no id constructor
-	public StudyGuide(String title, String[] body, String imgUrl, String author, Comment[] comments, Rating ratings,
+	public StudyGuide(String title, ArrayList<String> body, String imgUrl, String author, List<Comment> comments, Rating ratings,
 			LocalDateTime createdDate) {
 		super();
 		this.title = title;
@@ -71,7 +72,7 @@ public class StudyGuide {
 	}
 	
 	// all field constructor
-	public StudyGuide(int studyGuideId, String title, String[] body, String imgUrl, String author, Comment[] comments,
+	public StudyGuide(int studyGuideId, String title, ArrayList<String> body, String imgUrl, String author, List<Comment> comments,
 			Rating ratings, LocalDateTime createdDate) {
 		super();
 		this.studyGuideId = studyGuideId;
@@ -83,12 +84,15 @@ public class StudyGuide {
 		this.ratings = ratings;
 		this.createdDate = createdDate;
 	}
+	
+
 	@Override
 	public String toString() {
-		return "StudyGuide [studyGuideId=" + studyGuideId + ", title=" + title + ", body=" + Arrays.toString(body)
-				+ ", imgUrl=" + imgUrl + ", author=" + author + ", comments=" + Arrays.toString(comments) + ", ratings="
-				+ ratings + ", createdDate=" + createdDate + "]";
+		return "StudyGuide [studyGuideId=" + studyGuideId + ", title=" + title + ", body=" + body + ", imgUrl=" + imgUrl
+				+ ", author=" + author + ", comments=" + comments + ", ratings=" + ratings + ", createdDate="
+				+ createdDate + "]";
 	}
+
 	public int getStudyGuideId() {
 		return studyGuideId;
 	}
@@ -101,10 +105,10 @@ public class StudyGuide {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String[] getBody() {
+	public ArrayList<String> getBody() {
 		return body;
 	}
-	public void setBody(String[] body) {
+	public void setBody(ArrayList<String> body) {
 		this.body = body;
 	}
 	public String getAuthor() {
@@ -113,10 +117,10 @@ public class StudyGuide {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Comment[] getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
-	public void setComments(Comment[] comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 	public Rating getRatings() {

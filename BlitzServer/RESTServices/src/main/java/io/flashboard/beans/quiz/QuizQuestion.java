@@ -38,7 +38,6 @@ public  class QuizQuestion {
 	@Column(name = "TOPIC")
 	private String topic; 
 
-
 	@Column(name = "OPTIONS")
 	private ArrayList<String> options; 
 	
