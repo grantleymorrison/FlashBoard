@@ -1,3 +1,6 @@
 textarea{
     resize: none;
 }
+*{
+    text-align: left;
+}
