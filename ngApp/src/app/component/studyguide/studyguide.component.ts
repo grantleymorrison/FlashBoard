@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-studyguide',
@@ -9,9 +10,9 @@ import { Http } from '@angular/http';
 export class StudyGuideComponent implements OnInit {
   public guide;
 
-  constructor() {
-
-  }
+  constructor(
+    private location: Location
+  ) { }
   ngOnInit() {
     this.guide = {
       studyGuideId: 1,
@@ -27,6 +28,9 @@ export class StudyGuideComponent implements OnInit {
       comment: null,
       rating: null,
       createdDate: new Date('Feb 13 2018')
-    }  
+    }
+  }
+  back() {
+    this.location.back();
   }
 }
