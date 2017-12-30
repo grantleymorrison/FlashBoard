@@ -1,10 +1,26 @@
 <button class="btn btn-default" (click)="back()">Back</button>
-<h2>{{guide.title}}</h2>
-<img src="{{guide.image}}"/>
-<cite>by {{guide.author}} on {{guide.createdDate | date }} </cite>
+<h2>{{guide?.title}}</h2>
+<div>
+<img src="{{guide?.imgUrl}}"/>
+</div>
+<cite>by {{guide?.author}} on {{guide?.createdDate.nano | date }} </cite>
 <div class="guide-body">
-    <p *ngFor="let paragraph of guide.body">
-        {{ paragraph }}
-    </p>
-comments here
+    <div *ngFor="let paragraph of guide?.body">
+        {{paragraph}}
+    </div>
+
+<strong>Comments</strong>
+<div *ngIf="guide?.comments.length <=0">
+        <p> No comments yet!</p>
+</div>
+<div *ngIf="guide?.comments.length > 0">
+    <div *ngFor="let comment of guide?.comments">
+        <p>{{comment}}</p>
+    </div>
+</div>
+<div><strong style="color:grey">Add Comments</strong></div>
+<textarea [(ngModel)]="guideBody" (ngModelChange)="parseTextArea()" rows="5"></textarea>
+<div>
+    <button class="btn btn-primary btn-large">Submit Comment</button>
+</div>
 </div>

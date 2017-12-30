@@ -1,4 +1,4 @@
-package io.flashboard.beans.quiz;
+package io.flashboard.beans.studyguide;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -16,19 +16,19 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="COMMENT_QZ")
-public class Comment implements Serializable {
+@Table(name="COMMENT_SG")
+public class CommentSG implements Serializable {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2060364884767994321L;
+	private static final long serialVersionUID = 1L;
 
 	// Properties
 	@Id
 	@SequenceGenerator(sequenceName="COMMENT_SEQ", name="COMMENT_SEQ")
 	@GeneratedValue(generator="COMMENT_SEQ", strategy=GenerationType.SEQUENCE)
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=Quiz.class)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=StudyGuide.class)
 	private int commentId;
 	
 	// TODO After creating User object connect via ManyToOne
@@ -43,12 +43,12 @@ public class Comment implements Serializable {
 	
 	
 	// Contructor using no arg
-	public Comment() {
+	public CommentSG() {
 		super();
 	}
 	
 	// Constrctor using no commentId
-	public Comment(String username, String content) {
+	public CommentSG(String username, String content) {
 		super();
 		this.username = username;
 		this.createdDate = LocalDateTime.now();
@@ -57,7 +57,7 @@ public class Comment implements Serializable {
 
 	
 	// Constructor using all fields
-	public Comment(int commentId, String username, String content) {
+	public CommentSG(int commentId, String username, String content) {
 		super();
 		this.commentId = commentId;
 		this.username = username;
