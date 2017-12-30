@@ -5,6 +5,7 @@ import { QuizService } from '../../services/quiz/quiz.service';
 import { Location } from '@angular/common';
 import { of } from 'rxjs/observable/of';
 import { StudyGuide } from '../../model/studyguides';
+import { StudyGuideService } from '../../services/studyGuide/study-guide.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class StudyComponent implements OnInit {
   public signedIn: boolean;
 
   constructor(
-
+    private studyGuideService: StudyGuideService
   ) { }
 
   ngOnInit() {
@@ -28,50 +29,10 @@ export class StudyComponent implements OnInit {
       this.signedIn = false;
     }
     // load data here
-    this.guides = [
-      {
-      studyGuideId: 1,
-      title: "post 1",
-      body: [
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
-        "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
-        "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
-        "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius."
-      ],
-      author: "Nick Moreton",
-      comment: null,
-      rating: null,
-      createdDate: new Date('Feb 13 2018')
-    },
-    {
-      studyGuideId: 2,
-      title: "post 2",
-      body: [
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
-        "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
-        "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
-        "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius."
-      ],
-      author: "Tom Moreton",
-      comment: null,
-      rating: null,
-      createdDate: new Date('Feb 13 2018')
-    },
-    {
-      studyGuideId: 3,
-      title: "post 3",
-      body: [
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae, neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui! Neque, cupiditate labore nulla? Atque, tenetur.",
-        "Numquam nobis nam voluptas blanditiis eveniet in quasi possimus voluptatem temporibus doloremque delectus dolorum, voluptatum laborum aut dolorem? In rerum necessitatibus soluta incidunt nihil numquam fugit quas pariatur dolores nesciunt?",
-        "Quibusdam placeat quisquam iure repellendus ad in, nihil numquam quaerat, facere alias illo. Tempora perferendis incidunt, ratione eveniet esse earum, corporis sit? Modi enim commodi odio placeat minus, error id?",
-        "Corrupti voluptates asperiores ratione laudantium, eveniet molestiae possimus deleniti officia, incidunt quae et. Amet, ducimus eum ipsa reprehenderit ad, et nihil, veritatis ea doloremque ab placeat dolore impedit, quia eius."
-      ],
-      author: "Sam Moreton",
-      comment: null,
-      rating: null,
-      createdDate: new Date('Feb 13 2018')
-    }
-    ]
+  }
+  getGuides():void{
+    this.studyGuideService.getGuides()
+      .subscribe(guides => this.guides = guides)
   }
 
 }
