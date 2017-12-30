@@ -1,27 +1,44 @@
-<h2>Manage Users</h2>
+<h2>Administrative Tools</h2>
 
-<div id="banuser" class="container col-sm-4">
+<div class="badcontainer row">
+<div id="banuser" class="destruct col-sm-4">
+    <h2>Ban User</h2>
     <div class="row">
         <div class="col-sm-8">
           <input type=text class="form-control" [(ngModel)]="banUser" placeholder="Username"/>
         </div>
             <button type="button" class="btn-lg btn-danger" (click)="deleteUser()">Ban user</button>
     </div>
-   <div>{{Error}}</div>
+   <div>{{issue}}</div>
 </div>
 
-<div id="suspenduser" class="container col-sm-4">
+<div id="suspenduser" class="destruct col-sm-4">
+    <h2>Suspend User</h2>
     <div class="row">
         <div class="col-sm-8">
           <input type=text class="form-control" [(ngModel)]="suspendUser" placeholder="Username"/>
         </div>
             <button type="button" class="btn-lg btn-warning" (click)="blacklistUser()">Suspend</button>
     </div>
-   <div>{{Error}}</div>
+   <div>{{issue}}</div>
 </div>
 
-<div id="approveuser" class="container col-sm-3">
+<div id="deletetest" class="destruct col-sm-4">
+    <h2>Delete Test</h2>
+    <div class="row">
+        <div class="col-sm-8">
+          <input type=text class="form-control" [(ngModel)]="testId" placeholder="Test Id"/>
+        </div>
+            <button type="button" class="btn-lg btn-danger" (click)="deleteTest()">Delete Test</button>
+    </div>
+   <div>{{issue}}</div>
+</div>
+</div>
+
+<div class="row">
+<div id="approveuser" class="col-sm-4">
     <div>
+        <h3>Approve New Users</h3>
         <ul>
             <li *ngFor="let user of newUsers">
                 <app-newuser [newUser]="user"></app-newuser>
@@ -29,4 +46,16 @@
         </ul>
 
     </div>
+</div>
+
+<div id="promoteuser" class="col-sm-4">
+  <div>
+      <h3>Promote Users</h3>
+    <ul>
+        <li *ngFor="let promotee of promotees">
+            <app-promoteuser [promotee]="promotee"></app-promoteuser>
+        </li>
+    </ul>
+  </div>
+</div>
 </div>

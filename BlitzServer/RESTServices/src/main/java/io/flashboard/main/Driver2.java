@@ -1,13 +1,13 @@
 package io.flashboard.main;
 
-import org.hibernate.Query;
-
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import io.flashboard.beans.users.User;
 import io.flashboard.dao.AdminDaoImpl;
+import io.flashboard.dao.UserDaoImpl;
 import io.flashboard.util.HibernateUtil;
 
 public class Driver2 {
@@ -16,12 +16,37 @@ public class Driver2 {
 		//createAdmin();
 		//approve("admin");
 		//getQuiz();
+		p2w("jeff");
 	}
 	
 	public static void approve(String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
 		ad.approveUser(username);
 		
+	}
+	
+	public static void p2w(String username) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		User newUser = new User("jeff", "myers", username, "jeff", "jeff");
+		newUser.setApproved(true);
+		newUser.setAvgScore(80.0);
+		try {
+			tx = session.beginTransaction();
+			session.save(newUser);
+			tx.commit();
+			System.out.println("User: '" + newUser.getUsername() + "' has been successfully created!");
+		} catch (HibernateException he) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			System.out.println("User creation failed!");
+			he.printStackTrace();
+			
+		} finally {
+			session.close();
+		}
 	}
 	
 	public static void getQuiz() {
