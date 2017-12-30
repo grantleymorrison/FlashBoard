@@ -28,6 +28,11 @@ public class LoginService {
 			return false;
 		}
 		
+		//user not approved
+		if(!user.getApproved()) {
+			return false;
+		}
+		
 		return true;
 	}
 	
@@ -49,6 +54,10 @@ public class LoginService {
 		}
 		
 		if(!user.getPassword().equals(password)) {
+			return null;
+		}
+		
+		if(!user.getApproved()) {
 			return null;
 		}
 		

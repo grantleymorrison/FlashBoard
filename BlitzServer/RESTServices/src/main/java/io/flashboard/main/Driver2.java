@@ -1,16 +1,41 @@
 package io.flashboard.main;
 
+import org.hibernate.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import io.flashboard.beans.users.User;
+import io.flashboard.dao.AdminDaoImpl;
 import io.flashboard.util.HibernateUtil;
 
 public class Driver2 {
 	public static void main(String[] args) { 
 		//testUserCreation();
-		createAdmin();
+		//createAdmin();
+		//approve("admin");
+		//getQuiz();
+	}
+	
+	public static void approve(String username) {
+		AdminDaoImpl ad = new AdminDaoImpl();
+		ad.approveUser(username);
+		
+	}
+	
+	public static void getQuiz() {
+		Session session = HibernateUtil.getSession();
+		Query query = null;
+		String hql = "FROM Quiz";
+		
+		try {
+			query = session.createQuery(hql);
+			System.out.println(query.list());
+			
+		}catch(HibernateException he) {
+			
+		}
 	}
 	
 	public static void createAdmin() {

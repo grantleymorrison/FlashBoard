@@ -23,7 +23,7 @@ export class NavbarComponent{
 
     public loginChange(event){
         this.loginData = event;
-        console.log(this.loginData);
+        this.router.navigate(['home']);
     }
 
     public logOutAccount(){

@@ -1,0 +1,7 @@
+<div id="newuser" class="container" *ngIf="visible">
+      <p>{{newUser}}</p>
+      <div class="right">
+        <button type="button" class="btn btn-success" (click)="approveUser()">Approve</button>
+        <button type="button" class="btn btn-danger" (click)="denyUser()">Deny</button>
+      </div>
+</div>
