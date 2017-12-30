@@ -13,7 +13,7 @@ public class ProfileService {
 		
 		if(user != null) {
 			pd = new ProfileData(user.getUsername(), user.getFirstName(), user.getLastName(),
-					user.getEmail(), user.getFavColor(), user.getAvgScore());
+					user.getEmail(), user.getFavColor(), user.getAvgScore(), user.getRoleFlag());
 		}
 		
 		return pd;
