@@ -23,9 +23,19 @@ public class Admin {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<String> getNewUsers(){
 		UserDaoImpl ud = new UserDaoImpl();
-		List<String> newUsers = ud.getAllUsers();
+		List<String> newUsers = ud.getAllNewUsers();
 		
 		return newUsers;
+	}
+	
+	@GET
+	@Path("/promotees")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<String> getPromotees(){
+		UserDaoImpl ud = new UserDaoImpl();
+		List<String> promotees = ud.getAllPromotees();
+		
+		return promotees;
 	}
 	
 	@DELETE
@@ -78,6 +88,19 @@ public class Admin {
 		if(ad.blacklistUserAccount(username)) {
 			return Response.status(200).build();
 		} 
+		return Response.status(200).build();
+	}
+	
+	@PUT
+	@Path("/user/promote")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Response promoteUser(String username) {
+		AdminDaoImpl ad = new AdminDaoImpl();
+		
+		if(ad.promoteUserToWriter(username)) {
+			return Response.status(200).build();
+		}
 		return Response.status(200).build();
 	}
 }

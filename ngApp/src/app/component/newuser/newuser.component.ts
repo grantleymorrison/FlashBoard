@@ -25,7 +25,7 @@ export class NewUserComponent{
           this.visible = false;
         },
         err => {
-
+          console.log(err);
         }
       )
     }
@@ -37,7 +37,7 @@ export class NewUserComponent{
           this.visible = false;
         },
         err => {
-
+          console.log(err);
         }
       )
     }

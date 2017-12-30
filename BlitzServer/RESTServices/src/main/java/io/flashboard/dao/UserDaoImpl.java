@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
-	public List<String> getAllUsers(){
+	public List<String> getAllNewUsers(){
 		Session session = HibernateUtil.getSession();
 		List<String> newUsers = new ArrayList<>();
 		
@@ -97,6 +97,32 @@ public class UserDaoImpl implements UserDao{
 		}
 		
 		return newUsers;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> getAllPromotees(){
+		Session session = HibernateUtil.getSession();
+		List<String> promotees = new ArrayList<>();
+		
+		Criteria criteria;
+		
+		try {
+			criteria = session.createCriteria(User.class);
+			promotees = criteria.add(Restrictions.ge("avgScore", 70.0))
+					.add(Restrictions.like("approved", true))
+					.setProjection(Projections.property("username")).list();
+		}
+		catch(HibernateException he) {
+			he.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		if(promotees.isEmpty()) {
+			promotees = null; 
+		}
+		
+		return promotees;
 	}
 	
 	@Override
