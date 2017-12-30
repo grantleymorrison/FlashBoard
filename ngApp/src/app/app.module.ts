@@ -22,11 +22,12 @@ import { StudyComponent } from './component/study/study.component';
 import { AlertComponent } from './component/alert/alert.component';
 import { LoginComponent } from './component/login/login.component';
 import { StudyGuideComponent } from './component/studyguide/studyguide.component';
-import { WriterMenuComponent } from './component/create/writer.menu.component'; 
-import { CreateStudyComponent } from './component/create/createStudy/create.study.component'; 
+import { WriterMenuComponent } from './component/create/writer.menu.component';
+import { CreateStudyComponent } from './component/create/createStudy/create.study.component';
 import { CreateTestComponent } from './component/create/createTest/create.test.component';
-import { NewQuestionComponent } from './component/create/newquestion/newquestion'; 
+import { NewQuestionComponent } from './component/create/newquestion/newquestion';
 import { NewUserComponent } from './component/newuser/newuser.component';
+import { PromoteUserComponent } from './component/promoteuser/promoteuser.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
@@ -65,7 +66,8 @@ import { PostGuideComponent } from './component/study/post-guide/post-guide.comp
     CreateTestComponent,
     NewQuestionComponent,
     PostGuideComponent,
-    NewUserComponent
+    NewUserComponent,
+    PromoteUserComponent
 
   ],
   imports: [
