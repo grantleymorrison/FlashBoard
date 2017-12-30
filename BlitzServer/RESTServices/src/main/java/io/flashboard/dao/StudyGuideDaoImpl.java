@@ -1,5 +1,6 @@
 package io.flashboard.dao;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,13 +32,14 @@ public class StudyGuideDaoImpl implements StudyGuideDao {
 		Transaction tx = null;
 		
 		ArrayList<String> arrListBody = new ArrayList<String>(Arrays.asList(body));
-		
-		StudyGuide newStudyGuide = new StudyGuide(title, arrListBody, imgUrl, author);
+		LocalDateTime createdDate = LocalDateTime.now();
+		StudyGuide newStudyGuide = new StudyGuide(title, arrListBody, imgUrl, author, createdDate);
 		try {
 			tx = session.beginTransaction();
 			session.save(newStudyGuide);
 			success = true;
 			System.out.println(newStudyGuide);
+			tx.commit();
 		}catch(HibernateException he) {
 			if(tx != null) {
 				tx.rollback();

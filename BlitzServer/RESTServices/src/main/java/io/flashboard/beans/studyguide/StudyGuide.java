@@ -59,13 +59,14 @@ public class StudyGuide {
 	}
 	
 	// constructor for new post
-	// contains title, body, imgUrl, author
-	public StudyGuide(String title, ArrayList<String> body, String imgUrl, String author ) {
+	// contains title, body, imgUrl, author, time
+	public StudyGuide(String title, ArrayList<String> body, String imgUrl, String author, LocalDateTime createdDate ) {
 		super();
 		this.title = title;
 		this.body = body;
 		this.imgUrl = imgUrl;
 		this.author = author;
+		this.createdDate = createdDate;
 	}
 	
 	// no id constructor

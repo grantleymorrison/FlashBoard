@@ -1,9 +1,5 @@
 package io.flashboard.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import io.flashboard.dao.StudyGuideDao;
 import io.flashboard.dao.StudyGuideDaoImpl;
 import io.flashboard.jsonbeans.StudyGuideData;
