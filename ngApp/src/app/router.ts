@@ -48,7 +48,8 @@ export const AppRoutes: Routes = [
     },
     {
         path: 'create',
-        component: CreatequizComponent
+        component: CreatequizComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'home',
