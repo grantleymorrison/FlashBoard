@@ -110,10 +110,13 @@ public class StudyGuideDaoImpl implements StudyGuideDao {
 		List<CommentSG> comments = new ArrayList<>();
 		Session session = HibernateUtil.getSession();
 		Query query = null;
-		String hql = "FROM "
+		String hql = "FROM CommentSG";
 		
 		try {
-			query = session.createQuery(arg0)
+			query = session.createQuery(hql);
+		}
+		catch(HibernateException he) {
+			
 		}
 		
 		return null;

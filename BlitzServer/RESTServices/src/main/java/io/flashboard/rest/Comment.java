@@ -18,5 +18,6 @@ public class Comment {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CommentSG> getGuideComments(@PathParam("guideId") int id){
 		
+		return null;
 	}
 }
