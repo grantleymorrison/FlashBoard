@@ -13,6 +13,7 @@ import { StudyComponent } from './component/study/study.component';
 import { StudyGuideComponent } from './component/studyguide/studyguide.component';
 import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
 import { CreatequizComponent } from './component/create/createquiz/createquiz.component';
+import { AuthGuard } from './_guards/auth.guards';
 
 export const AppRoutes: Routes = [
     {
@@ -67,6 +68,7 @@ export const AppRoutes: Routes = [
     },
     {
       path: 'admin',
-      component: AdminComponent
+      component: AdminComponent,
+      canActivate: [AuthGuard]
     }
 ]

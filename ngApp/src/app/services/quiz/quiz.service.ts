@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { MOCK_QUIZS } from '../../data/mock/quizs';
-import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../../model/quiz';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -10,10 +9,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class QuizService {
   public allQuizApi:string = "http://localhost:3000/flashboard/quiz/all";
-  public quizApi:string = "http://localhost:3000/flashboard/quiz/"
-  constructor(
-    private http: HttpClient
-  ) { }
+  public quizApi:string = "http://localhost:3000/flashboard/quiz/";
 
   private quizUrl = 'http://localhost:3000/flashboard/quiz';
 

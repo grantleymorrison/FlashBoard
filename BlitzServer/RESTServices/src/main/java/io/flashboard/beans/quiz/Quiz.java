@@ -32,7 +32,7 @@ public class Quiz {
 	@Column(name="QUIZ_DESC")
 	private String description;
 	
-	@OneToMany(orphanRemoval = false)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name = "QUESTIONS")
 	private List<QuizQuestion> questions;

@@ -80,7 +80,7 @@ public class QuizDaoImpl implements QuizDao {
 		return success;
 	}
 	
-	public Integer insertQuiz(Quiz quiz) {
+	public int insertQuiz(Quiz quiz) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Integer quizId = null;
