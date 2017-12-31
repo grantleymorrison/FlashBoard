@@ -29,10 +29,11 @@ public class QuizService {
 		String quizTopic = quiz.getQuizTopic();
 		List<QuestionData> qd = quiz.getQuestions();
 		List<QuizQuestion> q = new ArrayList<>();
-		ArrayList<String> options = new ArrayList<>();
+		ArrayList<String> options = null;
 		QuizQuestion qq = null;
 		
 		for(QuestionData qds: qd) {
+			options = new ArrayList<>();
 			options.add(qds.getCanswer());
 			options.add(qds.getWanswer1());
 			options.add(qds.getWanswer2());
