@@ -1,6 +1,6 @@
 <h3 *ngIf="isFromTest">Question #{{index}}</h3>
 <div>
-    <input type="text" placeholder="Question text..." name="questionText{{index}}">
+    <input type="text" placeholder="Question text..." name="questionText{{index}}" [(ngModel)] = "questionText">
     <span></span>
     <input type="text" placeholder="Point value..." name="questionPoints{{index}}" [(ngModel)]="points">
     <!-- <h3>questionTopic = {{topic}}</h3> -->
@@ -45,12 +45,14 @@
     <br>
     <table>
         <tr>
-            <td>Correct answer is: {{answerId}} : {{answerString}}</td>
+            <td *ngIf = "showCorrectAnswerSelection">Correct answer is: {{answerId}} : {{answerString}}</td>
         </tr>
         <tr>
             <td>
                 <input type="text" name="explanation{{index}}" placeholder="Explanation (Optional)" [(ngModel)]="explanation">
             </td>
         </tr>
+        <tr *ngIf = "showQuestionShipStatus"><td>{{questionShipStatus}}</td></tr>
+        <tr><td><button name = "checkForShippingBtn" (click) = "checkQuestionForShipping()">Check for readiness</button></td></tr>
     </table>
 </div>
