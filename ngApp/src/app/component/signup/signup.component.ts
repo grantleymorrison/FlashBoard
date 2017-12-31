@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -29,7 +31,10 @@ export class SignUpComponent {
         color:'red'
     }
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private router: Router
+    ) {
     }
 
     public registerAccount() {
@@ -45,6 +50,7 @@ export class SignUpComponent {
             pass => {
                 this.msgStyle = this.successStyle;
                 this.feedbackMsg = "Success";
+                this.router.navigate(['home']);
             },
             fail => {
                 this.msgStyle = this.errorStyle;

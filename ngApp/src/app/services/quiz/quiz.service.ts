@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
 import { MOCK_QUIZS } from '../../data/mock/quizs';
+import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../../model/quiz';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class QuizService {
+  public allQuizApi:string = "http://localhost:3000/flashboard/quiz/all";
+  public quizApi:string = "http://localhost:3000/flashboard/quiz/"
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() { }
-
+  
   getQuiz(quizId: number): Observable<Quiz> {
-    return of(MOCK_QUIZS.find(quiz => quiz.quizId === quizId))
+    return this.http.get<Quiz>(this.quizApi + quizId)
   }
 
   getQuizs(): Observable<Quiz[]> {
-    return of(MOCK_QUIZS);
+    return this.http.get<Quiz[]>(this.allQuizApi);
   }
+
   getQuizsByTopic(topic:string): Observable<Quiz[]>{
-    return of(MOCK_QUIZS.filter(quiz => quiz.topic === topic));
+    return this.getQuizs()
+    .map(quiz => quiz.filter(quiz => quiz.topic === topic));
+
   }
 
 }
