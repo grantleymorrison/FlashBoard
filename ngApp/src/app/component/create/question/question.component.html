@@ -1,0 +1,21 @@
+<div>
+
+  <h2>Question</h2>
+  <input type="text" [(ngModel)]="quizObject.question"/>{{quizObject.question}}
+
+  <h3>Answers</h3>
+  <div>
+    <div>
+      <input type="text" placeholder="Correct Answer" [(ngModel)]="quizObject.canswer"/>
+    </div>
+    <div>
+      <input type="text" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer1"/>
+    </div>
+    <div>
+      <input type="text" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer2"/>
+    </div>
+    <div>
+      <input type="text" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer3"/>
+    </div>
+  </div>
+</div>

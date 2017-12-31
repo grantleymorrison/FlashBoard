@@ -98,6 +98,24 @@ public  class QuizQuestion {
 		this.createdOn = createdOn;
 	}
 	
+	
+	/**
+	 * 
+	 * @param questionText
+	 * @param options
+	 * @param answer
+	 * @param pointsPossible
+	 */
+	public QuizQuestion(String questionText, ArrayList<String> options, String answer, int pointsPossible) {
+		super();
+		this.questionText = questionText;
+		this.options = options;
+		this.answer = answer;
+		this.pointsPossible = pointsPossible;
+	}
+
+
+
 	public int getQuestionId() {
 		return questionId;
 	}

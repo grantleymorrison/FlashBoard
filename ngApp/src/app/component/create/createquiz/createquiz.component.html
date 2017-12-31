@@ -1,0 +1,13 @@
+<div class="row">
+  <h1>Quiz Title</h1>
+  <input type="input" [(ngModel)]="quiz.quizTitle"/>
+  <h2>Quiz Topic</h2>
+  <input type="input" [(ngModel)]="quiz.quizTopic"/>
+</div>
+<div>
+  <div *ngFor="let q of questions">
+    <app-question [quizObject]="q"></app-question>
+  </div>
+  <button type="button" (click)="add()">Add Question</button>
+  <button type="button" (click)="submit()">Submit</button>
+</div>
