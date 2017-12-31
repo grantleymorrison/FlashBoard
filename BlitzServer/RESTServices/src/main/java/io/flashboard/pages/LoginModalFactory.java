@@ -34,7 +34,7 @@ public class LoginModalFactory {
 	WebDriverWait wait; 
 	public LoginModalFactory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, 1); 
+		wait = new WebDriverWait(driver, 2); 
 		
 	}
 	

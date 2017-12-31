@@ -14,7 +14,7 @@ public class SearchPageFactory {
 	WebDriverWait wait; 
 	public SearchPageFactory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, 1); 
+		wait = new WebDriverWait(driver, 2); 
 		
 	}
 	

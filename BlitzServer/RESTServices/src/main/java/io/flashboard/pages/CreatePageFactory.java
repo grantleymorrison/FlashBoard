@@ -13,7 +13,7 @@ public class CreatePageFactory {
 	WebDriverWait wait; 
 	public CreatePageFactory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, 1); 
+		wait = new WebDriverWait(driver, 2); 
 		
 	}
 	

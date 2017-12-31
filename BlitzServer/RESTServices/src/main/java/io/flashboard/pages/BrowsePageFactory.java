@@ -23,7 +23,7 @@ public class BrowsePageFactory {
 	WebDriverWait wait; 
 	public BrowsePageFactory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, 1); 
+		wait = new WebDriverWait(driver, 2); 
 		
 	}
 
