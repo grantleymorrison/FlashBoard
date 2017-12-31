@@ -1,9 +1,11 @@
 package io.flashboard.beans.quiz;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,22 +14,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import io.flashboard.beans.users.Message;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "QUESTIONS")
-public  class QuizQuestion {
+public  class QuizQuestion implements Serializable {
 	
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 473973045234517174L;
+
 	@Id
-	@Column(name = "QUESTION_ID")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=Quiz.class)
 	@SequenceGenerator(sequenceName = "QUESTION_SEQ", name = "QUESTION_SEQ")	
 	@GeneratedValue(generator = "QUESTION_SEQ", strategy = GenerationType.SEQUENCE)		
 	private int questionId;
@@ -39,7 +49,7 @@ public  class QuizQuestion {
 	private String topic; 
 
 	@Column(name = "OPTIONS")
-	private ArrayList<String> options; 
+	private HashSet<String> options; 
 	
 	@Column(name = "ANSWER")
 	private String answer; 
@@ -50,13 +60,10 @@ public  class QuizQuestion {
 	@Column
 	private String explanation; 
 	
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name = "RATINGS")
-	private List<Rating> ratings;
-	
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
-	@Column(name = "COMMENTS")
-	private List<Message> comments;
+	private Set<Rating> ratings;
 	
 	@Column 
 	private String createdBy; 
@@ -70,22 +77,30 @@ public  class QuizQuestion {
 	public QuizQuestion() {
 		this.questionText = ""; 
 		this.topic = "UNSORTED"; 
-		this.options = new ArrayList<String>(); 
+		this.options = new HashSet<String>(); 
 		this.answer = ""; 
-		this.pointsPossible = 0; 
+		this.pointsPossible = 2; 
 		this.explanation = ""; 
-		this.ratings = new ArrayList<Rating>(); 
-		this.comments = new ArrayList<Message>(); 
-		this.createdBy = "N/A"; 
+		this.ratings = new HashSet<Rating>(); 
+		this.createdBy = "Default"; 
 		this.createdOn = LocalDateTime.now(); 
 	}
 	
 	
+	public QuizQuestion(String questionText, String topic, HashSet<String> options, String answer) {
+		this.questionText = questionText;
+		this.topic = topic;
+		this.options = options;
+		this.answer = answer;
+		this.pointsPossible = 2; 
+		this.explanation = ""; 
+		this.ratings = new HashSet<Rating>(); 
+		this.createdBy = "Default"; 
+		this.createdOn = LocalDateTime.now();
+	}
 	
-	public QuizQuestion(int questionId, String questionText, String topic, ArrayList<String> options, String answer,
-			int pointsPossible, String explanation, List<Rating> ratings, List<Message> comments, String createdBy,
-			LocalDateTime createdOn) {
-		this.questionId = questionId;
+	public QuizQuestion(String questionText, String topic, HashSet<String> options, String answer,
+			int pointsPossible, String explanation, Set<Rating> ratings, String createdBy) {
 		this.questionText = questionText;
 		this.topic = topic;
 		this.options = options;
@@ -93,9 +108,8 @@ public  class QuizQuestion {
 		this.pointsPossible = pointsPossible;
 		this.explanation = explanation;
 		this.ratings = ratings;
-		this.comments = comments;
 		this.createdBy = createdBy;
-		this.createdOn = createdOn;
+		this.createdOn = LocalDateTime.now();
 	}
 	
 	public int getQuestionId() {
@@ -117,22 +131,17 @@ public  class QuizQuestion {
 	public void setPointsPossible(int pointsPossible) {
 		this.pointsPossible = pointsPossible;
 	}
-	public List<Rating> getRatings() {
+	public Set<Rating> getRatings() {
 		return ratings;
 	}
-	public void setRatings(List<Rating> ratings) {
+	public void setRatings(Set<Rating> ratings) {
 		this.ratings = ratings;
 	}
-	public List<Message> getComments() {
-		return comments;
-	}
-	public void setComments(List<Message> comments) {
-		this.comments = comments;
-	}
-	public ArrayList<String> getOptions() {
+
+	public HashSet<String> getOptions() {
 		return options;
 	}
-	public void setOptions(ArrayList<String> options) {
+	public void setOptions(HashSet<String> options) {
 		this.options = options;
 	}
 	public void setOptions(String[] strs) {
@@ -169,11 +178,8 @@ public  class QuizQuestion {
 	public String toString() {
 		return "TestQuestion [questionId=" + questionId + ", questionText=" + questionText + ", topic=" + topic
 				+ ", options=" + options + ", answer=" + answer + ", pointsPossible=" + pointsPossible
-				+ ", explanation=" + explanation + ", ratings=" + ratings + ", comments=" + comments + ", createdBy="
+				+ ", explanation=" + explanation + ", ratings=" + ratings + ", createdBy="
 				+ createdBy + ", createdOn=" + createdOn + "]";
 	}
-
-	
-	
 
 }

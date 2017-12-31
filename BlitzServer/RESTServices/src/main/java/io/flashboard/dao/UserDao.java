@@ -12,7 +12,7 @@ public interface UserDao {
 			String email, String password);
 	public User getUserByUsername(String username);
 	public boolean addTakenTest(String username, TakenQuiz test);	
-	public int verifyCredentals(String username, String password); 
+	public boolean verifyCredentals(String username, String password); 
 	public boolean userExists(String username); 
 	
 }

@@ -1,16 +1,23 @@
 package io.flashboard.dao;
 
+import java.util.Set;
+
 import io.flashboard.beans.quiz.Quiz;
 import io.flashboard.beans.quiz.QuizQuestion;
 
+
 public interface QuizDao {
 	
-	public int insertQuiz(Quiz quiz);
+	public boolean createQuizMinArgs(String quizTitle, String topic, String description);
+	public boolean createQuiz(String quizTitle, String topic, String description, Set<QuizQuestion> questions,
+			String creatorId, int maxScore);
 	
+	public boolean insertQuiz(Quiz quiz);
+		
 	public boolean addCommentByQuizId(int quizId, String username, String content);
 	
-	public int removeQuizByQuizId(int quizId); 
-	public int removeQuizByTitle(String quizTitle); 
+	public boolean removeQuizByQuizId(int quizId); 
+	public boolean removeQuizByTitle(String quizTitle); 
 	public int addQuestionToQuizByQuizId(int quizId, QuizQuestion question);
 	public int removeQuestionFromQuizByQuizId(int quizId, QuizQuestion question); 
 	public int addQuestionToReserve(QuizQuestion question); 

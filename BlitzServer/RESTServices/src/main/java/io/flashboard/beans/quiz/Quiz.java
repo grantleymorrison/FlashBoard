@@ -1,19 +1,24 @@
 package io.flashboard.beans.quiz;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "QUIZ")
@@ -30,9 +35,10 @@ public class Quiz {
 	@Column(name="QUIZ_DESC")
 	private String description;
 	
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = false)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name = "QUESTIONS")
-	private List<QuizQuestion> questions;
+	private Set<QuizQuestion> questions;
 	
 	@Column(name="CREATOR_ID")
 	private String creatorId;
@@ -43,13 +49,15 @@ public class Quiz {
 	@Column(name="TOTAL_ATTEMPTS")
 	private static int totalAttempts;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="RATINGS")
-	private List<Rating> ratings;
+	private Set<Rating> ratings;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(name="COMMENTS")
-	private List<Comment> comments;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinColumn(name="COMMENT")
+	private Set<Comment> comments;
 		
 	/**
 	 * No-args constructor
@@ -60,12 +68,12 @@ public class Quiz {
 		this.topic = "TOPIC";
 		this.description = "DESCRIPTION"; 
 
-		this.maxScore = 0; 
-		this.creatorId = "N/A"; 
+		this.maxScore = 10; 
+		this.creatorId = "Default"; 
 		this.createdOn = LocalDateTime.now();
-		this.comments = new ArrayList<Comment>();
-		this.ratings = new ArrayList<Rating>(); 
-		this.questions = new ArrayList<QuizQuestion>();
+		this.comments = new HashSet<Comment>();
+		this.ratings = new HashSet<Rating>(); 
+		this.questions = new HashSet<QuizQuestion>();
 	}
 		
 	/**
@@ -80,11 +88,11 @@ public class Quiz {
 		this.description = description;
 		this.createdOn = LocalDateTime.now();
 
-		this.questions = new ArrayList<QuizQuestion>();
-		this.maxScore = 0; 
-		this.creatorId = "N/A"; 
-		this.comments = new ArrayList<Comment>();
-		this.ratings = new ArrayList<Rating>(); 
+		this.questions = new HashSet<QuizQuestion>();
+		this.maxScore = 10; 
+		this.creatorId = "Default"; 
+		this.comments = new HashSet<Comment>();
+		this.ratings = new HashSet<Rating>(); 
 	}
 
 
@@ -100,8 +108,8 @@ public class Quiz {
 	 * @param ratings
 	 * @param comments
 	 */
-	public Quiz(String quizTitle, String topic, String description, List<QuizQuestion> questions,
-			String creatorId, int maxScore, List<Rating> ratings, List<Comment> comments) {
+	public Quiz(String quizTitle, String topic, String description, Set<QuizQuestion> questions,
+			String creatorId, int maxScore) {
 		this.quizTitle = quizTitle;
 		this.topic = topic;
 		this.description = description;
@@ -109,11 +117,22 @@ public class Quiz {
 		this.creatorId = creatorId;
 		this.createdOn = LocalDateTime.now();
 		this.maxScore = maxScore;
-		this.ratings = ratings;
-		this.comments = comments;
+		this.comments = new HashSet<Comment>();
+		this.ratings = new HashSet<Rating>(); 
 	}
 	
-	
+	public Quiz(String quizTitle, String topic, String description,
+			String creatorId, int maxScore) {
+		this.quizTitle = quizTitle;
+		this.topic = topic;
+		this.description = description;
+		this.questions = new HashSet<QuizQuestion>();
+		this.creatorId = creatorId;
+		this.createdOn = LocalDateTime.now();
+		this.maxScore = maxScore;
+		this.comments = new HashSet<Comment>();
+		this.ratings = new HashSet<Rating>(); 
+	}
 
 	/**
 	 * Constructor using all fields
@@ -128,8 +147,8 @@ public class Quiz {
 	 * @param comments
 	 */
 	public Quiz(int quizId, String quizTitle, String topic, String description,
-			List<QuizQuestion> questions, String creatorId, int maxScore,
-			List<Rating> ratings, List<Comment> comments) {
+			Set<QuizQuestion> questions, String creatorId, int maxScore,
+			Set<Rating> ratings, Set<Comment> comments) {
 		this.quizId = quizId;
 		this.quizTitle = quizTitle;
 		this.topic = topic;
@@ -142,6 +161,35 @@ public class Quiz {
 		this.comments = comments;
 	}
 	
+	public Quiz(int quizId, String quizTitle, String topic, String description,
+			Set<QuizQuestion> questions, String creatorId, String createdOn, int maxScore,
+			Set<Rating> ratings, Set<Comment> comments) {
+		this.quizId = quizId;
+		this.quizTitle = quizTitle;
+		this.topic = topic;
+		this.description = description;
+		this.questions = questions;
+		this.creatorId = creatorId;
+		this.createdOn = LocalDateTime.parse(createdOn);
+		this.maxScore = maxScore;
+		this.ratings = ratings;
+		this.comments = comments;
+	}
+	
+	public Quiz( String quizTitle , String topic , String description ,
+			Set<QuizQuestion> questions , String creatorId , int maxScore ,
+			Set<Rating> ratings , Set<Comment> comments ) {
+		this.quizTitle = quizTitle;
+		this.topic = topic;
+		this.description = description;
+		this.questions = questions;
+		this.creatorId = creatorId;
+		this.createdOn = LocalDateTime.now();;
+		this.maxScore = maxScore;
+		this.ratings = ratings;
+		this.comments = comments;
+	}
+
 	public int getTestId() {
 		return quizId;
 	}
@@ -166,10 +214,10 @@ public class Quiz {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<QuizQuestion> getQuestions() {
+	public Set<QuizQuestion> getQuestions() {
 		return questions;
 	}
-	public void setQuestions(List<QuizQuestion> questions) {
+	public void setQuestions(Set<QuizQuestion> questions) {
 		this.questions = questions;
 	}
 	public String getCreatorId() {
@@ -196,16 +244,16 @@ public class Quiz {
 	public static void setTotalAttempts(int totalAttempts) {
 		Quiz.totalAttempts = totalAttempts;
 	}
-	public List<Rating> getFlags() {
+	public Set<Rating> getFlags() {
 		return ratings;
 	}
-	public void setFlags(List<Rating> ratings) {
+	public void setFlags(Set<Rating> ratings) {
 		this.ratings = ratings;
 	}
-	public List<Comment> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
-	public void setComments(List<Comment> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 	
@@ -223,20 +271,23 @@ public class Quiz {
 			if(q.getQuestionText().equals(questionText))
 				removed = questions.remove(q); 
 		}
-		
 		return removed; 
 	}
 
 	@Override
 	public String toString() {
-		String str = "ComprehensionTest [quizId=" + quizId + ", quizTitle=" + quizTitle + ", topic=" + topic
-				+ ", description=" + description + ", questions=\n";
-		for(QuizQuestion tq : questions) str += "\t" + tq + "\n";
-		str += "creatorId=" + creatorId
-				+ ", createdOn=" + createdOn + ", maxScore=" + maxScore + ", ratings=" + ratings + ", comments=" + comments
-				+ "]";
-		return str; 
+		return "Quiz [quizId=" + quizId + ", "
+				+ (quizTitle != null ? "quizTitle=" + quizTitle + ", " : "")
+				+ (topic != null ? "topic=" + topic + ", " : "")
+				+ (description != null ? "description=" + description + ", " : "")
+				+ (questions != null ? "questions=" + questions + ", " : "")
+				+ (creatorId != null ? "creatorId=" + creatorId + ", " : "")
+				+ (createdOn != null ? "createdOn=" + createdOn + ", " : "") + "maxScore="
+				+ maxScore + ", " + (ratings != null ? "ratings=" + ratings + ", " : "")
+				+ (comments != null ? "comments=" + comments : "") + "]";
 	}
+
+
 	
 
 }

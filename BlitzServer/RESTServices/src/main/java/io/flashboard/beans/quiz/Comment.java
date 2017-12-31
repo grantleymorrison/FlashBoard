@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="COMMENT_QZ")
+@Table(name="COMMENT")
 public class Comment implements Serializable {
 	
 	/**

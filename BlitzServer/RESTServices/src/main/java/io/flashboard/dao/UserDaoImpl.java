@@ -2,26 +2,18 @@ package io.flashboard.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-
 import io.flashboard.beans.quiz.TakenQuiz;
 import io.flashboard.beans.users.User;
 import io.flashboard.util.HibernateUtil;
 
-//TODO: Implement
-	/* verifyCredentials
-	 * userExists
-	 */
-
 public class UserDaoImpl implements UserDao{
 	
-
 	@Override
 	public boolean createNewUser(String firstName, String lastName, String username,
 		String email, String password) {
@@ -69,6 +61,7 @@ public class UserDaoImpl implements UserDao{
 			user = (User)criteria.add(Restrictions.like("username", username)).uniqueResult();
 		}
 		catch(HibernateException he) {
+			System.out.println("User '" + username + "' not found.");
 			he.printStackTrace();
 		}finally {
 			session.close();
@@ -128,26 +121,44 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public boolean addTakenTest(String username, TakenQuiz test) {
 		Session session = HibernateUtil.getSession();
-		Transaction tx = session.beginTransaction();
-		User currUser = getUserByUsername(username);
-		List<TakenQuiz> newList;
-		newList = currUser.getTakenTests();
-		newList.add(test);
-		currUser.setTakenTests(newList);
-		session.save(currUser);
-		tx.commit();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			User currUser = getUserByUsername(username);
+			List<TakenQuiz> newList;
+			newList = currUser.getTakenTests();
+			newList.add(test);
+			currUser.setTakenTests(newList);
+			session.save(currUser);
+			tx.commit();
+		}
+		catch (HibernateException he) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			System.out.println("TakenQuiz '" + test.getTestTitle() + "' unsuccessfully added to User '" + username + "'.");
+			he.printStackTrace();
+			
+		}
 		return true;
 	}
 
 	@Override
-	public int verifyCredentals(String username, String password) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean verifyCredentals(String username, String password) {
+		User currUser = getUserByUsername(username);
+		Boolean success = false;
+		if (currUser.getPassword().equals(password)) {
+			success = true;
+		}
+		return success;
 	}
 
 	@Override
 	public boolean userExists(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		Boolean success = false;
+		if (getUserByUsername(username) != null) {
+			success = true;
+		}
+		return success;
 	}
 }
