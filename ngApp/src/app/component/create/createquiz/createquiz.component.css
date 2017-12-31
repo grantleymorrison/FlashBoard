@@ -1,0 +1,12 @@
+.head {
+    border: 5px solid rgb(51,102,187);
+    padding: 20px;
+}
+
+.buttonbox {
+    padding-top: 20px;
+}
+
+.left {
+  text-align: left;
+}

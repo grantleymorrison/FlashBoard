@@ -1,21 +1,26 @@
-<div>
+<div class="question row">
+  <div class="col-sm-6">
+    <h3 class="left">Question</h3>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" [(ngModel)]="quizObject.question" placeholder="Question"/>
+    </div>
+  </div>
 
-  <h2>Question</h2>
-  <input type="text" [(ngModel)]="quizObject.question"/>{{quizObject.question}}
-
-  <h3>Answers</h3>
-  <div>
-    <div>
-      <input type="text" placeholder="Correct Answer" [(ngModel)]="quizObject.canswer"/>
-    </div>
-    <div>
-      <input type="text" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer1"/>
-    </div>
-    <div>
-      <input type="text" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer2"/>
-    </div>
-    <div>
-      <input type="text" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer3"/>
-    </div>
+  <div class="col-sm-6">
+    <h3 class="left">Answers</h3>
+    <ul>
+      <li>
+          <input type="text" class="form-control" placeholder="Correct Answer" [(ngModel)]="quizObject.canswer"/>
+      </li>
+      <li>
+        <input type="text" class="form-control" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer1"/>
+      </li>
+      <li>
+        <input type="text" class="form-control" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer2"/>
+      </li>
+      <li>
+        <input type="text" class="form-control" placeholder="Wrong Answer" [(ngModel)]="quizObject.wanswer3"/>
+      </li>
+    </ul>
   </div>
 </div>
