@@ -8,7 +8,8 @@
 </div>
 <div>
     <ul style = "list-style-type: none">
-        <li *ngFor = "let index of questions"><new-question id = {{index}} [index] = index [topic] = "testTopic" [isFromTest] = "true"></new-question></li>
+        <li *ngFor = "let index of questions"><hr><new-question id = {{index}} [index] = index [topic] = "testTopic" [isFromTest] = "true"></new-question></li>
     </ul>
 </div>
+<hr>
 <button (click)="addQuestion()" value="New Question" id="newQuestion">Add Question</button>

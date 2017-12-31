@@ -9,9 +9,7 @@ import { Component } from '@angular/core';
 })
 export class CreateTestComponent{
     questionId = 0
-    questions = [
-        0
-    ]
+    questions = [ ]
     testTopic = ""; 
 
     addQuestion(): void {
