@@ -29,7 +29,9 @@ public class LoginModalFactory {
 
 	@FindBy(xpath = "//a[text()='Forgot password']")
 	WebElement forgotPasswordLink; 
-	
+
+	@FindBy(xpath = "//*[@id='myModal']")
+	WebElement loginModal; 
 	
 	WebDriverWait wait; 
 	public LoginModalFactory(WebDriver driver) {
@@ -39,22 +41,22 @@ public class LoginModalFactory {
 	}
 	
 	public void enterLoginUsername(String username) {
-		wait.until(ExpectedConditions.visibilityOf(this.loginUsernameTxt));
 		loginUsernameTxt.sendKeys(username);
 	}	
 	public void enterLoginPassword(String password) {
-		wait.until(ExpectedConditions.visibilityOf(this.loginPasswordTxt));
 		loginPasswordTxt.sendKeys(password);
 	}
 	public void clickLogMeIn() {
-		wait.until(ExpectedConditions.visibilityOf(this.logMeInBtn));
+		wait.until(ExpectedConditions.invisibilityOf(loginModal)); 
 		logMeInBtn.click(); 
 	}	
 	public void clickCloseX() {
 		closeLoginModalHeaderX.click(); 
+		wait.until(ExpectedConditions.invisibilityOf(loginModal)); 
 	}
 	public void clickCloseBtn() {
 		closeLoginModalFooterBtn.click(); 
+		wait.until(ExpectedConditions.invisibilityOf(loginModal)); 
 	}
 	public void clickForgotUsernameLink() {
 		forgotUsernameLink.click(); 

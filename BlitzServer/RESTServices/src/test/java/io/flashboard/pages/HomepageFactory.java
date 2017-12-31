@@ -16,16 +16,16 @@ public class HomepageFactory {
 	@FindBy(className = "navbar-toggle")
 	WebElement navbarToggle; 
 	
-	@FindBy(xpath = "//a[text()='Search']")
+	@FindBy(xpath = "//a[@routerlink='search']")
 	WebElement searchNav;
 
-	@FindBy(xpath = "")
+	@FindBy(xpath =  "//a[@routerlink='create']")
 	WebElement createNav;
 
-	@FindBy(xpath = "")
-	WebElement quizNav;
+	@FindBy(xpath =  "//a[@routerlink='browse']")
+	WebElement browseQuizNav;
 
-	@FindBy(xpath = "")
+	@FindBy(xpath =  "//a[@routerlink='study']")
 	WebElement studyNav;
 	
 	@FindBy(xpath = "//li[@class='login']")
@@ -33,6 +33,9 @@ public class HomepageFactory {
 
 	@FindBy(xpath = "//a[@class='sign-up']")
 	WebElement signUpNav;
+	
+	@FindBy(xpath = "//*[@id='myModal']")
+	WebElement loginModal; 
 	
 	
 	
@@ -59,14 +62,14 @@ public class HomepageFactory {
 		createNav.click(); 
 	}
 	public void clickQuizNav() {
-		quizNav.click(); 
+		browseQuizNav.click(); 
 	}
 	public void clickStudyNav() {
 		studyNav.click(); 
 	}	
 	public void clickLoginNav() {
-		wait.until(ExpectedConditions.elementToBeClickable(loginNav));
 		loginNav.click(); 
+		wait.until(ExpectedConditions.visibilityOf(loginModal)); 
 	}
 	public void clickSignUpNav() {
 		signUpNav.click();
