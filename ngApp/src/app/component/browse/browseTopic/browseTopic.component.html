@@ -6,16 +6,16 @@
 
       <div id="quiz" class="quiz">
         <div class="quiz-name">
-          <h4>{{quiz.quizTitle}}</h4>
+          <h3>{{quiz.testTitle}}</h3>
         </div>
         <div class="creator">
-          Creator ID: {{quiz.username}}
+          <cite>By: {{quiz.creatorId}}</cite>
         </div>
         <div class="description">
           {{quiz.description}}
         </div>
         <div class="choices">
-          <a routerLink="/quiz/{{quiz.quizId}}">
+          <a routerLink="/quiz/{{quiz.testId}}">
             <button class="btn btn-primary">Take Test</button>
           </a>
         </div>

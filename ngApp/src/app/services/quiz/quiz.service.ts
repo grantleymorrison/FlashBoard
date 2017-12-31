@@ -21,6 +21,9 @@ export class QuizService {
   getQuizs(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(this.allQuizApi);
   }
+  getQuizzesRaw() :Observable<any> {
+    return this.http.get<any>(this.allQuizApi);
+  }
 
   getQuizsByTopic(topic:string): Observable<Quiz[]>{
     return this.getQuizs()
