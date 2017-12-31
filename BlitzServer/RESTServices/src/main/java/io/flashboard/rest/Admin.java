@@ -17,7 +17,7 @@ import io.flashboard.dao.UserDaoImpl;
 
 @Path("/admin")
 public class Admin {
-
+	
 	@GET
 	@Path("/newusers")
 	@Produces(MediaType.APPLICATION_JSON)

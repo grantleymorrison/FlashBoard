@@ -110,15 +110,60 @@ public class StudyGuideDaoImpl implements StudyGuideDao {
 		List<CommentSG> comments = new ArrayList<>();
 		Session session = HibernateUtil.getSession();
 		Query query = null;
-		String hql = "FROM CommentSG";
+		StudyGuide sg = null;
+		String hql = "FROM StudyGuide WHERE studyGuideId = :id";
 		
 		try {
 			query = session.createQuery(hql);
+			query.setParameter("id", guideId);
+			
+			sg = (StudyGuide)query.uniqueResult();
+			
+			comments = sg.getComments();
 		}
 		catch(HibernateException he) {
-			
+			he.printStackTrace();
 		}
 		
-		return null;
+		if(comments.isEmpty()) {
+			return null;
+		}
+		
+		return comments;
+	}
+	
+	@Override
+	public boolean addGuideComment(CommentSG comment, int guideId) {
+		StudyGuide sg = getStudyGuide(guideId);
+		
+		if(sg == null) {
+			return false;
+		}
+		
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		sg.getComments().add(comment);
+		
+		try {
+			tx = session.beginTransaction();
+			
+			session.update(sg);
+			
+			tx.commit();
+			
+			return true;
+		}
+		catch(HibernateException he) {
+			if(tx != null) {
+				tx.rollback();
+			}
+			he.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
+		
+		
+		return false;
 	}
 }

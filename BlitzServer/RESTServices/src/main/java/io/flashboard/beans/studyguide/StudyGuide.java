@@ -31,7 +31,7 @@ public class StudyGuide {
 	@Column(name="GUIDE_ID")
 	@SequenceGenerator(sequenceName="GUIDE_SEQ", name="GUIDE_SEQ") //seqe for incrementing id 
 	@GeneratedValue(generator="GUIDE_SEQ", strategy=GenerationType.SEQUENCE)
-	private int studyGuideId;
+	private Integer studyGuideId;
 	
 	@Column(name="GUIDE_TITLE")
 	private String title;
@@ -48,8 +48,8 @@ public class StudyGuide {
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OrderColumn(name="COMMENTS")
-	private List<Comment>comments;
+	@OrderColumn(name="SG_COMMENTS")
+	private List<CommentSG>comments;
 	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="RATING_ID")
@@ -75,7 +75,7 @@ public class StudyGuide {
 	}
 	
 	// no id constructor
-	public StudyGuide(String title, ArrayList<String> body, String imgUrl, String author, List<Comment> comments, Rating ratings,
+	public StudyGuide(String title, ArrayList<String> body, String imgUrl, String author, List<CommentSG> comments, Rating ratings,
 			LocalDateTime createdDate) {
 		super();
 		this.title = title;
@@ -88,7 +88,7 @@ public class StudyGuide {
 	}
 	
 	// all field constructor
-	public StudyGuide(int studyGuideId, String title, ArrayList<String> body, String imgUrl, String author, List<Comment> comments,
+	public StudyGuide(Integer studyGuideId, String title, ArrayList<String> body, String imgUrl, String author, List<CommentSG> comments,
 			Rating ratings, LocalDateTime createdDate) {
 		super();
 		this.studyGuideId = studyGuideId;
@@ -109,12 +109,15 @@ public class StudyGuide {
 				+ createdDate + "]";
 	}
 
-	public int getStudyGuideId() {
+	
+	public Integer getStudyGuideId() {
 		return studyGuideId;
 	}
-	public void setStudyGuideId(int studyGuideId) {
+
+	public void setStudyGuideId(Integer studyGuideId) {
 		this.studyGuideId = studyGuideId;
 	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -133,10 +136,10 @@ public class StudyGuide {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public List<Comment> getComments() {
+	public List<CommentSG> getComments() {
 		return comments;
 	}
-	public void setComments(List<Comment> comments) {
+	public void setComments(List<CommentSG> comments) {
 		this.comments = comments;
 	}
 	public Rating getRatings() {

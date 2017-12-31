@@ -10,4 +10,5 @@ public interface StudyGuideDao {
 	public StudyGuide getStudyGuide(int guideId);
 	public List<StudyGuide> getAllStudyGuides();
 	public List<CommentSG> getStudyGuideComments(int guideId);
+	public boolean addGuideComment(CommentSG comment, int guideId);
 }

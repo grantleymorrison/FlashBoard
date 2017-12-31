@@ -1,3 +1,19 @@
-<p>
-  {{comment.content}}
-</p>
+<div class="comments-section">
+  <ul id="comments" class="comments">
+    <li class="comment">
+      <div>
+        <strong>Comment ID:</strong> {{comment.commentId}}
+      </div>
+      <div>
+        <strong>Username:</strong> {{comment.username}}
+      </div>
+      <div>
+        <strong>Date:</strong> {{comment.createdDate.nano | date}}
+      </div>
+      <strong> Comment: </strong>
+      <div class="comment-content">
+        {{comment.content}}
+      </div>
+    </li>
+  </ul>
+</div>

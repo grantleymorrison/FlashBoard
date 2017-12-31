@@ -40,6 +40,7 @@ import { CommentService } from './services/comment/comment.service';
 import { StudyGuideService } from './services/studyGuide/study-guide.service';
 
 import { JwtInterceptor } from './_helper/jwt.interceptor';
+import { AuthGuard } from './_guards/auth.guards';
 
 
 
@@ -82,7 +83,9 @@ import { JwtInterceptor } from './_helper/jwt.interceptor';
     StudyGuideService,
     AdminService,
     CommentService,
-    AuthenticationService, {
+    AuthenticationService,
+    AuthGuard,
+     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true

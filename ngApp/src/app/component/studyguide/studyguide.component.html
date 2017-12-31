@@ -15,11 +15,11 @@
   <div class="legend">
   <strong>Comments</strong>
 </div>
-  <div *ngIf="guide?.comments.length <=0">
+  <div *ngIf="guide?.comments?.length <=0">
     <p> No comments yet!</p>
   </div>
 
-  <div *ngIf="guide?.comments.length > 0">
+  <div *ngIf="guide?.comments?.length > 0">
     <div *ngFor="let comment of guide?.comments">
     <!--  <p>{{comment}}</p> -->
       <app-comment [comment]="comment"></app-comment>
@@ -28,9 +28,9 @@
   <div class="legend">
     <strong style="color:grey">Add Comments</strong>
   </div>
-  <textarea [(ngModel)]="guideBody" (ngModelChange)="parseTextArea()" cols="100" rows="5"></textarea>
+  <textarea [(ngModel)]="guideComment.content" cols="100" rows="5"></textarea>
   <div class="submitter">
-    <button class="btn btn-primary btn-large">Submit Comment</button>
+    <button class="btn btn-primary btn-large" (click)="submitComment()">Submit Comment</button>
   </div>
 
 </div>
