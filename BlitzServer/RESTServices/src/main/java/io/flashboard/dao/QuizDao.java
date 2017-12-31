@@ -5,7 +5,7 @@ import io.flashboard.beans.quiz.QuizQuestion;
 
 public interface QuizDao {
 	
-	public int insertQuiz(Quiz quiz);
+	public Integer insertQuiz(Quiz quiz);
 	
 	public boolean addCommentByQuizId(int quizId, String username, String content);
 	

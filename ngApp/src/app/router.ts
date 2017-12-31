@@ -11,8 +11,8 @@ import { QuizComponent } from './component/quiz/quiz.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { StudyComponent } from './component/study/study.component';
 import { StudyGuideComponent } from './component/studyguide/studyguide.component';
-import { WriterMenuComponent } from './component/create/writer.menu.component'; 
 import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
+import { CreatequizComponent } from './component/create/createquiz/createquiz.component';
 
 export const AppRoutes: Routes = [
     {
@@ -47,7 +47,7 @@ export const AppRoutes: Routes = [
     },
     {
         path: 'create',
-        component: WriterMenuComponent
+        component: CreatequizComponent
     },
     {
         path: 'home',
