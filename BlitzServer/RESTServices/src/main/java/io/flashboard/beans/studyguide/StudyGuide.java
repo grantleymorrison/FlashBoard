@@ -18,6 +18,9 @@ import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import io.flashboard.beans.quiz.Comment;
 import io.flashboard.beans.quiz.Rating;
 
@@ -33,6 +36,7 @@ public class StudyGuide {
 	@Column(name="GUIDE_TITLE")
 	private String title;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OrderColumn(name="GUIDE_BODY")
 	private ArrayList<String> body;
 	
@@ -42,8 +46,9 @@ public class StudyGuide {
 	@Column(name="AUTHOR")
 	private String author;
 	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OrderColumn(name="COMMENTS")
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Comment>comments;
 	
 	@OneToOne(fetch=FetchType.EAGER)
