@@ -1,5 +1,5 @@
 <h2>{{quiz.testTitle}}</h2>
-<h4>By: {{quiz.username}}</h4>
+<h4>By: {{quiz.creatorId}}</h4>
 <div class="container">
   <button class="btn btn-default" (click)="goBack()">Go Back</button>
 
@@ -12,15 +12,24 @@
             {{i+1}}. {{ question.question }}
           </div>
           <div class="options" *ngFor="let option of question.options; let j = index">
-            <input type="radio" (change)= "onSelection(option, i)" name="option{{i}}" [value]="option" > {{ option }}
+            <input type="radio" (change)="onSelection(option, i)" name="option{{i}}" [value]="option">
+             <div [ngStyle]="{'background-color':takenStatus && option === question.answer? 'green' : takenStatus && option === selectedEntry[i] ? 'red' : 'white'}">{{ option }}</div>
             <br>
           </div>
           <hr>
           <div class="rating">
-            <span class="rating-select"><i (click)="upEasy(i)" class="em em-birthday"></i></span> Easy: {{question.rating.easy}}
-            <span class="rating-select"><i (click)="upHard(i)" class="em em-smiling_imp"></i></span> Hard: {{question.rating.hard}}
-              <span class="rating-select"><i (click)="upLike(i)" class="em em---1"></i></span> Like {{question.rating.like}}
-                <span class="rating-select"> <i (click)="upDislike(i)" class="em em--1"></i></span> Dislike {{question.rating.dislike}}
+            <span class="rating-select">
+              <i (click)="upEasy(i)" class="em em-birthday"></i>
+            </span> Easy: {{question.rating.easy}}
+            <span class="rating-select">
+              <i (click)="upHard(i)" class="em em-smiling_imp"></i>
+            </span> Hard: {{question.rating.hard}}
+            <span class="rating-select">
+              <i (click)="upLike(i)" class="em em---1"></i>
+            </span> Like {{question.rating.like}}
+            <span class="rating-select">
+              <i (click)="upDislike(i)" class="em em--1"></i>
+            </span> Dislike {{question.rating.dislike}}
           </div>
         </li>
       </ul>
@@ -31,9 +40,11 @@
   </div>
 
 
-  <div class="comments-section">
+  <div *ngIf="takenStatus" class="comments-section">
     <label id="comments-label">Comments</label>
-
+    <div id="no-comments" *ngIf="quiz.comments">
+      No comments yet!
+    </div>
     <ul id="comments" class="comments">
       <li class="comment" *ngFor="let comment of quiz.comments">
         <div>

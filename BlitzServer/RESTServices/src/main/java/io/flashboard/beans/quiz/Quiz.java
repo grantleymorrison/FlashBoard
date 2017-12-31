@@ -7,13 +7,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "QUIZ")
@@ -30,7 +32,8 @@ public class Quiz {
 	@Column(name="QUIZ_DESC")
 	private String description;
 	
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = false)
+	@OneToMany(orphanRemoval = false)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name = "QUESTIONS")
 	private List<QuizQuestion> questions;
 	
@@ -43,11 +46,13 @@ public class Quiz {
 	@Column(name="TOTAL_ATTEMPTS")
 	private static int totalAttempts;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="RATINGS")
 	private List<Rating> ratings;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="COMMENTS")
 	private List<Comment> comments;
 		

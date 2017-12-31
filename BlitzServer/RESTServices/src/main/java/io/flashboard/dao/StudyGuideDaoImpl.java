@@ -55,7 +55,7 @@ public class StudyGuideDaoImpl implements StudyGuideDao {
 
 	@Override
 	public StudyGuide getStudyGuide(int guideId) {
-		// TODO Auto-generated method stub
+		
 		Session session = HibernateUtil.getSession();
 		Criteria criteria;
 		StudyGuide studyGuide = null;
