@@ -1,7 +1,43 @@
 cite {
-      display: inline-block;
-      padding: 10px 0;
+  display: inline-block;
+  padding: 10px 0;
 }
-li{
-      list-style-type: none;
+
+li {
+  list-style-type: none;
+}
+
+textarea {
+  resize: none;
+}
+
+p {
+  font-size: 18px;
+}
+
+.guide-body {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.legend {
+  margin-bottom: 15px;
+  margin-left: 150px;
+  text-align: left;
+}
+
+strong {
+  color: rgb(10, 200, 255);
+  font-size: 20px;
+}
+
+.backer {
+  margin-left: 100px;
+  text-align: left;
+}
+
+.submitter {
+  margin-top: 10px;
+  text-align: right;
+  margin-right: 190px;
 }

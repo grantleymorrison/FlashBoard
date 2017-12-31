@@ -2,11 +2,11 @@
   <button class="btn btn-default" (click)="back()">Back</button>
   <h1>Create your guide!</h1>
   <h4>Title</h4>
-  <input type="text" [(ngModel)]="guideTitle">
+  <input type="text" size="70" [(ngModel)]="guideTitle">
   <h4>Body</h4>
-  <textarea [(ngModel)]="guideBody" (ngModelChange)="parseTextArea()" rows="10"></textarea>
+  <textarea [(ngModel)]="guideBody" cols="70" (ngModelChange)="parseTextArea()" rows="10"></textarea>
   <h4>Featured Image URL</h4>
-  <input type="text" [(ngModel)]="guideImgUrl">
+  <input type="text" size="70" [(ngModel)]="guideImgUrl">
   <br>
   <button class="btn btn-primary btn-large" (click)="submitGuide()">Submit Guide</button>
 </div>

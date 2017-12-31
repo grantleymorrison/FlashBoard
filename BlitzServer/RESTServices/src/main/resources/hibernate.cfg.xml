@@ -37,6 +37,7 @@
 		<mapping class="io.flashboard.beans.quiz.Rating"/>
 		<mapping class="io.flashboard.beans.quiz.TakenQuiz"/>
 		<mapping class="io.flashboard.beans.studyguide.StudyGuide"/>
+		<mapping class="io.flashboard.beans.studyguide.CommentSG"/>
 		
 		</session-factory>
 </hibernate-configuration>
