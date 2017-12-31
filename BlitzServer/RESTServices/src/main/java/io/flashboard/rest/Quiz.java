@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import io.flashboard.jsonbeans.QuizData;
 import io.flashboard.service.QuizService;
 
-@Path("/quiz")
+@Path("/quiz_insert")
 public class Quiz {
 
 	@POST

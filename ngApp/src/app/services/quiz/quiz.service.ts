@@ -11,7 +11,7 @@ export class QuizService {
   public allQuizApi:string = "http://localhost:3000/flashboard/quiz/all";
   public quizApi:string = "http://localhost:3000/flashboard/quiz/";
 
-  private quizUrl = 'http://localhost:3000/flashboard/quiz';
+  private quizUrl = 'http://localhost:3000/flashboard/quiz_insert';
 
   constructor(private http: HttpClient) { }
 
