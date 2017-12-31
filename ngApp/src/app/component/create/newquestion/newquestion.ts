@@ -1,8 +1,5 @@
 import { Component, Input, EventEmitter } from '@angular/core';
 import { Question } from '../../../model/question';
-import { HttpClient } from '@angular/common/http';
-import { Http, Response, RequestOptions, Headers } from '@angular/http'; 
-import { AuthenticationService } from '../../../services/authentication/authentication.service';
 
 @Component({
     selector: 'new-question',
@@ -36,9 +33,6 @@ export class NewQuestionComponent {
 
     explanation: string = "";
 
-    constructor(private http: Http) {
-        
-    }
     // constructor(private http: HttpClient, private authServ: AuthenticationService) {
         
     // }
