@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-6 head">
+    <h2 class="left">Quiz Title</h2>
+    <div class="col-sm-8">
+        <input type="input" class="form-control" [(ngModel)]="quiz.quizTitle" placeholder="Title"/>
+    </div>
+  </div>
+
+  <div class="col-sm-6 head">
+    <h2 class="left">Quiz Topic</h2>
+    <div class="col-sm-8">
+      <input type="input" class="form-control" [(ngModel)]="quiz.quizTopic" placeholder="Topic"/>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div *ngFor="let q of questions">
+    <app-question [quizObject]="q"></app-question>
+  </div>
+  <div class="buttonbox">
+    <button type="button" class="btn btn-primary" (click)="add()">Add Question</button>
+    <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+  </div>
+</div>

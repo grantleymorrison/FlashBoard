@@ -141,12 +141,32 @@ public class Quiz {
 		this.description = description;
 		this.questions = questions;
 		this.creatorId = creatorId;
-		this.createdOn = LocalDateTime.now();;
+		this.createdOn = LocalDateTime.now();
 		this.maxScore = maxScore;
 		this.ratings = ratings;
 		this.comments = comments;
 	}
 	
+	
+	/**
+	 * 
+	 * @param quizTitle
+	 * @param topic
+	 * @param questions
+	 * @param creatorId
+	 * @param maxScore
+	 */
+	public Quiz(String quizTitle, String topic, List<QuizQuestion> questions, 
+			String creatorId, int maxScore) {
+		super();
+		this.quizTitle = quizTitle;
+		this.topic = topic;
+		this.questions = questions;
+		this.creatorId = creatorId;
+		this.createdOn = LocalDateTime.now();
+		this.maxScore = maxScore;
+	}
+
 	public int getTestId() {
 		return quizId;
 	}

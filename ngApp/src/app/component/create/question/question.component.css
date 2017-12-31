@@ -1,0 +1,16 @@
+.question {
+  border: 2px solid #00bfff;
+  padding: 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px;
+}

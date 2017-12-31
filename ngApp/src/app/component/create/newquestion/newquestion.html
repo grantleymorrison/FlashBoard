@@ -1,43 +1,58 @@
-<h3 *ngIf="isFromTest">Question #{{index}}</h3> 
+<h3 *ngIf="isFromTest">Question #{{index}}</h3>
 <div>
-    <input type = "text" placeholder = "Question text..." name = "QuestionText"> 
+    <input type="text" placeholder="Question text..." name="questionText{{index}}" [(ngModel)] = "questionText">
+    <span></span>
+    <input type="text" placeholder="Point value..." name="questionPoints{{index}}" [(ngModel)]="points">
     <!-- <h3>questionTopic = {{topic}}</h3> -->
     <table>
         <tr>
-            <th>Answers</th><th>Correct?</th>
+            <th>Answers</th>
+            <th>Correct?</th>
         </tr>
         <tr>
             <td>
-                <input type = "Text" name = "answer1text" placeholder = "Answer 1 text...">
+                <input type="Text" name="answer1text" placeholder="Answer 1 text..." [(ngModel)]="option1">
             </td>
             <td>
-                <input type = "radio" name = "isCorrect{{index}}" id = "1">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type = "Text" name = "answer2text" placeholder = "Answer 2 text...">
-            </td>
-            <td>
-                <input type = "radio" name = "isCorrect{{index}}" id = "2">
+                <input type="radio" name="isCorrect{{index}}" id="1" (change)="chooseAnswer(1)">
             </td>
         </tr>
         <tr>
             <td>
-                <input type = "Text" name = "answer3text" placeholder = "Answer 3 text...">
+                <input type="Text" name="answer2text" placeholder="Answer 2 text..." [(ngModel)]="option2">
             </td>
             <td>
-                <input type = "radio" name = "isCorrect{{index}}" id = "3">
+                <input type="radio" name="isCorrect{{index}}" id="2" (change)="chooseAnswer(2)">
             </td>
         </tr>
         <tr>
             <td>
-                <input type = "Text" name = "answer4text" placeholder = "Answer 4 text...">
+                <input type="Text" name="answer3text" placeholder="Answer 3 text..." [(ngModel)]="option3">
             </td>
             <td>
-                <input type = "radio" name = "isCorrect{{index}}" id = "4">
+                <input type="radio" name="isCorrect{{index}}" id="3" (change)="chooseAnswer(3)">
             </td>
         </tr>
-
+        <tr>
+            <td>
+                <input type="Text" name="answer4text" placeholder="Answer 4 text..." [(ngModel)]="option4">
+            </td>
+            <td>
+                <input type="radio" name="isCorrect{{index}}" id="4" (change)="chooseAnswer(4)">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td *ngIf = "showCorrectAnswerSelection">Correct answer is: {{answerId}} : {{answerString}}</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="explanation{{index}}" placeholder="Explanation (Optional)" [(ngModel)]="explanation">
+            </td>
+        </tr>
+        <tr *ngIf = "showQuestionShipStatus"><td>{{questionShipStatus}}</td></tr>
+        <tr><td><button name = "checkForShippingBtn" (click) = "checkQuestionForShipping()">Check for readiness</button></td></tr>
     </table>
 </div>
