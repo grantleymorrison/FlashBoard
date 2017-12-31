@@ -1,5 +1,44 @@
 <h1>Search Here!</h1>
 <ul>
-    <input type="text" [(ngModel)]="searchString" value="Search here">
-    <input class="btn btn-info" type="button" value="Search" (click)="fetchData()">
+  <li>
+    <select [(ngModel)]="searchOption">
+      <option *ngFor="let option of options">{{option.option}}</option>
+    </select>
+    <input class="search-input" size="50" type="text" [(ngModel)]="searchString" value="Search here">
+    <input class="btn btn-default btn-lg" type="button" value="Search Here" (click)="fetchData()">
+  </li>
 </ul>
+<div *ngIf="searchOption == 'Quiz'">
+  <ul *ngFor="let quiz of quizzes">
+    <a routerLink="/quiz/{{quiz.testId}}">
+      <div *ngIf="quiz.testTitle.toLowerCase().includes(searchString) ||
+     quiz.creatorId.toLowerCase().includes(searchString)">
+        <div class="quiz-name">
+          <h3>{{quiz.testTitle}}</h3>
+        </div>
+        <div class="creator">
+          <cite>By: {{quiz.creatorId}}</cite>
+        </div>
+        <div class="description">
+          {{quiz.description}}
+        </div>
+      </div>
+    </a>
+  </ul>
+
+</div>
+<div *ngIf="searchOption == 'Study Guide'">
+  <ul *ngFor="let guide of guides">
+    <a routerLink="/study/{{guide.studyGuideId}}">
+      <div class="guide-name">
+        <h3>{{guide.title}}</h3>
+      </div>
+      <div class="creator">
+        <cite>By: {{guide.author}}</cite>
+      </div>
+      <div class="description">
+        {{guide.body[0] | slice:0:30 }} ...
+      </div>
+    </a>
+  </ul>
+</div>
