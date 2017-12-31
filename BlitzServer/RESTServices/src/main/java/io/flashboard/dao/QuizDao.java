@@ -9,7 +9,7 @@ public interface QuizDao {
 	
 	public List<Quiz> getAllQuizzes();
 	
-	public int insertQuiz(Quiz quiz);
+	public Integer insertQuiz(Quiz quiz);
 	public boolean addCommentByQuizId(int quizId, String username, String content);
 	public int removeQuizByQuizId(int quizId); 
 	public int removeQuizByTitle(String quizTitle); 
