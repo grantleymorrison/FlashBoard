@@ -24,20 +24,22 @@ import { LoginComponent } from './component/login/login.component';
 import { StudyGuideComponent } from './component/studyguide/studyguide.component';
 import { NewUserComponent } from './component/newuser/newuser.component';
 import { PromoteUserComponent } from './component/promoteuser/promoteuser.component';
+import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
+import { CreatequizComponent } from './component/create/createquiz/createquiz.component';
+import { QuestionComponent } from './component/create/question/question.component';
+import { CommentComponent } from './component/comment/comment.component';
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { FooterComponent } from './component/footer/footer.component';
 
 // import Services
 import { TopicService } from './services/topic/topic.service';
 import { QuizService } from './services/quiz/quiz.service';
 import { AlertService } from './services/alert/alert.service';
 import { AdminService } from './services/admin/admin.service';
-import { AuthenticationService } from './services/authentication/authentication.service';
-import { FooterComponent } from './component/footer/footer.component';
+import { CommentService } from './services/comment/comment.service';
 import { StudyGuideService } from './services/studyGuide/study-guide.service';
 
 import { JwtInterceptor } from './_helper/jwt.interceptor';
-import { PostGuideComponent } from './component/study/post-guide/post-guide.component';
-import { CreatequizComponent } from './component/create/createquiz/createquiz.component';
-import { QuestionComponent } from './component/create/question/question.component';
 
 
 
@@ -63,7 +65,8 @@ import { QuestionComponent } from './component/create/question/question.componen
     NewUserComponent,
     PromoteUserComponent,
     CreatequizComponent,
-    QuestionComponent
+    QuestionComponent,
+    CommentComponent
 
   ],
   imports: [
@@ -78,6 +81,7 @@ import { QuestionComponent } from './component/create/question/question.componen
     AlertService,
     StudyGuideService,
     AdminService,
+    CommentService,
     AuthenticationService, {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

@@ -5,9 +5,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import io.flashboard.beans.quiz.Quiz;
 import io.flashboard.beans.users.User;
 import io.flashboard.dao.AdminDaoImpl;
-import io.flashboard.dao.UserDaoImpl;
+import io.flashboard.dao.QuizDaoImpl;
 import io.flashboard.util.HibernateUtil;
 
 public class Driver2 {
@@ -16,13 +17,20 @@ public class Driver2 {
 		//createAdmin();
 		//approve("admin");
 		//getQuiz();
-		p2w("jeff");
+		//p2w("jeff");
+		getQuizById(50);
 	}
 	
 	public static void approve(String username) {
 		AdminDaoImpl ad = new AdminDaoImpl();
 		ad.approveUser(username);
 		
+	}
+	
+	public static Quiz getQuizById(int id) {
+		QuizDaoImpl qdi = new QuizDaoImpl();
+		
+		return qdi.getQuizById(id);
 	}
 	
 	public static void p2w(String username) {

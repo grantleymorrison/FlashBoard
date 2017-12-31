@@ -6,7 +6,7 @@ export class StudyGuide {
     title: string;
     body: string[];
     author: string;
-    comment: Comment;
+    comments: Comment[];
     rating: Rating;
     createdDate: Date;
 }

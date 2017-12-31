@@ -12,7 +12,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import io.flashboard.beans.quiz.Rating;
+import io.flashboard.beans.quiz.Comment;
+import io.flashboard.beans.studyguide.CommentSG;
 import io.flashboard.beans.studyguide.StudyGuide;
 import io.flashboard.util.HibernateUtil;
 
@@ -94,5 +95,27 @@ public class StudyGuideDaoImpl implements StudyGuideDao {
 			session.close();
 		}
 		return guides;
+	}
+	
+	/**
+	 * Gets the comments associated with a study guide
+	 * 
+	 * @param id for study guide
+	 * 
+	 * @return list of comments
+	 * 
+	 */
+	@Override
+	public List<CommentSG> getStudyGuideComments(int guideId) {
+		List<CommentSG> comments = new ArrayList<>();
+		Session session = HibernateUtil.getSession();
+		Query query = null;
+		String hql = "FROM "
+		
+		try {
+			query = session.createQuery(arg0)
+		}
+		
+		return null;
 	}
 }

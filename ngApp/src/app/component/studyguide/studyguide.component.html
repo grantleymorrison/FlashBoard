@@ -12,19 +12,20 @@
       {{paragraph}}
     </div>
   </div>
-  <div class="legend">    
+  <div class="legend">
   <strong>Comments</strong>
-</div>    
+</div>
   <div *ngIf="guide?.comments.length <=0">
     <p> No comments yet!</p>
   </div>
 
   <div *ngIf="guide?.comments.length > 0">
     <div *ngFor="let comment of guide?.comments">
-      <p>{{comment}}</p>
+    <!--  <p>{{comment}}</p> -->
+      <app-comment [comment]="comment"></app-comment>
     </div>
   </div>
-  <div class="legend">    
+  <div class="legend">
     <strong style="color:grey">Add Comments</strong>
   </div>
   <textarea [(ngModel)]="guideBody" (ngModelChange)="parseTextArea()" cols="100" rows="5"></textarea>
