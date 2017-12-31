@@ -1,7 +1,10 @@
 package io.flashboard.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -25,6 +28,31 @@ import io.flashboard.util.HibernateUtil;
 	public Quiz getQuizByTitle(String quizTitle); 
 	 */
 public class QuizDaoImpl implements QuizDao {
+	@SuppressWarnings("unchecked")
+	public List<Quiz> getAllQuizzes(){
+		Session session = HibernateUtil.getSession();
+		Query query;
+		String hql;
+		Transaction tx = null;
+		List<Quiz> quizzes = null;
+		try {
+			tx = session.beginTransaction();
+			hql = "FROM io.flashboard.beans.quiz.Quiz";
+			query = session.createQuery(hql);
+			quizzes = query.list();
+
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return quizzes;		
+	}
+	
+	
 	public boolean addCommentByQuizId(int quizId, String username, String content) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
