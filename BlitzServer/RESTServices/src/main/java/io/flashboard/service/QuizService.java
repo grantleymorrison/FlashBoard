@@ -27,7 +27,7 @@ public class QuizService {
 		String creator = quiz.getCreator();
 		String quizTitle = quiz.getQuizTitle();
 		String quizTopic = quiz.getQuizTopic();
-		List<QuestionData> qd = new ArrayList<>();
+		List<QuestionData> qd = quiz.getQuestions();
 		List<QuizQuestion> q = new ArrayList<>();
 		ArrayList<String> options = new ArrayList<>();
 		QuizQuestion qq = null;
