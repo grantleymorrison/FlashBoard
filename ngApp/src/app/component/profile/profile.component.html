@@ -2,6 +2,14 @@
 <div class="text-center profile-box">
   <h3>Username: {{profile.username}}</h3>
   <h3>Average Score: {{profile.avgScore}}</h3>
-  <h3>Favourite Color: {{profile.favColor}}</h3>
   <h3>E-mail: {{profile.email}}</h3>
+</div>
+
+<div class="badge" [ngStyle]=styleObject>
+</div>
+
+<div class="lobsterfont">
+  {{roleName}}
+  <div class="badge" [ngStyle]=roleObject>
+  </div>
 </div>

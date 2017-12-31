@@ -10,5 +10,9 @@
 li{
     margin: 10px;
     list-style: none;
-    border: 1px solid aquamarine;  
+    border: 1px solid rgba(45, 94, 255, 0.5);  
+    line-height: 1.5em;
+    float: left;
+    display: inline;
+    width: 30%;
 }

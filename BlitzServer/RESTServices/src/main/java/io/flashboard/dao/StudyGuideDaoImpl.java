@@ -7,63 +7,65 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import io.flashboard.beans.quiz.Rating;
 import io.flashboard.beans.studyguide.StudyGuide;
 import io.flashboard.util.HibernateUtil;
 
 public class StudyGuideDaoImpl implements StudyGuideDao {
-	
-	
+
 	/**
-	 * gets title, body, img url, and author and inserts 
-	 * guid into database
+	 * gets title, body, img url, and author and inserts guid into database
 	 * 
-	 * @param guide information
+	 * @param guide
+	 *            information
 	 * @return status of transaction
 	 */
 	@Override
 	public boolean addStudyGuide(String title, String[] body, String imgUrl, String author) {
-		
+
 		boolean success = false;
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
-		
+
 		ArrayList<String> arrListBody = new ArrayList<String>(Arrays.asList(body));
 		LocalDateTime createdDate = LocalDateTime.now();
-		StudyGuide newStudyGuide = new StudyGuide(title, arrListBody, imgUrl, author, createdDate);
+		
 		try {
+			StudyGuide newStudyGuide = new StudyGuide(title, arrListBody, imgUrl, author, null, null, createdDate);
 			tx = session.beginTransaction();
 			session.save(newStudyGuide);
 			success = true;
 			System.out.println(newStudyGuide);
 			tx.commit();
-		}catch(HibernateException he) {
-			if(tx != null) {
+		} catch (HibernateException he) {
+			if (tx != null) {
 				tx.rollback();
 			}
 			he.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
 		return success;
 	}
 
 	@Override
-	public StudyGuide getStudyGuide(String title) {
+	public StudyGuide getStudyGuide(int guideId) {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		Criteria criteria;
 		StudyGuide studyGuide = null;
 		try {
 			criteria = session.createCriteria(StudyGuide.class);
-			studyGuide = (StudyGuide)criteria.add(Restrictions.like("title", title)).uniqueResult();
-			
-		}catch(HibernateException he) {
+			studyGuide = (StudyGuide) criteria.add(Restrictions.like("studyGuideId", guideId)).uniqueResult();
+
+		} catch (HibernateException he) {
 			he.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
 		return studyGuide;
@@ -72,23 +74,25 @@ public class StudyGuideDaoImpl implements StudyGuideDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<StudyGuide> getAllStudyGuides() {
-		List<StudyGuide> guides = null;
 		Session session = HibernateUtil.getSession();
+		Query query;
+		String hql;
 		Transaction tx = null;
-
-		try{
+		List<StudyGuide> guides = null;
+		try {
 			tx = session.beginTransaction();
-			guides = session.createQuery("FROM Study_Guide").list();
-			
-		}catch(HibernateException e){
-			if(tx!=null){
+			hql = "FROM io.flashboard.beans.studyguide.StudyGuide";
+			query = session.createQuery(hql);
+			guides = query.list();
+
+		} catch (HibernateException e) {
+			if (tx != null) {
 				tx.rollback();
 			}
 			e.printStackTrace();
-		}finally{
+		} finally {
 			session.close();
 		}
-		
 		return guides;
 	}
 }

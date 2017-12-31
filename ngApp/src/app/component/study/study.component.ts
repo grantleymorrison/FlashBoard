@@ -28,7 +28,8 @@ export class StudyComponent implements OnInit {
     else{
       this.signedIn = false;
     }
-    // load data here
+    this.getGuides();
+    
   }
   getGuides():void{
     this.studyGuideService.getGuides()

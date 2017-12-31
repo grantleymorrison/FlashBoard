@@ -7,14 +7,22 @@ public class ProfileData {
 	private String email;
 	private String favColor;
 	private double avgScore;
+	private int role;
 	
 	//No args constructor for JSON to object conversion
 	public ProfileData() {
 		super();
 	}
 	
+	//Wrong token constructor
+	public ProfileData(String username) {
+		super();
+		this.username = username;
+	}
+
 	//All args constructor 
-	public ProfileData(String username, String fName, String lName, String email, String favColor, double avgScore) {
+	public ProfileData(String username, String fName, String lName, String email, 
+			String favColor, double avgScore, int role) {
 		super();
 		this.username = username;
 		this.fName = fName;
@@ -22,12 +30,7 @@ public class ProfileData {
 		this.email = email;
 		this.favColor = favColor;
 		this.avgScore = avgScore;
-	}
-
-	//Wrong token constructor
-	public ProfileData(String username) {
-		super();
-		this.username = username;
+		this.role = role;
 	}
 
 	public String getUsername() {
@@ -75,11 +78,20 @@ public class ProfileData {
 		this.avgScore = avgScore;
 	}
 
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
 		return "ProfileData [username=" + username + ", fName=" + fName + ", lName=" + lName + ", email=" + email
-				+ ", favColor=" + favColor + ", avgScore=" + avgScore + "]";
+				+ ", favColor=" + favColor + ", avgScore=" + avgScore + ", role=" + role + "]";
 	}
+	
 	
 	
 }
