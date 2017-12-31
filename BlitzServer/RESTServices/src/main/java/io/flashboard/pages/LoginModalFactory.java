@@ -15,11 +15,8 @@ public class LoginModalFactory {
 	@FindBy(xpath = "//input[@name='password']")
 	WebElement loginPasswordTxt; 
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//button[text()='Log in']")
 	WebElement logMeInBtn;
-	
-	@FindBy(xpath = "")
-	WebElement signUp;
 	
 	@FindBy(xpath = "//button[@class='close']")
 	WebElement closeLoginModalHeaderX;
@@ -27,9 +24,14 @@ public class LoginModalFactory {
 	@FindBy(xpath = "//button[text()='Close']")
 	WebElement closeLoginModalFooterBtn;
 	
+	@FindBy(xpath = "//a[text()='Forgot username']")
+	WebElement forgotUsernameLink; 
+
+	@FindBy(xpath = "//a[text()='Forgot password']")
+	WebElement forgotPasswordLink; 
+	
 	
 	WebDriverWait wait; 
-	
 	public LoginModalFactory(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 1); 
@@ -47,7 +49,20 @@ public class LoginModalFactory {
 	public void clickLogMeIn() {
 		wait.until(ExpectedConditions.visibilityOf(this.logMeInBtn));
 		logMeInBtn.click(); 
+	}	
+	public void clickCloseX() {
+		closeLoginModalHeaderX.click(); 
 	}
+	public void clickCloseBtn() {
+		closeLoginModalFooterBtn.click(); 
+	}
+	public void clickForgotUsernameLink() {
+		forgotUsernameLink.click(); 
+	}
+	public void clickForgotPasswordLink() {
+		forgotPasswordLink.click(); 
+	}
+
 
 
 }

@@ -8,23 +8,28 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomepageFactory {
+
+	@FindBy(xpath="//a[@class='navbar-brand']")
+	WebElement logoNav; 
+
+	@FindBy(xpath = "//a[text()='Search']")
+	WebElement searchNav;
+
+	@FindBy(xpath = "")
+	WebElement createNav;
+
+	@FindBy(xpath = "")
+	WebElement quizNav;
+
+	@FindBy(xpath = "")
+	WebElement studyNav;
+	
 	@FindBy(xpath = "//li[@class='login']")
 	WebElement loginNav;
 
 	@FindBy(xpath = "//li[text()=' Sign Up']")
 	WebElement signUpNav;
-
-	@FindBy(xpath = "//a[text()='Browse']")
-	WebElement browseNav;
 	
-	@FindBy(xpath = "//a[text()='Search']")
-	WebElement searchNav;
-	
-	@FindBy(xpath = "//a[text()='Home']")
-	WebElement homeNav;
-	
-	@FindBy(xpath="//a[@class='navbar-brand']")
-	WebElement logoNav; 
 	
 	
 	WebDriverWait wait; 
@@ -34,7 +39,22 @@ public class HomepageFactory {
 		wait = new WebDriverWait(driver, 1); 
 		
 	}
-	
+
+	public void clickLogoNav() {
+		logoNav.click(); 
+	}
+	public void clickSearchNav() {
+		searchNav.click(); 
+	}
+	public void clickCreateNav() {
+		createNav.click(); 
+	}
+	public void clickQuizNav() {
+		quizNav.click(); 
+	}
+	public void clickStudyNav() {
+		studyNav.click(); 
+	}	
 	public void clickLoginNav() {
 		wait.until(ExpectedConditions.elementToBeClickable(loginNav));
 		loginNav.click(); 
@@ -42,19 +62,6 @@ public class HomepageFactory {
 	public void clickSignUpNav() {
 		signUpNav.click();
 	}
-	public void clickBrowseNav() {
-		browseNav.click();
-	}
-	public void clickSearchNav() {
-		searchNav.click(); 
-	}
-	public void clickHomeNav() {
-		homeNav.click(); 
-	}
-	public void clickLogoNav() {
-		logoNav.click(); 
-	}
-	
 	
 
 }
