@@ -31,12 +31,12 @@ export class QuizComponent implements OnInit {
     //On init get Quizes from database
     ngOnInit() {
         this.getQuiz();
+        console.log(this.quiz)
     }
 
     // Retrieve Quiz from database
     getQuiz(): void {
         let id = +this.route.snapshot.paramMap.get('id');
-        console.log(id);
         this.quizService.getQuiz(id)
             .subscribe(quiz => this.quiz = quiz);
     }

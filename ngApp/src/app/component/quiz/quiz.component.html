@@ -1,4 +1,4 @@
-<h2>{{quiz.quizTitle}}</h2>
+<h2>{{quiz.testTitle}}</h2>
 <h4>By: {{quiz.username}}</h4>
 <div class="container">
   <button class="btn btn-default" (click)="goBack()">Go Back</button>
@@ -51,7 +51,7 @@
         </div>
       </li>
     </ul>
-    <textarea class="add-comment" name="addComment" form="commentForm"></textarea>
+    <textarea class="add-comment" rows="5" cols="100" name="addComment" form="commentForm"></textarea>
     <br>
     <button class="btn btn-primary" style="float:right" (click)="submitComment()">Submit Comment</button>
   </div>
