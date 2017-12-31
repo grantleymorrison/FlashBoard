@@ -4,41 +4,41 @@
     <legend>
       <strong>Name</strong>
     </legend>
-    <div id="firstName" class="col-xs-6 col-md-6">
-      <input class="form-control" type="text" placeholder="First" [(ngModel)]="fname">
+    <div class="col-xs-6 col-md-6">
+      <input id="firstNameText" class="form-control" type="text" placeholder="First" [(ngModel)]="fname">
     </div>
-    <div id="lastName" class="col-xs-6 col-md-6">
-      <input class="form-control" type="text" placeholder="Last" [(ngModel)]="lname">
+    <div class="col-xs-6 col-md-6">
+      <input id="lastNameText" class="form-control" type="text" placeholder="Last" [(ngModel)]="lname">
     </div>
     <legend>
       <strong>Username</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="text" [(ngModel)]="username" required>
+      <input id = "usernameText" class="form-control" type="text" [(ngModel)]="username" required>
     </div>
     <legend>
       <strong>Password</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="password" [(ngModel)]="password" required>
+      <input id = "passwordText"  class="form-control" type="password" [(ngModel)]="password" required>
     </div>
     <legend>
       <strong>Re-Enter Password</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="password" [(ngModel)]="rePassword" required>
+      <input id = "rePasswordText"  class="form-control" type="password" [(ngModel)]="rePassword" required>
     </div>
     <legend>
       <strong>Email</strong>
     </legend>
     <div class="col-md-12">
-      <input class="form-control" type="email" [(ngModel)]="email" required>
+      <input id = "emailText"  class="form-control" type="email" [(ngModel)]="email" required>
     </div>
     <legend>
       <strong>Favorite Color</strong>
     </legend>
     <div class="col-md-3">
-      <input class="form-control" type="color" [(ngModel)]="favColor">
+      <input id = "favColorSelect" class="form-control favFolor" type="color" [(ngModel)]="favColor">
     </div>
     <div class="confirm col-md-12">
       <div>
@@ -46,7 +46,7 @@
           <div class="limit" [ngStyle]=msgStyle>
             {{feedbackMsg}}
           </div>
-          <input class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="validateRegistration()">
+          <input id="createAcctBtn" class="btn btn-lg btn-primary" type="button" value="Create Account" (click)="validateRegistration()">
         </div>
       </div>
     </div>
