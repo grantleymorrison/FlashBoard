@@ -42,17 +42,18 @@ export class CreatequizComponent implements OnInit {
         q.wanswer3 = "null";
       }
     }
-    this.quiz.creator = "jon";
+    this.getAuthor();
+    this.quiz.creator = this.author;
     this.quiz.questions = this.questions;
     this.quizService.submitQuiz(this.quiz);
   }
 
-  getAuthor(){
+  private getAuthor(){
     let currentUser = JSON.parse(localStorage.getItem("currentUser"))
     this.author = this.parseJwt(currentUser.token.toString()).sub;
   }
 
-  parseJwt(token){
+  private parseJwt(token){
     let base64Url = token.split('.')[1];
     let base64 =  base64Url.replace('-', '+').replace('_', '/');
     return JSON.parse(window.atob(base64));
