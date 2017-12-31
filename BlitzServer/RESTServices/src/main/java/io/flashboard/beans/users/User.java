@@ -3,6 +3,7 @@ package io.flashboard.beans.users;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,7 +52,7 @@ public class User {
 	private Double avgScore;
   
 	//TODO map user to completed test New Stuff!!!!!!!!!!
-	@OneToMany(orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Column(name="TAKEN_TESTS")
 	private List<TakenQuiz> takenTests;

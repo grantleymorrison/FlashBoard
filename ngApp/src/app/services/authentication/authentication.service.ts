@@ -22,4 +22,15 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
+
+  public getAuthor(): string{
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"))
+    return this.parseJwt(currentUser.token.toString()).sub;
+  }
+
+  private parseJwt(token){
+    let base64Url = token.split('.')[1];
+    let base64 =  base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+  }
 }

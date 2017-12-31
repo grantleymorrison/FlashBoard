@@ -82,6 +82,44 @@ public class TokenService {
 	}
 	
 	/**
+	 * Checks if use is an admin
+	 * 
+	 * @param token the JWT given
+	 * @return true if admin exists, false otherwise
+	 */
+	public static boolean isAdmin(String token) {
+		Claims claims = null;
+		UserDaoImpl ud = new UserDaoImpl();
+		User user = null;
+		String cUsername = null;
+		boolean verified = false;
+		
+		if(token == null) {
+			return false;
+		}
+		
+		try {
+			claims = Jwts.parser()
+					.setSigningKey(getSecret())
+					.parseClaimsJws(token).getBody();
+			
+			cUsername = claims.getSubject();
+			user = ud.getUserByUsername(cUsername);
+			
+			if(cUsername == null || user == null || user.getRoleFlag() != 2) {
+				return false;
+			}
+			
+			verified = true;
+			
+		}catch(SignatureException se) {
+			se.printStackTrace();
+		}
+		
+		return verified;
+	}
+	
+	/**
 	 * Creates the secret key from a static string
 	 * 
 	 * @return byte[] conversion of secretKey

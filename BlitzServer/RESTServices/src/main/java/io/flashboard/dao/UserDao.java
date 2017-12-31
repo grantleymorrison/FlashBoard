@@ -1,5 +1,7 @@
 package io.flashboard.dao;
 
+import java.util.List;
+
 import io.flashboard.beans.quiz.TakenQuiz;
 import io.flashboard.beans.users.User;
 
@@ -14,5 +16,7 @@ public interface UserDao {
 	public boolean addTakenTest(String username, TakenQuiz test);	
 	public int verifyCredentals(String username, String password); 
 	public boolean userExists(String username); 
+	public List<String> getAllNewUsers();
+	public List<String> getAllPromotees();
 	
 }

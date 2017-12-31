@@ -76,6 +76,7 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
+	@Override
 	public List<String> getAllNewUsers(){
 		Session session = HibernateUtil.getSession();
 		List<String> newUsers = new ArrayList<>();
@@ -100,6 +101,7 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<String> getAllPromotees(){
 		Session session = HibernateUtil.getSession();
 		List<String> promotees = new ArrayList<>();
