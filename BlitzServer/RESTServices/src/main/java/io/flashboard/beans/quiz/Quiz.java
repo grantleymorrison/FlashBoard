@@ -53,7 +53,7 @@ public class Quiz {
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@Column(name="COMMENTS")
+	@Column(name="QZ_COMMENTS")
 	private List<Comment> comments;
 		
 	/**

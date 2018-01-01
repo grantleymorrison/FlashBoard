@@ -37,7 +37,7 @@
                 <i (click)="upDislike(i)" class="em em--1"></i>
               </span> Dislike {{question.rating?.dislike}}
             </div>
-        
+
           </li>
         </ul>
       </div>
@@ -51,27 +51,16 @@
 
   <div *ngIf="takenStatus" class="comments-section">
     <label id="comments-label">Comments</label>
-    <div class="no-comments" *ngIf="quiz.comments">
+    <div class="no-comments" *ngIf="quiz?.comments?.length <= 0">
       No comments yet!
     </div>
-    <ul id="comments" class="comments">
-      <li class="comment" *ngFor="let comment of quiz.comments">
-        <div>
-          <strong>Comment ID:</strong> {{comment.commentId}}
-        </div>
-        <div>
-          <strong>Username:</strong> {{comment.username}}
-        </div>
-        <div>
-          <strong>Date:</strong> {{comment.createdDate | date}}
-        </div>
-        <strong> Comment: </strong>
-        <div class="comment-content">
-          {{comment.content}}
-        </div>
-      </li>
-    </ul>
-    <textarea class="add-comment" rows="5" cols="100" name="addComment" form="commentForm"></textarea>
+
+    <div *ngIf="quiz?.comments?.length > 0">
+      <div *ngFor="let comment of quiz?.comments">
+        <app-comment [comment]="comment"></app-comment>
+      </div>
+    </div>
+    <textarea class="add-comment" rows="5" cols="100" name="addComment" form="commentForm" [(ngModel)]="quizComment.content"></textarea>
     <br>
     <button class="btn btn-primary" style="float:right" (click)="submitComment()">Submit Comment</button>
   </div>

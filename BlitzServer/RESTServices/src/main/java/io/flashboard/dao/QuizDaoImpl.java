@@ -1,5 +1,6 @@
 package io.flashboard.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -12,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import io.flashboard.beans.quiz.Comment;
 import io.flashboard.beans.quiz.Quiz;
 import io.flashboard.beans.quiz.QuizQuestion;
+import io.flashboard.beans.studyguide.StudyGuide;
 import io.flashboard.util.HibernateUtil;
 
 //TODO: Implement
@@ -176,5 +178,78 @@ public class QuizDaoImpl implements QuizDao {
 			session.close();
 		}
 		return test;
+	}
+	
+	@Override
+	public List<Comment> getQuizComments(int quizId) {
+		List<Comment> comments = new ArrayList<>();
+		Session session = HibernateUtil.getSession();
+		Criteria criteria = null;
+		Quiz q = null;
+		
+		Query query = null;
+		StudyGuide sg = null;
+		String hql = "FROM StudyGuide WHERE studyGuideId = :id";
+		
+		try {
+			criteria = session.createCriteria(Quiz.class);
+			q = (Quiz)criteria.add(Restrictions.like("quizId", quizId)).uniqueResult();
+			
+			comments = q.getComments();
+		}
+		catch(HibernateException he) {
+			he.printStackTrace();
+		}
+		
+		if(comments.isEmpty()) {
+			return null;
+		}
+		
+		return comments;
+	}
+	
+	/**
+	 * Adds comments to a quiz
+	 * quiz is found by id and comments are inserted
+	 * 
+	 * @param comment contents
+	 * @param quiz id
+	 * 
+	 * @return true if comment add, otherwise false
+	 * 
+	 */
+	@Override
+	public boolean addQuizComment(Comment comment, int quizId) {
+		Quiz q = getQuizById(quizId);
+		
+		if(q == null) {
+			return false;
+		}
+		
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		q.getComments().add(comment);
+		
+		try {
+			tx = session.beginTransaction();
+			
+			session.update(q);
+			
+			tx.commit();
+			
+			return true;
+		}
+		catch(HibernateException he) {
+			if(tx != null) {
+				tx.rollback();
+			}
+			he.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
+		
+		
+		return false;
 	}
 }

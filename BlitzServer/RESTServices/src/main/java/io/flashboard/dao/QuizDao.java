@@ -2,6 +2,7 @@ package io.flashboard.dao;
 
 import java.util.List;
 
+import io.flashboard.beans.quiz.Comment;
 import io.flashboard.beans.quiz.Quiz;
 import io.flashboard.beans.quiz.QuizQuestion;
 
@@ -19,5 +20,7 @@ public interface QuizDao {
 	public int removeQuestionFromReseverById(int quizId); 
 	public Quiz getQuizById(int quizId); 
 	public Quiz getQuizByTitle(String quizTitle); 
+	public List<Comment> getQuizComments(int quizId);
+	public boolean addQuizComment(Comment comment, int quizId); 
 	
 }
