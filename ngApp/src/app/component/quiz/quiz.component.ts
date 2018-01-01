@@ -14,13 +14,20 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class QuizComponent implements OnInit {
 
-    quiz: Quiz;
+    public quiz: Quiz;
     public userAnswers: string[];
+    public takenStatus: boolean = false;
     selectedEntries: { [key: string]: any };
+    public currentUser: String;
+
+    //rating vars
     public easied: boolean = false;
     public harded: boolean = false;
     public liked: boolean = false;
     public disliked: boolean = false;
+    //quiz score
+    public correct: number;
+    public incorrect: number;
 
     constructor(
         private route: ActivatedRoute,
@@ -31,7 +38,9 @@ export class QuizComponent implements OnInit {
     //On init get Quizes from database
     ngOnInit() {
         this.getQuiz();
-        console.log(this.quiz)
+        this.correct = 0;
+        this.incorrect = 0;
+        console.log(of(this.quiz));
     }
 
     // Retrieve Quiz from database
@@ -39,6 +48,7 @@ export class QuizComponent implements OnInit {
         let id = +this.route.snapshot.paramMap.get('id');
         this.quizService.getQuiz(id)
             .subscribe(quiz => this.quiz = quiz);
+
     }
 
     // User must be signed in to add comment
@@ -47,15 +57,14 @@ export class QuizComponent implements OnInit {
             console.log("sign in yo")
         } else {
 
+            // SEND COMMENTS HERE!!!!!
+
         }
     }
 
     // Check quiz answers
     submitQuiz(): void {
-
-        // TODO: add ! in from of localStorage when userSession is stored
-        // if User is not signed in, tell them to sign in
-        if (localStorage.getItem("currentUser")) {
+        if (!localStorage.getItem("currentUser")) {
             alert("Sign in if you want to check your answer.")
         }
         // check answer 
@@ -68,13 +77,14 @@ export class QuizComponent implements OnInit {
                 }
 
                 if (question.answer == this.selectedEntries[count]) {
-                    console.log("Question " + (count + 1) + " Correct")
+                    this.correct++;
                 }
                 else {
-                    console.log("Question " + (count + 1) + " Incorrect")
+                    this.incorrect++;
                 }
                 count++;
             }
+            this.takenStatus = true;
         }
 
     }
@@ -83,43 +93,56 @@ export class QuizComponent implements OnInit {
         this.location.back();
     }
     upEasy(qNum: number) {
-        if (this.easied == false) {
-            this.easied = true;
-            this.quiz.questions[qNum].rating.easy++;
-        }
-        else{
-            this.easied = false;
-            this.quiz.questions[qNum].rating.easy--;
+        if (this.currentUser) {
+            if (this.easied == false) {
+                this.easied = true;
+                this.quiz.questions[qNum].rating.easy++;
+            }
+            else {
+                this.easied = false;
+                if (this.quiz.questions[qNum].rating.easy >0)
+                    this.quiz.questions[qNum].rating.easy--;
+            }
         }
     }
     upHard(qNum: number) {
-        if (this.harded == false) {
-            this.harded = true;
-            this.quiz.questions[qNum].rating.hard++;
-        }
-        else {
-            this.harded = false;
-            this.quiz.questions[qNum].rating.hard--;
+        if (this.currentUser) {
+            if (this.harded == false) {
+                this.harded = true;
+
+                this.quiz.questions[qNum].rating.hard++;
+            }
+            else {
+                this.harded = false;
+                if (this.quiz.questions[qNum].rating.hard >0)
+                this.quiz.questions[qNum].rating.hard--;
+            }
         }
     }
     upLike(qNum: number) {
-        if (this.liked == false) {
-            this.liked = true;
-            this.quiz.questions[qNum].rating.like++;
-        }
-        else {
-            this.liked = false;
-            this.quiz.questions[qNum].rating.like--;
+        if (this.currentUser) {
+            if (this.liked == false) {
+                this.liked = true;
+                this.quiz.questions[qNum].rating.like++;
+            }
+            else {
+                this.liked = false;
+                if (this.quiz.questions[qNum].rating.like >0)
+                this.quiz.questions[qNum].rating.like--;
+            }
         }
     }
     upDislike(qNum: number) {
-        if (this.disliked == false) {
-            this.disliked = true;
-            this.quiz.questions[qNum].rating.dislike++;
-        }
-        else {
-            this.disliked = false;
-            this.quiz.questions[qNum].rating.dislike--;
+        if (this.currentUser) {
+            if (this.disliked == false) {
+                this.disliked = true;
+                this.quiz.questions[qNum].rating.dislike++;
+            }
+            else {
+                this.disliked = false;
+                if (this.quiz.questions[qNum].rating.dislike >0)
+                this.quiz.questions[qNum].rating.dislike--;
+            }
         }
     }
     onSelection(entry, questionNum) {
@@ -128,4 +151,15 @@ export class QuizComponent implements OnInit {
         this.selectedEntries = Object.assign({}, this.selectedEntries, obj);
         console.log(this.selectedEntries)
     }
+
+    getUser() {
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"))
+        this.currentUser = this.parseJwt(currentUser.token.toString()).sub;
+    }
+    parseJwt(token) {
+        let base64Url = token.split('.')[1];
+        let base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
+
 }
