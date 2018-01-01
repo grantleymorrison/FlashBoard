@@ -120,6 +120,45 @@ public class TokenService {
 	}
 	
 	/**
+	 * See verify for description.
+	 * This is for testng purposes
+	 * 
+	 * @param token
+	 * @param username
+	 * @return
+	 */
+	public static boolean verifyTestNG(String token, String username) {
+		Claims claims = null;
+		UserDaoImpl ud = new UserDaoImpl();
+		User user = null;
+		String cUsername = null;
+		boolean verified = false;
+		
+		if(token == null) {
+			return false;
+		}
+		
+		try {
+			claims = Jwts.parser()
+					.setSigningKey(getSecret())
+					.parseClaimsJws(token).getBody();
+			
+			cUsername = claims.getSubject();
+			
+			if(cUsername == null || !cUsername.equals(username)) {
+				return false;
+			}
+			
+			verified = true;
+			
+		}catch(SignatureException se) {
+			
+		}
+		
+		return verified;
+	}
+	
+	/**
 	 * Creates the secret key from a static string
 	 * 
 	 * @return byte[] conversion of secretKey
