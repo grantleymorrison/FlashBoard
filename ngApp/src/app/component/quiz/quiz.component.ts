@@ -14,7 +14,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class QuizComponent implements OnInit {
 
-    quiz: Quiz;
+    public quiz: Quiz;
     public userAnswers: string[];
     public takenStatus: boolean = false;
     selectedEntries: { [key: string]: any };
@@ -40,7 +40,7 @@ export class QuizComponent implements OnInit {
         this.getQuiz();
         this.correct = 0;
         this.incorrect = 0;
-        console.log(this.takenStatus);
+        console.log(of(this.quiz));
     }
 
     // Retrieve Quiz from database
@@ -48,6 +48,7 @@ export class QuizComponent implements OnInit {
         let id = +this.route.snapshot.paramMap.get('id');
         this.quizService.getQuiz(id)
             .subscribe(quiz => this.quiz = quiz);
+
     }
 
     // User must be signed in to add comment
@@ -55,6 +56,8 @@ export class QuizComponent implements OnInit {
         if (!localStorage.getItem("currentUser")) {
             console.log("sign in yo")
         } else {
+
+            // SEND COMMENTS HERE!!!!!
 
         }
     }
@@ -97,7 +100,8 @@ export class QuizComponent implements OnInit {
             }
             else {
                 this.easied = false;
-                this.quiz.questions[qNum].rating.easy--;
+                if (this.quiz.questions[qNum].rating.easy >0)
+                    this.quiz.questions[qNum].rating.easy--;
             }
         }
     }
@@ -105,10 +109,12 @@ export class QuizComponent implements OnInit {
         if (this.currentUser) {
             if (this.harded == false) {
                 this.harded = true;
+
                 this.quiz.questions[qNum].rating.hard++;
             }
             else {
                 this.harded = false;
+                if (this.quiz.questions[qNum].rating.hard >0)
                 this.quiz.questions[qNum].rating.hard--;
             }
         }
@@ -121,6 +127,7 @@ export class QuizComponent implements OnInit {
             }
             else {
                 this.liked = false;
+                if (this.quiz.questions[qNum].rating.like >0)
                 this.quiz.questions[qNum].rating.like--;
             }
         }
@@ -133,6 +140,7 @@ export class QuizComponent implements OnInit {
             }
             else {
                 this.disliked = false;
+                if (this.quiz.questions[qNum].rating.dislike >0)
                 this.quiz.questions[qNum].rating.dislike--;
             }
         }

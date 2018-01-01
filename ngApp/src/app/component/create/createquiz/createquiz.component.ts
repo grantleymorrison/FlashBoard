@@ -46,6 +46,7 @@ export class CreatequizComponent implements OnInit {
     this.quiz.creator = this.author;
     this.quiz.questions = this.questions;
     this.quizService.submitQuiz(this.quiz);
+    console.log(this.quiz);
   }
 
   private getAuthor(){
