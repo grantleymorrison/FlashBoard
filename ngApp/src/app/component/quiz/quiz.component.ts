@@ -58,7 +58,7 @@ export class QuizComponent implements OnInit {
         if (localStorage.getItem("currentUser")) {
             alert("Sign in if you want to check your answer.")
         }
-        // check answer 
+        // check answer
         else {
             let count = 0;
             for (let question of this.quiz.questions) {
