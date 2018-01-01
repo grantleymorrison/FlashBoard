@@ -25,13 +25,13 @@ public class NavigationTest {
 		  enabled = true, priority = 1)
   public void navbarTest() {
 	  HomepageFactory hpf = new HomepageFactory(driver); 
-	  hpf.clickBrowseNav();
+	 /* hpf.clickBrowseNav();
 	  hpf.clickHomeNav();
 	  hpf.clickSearchNav();
 	  hpf.clickHomeNav();
 	  hpf.clickLogoNav();
 	  hpf.clickSignUpNav();
-	  hpf.clickHomeNav(); 
+	  hpf.clickHomeNav(); */
   }
   
   @Test(groups = {"smoke","login"},
@@ -40,7 +40,7 @@ public class NavigationTest {
 	  HomepageFactory hpf = new HomepageFactory(driver); 
 	  hpf.clickLoginNav();
 	  WebDriverWait wait = new WebDriverWait(driver,1);
-	  hpf.clickCloseLoginModalBtn();
+	 // hpf.clickCloseLoginModalBtn();
   }
   
   

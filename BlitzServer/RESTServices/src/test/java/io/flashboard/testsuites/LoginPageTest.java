@@ -30,11 +30,11 @@ public class LoginPageTest {
 	  HomepageFactory hpf = new HomepageFactory(driver); 
 	  WebDriverWait wait = new WebDriverWait(driver, 1); 
 	  hpf.clickLoginNav();
-	  hpf.clickCloseLoginModalBtn();
+	 /* hpf.clickCloseLoginModalBtn();
 	  hpf.clickLoginNav();
 	  hpf.enterLoginUsername("username");
 	  hpf.enterLoginPassword("password");
-	  hpf.clickCloseLoginModalBtn();
+	  hpf.clickCloseLoginModalBtn(); */
   }
   
   @Test(groups = {"login", "happy"}, dependsOnMethods = "loginModalSmoke",
@@ -43,9 +43,9 @@ public class LoginPageTest {
 	  HomepageFactory hpf = new HomepageFactory(driver); 
 	  WebDriverWait wait = new WebDriverWait(driver, 1); 
 	  hpf.clickLoginNav();
-	  hpf.enterLoginUsername("username");
+	 /* hpf.enterLoginUsername("username");
 	  hpf.enterLoginPassword("password");
-	  hpf.clickLogMeIn();
+	  hpf.clickLogMeIn(); */
   }
   
   

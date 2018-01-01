@@ -27,10 +27,11 @@ export class StudyGuideComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.getGuide();
     console.log(this.guide);
+    this.getComments();
   }
 
   ngDoCheck(){
-    this.getComments();
+    
   }
 
   back() {
