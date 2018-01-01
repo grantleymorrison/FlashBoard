@@ -54,9 +54,11 @@ export class StudyGuideComponent implements OnInit, DoCheck {
   }
 
   submitComment(){
-    let id = +this.route.snapshot.paramMap.get('id');
-    this.guideComment.username = this.authService.getAuthor();
-    this.CommentService.addStudyGuideComment(id, this.guideComment);
-    this.guideComment.content = ' ';
+    if(localStorage.getItem('currentUser')){
+      let id = +this.route.snapshot.paramMap.get('id');
+      this.guideComment.username = this.authService.getAuthor();
+      this.CommentService.addStudyGuideComment(id, this.guideComment);
+      this.guideComment.content = ' ';
+    }
   }
 }

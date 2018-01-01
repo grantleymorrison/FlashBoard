@@ -4,6 +4,9 @@ import { QuizService } from "../../services/quiz/quiz.service";
 import { of } from 'rxjs/observable/of';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from "@angular/router";
+import { Comment } from '../../model/comment';
+import { AuthenticationService } from "../../services/authentication/authentication.service";
+import { CommentService } from '../../services/comment/comment.service';
 
 @Component({
     selector: 'app-quiz',
@@ -19,6 +22,7 @@ export class QuizComponent implements OnInit {
     public takenStatus: boolean = false;
     selectedEntries: { [key: string]: any };
     public currentUser: String;
+    public quizComment: Comment = new Comment();
 
     //rating vars
     public easied: boolean = false;
@@ -32,7 +36,9 @@ export class QuizComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private quizService: QuizService,
-        private location: Location
+        private location: Location,
+        private authService: AuthenticationService,
+        private CommentService: CommentService
     ) { }
 
     //On init get Quizes from database
@@ -41,6 +47,7 @@ export class QuizComponent implements OnInit {
         this.correct = 0;
         this.incorrect = 0;
         console.log(of(this.quiz));
+        this.getComments();
     }
 
     // Retrieve Quiz from database
@@ -57,9 +64,23 @@ export class QuizComponent implements OnInit {
             console.log("sign in yo")
         } else {
 
-            // SEND COMMENTS HERE!!!!!
+          let id = +this.route.snapshot.paramMap.get('id');
+          this.quizComment.username = this.authService.getAuthor();
+          this.CommentService.addQuizComment(id, this.quizComment);
+          this.quizComment.content = ' ';
 
         }
+    }
+
+    //get quiz CommentService
+    getComments(): void{
+      let id = +this.route.snapshot.paramMap.get('id');
+      this.CommentService.getQuizComments(id).subscribe(
+        comments => {
+          this.quiz.comments = comments
+        },
+        err => { console.log(err) }
+      );
     }
 
     // Check quiz answers
@@ -151,9 +172,6 @@ export class QuizComponent implements OnInit {
         this.selectedEntries = Object.assign({}, this.selectedEntries, obj);
         console.log(this.selectedEntries)
     }
-<<<<<<< HEAD
-}
-=======
 
     getUser() {
         let currentUser = JSON.parse(localStorage.getItem("currentUser"))
@@ -166,4 +184,3 @@ export class QuizComponent implements OnInit {
     }
 
 }
->>>>>>> 20f15aa8e253930288c4ec010de8eaf4c9bd7b08
