@@ -27,25 +27,11 @@ public class LoginPageTest {
   @Test(groups = {"smoke","login"},
 		  enabled = true, priority = 1)
   public void loginModalSmoke() {
-	  HomepageFactory hpf = new HomepageFactory(driver); 
-	  WebDriverWait wait = new WebDriverWait(driver, 1); 
-	  hpf.clickLoginNav();
-	  hpf.clickCloseLoginModalBtn();
-	  hpf.clickLoginNav();
-	  hpf.enterLoginUsername("username");
-	  hpf.enterLoginPassword("password");
-	  hpf.clickCloseLoginModalBtn();
   }
   
   @Test(groups = {"login", "happy"}, dependsOnMethods = "loginModalSmoke",
 		  enabled = true, priority = 2)
   public void loginValidTest(){
-	  HomepageFactory hpf = new HomepageFactory(driver); 
-	  WebDriverWait wait = new WebDriverWait(driver, 1); 
-	  hpf.clickLoginNav();
-	  hpf.enterLoginUsername("username");
-	  hpf.enterLoginPassword("password");
-	  hpf.clickLogMeIn();
   }
   
   
